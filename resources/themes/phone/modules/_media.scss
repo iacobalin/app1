@@ -1,0 +1,24 @@
+.media-panel{
+	@include border-radius(0px);
+	border: 0px;
+	padding: 0px;
+	top: 0;
+	left: 0;
+	
+	&.x-panel{
+		&.x-floating{
+		 	> .x-body{
+			}
+			.x-panel-inner{
+				@include border-radius(0px);
+			}
+		}
+	}
+
+	&.x-floating > .x-panel-inner:first-child{
+		@include border-radius(0px);
+	}
+	iframe{
+		border: 0px;
+	}
+}

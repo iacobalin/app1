@@ -1,0 +1,175 @@
+$corner-width: 30px;
+$corner-height: 40px;
+$animation-duration: 4s;
+$animation-delay: 1s;
+$ad-bg-color: #e0e0e0;
+
+.card-ad{
+	background: $ad-bg-color;
+	
+	background-image: radial-gradient(center center, ellipse closest-side, #ffffff 0%, #ffffff 50%, $ad-bg-color);  
+    background-image: -o-radial-gradient(center center, ellipse closest-side, #ffffff, #ffffff 50%, $ad-bg-color);  
+    background-image: -ms-radial-gradient(center center, ellipse closest-side, #ffffff, #ffffff 50%, $ad-bg-color);  
+    background-image: -moz-radial-gradient(center center, ellipse closest-side, #ffffff, #ffffff 50%, $ad-bg-color);  
+    background-image: -webkit-radial-gradient(center center, ellipse closest-side, #ffffff, #ffffff 50%, $ad-bg-color);  
+	
+	@include wbz-display-box();
+	@include wbz-box-pack(center);
+	@include wbz-box-align(center);
+	@include wbz-box-orient(vertical);
+	
+	.x-innerhtml{
+		@include wbz-display-box();
+		@include wbz-box-pack(center);
+		@include wbz-box-align(center);
+		@include wbz-box-orient(vertical);
+		
+		.ads-wrapper{
+			@include wbz-display-box();
+			@include wbz-box-orient(vertical);
+			
+			.google-ad-container{
+				background: #ffffff;
+			}
+			.ads-by-google{
+				font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   				font-weight: 300;
+				font-size: 11px;
+				color: #595959;
+				margin: 5px 5px 0 0;
+				text-align: right;
+			}
+		}
+		.swipe{
+			position: absolute;
+			bottom: 10px;
+			right: 10px;
+			
+			font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+			font-weight: 300;
+			font-size: 12px;
+			color: #3e3e3e;
+			text-transform: uppercase;
+			text-align: center;
+			
+			span{
+				text-align: center;
+			}
+		}
+	}
+}
+ 
+.post{ 
+	width: $corner-width;
+	height: $corner-height;
+	padding: 0px; 
+	position: absolute;
+	top: 50%;
+	right: 0; 
+	background-color: transparent;   
+	overflow: hidden;
+	
+	@include wbz-transform(translateY(-100%)); 
+	
+	.folded-corner { 
+		width: 0px; 
+		height: 0px; 
+		position: absolute; 
+		background: hsla(260,5%,60%,0.2); 
+		border-width: 0; 
+		border-style: solid;
+		border-color: transparent #ffffff #ffffff transparent; 
+		border-width: 0 0 $corner-height $corner-width;
+		
+		@include wbz-box-shadow( (2px -2px 0px transparent, 0 1px 1px rgba(0,0,0,0.1), -1px 1px 1px rgba(0,0,0,0.1)) );
+		@include wbz-border-radius($corner-width/5 0 0 0);
+		@include wbz-animation(flip-corner $animation-duration);
+		@include wbz-transition-timing(ease);
+		@include wbz-animation-delay($animation-delay);
+		@include wbz-animation-iteration-count(infinite);
+		@include wbz-transform-origin(bottom right);	
+	}
+	
+	&.bottom{
+		bottom: 50%;
+		@include wbz-transform(translateY(0%));
+		
+		.folded-corner {
+			border-color: #ffffff #ffffff transparent transparent; 
+			border-width: 0 $corner-width $corner-height 0;
+			@include wbz-border-radius(0 0 0 $corner-width/5);
+			@include wbz-transform-origin(top right);
+		}
+	}
+} 
+@-webkit-keyframes flip-corner{ 
+	0%{ 
+  		-webkit-transform: scale(0);
+	}
+	7%{ 
+  		-webkit-transform: scale(1);
+	}
+	14%{ 
+  		-webkit-transform: scale(0);
+	}
+	100%{ 
+  		-webkit-transform: scale(0);
+	}
+}
+@-moz-keyframes flip-corner{ 
+	0%{ 
+  		-moz-transform: scale(0);
+	}
+	100%{ 
+  		-moz-transform: scale(1);
+	}
+}
+@-o-keyframes flip-corner{ 
+	0%{ 
+  		-o-transform: scale(0);
+	}
+	100%{ 
+  		-o-transform: scale(1);
+	}
+}
+@keyframes flip-corner{ 
+	0%{ 
+  		transform: scale(0);
+	}
+	100%{ 
+  		transform: scale(1);
+	}
+}
+
+
+/* ads for article details */
+.articles-panel{
+	.ads-box{
+		text-align: center;
+		@include wbz-display-box();
+		@include wbz-box-orient(vertical);
+		@include wbz-box-pack(center);
+		@include wbz-box-align(center);
+		
+		.ads-wrapper{
+			@include wbz-display-box();
+			@include wbz-box-orient(vertical);
+			margin: 0px 0px 10px 0px;
+			
+			.google-ad-container{
+				.ad-overlay{
+					@include wbz-transform(translate(-50%));
+				}
+			}
+			.ads-by-google{
+				font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+				font-weight: 300;
+				font-size: 11px;
+				color: #595959;
+				margin: 5px 5px 0 0;
+				text-align: right;
+			}
+		}
+	}
+}
+/*----------------------------------*/

@@ -1,0 +1,340 @@
+.facebook-dock{	
+	.comments-list{		
+		.x-stretched.x-dock-horizontal > .x-dock-body{
+			width: auto;
+			
+			.x-windowsphone.x-ie & {
+				width: 100%;
+			}
+		}
+		.x-mask{
+			background: none;
+		}
+		.x-translatable-hboxfix{
+			.x-windowsphone.x-ie & {
+				width: 100%;
+				padding-right: 20px;
+			}
+		}
+		.comments-list-item{
+			& > .x-dock{
+				border: 0;
+				
+				.x-dock-body{
+					.x-windowsphone.x-ie & {
+						width: 100%;
+					}
+				}
+			}
+			.x-list-item-body{
+				padding: 8px 15px 7px 15px;
+				
+				.x-innerhtml{
+					padding-bottom: 15px;
+				}
+				
+				.comment-box{
+					@include wbz-display-box();
+					@include wbz-box-orient(horizontal);
+					@include wbz-box-pack(justify);
+					@include wbz-box-align(start);
+				
+					.comment-left{
+						height: 50px;
+						width: 50px;
+						@include border-radius(50px);
+						margin-right: 10px;
+						
+						.img{
+							@include border-radius(50px);
+							@include wbz-display-inline-box();
+							background-size: cover;
+							background-position: center;
+							width: 50px;
+							height: 50px;
+						}
+					}
+					.comment-right{
+						margin: 3px 0 0 0;
+						width: 0;
+						min-width: 0;
+						@include wbz-box-flex(1); 
+						@include wbz-display-box();
+						@include wbz-box-orient(vertical);
+						text-align: left; 
+						
+						.comment{
+							
+							span{
+								@include wbz-display-box();
+								display: block;
+							}
+						}
+					}
+				}
+			}
+		}
+		.x-list-item-first.comments-list-item{
+			.x-list-item-body{
+				padding-top: 15px; 
+			}
+		}
+	}
+	.facebook-bar{
+		margin: 0;
+		padding: 4px 0;
+		background: none;		
+	
+		& > .x-docking-horizontal > .x-body > .x-html{
+			margin: 0;
+			padding: 0;
+		}
+	
+		.login-box{
+			background: none;
+	
+			.content{
+				font-size: 11px;
+				text-align: center;
+			}
+			@media screen and (orientation: portrait){
+				.x-panel-inner{
+					@include wbz-display-box();
+					@include wbz-box-orient(vertical);
+					@include wbz-box-pack(start);
+					@include wbz-box-align(center);
+				}
+				.content{
+					padding-right: 0px;
+					width: auto;
+					height: 25px;
+					padding-top: 5px;
+				}
+			}
+			@media screen and (orientation: landscape){
+				.x-panel-inner{
+					@include wbz-display-box();
+					@include wbz-box-orient(horizontal);
+					@include wbz-box-pack(center);
+					@include wbz-box-align(center);
+				}
+				.content{
+					padding-right: 10px;
+					width: 135px;
+				}
+			}
+			.action{
+				height: 36px;
+				width: 150px;
+				@include border-radius(0px);
+				border: 0;
+				@include box-shadow(0px);
+				padding: 0;
+				margin: 0;
+				padding: 0 5px;
+				
+				.x-button-label{
+					@include text-shadow(0px);
+					height: 36px;
+				}
+			}
+		}
+		.form{
+			background: none;
+			
+			@media screen and (orientation: portrait) {
+				.textarea{
+					height: 64px;
+					
+					.x-component-outer{
+						width: 100%;
+					}
+					textarea{
+						height: 64px;
+						min-height: 64px;
+					}
+				}
+				.buttons-box{
+					.x-panel-inner{
+						@include wbz-display-box();
+						@include wbz-box-orient(vertical);
+						@include wbz-box-pack(start);
+						@include wbz-box-align(center);
+						padding: 0;
+					}
+				}
+			}
+			@media screen and (orientation: landscape) {
+				.textarea{
+					height: 64px;
+					
+					.x-component-outer{
+						width: 100%;
+					}
+					textarea{
+						height: 64px;
+						min-height: 64px;
+					}
+				}
+				.buttons-box{
+					.x-panel-inner{
+						@include wbz-display-box();
+						@include wbz-box-orient(vertical);
+						@include wbz-box-pack(start);
+						@include wbz-box-align(center);
+						padding: 0;
+					}
+				}
+			}
+			.textarea{
+				margin: 0;
+				padding: 0;
+				background: none;
+				@include border-radius(0px);
+			
+				textarea{
+					border: 0;
+					@include border-radius(0px);
+					@include box-shadow(0px);
+					padding: 3px 15px;
+					min-height: 64px!important;
+					height: 64px;
+					padding: 4px 15px 4px 15px!important;
+				}
+			}
+			.insert-url{
+				width: 20px;
+				height: 27px; 
+				background: none;
+				@include wbz-inline-icon(hyperlink, 20px);
+				border: 0;
+				
+				&::before{
+					line-height: 27px;
+					width: 20px;
+					height: 20px;	
+				}
+				&.pending{
+					background: none;
+					@include box-shadow(none);
+					border: none;
+					width: auto;
+					
+					&::before{
+						display: none;
+					}
+					
+					.x-button-label{
+						@include wbz-display-box();
+						@include wbz-box-align(center);
+						@include wbz-box-pack(center);
+						padding: 0px; 
+					}
+				}
+			}
+			.send-comment-button{ 
+				height: 36px;
+				width: 65px;
+				@include border-radius(0px);
+				border: 0;
+				@include box-shadow(0);
+				padding: 0;
+				margin: 0;
+				position: relative;
+				
+				.x-button-label{
+					@include text-shadow(none);
+					height: 36px;
+					padding-top: 0px;
+				}
+				&.pending{
+					background: none;
+					@include box-shadow(none);
+					border: none;
+					
+					.x-button-label{
+						@include wbz-display-box();
+						@include wbz-box-align(center);
+						@include wbz-box-pack(center);
+						padding:0px; 
+					}
+				}
+			}
+		}
+	}
+	@media screen and (orientation: portrait){
+		.facebook-bar{
+			height: 72px;
+		}
+	}
+	@media screen and (orientation: landscape){
+		.facebook-bar{
+			height: 72px;
+		}
+	}
+}
+.buttons-panel{
+	.x-button{
+		.x-button-icon{
+			&.x-hidden{
+				@include wbz-display-box();
+			}
+		}
+	}
+	.comment-button{
+		@include border-radius(0px);
+		@include wbz-display-box();
+		border: 0px;
+		background: none;
+		padding: 0px;
+		width: 48px;
+		height: 48px;
+	
+		.comment{
+			@include wbz-inline-icon(f-comment, 22px);
+			@include wbz-display-box();
+			@include border-radius(19px);
+			width: 38px;
+			height: 38px;
+			
+			&::before{
+				line-height:38px;	
+			}
+		}
+		&.pressed{
+			.comment{
+				@include border-radius(19px);
+				width: 38px;
+				height: 38px;
+				
+				&::before{
+					line-height:38px;	
+				}	
+			}
+		}
+		.x-button-label{
+			display: none;
+		}
+		&.x-hasbadge{
+			.x-badge{
+				@include wbz-display-box();
+				background-image: none;
+				@include border-radius(3px);
+				@include wbz-box-shadow(none);
+				border: none;
+				height: 14px;
+				padding: 0px 4px 0px 4px; 
+				min-width: 1px;
+				top: -2px;
+				right: 5px;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+

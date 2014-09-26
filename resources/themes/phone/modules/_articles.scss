@@ -1,0 +1,150 @@
+.articles-panel{
+	.article-card{
+		padding: 0px;
+
+		.x-inner{
+			overflow:hidden;
+		}
+		.x-inner.x-html, .x-inner .x-html{
+			padding:0;
+			margin:0;
+		}
+		.image-container{
+			@include wbz-display-box();
+			@include wbz-box-orient(vertical);
+			@include wbz-box-pack(end);
+		}
+		.overlay{
+			.shape{
+				&.bottom{
+					border-bottom-style: solid;
+				}
+			}
+		}
+		.headline{
+			@include wbz-display-box();
+			@include wbz-box-orient(vertical);
+			@include wbz-box-pack(end);
+			min-height: 43px;
+			padding: 0px 15px 5px 15px;
+			
+			.category-name{
+				padding: 1px 3px;
+				display: inline-table; 
+				
+			}
+			h1{
+				@include wbz-display-box();
+				margin: 0px;
+				text-align: left;
+				padding: 2px 0 0 0;
+				
+				margin: 0;
+				font-size: 20px;
+				line-height: 26px;
+				
+				.x-windowsphone &{
+					@include wbz-box-orient(vertical);
+				}
+			}
+			h3{
+				margin-bottom: 0px;
+			}
+		}
+		h1{
+			margin-bottom: 10px;
+			padding: 0;
+		}
+		h2{
+			margin-bottom: 10px;
+			padding: 0;
+		}
+		h3, h4, h5, h6{
+			margin-bottom: 10px;
+			padding: 0;
+		}
+		p, ul, ol, li{
+			margin-bottom: 10px;
+			padding: 0px;
+		}
+		ol{
+			li{
+				list-style: inherit;
+			}
+		}
+		ul{
+			li{
+				list-style: circle;
+			}
+		}
+		blockquote{
+			margin: 0px 0px 10px 0px;
+			padding: 0px 10px;
+
+			cite{
+				display: block;
+				text-align: right;
+				width: 100%;
+				margin: 0px;
+				padding: 0px;
+				font-style: italic;
+			}
+		}
+		ul, ol{
+			margin-right:0px;
+		}
+		li{
+			margin-left:20px;
+			margin-bottom:10px;
+			line-height:18px;
+		}
+		img{
+			margin:0;
+			padding:0;
+			font-size:0;
+			margin-bottom:10px;
+			display:block;
+		}
+		.article-image{
+
+			&>div{
+				margin-bottom: 0px;
+				background-position:center top;
+				background-repeat:no-repeat;
+				@include background-size(auto 101%);
+			}
+		}
+		.article-image-media{
+			margin-bottom: 10px;
+
+			&>div:first-child{
+				margin-bottom: 0px;
+				background-position:center center;
+				background-repeat:no-repeat;
+				@include background-size(100% auto);
+			}
+		}
+		.article-media{
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			background-image: wbz_theme_image("pictos/play-button.png");
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-color: transparent;
+		}
+		.article-media-default{
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			background-image: wbz_theme_image("pictos/play-button.png");
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-color: transparent;
+		}
+		.content{
+			padding: 15px 15px 15px 15px;
+			margin-bottom: 10px;
+		}
+	}
+}

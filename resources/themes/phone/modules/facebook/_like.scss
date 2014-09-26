@@ -1,0 +1,173 @@
+.buttons-panel{
+	.x-button{
+		.x-button-icon{
+			&.x-hidden{
+				@include wbz-display-box();
+			}
+		}
+	}
+	.like-button{
+		@include border-radius(0px);
+		@include wbz-display-box();
+		border: 0px;
+		background: none;
+		padding: 0px;
+		width: 48px;
+		height: 48px;
+		
+		.like{
+			@include wbz-inline-icon(f-like, 20px);
+			@include wbz-display-box();
+			@include border-radius(19px);
+			width: 38px;
+			height: 38px;
+			
+			&::before{
+				line-height: 33px;	
+				width: 38px;
+				height: 38px;
+			}
+		}
+		&.pressed{
+			.like{
+				@include border-radius(19px);
+				width: 38px;
+				height: 38px;
+				
+				&::before{
+					line-height: 33px;	
+					width: 38px;
+					height: 38px;
+				}	
+			}
+		}
+		&.pending{
+			.x-button-icon{
+				&.x-hidden.like{
+					display: none;
+				}
+			}
+			.x-button-label{
+				@include wbz-display-box();
+				@include wbz-box-align(center);
+				@include wbz-box-pack(center);
+				width: 38px;
+				max-width: 38px!important;
+				@include wbz-box-flex(0);
+				height: 38px;
+				@include border-radius(19px);
+				
+				.x-windowsphone.x-ie & {
+					position: relative;
+					left: 0px;
+					max-width: 38px!important;
+				}
+			}
+			.x-badge{
+				width: auto;
+			}
+		}
+		.x-button-label{
+			display: none;
+		}
+		&.x-hasbadge{
+			.x-badge{
+				@include wbz-display-box();
+				background-image:none;
+				@include border-radius(3px);
+				@include wbz-box-shadow(none);
+				border: none;
+				height: 14px;
+				min-width: 1px;
+				top: -2px;
+				right: 5px;
+				padding: 0px 4px 0px 4px;
+			}
+		}
+	}
+}
+.facebook-dock{
+	.x-dock{
+		.x-dock-body{
+			.x-panel-inner{
+				z-index: 0;
+			}
+		}
+	}
+	.likes-box{
+		display:block;
+		
+		.images{
+			display: inline-block;
+			
+			div{
+				float: left;
+				height: 33px;
+			}
+			.img{
+				@include wbz-display-inline-box();
+				margin: 0 1px 1px 0;
+				background-size: cover;
+				background-position: 50%;
+				width: 33px;
+				height: 33px;
+			}
+		}
+		.content{
+			.icon-like{
+				display:inline-block;
+				@include wbz-inline-icon(f-like-empty, 14px); 
+				position: relative;
+				background-color: transparent;
+				width: 18px;
+				height: 12px;
+			}	
+			.x-windowsphone.x-ie & {
+				width: 100%;
+			}
+		}
+	}
+}
+@media screen and (orientation: portrait) {
+	.likes-list{
+		padding: 0 10px;
+		
+		.likes-box{
+			width: 100%;
+			padding: 17px 40px 0px 0px; 
+			@include wbz-display-inline-box();
+			@include wbz-box-flex(1);
+			@include wbz-box-orient(vertical);
+			@include wbz-box-pack(justify);
+			@include wbz-box-align(start);
+			
+			.images{
+				overflow: hidden;
+				height: 33px;
+			}
+			.content{
+				padding-top: 5px;
+				overflow: hidden;
+				
+				.x-windowsphone.x-ie & {
+					padding-top: 5px;
+				}
+			}
+		}
+	}
+}
+@media screen and (orientation: landscape) {
+	.likes-list{
+		padding: 10px 0;
+		
+		.x-innerhtml{
+			@include wbz-display-box();
+			@include wbz-box-align(end);
+			
+		}
+		.likes-box{
+			width: 138px;
+			padding: 10px 16px;
+		}
+	}
+}

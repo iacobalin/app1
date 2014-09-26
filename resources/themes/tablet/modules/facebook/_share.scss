@@ -1,0 +1,238 @@
+.buttons-panel{
+	.x-button{
+		.x-button-icon{
+			&.x-hidden{
+				@include wbz-display-box();
+			}
+		}
+	}
+	.share-button{
+		@include border-radius(0px);
+		@include wbz-display-box();
+		border: 0px;
+		background: none;
+		padding: 0px;
+		width: 48px;
+		height: 48px;
+		
+		.share{
+			@include wbz-inline-icon(f-share, 22px);
+			@include wbz-display-box();
+			@include border-radius(19px);
+			width: 38px;
+			height: 38px;
+			line-height: 38px;	
+			
+			&::before{
+				width: 38px;
+				height: 38px;
+				line-height: 38px;
+			}
+		}
+		&.pressed{
+			.share{
+				@include border-radius(19px);
+				width: 38px;
+				height: 38px;
+				line-height: 38px;	
+				
+				&::before{
+					width: 38px;
+					height: 38px;
+					line-height: 38px;
+				}	
+			}
+		}
+		.x-button-label{
+			display: none;
+		}
+	}
+}
+.share-panel{
+	.top-bar{
+		border: 0px;
+		
+		.x-title{
+			@include wbz-display-box();
+			@include wbz-box-flex(1);
+			text-shadow: none;
+			margin: 0 60px 0 0;
+			padding: 0px;
+		}
+		.x-innerhtml{
+			@include wbz-display-box();
+			@include wbz-box-orient(horizontal); 
+			@include wbz-box-align(center);
+			@include wbz-box-pack(start);
+			
+			.fb-icon{
+				@include wbz-display-box();
+				@include wbz-box-pack(center); 
+				@include wbz-box-align(start);
+				width: 24px;
+				height: 24px;
+				margin: 0 8px;
+				@include border-radius(4px);
+				
+				.icon{
+					position: relative;
+					@include wbz-display-box();
+					@include wbz-inline-icon(facebook, 20px);
+					top: -6px;
+					right: 2px;
+				}
+				
+			}
+			.title{
+				@include wbz-display-box();
+				@include wbz-box-orient();
+				@include wbz-box-pack(center);
+				@include wbz-box-align(start);
+				margin: 5px 0 0 0;
+			}
+		}
+		.close-x{
+			@include border-radius(0px);
+			@include wbz-display-box();
+			border: 0px;
+			background: none;
+			padding: 0px;
+			position: absolute;
+			left: -60px;
+			top: 0px;
+			
+			.close-icon{
+				@include wbz-inline-icon(close, 17px);
+				@include wbz-display-box();
+				@include border-radius(19px);
+				width: 38px;
+				height: 38px;
+				
+				&::before{
+					line-height: 38px;	
+				}
+				&.x-button-icon.x-hidden{
+					display: block;	
+				}
+			}
+			&.pressed{
+				.close-icon{
+					width: 38px;
+					height: 38px;
+					
+					&::before{
+						line-height: 38px;	
+					}	
+				}
+			}
+			.x-button-label{
+				display: none;
+			}
+		}
+	}
+	.x-dock-body{
+		.x-inner{
+			padding: 10px 10px 0 10px;
+ 		}
+	}
+	.form{
+		.image{
+			width: 36px;
+			height: 36px;
+			background-size:cover;
+			margin-right: 11px;
+			margin-top: 2px;
+		}
+		.x-component-outer{
+			width: 100%;
+		}
+		textarea{
+			height: 65px;
+			background: none;
+			padding: 3px 0px;
+			min-height: 38px;
+			border: 0;
+		}
+	}
+	.content-container{
+		border: 1px solid;
+		
+		.x-inner{
+			padding: 0px;
+			overflow: hidden;
+			
+			.x-innerhtml{
+				@include wbz-display-box();
+				
+				.img{
+					@include wbz-display-box();
+					@include wbz-box-pack(start);
+					@include wbz-box-align(center);
+					width: 98px;
+					height: 98px;
+					background-size: cover;
+				}
+				.text-box{
+					@include wbz-display-box();  
+					@include wbz-box-orient(vertical);
+					@include wbz-box-align(start);
+					width: 380px;
+					padding: 10px;
+					overflow: hidden;
+					
+					.inside-shadow{
+						position: absolute;  
+						height: 30px;
+						bottom: 0px;
+						width: 100%;
+						z-index: 4;
+					}
+					
+					h2{
+						color: $text-color;
+						padding: 0px;
+						margin-bottom: 5px;
+						
+						.x-windows.x-ie & {
+							width:100%;
+						}
+					}
+					p{
+						color: $text-color;
+						padding: 0px;
+						
+						.x-windows.x-ie & {
+							width:100%;
+						}
+					}
+				}
+			}
+		}
+	}
+	.bottom-bar{
+		.x-dock{
+			padding: 10px;
+		}
+		.x-button{
+			.x-button-icon{
+				&.x-shown{
+					display: none;
+				}
+			}
+		}
+		.share-button{  
+			height: 36px;
+			width: 52px;
+			@include border-radius(1px);
+			background-image: none;
+			padding: 0;
+			margin: 0;
+			
+			.x-button-label{
+				@include wbz-display-box();
+				@include wbz-box-pack(center);
+				margin: 0;
+			}
+		}
+	}
+}

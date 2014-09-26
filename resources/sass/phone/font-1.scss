@@ -1,0 +1,6 @@
+/* font 1 */
+@import 'compass/css3';
+
+@include font-face('RobotoLightCondensed', inline-font-files('robotocondensed-light.woff', woff, 'robotocondensed-light.ttf', truetype,'robotocondensed-light.svg', svg,"robotocondensed-light.eot",eot));
+@include font-face('RobotoBoldCondensed', inline-font-files('robotocondensed-bold.woff', woff, 'robotocondensed-bold.ttf', truetype,'robotocondensed-bold.svg', svg,"robotocondensed-bold.eot",eot));
+@include font-face('RobotoRegularCondensed', inline-font-files('robotocondensed-regular.woff', woff, 'robotocondensed-regular.ttf', truetype,'robotocondensed-regular.svg', svg,"robotocondensed-regular.eot",eot));

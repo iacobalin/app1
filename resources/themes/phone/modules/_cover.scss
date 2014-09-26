@@ -1,0 +1,66 @@
+.cover-box{
+	background: none; 
+	width: 100%;
+	height: 100%;
+	
+	.x-innerhtml{
+		height: 100%;
+		
+		.cover{
+			height: 100%;
+			
+			.bg{
+				@include wbz-display-box();
+				@include wbz-box-orient(vertical);
+				@include wbz-box-pack(justify);
+				@include wbz-box-align(stretch); 
+
+				padding: 15px;
+				width: 100%;
+				height: 100%;
+				
+				.article{
+					@include wbz-display-box();
+					@include wbz-box-orient(vertical);
+					@include wbz-box-align(start);
+					@include wbz-box-pack(start);
+					@include wbz-box-flex(1);
+				
+					.title{
+						width: 100%;
+						padding: 0 40px 0 0;
+					}
+					.swipe-box{
+						@include wbz-display-box();
+						@include wbz-box-flex(1);
+						@include wbz-box-align(center);
+						@include wbz-box-pack(center);
+						position: absolute;
+						height: 100%;
+						top: 0;
+						right: 15px;
+						
+						.swipe{
+							@include wbz-display-box();
+							@include wbz-inline-icon(swipe, 40px); 
+							position: relative;
+							width: 30px;
+							height: 20px;
+							line-height: 20px;
+						}
+					}
+				}
+				.logo-box{
+					@include wbz-display-box();
+					@include wbz-box-align(center);
+					@include wbz-box-pack(center);
+					
+					img{
+						max-width: 120px;
+						max-height: 100px;
+					}
+				}
+			}
+		}
+	}
+}
