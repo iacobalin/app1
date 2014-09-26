@@ -1,7 +1,7 @@
-/* font 1 */
 @import 'compass/css3';
 
 @include font-face('opensans-regular', inline-font-files('opensans-regular.woff', woff, 'opensans-regular.ttf', truetype,'opensans-regular.svg', svg,"opensans-regular.eot",eot));
 @include font-face('opensans-light', inline-font-files('opensans-light.woff', woff, 'opensans-light.ttf', truetype,'opensans-light.svg', svg,"opensans-light.eot",eot));
 @include font-face('opensans-semibold', inline-font-files('opensans-semibold.woff', woff, 'opensans-semibold.ttf', truetype,'opensans-semibold.svg', svg,"opensans-semibold.eot",eot));
 
+@include font-face('LDPA-Pictos', inline-font-files('pictos/ldpa-pictos.woff', woff, 'pictos/ldpa-pictos.ttf', truetype,'pictos/ldpa-pictos.svg', svg));

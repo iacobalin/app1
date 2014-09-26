@@ -1,0 +1,45 @@
+.cover-box{
+	.x-panel-inner{
+		.x-innerhtml{
+			@include wbz-display-box();
+			height: 100%;
+		}
+	}
+	.logo-container{
+		@include wbz-box-pack(start);
+		@include wbz-box-align(center);
+	}
+	.logo-box{
+		@include wbz-display-box();
+		width: 190px;
+		height: 190px;
+		@include wbz-border-radius(190px);
+		background: transparent;
+		border: 1px solid #d1c9ba;
+		margin: 50px auto 0 auto;
+		
+		.logo-icon{
+			display: block;
+			width: 170px;
+			height: 170px;
+			@include wbz-border-radius(170px);
+			background: #ffffff;
+			background-image: wbz_theme_image("phone/logo-icon.png");
+			background-size: 100px 100px;
+			background-position: center center;
+			background-repeat: no-repeat;
+			margin: 10px auto;
+		}
+	}
+	.logo-text{
+		background-image: wbz_theme_image("phone/logo-text.png");
+		background-size: contain;
+		background-repeat: no-repeat;
+		width: 260px;
+		height: 46px;
+		margin: 15px auto;
+	}
+	.footer{
+		background: rgba(255,255,255,0.9);
+	}
+}
