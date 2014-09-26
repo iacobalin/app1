@@ -2,7 +2,7 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
     extend: 'Ext.List',
 	
 	requires: [
-		
+		"Ext.field.Search"
 	],
 	
 	config: {
@@ -10,8 +10,7 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 		id: "categoriesList",
 				
 		// custom properties
-		mainView: null,												// a reference to mainView panel
-						
+								
 		// css properties
 		cls: 'categories-list',
 		itemCls: 'item',
@@ -21,7 +20,8 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 		// properties
 		scrollable:{
 			direction: 'vertical',
-			indicators: false
+			indicators: false,
+			directionLock: true
 		},
 		scrollToTopOnRefresh: false,
 		disableSelection: true,
@@ -66,7 +66,9 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 			},
 			items: [
 				{
-					xtype: 'panel',
+					xtype: 'searchfield',
+					placeHolder: 'Caut\u0103...',
+					cls: 'search-field',
 					flex: 1
 				},
 				{
