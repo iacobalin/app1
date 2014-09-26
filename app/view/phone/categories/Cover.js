@@ -16,8 +16,10 @@ Ext.define("LDPA.view.phone.categories.Cover", {
 		scrollable: null,
 		tpl: new Ext.XTemplate(
             '<div class="vbox flex">',
-				'<div class="logo-box"><div class="logo-icon"></div></div>',
-				'<div class="logo-text"></div>',
+				'<div class="logo-container vbox flex">',
+					'<div class="logo-box"><div class="logo-icon"></div></div>',
+					'<div class="logo-text"></div>',
+				'</div>',
 				'<div class="footer" style="height: 130px; width: 100%";>',
 					'<div class="logo-1"><img src="#" /></div>',
 					'<div class="logo-2"><img src="#" /></div>',

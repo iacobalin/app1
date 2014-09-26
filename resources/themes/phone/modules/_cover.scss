@@ -5,6 +5,10 @@
 			height: 100%;
 		}
 	}
+	.logo-container{
+		@include wbz-box-pack(start);
+		@include wbz-box-align(center);
+	}
 	.logo-box{
 		@include wbz-display-box();
 		width: 190px;
@@ -33,6 +37,9 @@
 		background-repeat: no-repeat;
 		width: 260px;
 		height: 46px;
-		margin: 0 auto;
+		margin: 15px auto;
+	}
+	.footer{
+		background: rgba(255,255,255,0.9);
 	}
 }
