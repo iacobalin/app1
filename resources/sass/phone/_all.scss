@@ -1,0 +1,39 @@
+@import '../../themes/phone/mixins/mixins';
+
+/**********************************************************************************************************************/
+/*
+/* IMPORT CORE
+/*
+/**********************************************************************************************************************/
+
+@import '../../themes/phone/core/core';
+@import '../../themes/phone/core/reset';
+
+/**********************************************************************************************************************/
+/*
+/* IMPORT MODULES
+/*
+/**********************************************************************************************************************/
+
+@import '../../themes/phone/modules/account';
+@import '../../themes/phone/modules/actions';
+@import '../../themes/phone/modules/articles';
+@import '../../themes/phone/modules/categories';
+@import '../../themes/phone/modules/cover';
+@import '../../themes/phone/modules/credits';
+@import '../../themes/phone/modules/media';
+@import '../../themes/phone/modules/social';
+@import '../../themes/phone/modules/twitter';
+@import '../../themes/phone/modules/facebook/like';
+@import '../../themes/phone/modules/facebook/share';
+@import '../../themes/phone/modules/facebook/comment';
+@import '../../themes/phone/modules/ads';
+@import '../../themes/phone/modules/pages';
+
+/**********************************************************************************************************************/
+/*
+/* IMPORT WIDGETS 
+/*
+/**********************************************************************************************************************/
+
+@import '../../themes/phone/widgets/loader';

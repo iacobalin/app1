@@ -8,7 +8,7 @@
  * @param {string} $font-family The `font-family` used for this icon. Defaults to the `Pictos` font.
  */
 
-@mixin wbz-inline-icon($name, $font-size: 15px, $font-family: 'WBZ-Pictos') {
+@mixin wbz-inline-icon($name, $font-size: 15px, $font-family: 'LDPA-Pictos') {
   $character: wbz-icon-character-for-name($name);
 
   &:before {
@@ -31,27 +31,30 @@
 
     // Row 1
 	
-	@if ($name == "close") { @return "\31"; }
-    @else if ($name == "left") { @return "\32"; }
-	@else if ($name == "right") { @return "\33"; }
-	@else if ($name == "swipe") { @return "\34"; }
-	@else if ($name == "menu") { @return "\35"; }
-	@else if ($name == "search") { @return "\36"; }
-	@else if ($name == "comments") { @return "\37"; }
-	@else if ($name == "desktop") { @return "\38"; }
-	@else if ($name == "info") { @return "\39"; }
-	@else if ($name == "pull-refresh") { @return "\40"; }
-	@else if ($name == "hyperlink") { @return "\41"; }
-    @else if ($name == "twitter") { @return "\42"; }
-    @else if ($name == "facebook") { @return "\43"; }
-	@else if ($name == "power") { @return "\44"; }
-    @else if ($name == "share") { @return "\45"; }
-    @else if ($name == "x") { @return "\46"; }
-	@else if ($name == "f-like") { @return "\47"; }
-	@else if ($name == "f-share") { @return "\48"; }
-	@else if ($name == "f-comment") { @return "\49"; }
-	@else if ($name == "f-like-empty") { @return "\50"; }
-	@else if ($name == "user") { @return "\51"; }
+	@if ($name == "checkmark") { @return "\20"; }
+    @else if ($name == "checkmark-circle") { @return "\21"; }
+	@else if ($name == "cog") { @return "\22"; }
+	@else if ($name == "comment") { @return "\23"; }
+	@else if ($name == "comment_empty") { @return "\24"; }
+	@else if ($name == "cross") { @return "\25"; }
+	@else if ($name == "facebook") { @return "\26"; }
+	@else if ($name == "file") { @return "\27"; }
+	@else if ($name == "left") { @return "\28"; }
+	@else if ($name == "link") { @return "\29"; }
+	@else if ($name == "mail") { @return "\30"; }
+	@else if ($name == "map") { @return "\31"; }
+	@else if ($name == "menu") { @return "\32"; }
+	@else if ($name == "news") { @return "\33"; }
+	@else if ($name == "office") { @return "\34; }
+	@else if ($name == "phone") { @return "\35"; }
+	@else if ($name == "play") { @return "\36"; }
+	@else if ($name == "question") { @return "\37"; }
+	@else if ($name == "search") { @return "\38"; }
+	@else if ($name == "share") { @return "\39"; }
+	@else if ($name == "star") { @return "\40"; }
+	@else if ($name == "star-filled") { @return "\41"; }
+	@else if ($name == "twitter") { @return "\42"; }
+
 	
     @else {
         // @debug "#icon: icon with name '#{$name}' not found.";
