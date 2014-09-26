@@ -23,6 +23,9 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 			indicators: false,
 			directionLock: true
 		},
+		inline: {
+			wrap: false	
+		},
 		scrollToTopOnRefresh: false,
 		disableSelection: true,
 		emptyText: '',
