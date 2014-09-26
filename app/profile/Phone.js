@@ -22,7 +22,7 @@ Ext.define('LDPA.profile.Phone', {
 	launch: function(){
 
 		// Initialize the actions panel
-      	//Ext.Viewport.add(Ext.create('LDPA.view.phone.Background', {zIndex: 1}));
+      	Ext.Viewport.add(Ext.create('LDPA.view.phone.Background', {zIndex: 1}));
 		
 		// Initialize the main panel
       	Ext.Viewport.add(Ext.create('LDPA.view.phone.Main', {zIndex: 2}));
