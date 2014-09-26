@@ -7,7 +7,11 @@ Ext.define("LDPA.view.phone.Main", {
     ],
     
 	config: {
-        id: 'mainView',
+        
+		id: 'mainView',
+		
+		// custom properties
+		backgroundCard: null,								// a reference to the background card
 		
 		// css properties
 		cls: 'carousel',
@@ -31,5 +35,60 @@ Ext.define("LDPA.view.phone.Main", {
 		
 		var CategoriesList = Ext.create("LDPA.view.phone.categories.CategoriesList");
 		this.add(CategoriesList);
+		
+		var backgroundCard = Ext.Viewport.down("#mainBackground");
+		this.setBackgroundCard(backgroundCard);
+		
+		this.on("move", this.onCardMove, this);
+	},
+	
+	
+	onDragStart: function() {
+		
+		var backgroundCard = this.getBackgroundCard();
+		backgroundCard.fireEvent("stopanim");
+				
+		this.callParent(arguments);	
+	},
+	
+	onDragEnd: function() {
+			
+		//var cover = Ext.get(dom).findParent("div.x-carousel-inner")
+		var cover = this.element.query(".cover-box")[0];
+		var dom = Ext.get(cover).findParent("div.x-carousel-item");
+		
+		var backgroundCard = this.getBackgroundCard();
+		backgroundCard.fireEvent("startanim", dom);
+		
+		this.callParent(arguments);
+    },
+	
+	
+	onDrag: function(e, dom){
+		
+		if (dom){
+			
+			var backgroundCard = this.getBackgroundCard();
+			
+			// cover
+			if (Ext.get(dom).findParent("div.cover-box")){
+				var delta = e.deltaX;
+				
+				backgroundCard.fireEvent("translate", delta, 0);
+			}
+			// categories list
+			else if (Ext.get(dom).findParent("div.categories-list")){
+				var delta = e.deltaX;
+				
+				backgroundCard.fireEvent("translate", delta, 1);
+			}
+		}
+		
+		this.callParent(arguments);	
+	},
+	
+	
+	onSwipe: function(){
+		console.log("aidia")	
 	}
 });

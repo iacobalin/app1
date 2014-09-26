@@ -51,7 +51,7 @@ Ext.define("LDPA.view.phone.categories.Cover", {
         // add a handler for the orientationchange event of the viewport
         Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });
 		
-		this.setData("");
+		this.setData([]);
 		
 		this.callParent(arguments);
 	},
