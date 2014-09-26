@@ -1,4 +1,12 @@
-body{}
+html, body {
+	background: $light-grey!important;
+}
+#appLoadingIndicator > * {
+	background-color: $purple;
+}
+*{
+	font-family: "opensans-regular";
+}
 .x-mask{
 	background: rgba(0,0,0,0.8);
 	position: absolute;
@@ -15,4 +23,13 @@ body{}
 }
 .x-layout-card-item{
 	background: none;
+}
+.x-button{
+	background: none;
+	border: 0px;
+	padding: 0px;
+	@include wbz-border-radius(0px);
+	@include wbz-display-box();
+	@include wbz-box-pack(center);
+	@include wbz-box-align(center);
 }
