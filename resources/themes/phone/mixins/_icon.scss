@@ -45,7 +45,7 @@
 	@else if ($name == "map") { @return "\31"; }
 	@else if ($name == "menu") { @return "\32"; }
 	@else if ($name == "news") { @return "\33"; }
-	@else if ($name == "office") { @return "\34; }
+	@else if ($name == "office") { @return "\34"; }
 	@else if ($name == "phone") { @return "\35"; }
 	@else if ($name == "play") { @return "\36"; }
 	@else if ($name == "question") { @return "\37"; }

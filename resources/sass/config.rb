@@ -3,6 +3,7 @@ dir = File.dirname(__FILE__)
 
 # Load the sencha-touch framework automatically.
 load File.join(dir, '..', '..', 'touch', 'resources', 'themes')
+
 load File.join(dir, '..', 'themes', 'lib')
 
 # Compass configurations
@@ -12,6 +13,7 @@ fonts_path = File.join(dir, "..", "themes", "fonts")
 
 # Require any additional compass plugins here.
 images_dir = File.join(dir, "..", "images")
+
 theme_image = File.join(dir, '..', 'themes', 'lib', 'theme-image.rb')
 require theme_image
 
