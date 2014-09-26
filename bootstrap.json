@@ -21,13 +21,13 @@
     ],
     "css": [
         {
-            "path": "resources/css/app.css",
+            "path": "resources/css/phone/phone.css",
             "update": "full"
         },
-        /*{
+        {
             "path": "resources/css/fonts.css",
             "update": "full"
-        },*/
+        }
         /*{
             "path": "resources/css/phone/font-1.css",
             "update": "full"

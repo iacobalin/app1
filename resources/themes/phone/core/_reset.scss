@@ -10,3 +10,9 @@ body{}
 	@include wbz-box-align(center);
 	@include wbz-box-pack(center);
 }
+.x-list{
+	background: none;
+}
+.x-layout-card-item{
+	background: none;
+}
