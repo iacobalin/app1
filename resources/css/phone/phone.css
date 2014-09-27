@@ -7825,10 +7825,18 @@ html, body {
   width: auto;
 }
 /* line 40, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
+.x-list-normal .x-list-item .x-list-item-body {
+  padding: 0px;
+}
+/* line 43, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
 .x-list-normal .x-list-item.x-list-item-tpl {
   border: 0px;
 }
-/* line 43, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
+/* line 46, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
+.x-list-normal .x-list-item.x-list-item-tpl .x-innerhtml {
+  padding: 0px;
+}
+/* line 49, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
 .x-list-normal .x-list-item.x-list-item-tpl.x-list-footer-wrap {
   border: 0px;
 }

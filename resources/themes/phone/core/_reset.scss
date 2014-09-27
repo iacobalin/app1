@@ -37,9 +37,15 @@ html, body {
 	.x-list-item{
 		width: auto;
 		
+		.x-list-item-body{
+			padding: 0px;
+		}
 		&.x-list-item-tpl{
 			border: 0px;
 			
+			.x-innerhtml{
+				padding: 0px;
+			}
 			&.x-list-footer-wrap{
 				border: 0px;
 			}
