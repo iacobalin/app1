@@ -11,18 +11,18 @@
 	}
 	.logo-box{
 		@include wbz-display-box();
-		width: 184px;
-		height: 184px;
-		@include wbz-border-radius(184px);
+		width: 164px;
+		height: 164px;
+		@include wbz-border-radius(164px);
 		background: transparent;
 		border: 1px solid #d1c9ba;
 		margin: 50px auto 0 auto;
 		
 		.logo-icon{
 			display: block;
-			width: 170px;
-			height: 170px;
-			@include wbz-border-radius(170px);
+			width: 150px;
+			height: 150px;
+			@include wbz-border-radius(150px);
 			background: rgba(255,255,255,0.8);
 			background-image: wbz_theme_image("phone/logo-icon.png");
 			background-size: 100px 100px;
@@ -35,8 +35,8 @@
 		background-image: wbz_theme_image("phone/logo-text.png");
 		background-size: contain;
 		background-repeat: no-repeat;
-		width: 260px;
-		height: 46px;
+		width: 221px;
+		height: 39px;
 		margin: 15px auto;
 	}
 	.footer{
@@ -51,9 +51,9 @@
 			background-image: wbz_theme_image("phone/logo-ing.png");
 			background-size: contain;
 			background-repeat: no-repeat;
-			width: 295px;	
-			height: 26px;
-			margin: 0;
+			width: 266px;	
+			height: 23px;
+			margin: 0 auto;
 		}
 		.logo-mai-mult-verde{
 			background-image: wbz_theme_image("phone/logo-mai-mult-verde.png");
