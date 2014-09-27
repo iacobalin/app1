@@ -85,10 +85,5 @@ Ext.define("LDPA.view.phone.Main", {
 		}
 		
 		this.callParent(arguments);	
-	},
-	
-	
-	onSwipe: function(){
-		console.log("aidia")	
 	}
 });

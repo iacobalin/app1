@@ -10,6 +10,7 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 		id: "categoriesList",
 				
 		// custom properties
+		
 								
 		// css properties
 		cls: 'categories-list',
