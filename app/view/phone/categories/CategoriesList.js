@@ -31,13 +31,29 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 		emptyText: '',
 		useSimpleItems: true,
 		itemTpl: new Ext.XTemplate(
-			'<div>',
+			'<div style="{[ this.getItemSize(); ]} background:red;">',
 				'<div style="text-align:center;">',
 					'{[this.getImage(values.image)]}',
 				'</div>',
 				'<p>{name}</p>',
 			'</div>',
 			{
+				spacer: 20,
+				minPadding: 20,
+				minWidth: 130,
+				maxWidth: 170,
+				getItemSize: function(){
+					var vieportWidth = Ext.Viewport.getWindowWidth();
+					
+					// items per row
+					var ln = Math.floor((vieportWidth - 2*this.minPadding) / this.minWidth);
+					var itemWidth = Math.round((vieportWidth - 2*this.minPadding - (ln-1)*this.spacer) / ln);
+					itemWidth = Math.max(Math.min(itemWidth, this.maxWidth), this.minWidth);
+					
+					var itemHeight = Math.floor(3/4 * itemWidth);
+					console.log(ln, itemWidth, itemHeight)
+					return "width: "+itemWidth+"px; height: "+itemHeight+"px;";
+				},
 				getImage: function(image){
 					/*var imagesOffline = LDPA.app.imagesOffline;
 					var offlineRecord = imagesOffline.findRecord("url",image, 0, false, true, true);
@@ -92,5 +108,13 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 		this.callParent(arguments);
 		
 		this.setStore(Ext.create("LDPA.store.Categories"));
+		
+		// add a handler for the orientationchange event of the viewport
+		Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });
+	},
+	
+	
+	handleOrientationChange: function(){
+		this.refresh();	
 	}
 });
