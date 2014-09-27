@@ -33,7 +33,7 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 		useSimpleItems: true,
 		itemTpl: new Ext.XTemplate(
 			'<div style="{[ this.getItemSize(values.sequence-1); ]} padding-top: 12px; padding-bottom: 12px;">',
-				'<div class="categories-box vbox" style="width: 100%; height: 100%;">',
+				'<div class="categories-box vbox" style="width: 100%; height: 100%; padding-top: 10px;">',
 					'<div class="img flex" style="background-image: url({[this.getImage(values.image)]}); "></div>',
 					'<p>{name}</p>',
 				'</div>',
@@ -51,7 +51,7 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 					var itemWidth = Math.round((vieportWidth - 2*this.minPadding) / ln);
 					itemWidth = Math.max(Math.min(itemWidth, this.maxWidth), this.minWidth);
 					
-					var itemHeight = Math.floor(3/4 * itemWidth);
+					var itemHeight = Math.floor(5/6 * itemWidth);
 					var generalPadding = Math.floor((vieportWidth - ln * itemWidth)/2);
 					
 					var extraWidth = 0;
@@ -71,9 +71,6 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 					else{
 						var paddingRight = this.spacer/2;
 					}
-					
-					var paddingLeft = ((index % ln) == 0) ? generalPadding+10 : 10;
-					var paddingRight = ((index+1 % ln) == 0) ? generalPadding+10 : 10;
 					
 					return "width: "+(itemWidth+extraWidth)+"px; height: "+itemHeight+"px; padding-left: "+paddingLeft+"px; padding-right: "+paddingRight+"px;";
 				},
