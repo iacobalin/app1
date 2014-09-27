@@ -32,28 +32,52 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 		emptyText: '',
 		useSimpleItems: true,
 		itemTpl: new Ext.XTemplate(
-			'<div style="{[ this.getItemSize(); ]}" class="categories-box">',
-				'<div class="img" style="background-image: url();">',
-					'{[this.getImage(values.image)]}',
+			'<div style="{[ this.getItemSize(values.sequence-1); ]} padding-top: 12px; padding-bottom: 12px;">',
+				'<div class="categories-box" style="width: 100%; height: 100%;>',
+					'<div class="img" style="background-image: url();">',
+						'{[this.getImage(values.image)]}',
+					'</div>',
+					'<p>{name}</p>',
 				'</div>',
-				'<p>{name}</p>',
 			'</div>',
 			{
 				spacer: 20,
 				minPadding: 20,
 				minWidth: 130,
 				maxWidth: 170,
-				getItemSize: function(){
+				getItemSize: function(index){
 					var vieportWidth = Ext.Viewport.getWindowWidth();
 					
 					// items per row
 					var ln = Math.floor((vieportWidth - 2*this.minPadding) / this.minWidth);
-					var itemWidth = Math.round((vieportWidth - 2*this.minPadding - (ln-1)*this.spacer) / ln);
+					var itemWidth = Math.round((vieportWidth - 2*this.minPadding) / ln);
 					itemWidth = Math.max(Math.min(itemWidth, this.maxWidth), this.minWidth);
 					
 					var itemHeight = Math.floor(3/4 * itemWidth);
-					console.log(ln, itemWidth, itemHeight)
-					return "width: "+itemWidth+"px; height: "+itemHeight+"px;";
+					var generalPadding = Math.floor((vieportWidth - ln * itemWidth)/2);
+					
+					var extraWidth = 0;
+					
+					if ((index % ln) == 0){
+						var paddingLeft = generalPadding + this.spacer/2;
+						extraWidth = generalPadding;
+					}
+					else{
+						var paddingLeft = this.spacer/2;	
+					}
+					
+					if ((index+1 % ln) == 0){
+						var paddingRight = generalPadding + this.spacer/2;	
+						extraWidth = generalPadding;	
+					}
+					else{
+						var paddingRight = this.spacer/2;
+					}
+					
+					var paddingLeft = ((index % ln) == 0) ? generalPadding+10 : 10;
+					var paddingRight = ((index+1 % ln) == 0) ? generalPadding+10 : 10;
+					
+					return "width: "+(itemWidth+extraWidth)+"px; height: "+itemHeight+"px; padding-left: "+paddingLeft+"px; padding-right: "+paddingRight+"px;";
 				},
 				getImage: function(image){
 					/*var imagesOffline = LDPA.app.imagesOffline;
