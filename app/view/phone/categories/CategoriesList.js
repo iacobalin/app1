@@ -32,8 +32,8 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 		emptyText: '',
 		useSimpleItems: true,
 		itemTpl: new Ext.XTemplate(
-			'<div style="{[ this.getItemSize(); ]} background:red;">',
-				'<div style="text-align:center;">',
+			'<div style="{[ this.getItemSize(); ]}" class="categories-box">',
+				'<div class="img" style="background-image: url();">',
 					'{[this.getImage(values.image)]}',
 				'</div>',
 				'<p>{name}</p>',
