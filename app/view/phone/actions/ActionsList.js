@@ -10,6 +10,7 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 		itemId: 'actionsList',
 		
 		// custom properties
+		mask: null,
 		
 		// css properties
 		cls: 'actions-list',
