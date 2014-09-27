@@ -33,10 +33,8 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 		useSimpleItems: true,
 		itemTpl: new Ext.XTemplate(
 			'<div style="{[ this.getItemSize(values.sequence-1); ]} padding-top: 12px; padding-bottom: 12px;">',
-				'<div class="categories-box" style="width: 100%; height: 100%;>',
-					'<div class="img" style="background-image: url();">',
-						'{[this.getImage(values.image)]}',
-					'</div>',
+				'<div class="categories-box" style="width: 100%; height: 100%;">',
+					'<div class="img" style="background: url({[this.getImage(values.image)]}); "></div>',
 					'<p>{name}</p>',
 				'</div>',
 			'</div>',
@@ -91,9 +89,9 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 							return '<img src="http://src.sencha.io/100/60/'+image+'" style="max-width: 100px; max-height:60px" />';	
 					}*/
 					
-					return '<img src="'+image+'" style="max-width: 100px; max-height:60px" />'; 
+					//return '<img src="'+image+'" style="width: 80%; height: 80%;" />'; 
 					
-					return "";
+					return image;
 				}
 			}
 		),
