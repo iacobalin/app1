@@ -33,3 +33,17 @@ html, body {
 	@include wbz-box-pack(center);
 	@include wbz-box-align(center);
 }
+.x-list-normal{
+	.x-list-item{
+		width: auto;
+		
+		&.x-list-item-tpl{
+			border: 0px;
+			
+			&.x-list-footer-wrap{
+				border: 0px;
+			}
+		}
+		
+	}
+}
