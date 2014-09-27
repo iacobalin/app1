@@ -41,8 +41,8 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 			{
 				spacer: 20,
 				minPadding: 20,
-				minWidth: 130,
-				maxWidth: 170,
+				minWidth: 140,
+				maxWidth: 190,
 				getItemSize: function(index){
 					var vieportWidth = Ext.Viewport.getWindowWidth();
 					

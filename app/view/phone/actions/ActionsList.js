@@ -22,7 +22,7 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 			direction: 'none',
 		},
 		inline: {
-			wrap: true	
+			wrap: false	
 		},
 		disableSelection: true,
 		emptyText: '',
