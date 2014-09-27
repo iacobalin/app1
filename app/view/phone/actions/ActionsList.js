@@ -37,9 +37,9 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 			"</div>",
 			{
 				spacer: 6,
-				minPadding: 20,
-				minWidth: 100,
-				maxWidth: 130,
+				minPadding: 15,
+				minWidth: 90,
+				maxWidth: 120,
 				getItemSize: function(index){
 					var vieportWidth = Ext.Viewport.getWindowWidth();
 					
@@ -135,9 +135,9 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 	onPainted: function(){
 		
 		var vieportWidth = Ext.Viewport.getWindowWidth();
-		var minPadding = 20;
-		var minWidth = 100;
-		var maxWidth = 130;
+		var minPadding = 15;
+		var minWidth = 90;
+		var maxWidth = 120;
 					
 		// items per row
 		var ln = Math.floor((vieportWidth - 2*minPadding) / minWidth);
