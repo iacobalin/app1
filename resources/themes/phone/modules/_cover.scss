@@ -11,9 +11,9 @@
 	}
 	.logo-box{
 		@include wbz-display-box();
-		width: 190px;
-		height: 190px;
-		@include wbz-border-radius(190px);
+		width: 184px;
+		height: 184px;
+		@include wbz-border-radius(184px);
 		background: transparent;
 		border: 1px solid #d1c9ba;
 		margin: 50px auto 0 auto;
@@ -23,12 +23,12 @@
 			width: 170px;
 			height: 170px;
 			@include wbz-border-radius(170px);
-			background: #ffffff;
+			background: rgba(255,255,255,0.8);
 			background-image: wbz_theme_image("phone/logo-icon.png");
 			background-size: 100px 100px;
 			background-position: center center;
 			background-repeat: no-repeat;
-			margin: 10px auto;
+			margin: 7px auto;
 		}
 	}
 	.logo-text{
@@ -45,6 +45,7 @@
 		.logos{
 			width: 295px;
 			margin: 0 auto;
+			padding: 20px 0;
 		}
 		.logo-ing{
 			background-image: wbz_theme_image("phone/logo-ing.png");
@@ -52,7 +53,7 @@
 			background-repeat: no-repeat;
 			width: 295px;	
 			height: 26px;
-			margin: 20px 0 0 0;
+			margin: 0;
 		}
 		.logo-mai-mult-verde{
 			background-image: wbz_theme_image("phone/logo-mai-mult-verde.png");
@@ -72,5 +73,62 @@
 			float: right;
 			margin: 15px 10px 0 0;
 		}
+	}
+	@media screen and (orientation: landscape){
+		.logo-box{
+			width: 120px;
+			height: 120px;
+			@include wbz-border-radius(120px);
+			margin: 20px auto 0 auto;	
+			
+			.logo-icon{
+				width: 110px;
+				height: 110px;
+				@include wbz-border-radius(110px);
+				background-size: 60px 60px;
+				margin: 4px auto;
+			}
+		}
+		.logo-text{
+			width: 180px;
+			height: 32px;
+			margin: 10px auto;
+		}
+		.footer{
+			height: 70px!important;
+			@include wbz-display-box();
+			@include wbz-box-align(center);
+			@include wbz-box-pack(center);
+			
+			.logos{
+				width: 470px;
+				margin: 0 auto;
+				@include wbz-display-box();
+				@include wbz-box-align(center);
+				@include wbz-box-pack(center);
+				padding: 0px ;
+			}
+			.logo-ing{
+				@include wbz-display-box();
+				width: 206px;	
+				height: 18px;
+				margin: 0 10px;
+				float: none;
+			}
+			.logo-mai-mult-verde{
+				@include wbz-display-box();
+				width: 134px;	
+				height: 33px;
+				float: none;
+				margin: 0 10px;
+			}
+			.logo-smurd{
+				@include wbz-display-box();
+				width: 38px;	
+				height: 38px;
+				float: none;
+				margin: 0 10px;
+			}
+		}	
 	}
 }
