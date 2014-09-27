@@ -8137,8 +8137,8 @@ html, body {
   background-size: contain;
   background-position: center center;
 }
-/* line 56, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
-.categories-list .x-list-item.x-list-item-tpl .x-innerhtml .categories-box p {
+/* line 57, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+.categories-list .x-list-item.x-list-item-tpl .x-innerhtml p {
   font-size: 12px;
   text-align: center;
   padding: 5px 10px;

@@ -43,21 +43,17 @@
 			.x-innerhtml{
 				.categories-box{
 					background: rgba(255,255,255,0.7);
-					@include wbz-display-box();
-					@include wbz-box-orient(vertical);
-					@include wbz-box-align(stretch);
-					@include wbz-box-pack(justify);
 					
 					.img{
 						text-align: center;
 						background-size: contain;
 						background-position: center center;
 					}
-					p{
-						font-size: 12px;
-						text-align: center;
-						padding: 5px 10px; 
-					}
+				}
+				p{
+					font-size: 12px;
+					text-align: center;
+					padding: 5px 10px; 
 				}
 			}
 		}
