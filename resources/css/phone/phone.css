@@ -8113,20 +8113,37 @@ html, body {
 /* line 44, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .categories-list .x-list-item.x-list-item-tpl .x-innerhtml .categories-box {
   background: rgba(255, 255, 255, 0.7);
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  box-pack: end;
+  justify-content: flex-end;
 }
-/* line 47, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 48, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .categories-list .x-list-item.x-list-item-tpl .x-innerhtml .categories-box .img {
   text-align: center;
   background-size: contain;
   background-position: center center;
   background-repeat: no-repeat;
 }
-/* line 54, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
-.categories-list .x-list-item.x-list-item-tpl .x-innerhtml p {
+/* line 55, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+.categories-list .x-list-item.x-list-item-tpl .x-innerhtml .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: box;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  box-pack: center;
+  justify-content: center;
   font-size: 12px;
   text-align: center;
   padding: 5px 10px;
   line-height: 13px;
+  height: 36px;
 }
 
 /**********************************************************************************************************************/

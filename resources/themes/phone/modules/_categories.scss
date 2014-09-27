@@ -43,6 +43,7 @@
 			.x-innerhtml{
 				.categories-box{
 					background: rgba(255,255,255,0.7);
+					@include wbz-box-pack(end);
 					
 					.img{
 						text-align: center;
@@ -51,11 +52,15 @@
 						background-repeat: no-repeat;
 					}
 				}
-				p{
+				.title{
+					@include wbz-display-box();
+					@include wbz-box-align(center);
+					@include wbz-box-pack(center);
 					font-size: 12px;
 					text-align: center;
 					padding: 5px 10px; 
 					line-height: 13px;
+					height: 36px;
 				}
 			}
 		}

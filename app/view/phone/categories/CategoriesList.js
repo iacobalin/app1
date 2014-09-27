@@ -35,7 +35,7 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 			'<div style="{[ this.getItemSize(values.sequence-1); ]} padding-top: 12px; padding-bottom: 12px;">',
 				'<div class="categories-box vbox" style="width: 100%; height: 100%; padding-top: 10px;">',
 					'<div class="img flex" style="background-image: url({[this.getImage(values.image)]}); "></div>',
-					'<p>{name}</p>',
+					'<div class="title">{name}</div>',
 				'</div>',
 			'</div>',
 			{
