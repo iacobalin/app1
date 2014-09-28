@@ -3,6 +3,7 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 	
 	requires: [
 		'LDPA.view.phone.categories.ArticlesList',
+		'LDPA.view.phone.CloseButton',
 	],
 	
 	config: {
@@ -10,7 +11,8 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 		itemId: "categoryPanel",
 				
 		// custom properties
-		
+		scrolling: false,								// a flag indicating if the content of the card is scrolling
+		closeBtn: null,									// a reference of the close button
 								
 		// css properties
 		cls: 'category-panel',
@@ -61,22 +63,19 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 		var articlesList = Ext.create("LDPA.view.phone.categories.ArticlesList");
 		this.add(articlesList);
 		
-		var closeBtn = Ext.create("Ext.Button", {
-			itemId: "closeBtn",
-			iconCls: 'close',
-			html: '',
-			cls: 'close-button',
-			pressedCls: 'pressed',
-			width: 60,
-			height: 60,
-			top: 0,
-			right: 0
-		});	
+		var closeBtn = Ext.create("LDPA.view.phone.CloseButton");	
 		this.add(closeBtn);
+		this.setCloseBtn(closeBtn);
+		closeBtn.on("tap", this.onClosePanel, this);
 		
 		this.on("addcontent", this.onAddContent, this);
 		
-		closeBtn.on("tap", this.onClosePanel, this);
+		var scroller = this.getScrollable().getScroller();
+		scroller.on("scroll", this.onScrollableChange, this);
+		
+		this.element.on("touchstart", this.onTouchStart, this);
+		this.element.on("touchend", this.onTouchEnd, this);
+		this.element.on("tap", this.onTap, this);
 		
 		// add a handler for the orientationchange event of the viewport
 		Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });
@@ -93,6 +92,43 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 		var articlesList = this.down("#articlesList");
 		articlesList.getStore().add(category.posts);
 	},
+	
+	
+	onTouchStart: function(){
+		this.setScrolling(true);
+	},
+	
+	onTouchEnd: function(){
+		this.setScrolling(false);
+	},
+	
+	onTap: function(){
+		var closeBtn = this.getCloseBtn(); 
+			
+		closeBtn.fireEvent("showbtn");
+	},
+	
+	onScrollableChange: function(scroller, scrollX, scrollY){
+		var scrolling = this.getScrolling();
+		
+		if (scrolling){
+			var closeBtn = this.getCloseBtn(); 
+			
+			this.deltaY = (this.lastScrollY) ? scrollY - this.lastScrollY : 0;
+			
+			// scroll down
+			if (this.deltaY > 0){
+				closeBtn.fireEvent("hidebtn");
+			}
+			// scroll up
+			else if (this.deltaY < 0){
+				closeBtn.fireEvent("showbtn");
+			}
+			
+			this.lastScrollY = scrollY;
+		}
+	},
+	
 	
 	handleOrientationChange: function(){
 		var categoryBox = this.down("#categoryBox");
