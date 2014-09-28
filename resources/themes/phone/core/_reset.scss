@@ -32,6 +32,12 @@ html, body {
 	@include wbz-display-box();
 	@include wbz-box-pack(center);
 	@include wbz-box-align(center);
+	
+	.x-button-icon{
+		&.x-hidden{
+			display: block;
+		}
+	}
 }
 .x-list-normal{
 	.x-list-item{

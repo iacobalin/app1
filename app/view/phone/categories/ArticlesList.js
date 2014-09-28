@@ -33,8 +33,8 @@ Ext.define("LDPA.view.phone.categories.ArticlesList", {
 			'<div class="vbox">',
 				'<h1>{title}</h1>',
 				'<div class="stats hbox">',
-					'<div class="comments"><span>{comment_count}</span></div>',
-					'<div class="ranking"><span>{ranking}</span></div>',
+					'<div class="comments"><div class="icon"></div>{comment_count}</div>',
+					'<div class="ranking"><div class="icon"></div>{ranking}</div>',
 				'</div>',
 			'</div>'
 		),
