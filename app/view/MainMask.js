@@ -34,8 +34,11 @@ Ext.define("LDPA.view.MainMask", {
 
         this.callParent(arguments);
 
-        this.element.on("tap", this.onClose, this);
-        this.element.on("swipe", this.onClose, this);
+        if (!this.getDisabled()){
+			this.element.on("tap", this.onClose, this);
+        	this.element.on("swipe", this.onClose, this);
+		}
+		
 		this.on("close", this.onClose, this);
 		this.on("addspinner", this.onAddSpinner, this);
 		this.on("removespinner", this.onRemoveSpinner, this);

@@ -20,10 +20,10 @@ Ext.define("LDPA.view.phone.categories.ArticlesList", {
 		itemHeight: 70,
 						
 		// properties
-		/*scrollable:{
+		scrollable:{
 			direction: 'none',
 			indicators: false
-		},*/
+		},
 		scrollToTopOnRefresh: false,
 		disableSelection: true,
 		emptyText: '',
@@ -55,7 +55,7 @@ Ext.define("LDPA.view.phone.categories.ArticlesList", {
 		
 		this.setStore(Ext.create("LDPA.store.Articles"));
 		
-		this.on("itemtap", this.onListItemTap, this);
+		//this.on("itemtap", this.onListItemTap, this);
 		this.on("painted", this.onPainted, this);
 		
 		// add a handler for the orientationchange event of the viewport
@@ -65,12 +65,8 @@ Ext.define("LDPA.view.phone.categories.ArticlesList", {
 	onPainted: function(){
 		var ln = this.getStore().getCount();
 		var height = 40 + ln * this.getItemHeight() + 10;
-		console.log(height)
-		this.setHeight(height);
-	},
-	
-	onListItemTap: function(list, index, item, record){
 		
+		this.setHeight(height);
 	},
 	
 	handleOrientationChange: function(){

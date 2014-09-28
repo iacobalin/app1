@@ -71,20 +71,13 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 		});	
 		this.add(closeBtn);
 		
-		
-		// add a handler for the orientationchange event of the viewport
-		Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });
-		
 		this.on("addcontent", this.onAddContent, this);
+		
 		closeBtn.on("tap", this.onClosePanel, this);
 				
 		this.callParent(arguments);
 	},
-	
-	
-	handleOrientationChange: function(){
-			
-	},
+
 	
 	onAddContent: function(category){
 		

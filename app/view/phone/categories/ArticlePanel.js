@@ -10,7 +10,7 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 		itemId: "articlePanel",
 				
 		// custom properties
-		
+		mask: null,
 								
 		// css properties
 		cls: 'article-panel',
@@ -20,108 +20,130 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 			direction: 'vertical',
 			indicators: false,
 		},
-		itemTpl: new Ext.XTemplate(
-			'<div style="{[ this.getItemSize(values.sequence-1); ]} padding-top: 5px; padding-bottom: 5px;">',
-				'<div class="categories-box vbox" style="width: 100%; height: 100%; padding-top: 10px;">',
-					'<div class="img flex" style="background-image: url({[this.getImage(values.image)]}); "></div>',
-					'<div class="title">{name}</div>',
-				'</div>',
-			'</div>',
-			{
-				spacer: 10,
-				minPadding: 20,
-				minWidth: 130,
-				maxWidth: 190,
-				getItemSize: function(index){
-					var vieportWidth = Ext.Viewport.getWindowWidth();
-					
-					// items per row
-					var ln = Math.floor((vieportWidth - 2*this.minPadding) / this.minWidth);
-					var itemWidth = Math.round((vieportWidth - 2*this.minPadding) / ln);
-					itemWidth = Math.max(Math.min(itemWidth, this.maxWidth), this.minWidth);
-					
-					var itemHeight = Math.floor(5/6 * itemWidth);
-					var generalPadding = Math.floor((vieportWidth - ln * itemWidth)/2);
-					console.log(vieportWidth, ln, itemWidth, generalPadding)
-					var extraWidth = 0;
-					
-					if ((index % ln) == 0){
-						var paddingLeft = generalPadding + this.spacer/2;
-						extraWidth = generalPadding;
-					}
-					else{
-						var paddingLeft = this.spacer/2;	
-					}
-					
-					if ((index+1 % ln) == 0){
-						var paddingRight = generalPadding + this.spacer/2;	
-						extraWidth = generalPadding;	
-					}
-					else{
-						var paddingRight = this.spacer/2;
-					}
-					
-					return "width: "+(itemWidth+extraWidth)+"px; height: "+itemHeight+"px; padding-left: "+paddingLeft+"px; padding-right: "+paddingRight+"px;";
-				},
-				getImage: function(image){
-					/*var imagesOffline = LDPA.app.imagesOffline;
-					var offlineRecord = imagesOffline.findRecord("url",image, 0, false, true, true);
-					if (offlineRecord && offlineRecord.get("dataUrl")){
-						return '<img src="'+offlineRecord.get("dataUrl")+'" style="max-width: 100px; max-height:60px" />';	
-					}
-					
-					if (LDPA.app.isOnline()){
-						if (image)
-							return '<img src="http://src.sencha.io/100/60/'+image+'" style="max-width: 100px; max-height:60px" />';	
-					}*/
-					
-					//return '<img src="'+image+'" style="width: 80%; height: 80%;" />'; 
-					
-					return image;
-				}
-			}
+		tpl: new Ext.XTemplate(
+			'<h1>{title}</h1>'+           
+            '<div class="content>',
+				'{content}',
+			'</div>'
 		),
-		items: [{
-			xtype: "panel",
-			itemId: "searchBar",
-			height: 45,
-			docked: "top",	  
-			cls: "categories-bar",
-			layout: {
-				type: "hbox",
-				pack: "justify",
-				align: "stretch"
-			},
-			items: [
-				{
-					xtype: 'searchfield',
-					placeHolder: 'Caut\u0103...',
-					cls: 'search-field',
-					flex: 1
+		items: [
+			{
+				xtype: "panel",
+				itemId: "topBar",
+				height: 55,
+				docked: "top",	  
+				cls: "top-bar",
+				layout: {
+					type: "hbox",
+					pack: "justify",
+					align: "stretch"
 				},
-				{
-					xtype: "button",
-					action: 'view-actions-panel',
-					iconCls: 'menu',
-					html: '&nbsp;',
-					cls: 'actions-panel-button',
-					pressedCls: 'pressed',
-					width: 60
-				}
-			]
-		}]
+				items: [
+					{
+						xtype: 'button',
+						itemId: "backBtn",
+						html: "",
+						cls: 'back-button',
+						pressedCls: 'pressed',
+					},
+					{
+						xtype: "button",
+						action: 'share-facebook',
+						iconCls: 'facebook',
+						html: '&nbsp;',
+						cls: 'share-facebook-button',
+						pressedCls: 'pressed',
+					},
+					{
+						xtype: "button",
+						action: 'share-twitter',
+						iconCls: 'twitter',
+						html: '&nbsp;',
+						cls: 'share-twitter-button',
+						pressedCls: 'pressed',
+					}
+				]
+			},
+			{
+				xtype: "panel",
+				itemId: "bottomBar",
+				height: 50,
+				docked: "bottom",	  
+				cls: "bottom-bar",
+				layout: {
+					type: "hbox",
+					pack: "justify",
+					align: "stretch"
+				},
+				items: [
+					{
+						xtype: "button",
+						action: 'view-comments',
+						iconCls: 'comments',
+						html: '',
+						cls: 'comments-button',
+						pressedCls: 'pressed',
+						flex: 1,
+					},
+					{
+						xtype: "button",
+						action: 'rate-article',
+						iconCls: 'rate',
+						html: '',
+						cls: 'rating-button',
+						pressedCls: 'pressed',
+						flex: 1
+					}
+				]	
+			}
+		]
 	},
 	
 	
 	initialize: function(){
 		this.callParent(arguments);
 		
+		this.on("updatedata", this.onUpdateData, this);
+		this.on("addcontent", this.onAddContent, this);
+		
+		var backBtn = this.down("#backBtn"); 
+		backBtn.on("tap", this.onClosePanel, this);
+		
 		// add a handler for the orientationchange event of the viewport
 		Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });
 	},
 	
 	
+	onAddContent: function(article){
+		
+		var backBtn = this.down("#backBtn"); 
+		backBtn.setHtml(article.category);
+		
+		this.setData(article);
+		this.handleOrientationChange();
+	},
+	
+	
+	onUpdateData: function(data){
+		/*var articleVoteBtn = panel.down("#articleVoteBtn");
+		var articleCommentBtn = panel.down("#articleCommentBtn");
+		
+		articleVoteBtn.setText(String(data.ranking));
+		articleCommentBtn.setText(String(data.comment_count));*/
+	},
+	
+	onClosePanel: function(){
+		this.getParent().animateActiveItem(0, {direction: "right", type: "slide"})	
+	},
+	
+	
 	handleOrientationChange: function(){
-			
+		var images = this.element.query("img");
+		var padding = 50;
+		
+		// change images max width according with the Viewport width
+		for (var i=0; i<images.length; i++){
+			images[i].style.maxWidth = (Ext.Viewport.getWindowWidth() - padding) + "px";
+		}
 	}
 });
