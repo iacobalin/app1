@@ -32,7 +32,10 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 				itemId: "categoryBox",
 				tpl: new Ext.XTemplate(
 					'<div class="category-image" style="width: 100%; height: {[ this.getImageHeight(); ]}px;" >',
-						'<div class="image-container vbox" style="background-image: url(\'{image}\');">',
+						'<div class="vbox" style="position: relative; width: 100%; height: 100%;">',
+							'<div style="position: absolute; left: 0; top: 0; padding: 10px 15px; width: 100%; height: 100%;">',
+								'<div class="image-container" style="background-image: url(\'{image}\');"></div>',
+							'</div>',
 							'<div class="headline">',
 								'<h1>{name}</h1>',
 							'</div>',
@@ -74,6 +77,9 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 		this.on("addcontent", this.onAddContent, this);
 		
 		closeBtn.on("tap", this.onClosePanel, this);
+		
+		// add a handler for the orientationchange event of the viewport
+		Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });
 				
 		this.callParent(arguments);
 	},
@@ -86,6 +92,11 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 		
 		var articlesList = this.down("#articlesList");
 		articlesList.getStore().add(category.posts);
+	},
+	
+	handleOrientationChange: function(){
+		var categoryBox = this.down("#categoryBox");
+		categoryBox.setData(category);
 	},
 	
 	onClosePanel: function(){

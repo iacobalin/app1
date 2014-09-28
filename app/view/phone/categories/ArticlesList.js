@@ -57,9 +57,6 @@ Ext.define("LDPA.view.phone.categories.ArticlesList", {
 		
 		//this.on("itemtap", this.onListItemTap, this);
 		this.on("painted", this.onPainted, this);
-		
-		// add a handler for the orientationchange event of the viewport
-		Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });
 	},
 	
 	onPainted: function(){
@@ -67,9 +64,5 @@ Ext.define("LDPA.view.phone.categories.ArticlesList", {
 		var height = 40 + ln * this.getItemHeight() + 10;
 		
 		this.setHeight(height);
-	},
-	
-	handleOrientationChange: function(){
-		
-	},
+	}
 });
