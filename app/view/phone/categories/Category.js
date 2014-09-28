@@ -25,12 +25,12 @@ Ext.define("LDPA.view.phone.categories.Category", {
 		scrollable: null,
 		hidden: true,
 		showAnimation: {
-			type: "pop",
+			type: "popIn",
 			duration: 400,
 			easing: "out"
 		},
 		hideAnimation: {
-			type: "pop",
+			type: "popOut",
 			duration: 400,
 			easing: "in"
 		},

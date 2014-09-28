@@ -28,18 +28,6 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 		},
 		items: [
 			{
-				xtype: "button",
-				itemId: "closeBtn",
-				iconCls: '',
-				html: '&nbsp;',
-				cls: 'close-button',
-				pressedCls: 'pressed',
-				width: 60,
-				height: 60,
-				top: 0,
-				right: 0
-			},
-			{
 				xtype: "panel",
 				itemId: "categoryBox",
 				tpl: new Ext.XTemplate(
@@ -70,11 +58,26 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 		var articlesList = Ext.create("LDPA.view.phone.categories.ArticlesList");
 		this.add(articlesList);
 		
+		var closeBtn = Ext.create("Ext.Button", {
+			itemId: "closeBtn",
+			iconCls: '',
+			html: '&nbsp;',
+			cls: 'close-button',
+			pressedCls: 'pressed',
+			width: 60,
+			height: 60,
+			top: 0,
+			right: 0
+		});	
+		this.add(closeBtn);
+		
+		
 		// add a handler for the orientationchange event of the viewport
 		Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });
 		
 		this.on("addcontent", this.onAddContent, this);
-		
+		closeBtn.on("tap", this.onClosePanel, this);
+				
 		this.callParent(arguments);
 	},
 	
@@ -90,5 +93,9 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 		
 		var articlesList = this.down("#articlesList");
 		articlesList.getStore().add(category.posts);
+	},
+	
+	onClosePanel: function(){
+		this.getParent().fireEvent("closepanel");	
 	}
 });
