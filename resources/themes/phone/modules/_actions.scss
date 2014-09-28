@@ -1,0 +1,80 @@
+.actions-list{
+	.x-dock{
+		background: $grey;
+		
+		.x-dock-body{
+			.x-list-item{
+				.x-innerhtml{
+					.item-box{
+						width: 100%; 
+						height: 100%; 
+						padding: 10px 5px 5px 5px;
+						border: 1px solid $light-blue;
+						
+						.icon{
+							@include wbz-display-box();
+							@include wbz-box-align(center);
+							@include wbz-box-pack(center);
+							color: $light-blue;
+							
+							&::before{
+								width: 35px;
+								height: 35px;
+								line-height: 35px;
+								position: relative!important;
+							}
+							&.call{
+								@include wbz-inline-icon(phone, 30px);
+							}
+							&.video{
+								@include wbz-inline-icon(play, 30px);
+							}
+							&.map{
+								@include wbz-inline-icon(map, 30px);
+							}
+							&.comment{
+								@include wbz-inline-icon(comment, 30px);
+							}
+							&.share{
+								@include wbz-inline-icon(share, 30px);
+							}
+							&.settings{
+								@include wbz-inline-icon(cog, 30px);
+							}						
+						}
+						.title{
+							@include wbz-display-box();
+							@include wbz-box-align(center);
+							@include wbz-box-pack(center);
+							color: $light-blue;
+							font-family: "opensans-light";
+							font-size: 14px;
+							line-height: 15px;
+							height: 40px;
+							text-align: center;
+						}
+					}
+				}
+			}
+		}
+	}
+	.menu-bar{
+		border-bottom: 1px solid #504f4f;
+		background: $dark-grey;
+		
+		.x-body{
+			.x-title{
+				font-size: 17px;
+			}
+		}
+		.back-btn{
+			background: none;
+			border: 0px;
+			
+			.back{
+				@include wbz-inline-icon(left, 20px);
+				@include wbz-transform(rotate(90deg));
+			}
+		}
+	}
+}

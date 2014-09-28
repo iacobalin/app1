@@ -30,7 +30,7 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 		useSimpleItems: true,
 		itemTpl: new Ext.XTemplate(
 			'<div style="{[ this.getItemSize(values.sequence-1); ]} padding-top: 3px; padding-bottom: 3px;">',
-				'<div class="item-box vbox" style="width: 100%; height: 100%; padding: 10px; background: red">',
+				'<div class="item-box vbox" style="">',
 					'<div class="icon flex {icon}"></div>',
 					'<div class="title">{title}</div>',
 				'</div>',
