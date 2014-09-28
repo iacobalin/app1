@@ -17,7 +17,7 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 		itemCls: 'item',
 		selectedCls: '',
 		pressedCls: 'item-pressed',
-		//height: 210,
+		height: 40,
 				
 		// properties
 		scrollable:{
@@ -30,16 +30,16 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 		emptyText: '',
 		useSimpleItems: true,
 		itemTpl: new Ext.XTemplate(
-			'<div style="{[ this.getItemSize(values.sequence-1); ]} padding-top: 3px; padding-bottom: 3px;">',
+			'<div style="{[ this.getItemSize(values.sequence-1); ]} padding-top: 2px; padding-bottom: 2px;">',
 				'<div class="item-box vbox" style="">',
 					'<div class="icon flex {icon}"></div>',
 					'<div class="title">{title}</div>',
 				'</div>',
 			"</div>",
 			{
-				spacer: 6,
-				minPadding: 15,
-				minWidth: 90,
+				spacer: 4,
+				minPadding: 10,
+				minWidth: 100,
 				maxWidth: 120,
 				getItemSize: function(index){
 					var vieportWidth = Ext.Viewport.getWindowWidth();
@@ -136,8 +136,8 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 	onPainted: function(){
 		
 		var vieportWidth = Ext.Viewport.getWindowWidth();
-		var minPadding = 15;
-		var minWidth = 90;
+		var minPadding = 10;
+		var minWidth = 100;
 		var maxWidth = 120;
 					
 		// items per row
@@ -151,7 +151,7 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 		var rows = Math.ceil(this.getData().length / ln);
 		var listHeight = rows * itemHeight + this.down("#topBar").getHeight();		
 		
-		this.setHeight(listHeight);
+		this.setHeight(listHeight+10);
 	},
 	
 	onListItemTap: function(list, index, item, record){
@@ -190,7 +190,12 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 	},
 	
 	onClosePanel: function(){
-		this.hide();	
+		this.hide();
+		
+		var me = this;
+		Ext.defer(function(){
+			me.destroy(true);	
+		}, 400);
 	},
 	
 	handleOrientationChange: function(){

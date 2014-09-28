@@ -55,6 +55,9 @@ Ext.define('LDPA.controller.Actions', {
 		Ext.Viewport.add(actionsList);
 		
 		mask.show();
-		actionsList.show();
+		
+		Ext.defer(function(){
+			actionsList.show();
+		}, 100);
 	}
 });
