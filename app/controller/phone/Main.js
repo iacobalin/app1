@@ -1,6 +1,6 @@
 var mainController;
 
-Ext.define('LDPA.controller.Main', {
+Ext.define('LDPA.controller.phone.Main', {
     extend: 'Ext.app.Controller',
 	
 	requires: [
@@ -10,6 +10,7 @@ Ext.define('LDPA.controller.Main', {
 		'LDPA.store.CategoriesOffline',
 		'LDPA.view.MainMask',
 		'LDPA.view.phone.actions.ActionsList',
+		'LDPA.view.phone.categories.Category'
 	],
 	
     config: {

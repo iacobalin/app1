@@ -1,5 +1,5 @@
-Ext.define("LDPA.view.phone.categories.CategoriesList", {
-    extend: 'Ext.List',
+Ext.define("LDPA.view.phone.categories.ArticlePanel", {
+    extend: 'Ext.Panel',
 	
 	requires: [
 		"Ext.field.Search"
@@ -7,30 +7,19 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 	
 	config: {
 		
-		id: "categoriesList",
+		itemId: "articlePanel",
 				
 		// custom properties
 		
 								
 		// css properties
-		cls: 'categories-list',
-		itemCls: 'item',
-		selectedCls: '',
-		pressedCls: 'item-pressed',
+		cls: 'article-panel',
 						
 		// properties
 		scrollable:{
 			direction: 'vertical',
 			indicators: false,
-			directionLock: true
 		},
-		inline: {
-			wrap: false	
-		},
-		scrollToTopOnRefresh: false,
-		disableSelection: true,
-		emptyText: '',
-		useSimpleItems: true,
 		itemTpl: new Ext.XTemplate(
 			'<div style="{[ this.getItemSize(values.sequence-1); ]} padding-top: 5px; padding-bottom: 5px;">',
 				'<div class="categories-box vbox" style="width: 100%; height: 100%; padding-top: 10px;">',
@@ -53,7 +42,7 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 					
 					var itemHeight = Math.floor(5/6 * itemWidth);
 					var generalPadding = Math.floor((vieportWidth - ln * itemWidth)/2);
-					
+					console.log(vieportWidth, ln, itemWidth, generalPadding)
 					var extraWidth = 0;
 					
 					if ((index % ln) == 0){
@@ -127,14 +116,12 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 	initialize: function(){
 		this.callParent(arguments);
 		
-		this.setStore(Ext.create("LDPA.store.Categories"));
-		
 		// add a handler for the orientationchange event of the viewport
 		Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });
 	},
 	
 	
 	handleOrientationChange: function(){
-		this.refresh();	
+			
 	}
 });

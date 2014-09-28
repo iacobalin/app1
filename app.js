@@ -6,7 +6,7 @@ Ext.application({
     ],
 	
 	profiles: 		['Phone'],
-	controllers:	['Main', 'Categories', 'Actions'],
+	//controllers:	['Main', 'Categories', 'Actions'],
 	/*models: [
 		'Categories', 
 		'CategoriesOffline', 

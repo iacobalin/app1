@@ -1,6 +1,6 @@
 var actionsController;
 
-Ext.define('LDPA.controller.Actions', {
+Ext.define('LDPA.controller.phone.Actions', {
     extend: 'Ext.app.Controller',
     
 	config: {
