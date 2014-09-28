@@ -8198,7 +8198,7 @@ html, body {
   justify-content: flex-end;
 }
 /* line 84, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
-.category-panel .category-image .container div:first-child {
+.category-panel .category-image .container > div:first-child {
   position: absolute;
   left: 0;
   top: 0;
@@ -8308,7 +8308,7 @@ html, body {
   background: none;
   padding: 0;
   margin: 0;
-  height: 70px;
+  height: 60px;
   width: 50px;
 }
 /* line 14, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/mixins/_icon.scss */
@@ -8327,7 +8327,7 @@ html, body {
 /* line 177, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .articles-list.x-list .x-list-disclosure::before {
   color: #979696;
-  line-height: 70px;
+  line-height: 60px;
 }
 /* line 183, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .articles-list .stats {
