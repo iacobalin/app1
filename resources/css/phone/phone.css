@@ -8184,7 +8184,9 @@ html, body {
   background: #d9e0f0;
 }
 /* line 78, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
-.category-panel .category-image .image-container {
+.category-panel .category-image .container {
+  position: relative;
+  width: 100%;
   height: 100%;
   background-size: contain;
   background-position: center;
@@ -8194,8 +8196,17 @@ html, body {
   box-pack: end;
   justify-content: flex-end;
 }
-/* line 85, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
-.category-panel .category-image .image-container .headline {
+/* line 87, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+.category-panel .category-image .container div:first-child {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 10px 15px;
+  width: 100%;
+  height: 100%;
+}
+/* line 96, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+.category-panel .category-image .headline {
   background: -webkit-linear-gradient(bottom, #ffffff, rgba(255, 255, 255, 0.8) 70%, rgba(255, 255, 255, 0.7));
   background: -moz-linear-gradient(bottom, #ffffff, rgba(255, 255, 255, 0.8) 70%, rgba(255, 255, 255, 0.7));
   background: -o-linear-gradient(bottom, #ffffff, rgba(255, 255, 255, 0.8) 70%, rgba(255, 255, 255, 0.7));
@@ -8204,35 +8215,39 @@ html, body {
   background: -ms-linear-gradient(bottom, white 0%, rgba(255, 255, 255, 0.8) 70%, rgba(255, 255, 255, 0.7));
   /* IE10+ */
 }
-/* line 89, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
-.category-panel .category-image .image-container .headline h1 {
+/* line 100, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+.category-panel .category-image .headline h1 {
   font-size: 20px;
   line-height: 26px;
   color: #373737;
   padding: 15px 20px 5px 20px;
 }
-/* line 98, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 107, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+.category-panel .category-image .image-container {
+  height: 100%;
+}
+/* line 111, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .category-panel .content {
   padding: 15px 0 0 0;
   margin: 0 20px 20px 20px;
   border-top: 1px solid #d9e0f0;
 }
-/* line 103, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 116, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .category-panel .content p {
   font-size: 14px;
   line-height: 18px;
   color: #373737;
 }
 
-/* line 110, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 123, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .articles-list {
   margin: 2px 0 0 0;
 }
-/* line 113, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 126, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .articles-list .articles-bar {
   background: #e64415;
 }
-/* line 116, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 129, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .articles-list .articles-bar .x-innerhtml {
   color: #ffffff;
   font-size: 17px;
@@ -8240,27 +8255,27 @@ html, body {
   line-height: 30px;
   padding: 0 20px;
 }
-/* line 124, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 137, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .articles-list .x-list-item {
   border-bottom: 1px solid #d9e0f0;
 }
-/* line 127, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 140, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .articles-list .x-list-item.x-list-item-tpl {
   height: 60px;
 }
-/* line 130, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 143, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .articles-list .x-list-item.x-list-item-tpl .x-innerhtml {
   padding: 0 50px 0 20px;
   height: 100%;
 }
-/* line 134, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 147, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .articles-list .x-list-item.x-list-item-tpl .x-innerhtml > div {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   box-pack: center;
   justify-content: center;
 }
-/* line 140, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 153, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .articles-list .x-list-item .x-innerhtml h1 {
   color: #5389c2;
   font-size: 16px;
@@ -8269,7 +8284,7 @@ html, body {
   overflow: hidden;
   display: block;
 }
-/* line 151, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 164, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .articles-list.x-list .x-list-disclosure {
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
@@ -8289,11 +8304,11 @@ html, body {
   font-weight: normal!important;
   content: "\28";
 }
-/* line 156, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 169, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .articles-list.x-list .x-list-disclosure::before {
   color: #979696;
 }
-/* line 161, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 174, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .articles-list .comments {
   color: #979696;
   width: 18px;
@@ -8312,16 +8327,16 @@ html, body {
   font-weight: normal!important;
   content: "\24";
 }
-/* line 167, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 180, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .articles-list .comments::before {
   line-heigth: 18px;
 }
-/* line 170, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 183, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .articles-list .comments span {
   font-size: 13px;
   color: #979696;
 }
-/* line 175, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 188, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .articles-list .ranking {
   color: #979696;
   width: 18px;
@@ -8340,11 +8355,11 @@ html, body {
   font-weight: normal!important;
   content: "\40";
 }
-/* line 181, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 194, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .articles-list .ranking::before {
   line-heigth: 18px;
 }
-/* line 184, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
+/* line 197, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_categories.scss */
 .articles-list .ranking span {
   font-size: 13px;
   color: #979696;

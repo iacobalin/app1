@@ -32,8 +32,8 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 				itemId: "categoryBox",
 				tpl: new Ext.XTemplate(
 					'<div class="category-image" style="width: 100%; height: {[ this.getImageHeight(); ]}px;" >',
-						'<div class="vbox" style="position: relative; width: 100%; height: 100%;">',
-							'<div style="position: absolute; left: 0; top: 0; padding: 10px 15px; width: 100%; height: 100%;">',
+						'<div class="vbox container">',
+							'<div>',
 								'<div class="image-container" style="background-image: url(\'{image}\');"></div>',
 							'</div>',
 							'<div class="headline">',
