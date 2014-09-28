@@ -17,7 +17,7 @@ Ext.define("LDPA.view.phone.categories.ArticlesList", {
 		itemCls: 'item',
 		selectedCls: '',
 		pressedCls: 'item-pressed',
-		itemHeight: 70,
+		itemHeight: 60,
 						
 		// properties
 		scrollable:{
