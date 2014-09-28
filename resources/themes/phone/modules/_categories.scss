@@ -66,3 +66,124 @@
 		}
 	}
 }
+.category-panel{
+	background: #ffffff;
+	
+	.x-innerhtml{
+		border-bottom: 1px solid #d9e0f0;
+	}
+	.category-image{
+		background: #d9e0f0;
+		
+		.image-container{
+			height: 100%; 
+			background-size: contain; 
+			background-position: center;
+			background-repeat: no-repeat;
+			@include wbz-box-pack(end);
+			
+			.headline{
+				@include background(linear-gradient(bottom, rgba(255,255,255, 1), rgba(255,255,255, 0.8) 70%, rgba(255,255,255, 0.7)));
+				background: -ms-linear-gradient(bottom, rgba(255,255,255, 1) 0%, rgba(255,255,255, 0.8) 70%, rgba(255,255,255, 0.7)); /* IE10+ */ 
+				
+				h1{
+					font-size: 20px;
+					line-height: 26px;
+					color: $dark-grey;
+					padding: 15px 20px 5px 20px;
+				}
+			}
+		}
+	}
+	.content{
+		padding: 15px 0 0 0;
+		margin: 0 20px 20px 20px;
+		border-top: 1px solid #d9e0f0;
+		
+		p{
+			font-size: 14px;
+			line-height: 18px;
+			color: $dark-grey;
+		}
+	}
+}
+.articles-list{
+	margin: 2px 0 0 0;
+	
+	.articles-bar{
+		background: $dark-orange;
+		
+		.x-innerhtml{
+			color: #ffffff;
+			font-size: 17px;
+			height: 30px;
+			line-height: 30px;
+			padding: 0 20px;
+		}
+	}
+	.x-list-item{
+		border-bottom: 1px solid #d9e0f0;
+		
+		&.x-list-item-tpl{
+			height: 60px; 
+			
+			.x-innerhtml{
+				padding: 0 50px 0 20px;
+				height: 100%;
+				
+				> div{
+					@include wbz-box-pack(center);
+				}
+			}
+		}
+		.x-innerhtml{
+			h1{
+				color: $blue;
+				font-size: 16px;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				display: block;
+			}
+		}
+	}
+	&.x-list{
+		.x-list-disclosure{
+			@include wbz-inline-icon(left, 20px);
+			@include wbz-transform(rotate(180deg));
+			background: none;
+			
+			&::before{
+				color: $light-grey;	
+			}
+		}
+	}
+	.comments{
+		@include wbz-inline-icon(comment_empty, 18px);
+		color: $light-grey;
+		width: 18px;
+		height: 18px;
+		
+		&::before{
+			line-heigth: 18px;
+		}
+		span{
+			font-size: 13px;
+			color: $light-grey;	
+		}
+	}
+	.ranking{
+		@include wbz-inline-icon(star, 18px);
+		color: $light-grey;
+		width: 18px;
+		height: 18px;
+		
+		&::before{
+			line-heigth: 18px;
+		}
+		span{
+			font-size: 13px;
+			color: $light-grey;	
+		}
+	}
+}

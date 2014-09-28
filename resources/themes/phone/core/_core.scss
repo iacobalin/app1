@@ -80,3 +80,16 @@
 		}
 	}
 }
+.close-button{
+	.close{
+		@include wbz-inline-icon(cross, 20px);
+		color: $light-blue;
+		width: 60px;
+		height: 60px;
+		line-height: 60px;
+		
+		&::before{
+			line-height: 60px;
+		}
+	}
+}

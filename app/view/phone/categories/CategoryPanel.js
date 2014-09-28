@@ -32,13 +32,13 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 				itemId: "categoryBox",
 				tpl: new Ext.XTemplate(
 					'<div class="category-image" style="width: 100%; height: {[ this.getImageHeight(); ]}px;" >',
-						'<div class="image-container" style="height: 100%; background-image: url(\'{image}\'); background-size:contain; background-position:center">',
+						'<div class="image-container vbox" style="background-image: url(\'{image}\');">',
 							'<div class="headline">',
 								'<h1>{name}</h1>',
 							'</div>',
 						'</div>',
 					'</div>',
-					'<div>',
+					'<div class="content">',
 						'<p>{description}</p>',
 					'</div>',
 					{
@@ -60,8 +60,8 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 		
 		var closeBtn = Ext.create("Ext.Button", {
 			itemId: "closeBtn",
-			iconCls: '',
-			html: '&nbsp;',
+			iconCls: 'close',
+			html: '',
 			cls: 'close-button',
 			pressedCls: 'pressed',
 			width: 60,

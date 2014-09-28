@@ -30,18 +30,18 @@ Ext.define("LDPA.view.phone.categories.ArticlesList", {
 		useSimpleItems: true,
 		onItemDisclosure: true,
 		itemTpl: new Ext.XTemplate(
-			'<div>',
+			'<div class="vbox">',
 				'<h1>{title}</h1>',
-				'<div>',
-					'<div>{comment_count}</div>',
-					'<div>{ranking}</div>',
+				'<div class="stats hbox">',
+					'<div class="comments"><span>{comment_count}</span></div>',
+					'<div class="ranking"><span>{ranking}</span></div>',
 				'</div>',
 			'</div>'
 		),
 		items: [
 			{
 				xtype: "component",
-				height: 40,
+				height: 30,
 				docked: "top",	  
 				cls: "articles-bar",
 				html: "Articole"
