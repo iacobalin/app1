@@ -17,6 +17,7 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 		width: "85%",
 		height: 220,
 		maxWidth: 320,
+		centered: true,
 		layout: {
 			type: "vbox",
 			pack: "justify",
@@ -25,6 +26,17 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 						
 		// properties
 		scrollable: null,
+		hidden: true,
+		showAnimation: {
+			type: "popIn",
+			duration: 400,
+			easing: "out"
+		},
+		hideAnimation: {
+			type: "popOut",
+			duration: 400,
+			easing: "in"
+		},
 		items: [
 			{
 				xtype: "container",
@@ -39,8 +51,8 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 					iconCls: 'close',
 					cls: 'close-button',
 					pressedCls: 'pressed',
-					width: 60,
-					height: 60,
+					width: 50,
+					height: 50,
 					top: 0,
 					right: 0,
 					html: '&nbsp;'
