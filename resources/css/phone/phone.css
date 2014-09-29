@@ -8599,6 +8599,147 @@ body.x-desktop {
   content: "\28";
 }
 
+/* line 2, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel.x-layout-card-item {
+  background: #ffffff;
+}
+/* line 5, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel .top-bar {
+  background: #ee7f00;
+}
+/* line 8, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel .bottom-bar {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  padding: 0px;
+  background: #7caad6;
+  border-top: 1px solid #a4ccea;
+}
+/* line 16, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel .bottom-bar.x-panel.x-floating .x-panel-inner {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  background: #7caad6;
+}
+/* line 21, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel .bottom-bar.x-panel.x-floating .x-panel-inner .x-button.pressed {
+  background: #5389c2;
+}
+/* line 24, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel .bottom-bar.x-panel.x-floating .x-panel-inner .x-button .x-button-icon {
+  color: #ffffff;
+}
+/* line 28, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel .bottom-bar.x-panel.x-floating .x-panel-inner .x-button.x-hasbadge .x-badge {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background: none;
+  border: 0px;
+  text-shadow: none;
+  font-family: "opensans-regular";
+  font-size: 16px;
+  color: #ffffff;
+  padding: 0px;
+  top: 15px;
+  left: 40px;
+  font-weight: normal;
+}
+/* line 43, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel .bottom-bar.x-panel.x-floating .x-panel-inner .comments-button {
+  border-right: 1px solid #a4ccea;
+}
+/* line 46, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel .bottom-bar.x-panel.x-floating .x-panel-inner .comments-button.pressed {
+  border-right: 1px solid #5389c2;
+}
+/* line 14, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/mixins/_icon.scss */
+.article-panel .bottom-bar.x-panel.x-floating .x-panel-inner .comments-button .comments:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  font-family: "LDPA-Pictos" !important;
+  font-size: 24px !important;
+  font-weight: normal!important;
+  content: "\24";
+}
+/* line 14, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/mixins/_icon.scss */
+.article-panel .bottom-bar.x-panel.x-floating .x-panel-inner .rating-button .rate:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  font-family: "LDPA-Pictos" !important;
+  font-size: 24px !important;
+  font-weight: normal!important;
+  content: "\40";
+}
+/* line 61, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel h1 {
+  font-size: 22px;
+  line-height: 24px;
+  color: #000000;
+  margin: 20px 20px 5px 20px;
+}
+/* line 67, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel .content {
+  margin: 0 20px 20px 20px;
+  padding: 20px 0 0 0;
+  border-top: 1px solid #d9e0f0;
+  font-size: 14px;
+}
+/* line 73, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel .content p, .article-panel .content li, .article-panel .content a, .article-panel .content span {
+  font-size: 14px;
+}
+/* line 76, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel .content p, .article-panel .content span {
+  margin-bottom: 10px;
+}
+/* line 79, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel .content h1 {
+  font-size: 18px;
+}
+/* line 82, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel .content h2 {
+  font-size: 17px;
+}
+/* line 85, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel .content h2 span {
+  font-size: 19px;
+  color: #e64415 !important;
+}
+/* line 90, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel .content h3, .article-panel .content h4, .article-panel .content h5, .article-panel .content h6 {
+  font-size: 16px;
+}
+/* line 93, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel .content a {
+  color: #5389c2;
+}
+/* line 96, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_articles.scss */
+.article-panel .content img {
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
 /**********************************************************************************************************************/
 /*
 /* IMPORT WIDGETS 

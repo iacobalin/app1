@@ -24,7 +24,7 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 		},
 		tpl: new Ext.XTemplate(
 			'<h1>{title}</h1>'+           
-            '<div class="content>',
+            '<div class="content">',
 				'{content}',
 			'</div>'
 		),
