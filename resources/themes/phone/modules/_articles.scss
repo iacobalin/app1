@@ -24,20 +24,21 @@
 					.x-button-icon{
 						color: #ffffff;
 					}
-					&.x-hasbadge{
-						.x-badge{
-							@include wbz-box-shadow(none);
-							background: none;
-							border: 0px;
-							text-shadow: none;
-							font-family: "opensans-regular";
-							font-size: 16px;
-							color: #ffffff;
-							padding: 0px;
-							top: 15px;
-							left: 40px;
-							font-weight: normal;
-						}
+					.x-button-label{
+						@include wbz-box-shadow(none);
+						background: none;
+						border: 0px;
+						text-shadow: none;
+						font-size: 16px;
+						color: #ffffff;
+						font-weight: normal;
+						position: relative;
+						top: -3px;
+						left: 5px;
+						width: 0px;
+						min-width: 0;
+						@include wbz-display-inline-box();
+						overflow: visible;
 					}
 				}
 				.comments-button{
