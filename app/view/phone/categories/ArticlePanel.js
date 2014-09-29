@@ -100,6 +100,10 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 		var backBtn = this.down("#backBtn"); 
 		backBtn.setHtml(article.category);
 		
+		var bottomBar = this.getBottomBar();
+		var commentsBtn = bottomBar.down("#commentsBtn").setBadgeText(article.comment_count);
+		var rateBtn = bottomBar.down("#rateBtn").setBadgeText(article.ranking);
+		
 		this.setData(article);
 		this.handleOrientationChange();
 	},

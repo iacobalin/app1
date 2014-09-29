@@ -27,6 +27,7 @@ Ext.define("LDPA.view.phone.categories.ArticleBottomBar", {
         items: [
 			{
 				xtype: "button",
+				itemId: "commentsBtn",
 				action: 'view-comments',
 				iconCls: 'comments',
 				html: '',
