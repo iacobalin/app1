@@ -66,19 +66,13 @@ Ext.define("LDPA.view.MainMask", {
 	// add loading spinner
 	onAddSpinner: function(){
 		
-		var html = 	'<div class="spinner-box">';
-			html += 	'<div class="loader">';
-			html += 		'<div class="circle">';
-			html += 			'<div class="circle">';
-			html += 				'<div class="circle">';
-			html += 					'<div class="circle">';
-			html += 						'<div class="circle"></div>';
-			html += 					'</div>';
-			html += 				'</div>';
-			html += 			'</div>';
-			html += 		'</div>';
-			html += 	'</div>';
+		var html = 	'<div class="loader">';
+			html += 	'<div class="dot dot1"></div>';
+			html += 	'<div class="dot dot2"></div>';
+			html += 	'<div class="dot dot3"></div>';
+			html += 	'<div class="dot dot4"></div>';
 			html += '</div>';
+		
 		
 		var spinner = Ext.create("Ext.Container", {
 			itemId: "spinner",

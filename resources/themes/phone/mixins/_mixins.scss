@@ -120,6 +120,20 @@
 		animation-duration: $value;
   	}
 }
+@mixin wbz-animation-direction($value, $important: no){
+	@if $important == important{
+		-webkit-animation-direction: $value !important;
+		-moz-animation-direction: $value !important;
+		-o-animation-direction: $value !important;
+		animation-direction: $value !important;
+	}
+	@else {
+    	-webkit-animation-direction: $value;
+		-moz-animation-direction: $value; 
+		-o-animation-direction: $value; 
+		animation-direction: $value;
+  	}
+}
 @mixin wbz-animation-delay($value, $important: no){
 	@if $important == important{
 		-webkit-animation-delay: $value !important;
@@ -132,6 +146,20 @@
 		-moz-animation-delay: $value; 
 		-o-animation-delay: $value; 
 		animation-delay: $value;
+  	}
+}
+@mixin wbz-animation-timing-function($value, $important: no){
+	@if $important == important{
+		-webkit-animation-timing-function: $value !important;
+		-moz-animation-timing-function: $value !important;
+		-o-animation-timing-function: $value !important;
+		animation-timing-function: $value !important;
+	}
+	@else {
+    	-webkit-animation-timing-function: $value;
+		-moz-animation-timing-function: $value; 
+		-o-animation-timing-function: $value; 
+		animation-timing-function: $value;
   	}
 }
 @mixin wbz-animation-iteration-count($value, $important: no){

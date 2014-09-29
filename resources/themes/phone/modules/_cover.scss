@@ -74,7 +74,40 @@
 			margin: 15px 10px 0 0;
 		}
 	}
-	@media screen and (orientation: landscape){
+	@media all and (orientation: portrait) and (min-device-width: 320px){
+		.logos{
+			width: 295px;
+			margin: 0 auto;
+			padding: 20px 0;
+		}
+		.logo-ing{
+			background-image: wbz_theme_image("phone/logo-ing.png");
+			background-size: contain;
+			background-repeat: no-repeat;
+			width: 266px;	
+			height: 23px;
+			margin: 0 auto;
+		}
+		.logo-mai-mult-verde{
+			background-image: wbz_theme_image("phone/logo-mai-mult-verde.png");
+			background-size: contain;
+			background-repeat: no-repeat;
+			width: 192px;	
+			height: 47px;
+			float: left;
+			margin: 15px 0 0 10px;
+		}
+		.logo-smurd{
+			background-image: wbz_theme_image("phone/logo-smurd.png");
+			background-size: contain;
+			background-repeat: no-repeat;
+			width: 55px;	
+			height: 54px;
+			float: right;
+			margin: 15px 10px 0 0;
+		}
+	}
+	@media all and (orientation: landscape) and (min-device-height: 320px) and  (min-device-width: 400px){
 		.logo-box{
 			width: 120px;
 			height: 120px;

@@ -67,10 +67,11 @@
 	}
 }
 .category-panel{
-	background: #ffffff;
+	background: #d9e0f0;
 	
 	.x-innerhtml{
 		border-bottom: 1px solid #d9e0f0;
+		background: #ffffff;
 	}
 	.category-image{
 		background: #d9e0f0;
@@ -127,14 +128,13 @@
 	margin: 2px 0 0 0;
 	
 	.articles-bar{
-		background: $dark-orange;
-		
 		.x-innerhtml{
 			color: #ffffff;
 			font-size: 17px;
 			height: 30px;
 			line-height: 30px;
 			padding: 0 20px;
+			background: $dark-orange;
 		}
 	}
 	.x-list-item{
@@ -190,7 +190,7 @@
 		margin: 0 15px 0 0;
 		
 		.icon{
-			@include wbz-inline-icon(comment_empty, 20px);
+			@include wbz-inline-icon(comment_empty, 18px);
 			color: $light-grey;
 			width: 18px;
 			height: 18px;
@@ -209,7 +209,7 @@
 		margin: 0 15px 0 0;
 		
 		.icon{
-			@include wbz-inline-icon(star, 20px);
+			@include wbz-inline-icon(star, 18px);
 			color: $light-grey;
 			width: 18px;
 			height: 18px;

@@ -11,60 +11,81 @@
          */
         html, body {
             height: 100%;
+			background: #7caad6!important;
         }
 
         #appLoadingIndicator {
             position: absolute;
             top: 50%;
-            margin-top: -8px;
-            text-align: center;
-            width: 100%;
-            height: 16px;
-            -webkit-animation-name: appLoadingIndicator;
-            -webkit-animation-duration: 0.5s;
-            -webkit-animation-iteration-count: infinite;
-            -webkit-animation-direction: linear;
-            animation-name: appLoadingIndicator;
-            animation-duration: 0.5s;
-            animation-iteration-count: infinite;
-            animation-direction: linear;
+			left: 50%;
+            -webkit-transform: translateY(-50%);
+			-webkit-transform: translateX(-50%); 
         }
 
-        #appLoadingIndicator > * {
-            background-color: #c6cdbe;
-            display: inline-block;
-            height: 16px;
-			width: 16px;
-             -webkit-border-radius: 8px;
-            -moz-border-radius: 8px;
-            border-radius: 8px;
-            margin: 0 2px;
-            opacity: 0.8;
-        }
-
-        @-webkit-keyframes appLoadingIndicator{
-            0% {
-                opacity: 0.8
-            }
-            50% {
-                opacity: 0
-            }
-            100% {
-                opacity: 0.8
-            }
-        }
-        
-        @keyframes appLoadingIndicator{
-            0% {
-                opacity: 0.8
-            }
-            50% {
-                opacity: 0
-            }
-            100% {
-                opacity: 0.8
-            }
-        }
+        .loader {
+		  font-size: 16px;
+		  position: relative;
+		  width: 4em;
+		  height: 1em;
+		  margin: 0 auto;
+		}
+		#appLoadingIndicator .dot {
+			width: 1em;
+			height: 1em;
+			border-radius: 0.5em;
+			background: #5389c2;
+			position: absolute;
+			-webkit-animation-duration: 0.5s;
+			-moz-animation-duration: 0.5s;
+			animation-duration: 0.5s;
+			-webkit-animation-timing-function: ease;
+			-moz-animation-timing-function: ease;
+			animation-timing-function: ease;
+			-webkit-animation-iteration-count: infinite;
+			-moz-animation-iteration-count: infinite;
+			animation-iteration-count: infinite;
+		}
+		
+		.dot1, .dot2 {
+		  left: 0;
+		}
+		
+		.dot3 { left: 1.5em; }
+		
+		.dot4 { left: 3em; }
+		
+		.dot1 {
+		  -webkit-animation-name: reveal;
+		  -moz-animation-name: reveal;
+		  animation-name: reveal;
+		}
+		.dot2, .dot3 {
+		  -webkit-animation-name: slide;
+		  -moz-animation-name: slide;
+		  animation-name: slide;
+		}
+		.dot4 {
+		  -webkit-animation-name: reveal;
+		  -moz-animation-name: reveal;
+		  animation-name: reveal;
+		  -webkit-animation-direction: reverse;
+		  -moz-animation-direction: reverse;
+		  animation-direction: reverse;
+		}
+		@-webkit-keyframes reveal{
+			from { -webkit-transform: scale(0.001); }
+			to { -webkit-transform: scale(1); }
+		}
+		@-webkit-keyframes slide {
+		  to { -webkit-transform: translateX(1.5em) }
+		}
+		@keyframes reveal {
+			from { transform: scale(0.001); }
+			to { transform: scale(1); }
+		}
+		@keyframes slide {
+		  to { transform: translateX(1.5em) }
+		}
     </style>
     
     <script type="text/javascript">
@@ -77,17 +98,18 @@
 			backgroundImage: 'resources/themes/images/phone/image-bg.jpg'
 		};
 	</script>
-    
-    <!--<script src="http://192.168.10.104:8080/target/target-script-min.js#anonymous"></script>-->
-    
+            
     <!-- The line below must be kept intact for Sencha Command to build your application -->
     <script id="microloader" type="text/javascript" src=".sencha/app/microloader/development.js"></script>
 </head>
 <body>
     <div id="appLoadingIndicator">
-        <div></div>
-        <div></div>
-        <div></div>
+        <div class="loader">
+            <div class="dot dot1"></div>
+            <div class="dot dot2"></div>
+            <div class="dot dot3"></div>
+            <div class="dot dot4"></div>
+        </div>
     </div>
 </body>
 </html>
