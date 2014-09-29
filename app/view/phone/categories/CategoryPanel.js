@@ -104,7 +104,6 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 	
 	onTap: function(){
 		var closeBtn = this.getCloseBtn(); 
-			
 		closeBtn.fireEvent("showbtn");
 	},
 	

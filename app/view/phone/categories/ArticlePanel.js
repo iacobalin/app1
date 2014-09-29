@@ -2,7 +2,7 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
     extend: 'Ext.Panel',
 	
 	requires: [
-		"Ext.field.Search"
+		"LDPA.view.phone.categories.ArticleBottomBar"
 	],
 	
 	config: {
@@ -11,6 +11,8 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 				
 		// custom properties
 		mask: null,
+		scrolling: false,									// a flag indicating if the content of the card is scrolling
+		bottomBar: null,									// a reference of the close button
 								
 		// css properties
 		cls: 'article-panel',
@@ -63,38 +65,6 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 						pressedCls: 'pressed',
 					}
 				]
-			},
-			{
-				xtype: "panel",
-				itemId: "bottomBar",
-				height: 50,
-				docked: "bottom",	  
-				cls: "bottom-bar",
-				layout: {
-					type: "hbox",
-					pack: "justify",
-					align: "stretch"
-				},
-				items: [
-					{
-						xtype: "button",
-						action: 'view-comments',
-						iconCls: 'comments',
-						html: '',
-						cls: 'comments-button',
-						pressedCls: 'pressed',
-						flex: 1,
-					},
-					{
-						xtype: "button",
-						action: 'rate-article',
-						iconCls: 'rate',
-						html: '',
-						cls: 'rating-button',
-						pressedCls: 'pressed',
-						flex: 1
-					}
-				]	
 			}
 		]
 	},
@@ -102,6 +72,17 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 	
 	initialize: function(){
 		this.callParent(arguments);
+		
+		var bottomBar = Ext.create("LDPA.view.phone.categories.ArticleBottomBar");
+		this.add(bottomBar);
+		this.setBottomBar(bottomBar);
+		
+		var scroller = this.getScrollable().getScroller();
+		scroller.on("scroll", this.onScrollableChange, this);
+		
+		this.element.on("touchstart", this.onTouchStart, this);
+		this.element.on("touchend", this.onTouchEnd, this);
+		this.element.on("tap", this.onTap, this);
 		
 		this.on("updatedata", this.onUpdateData, this);
 		this.on("addcontent", this.onAddContent, this);
@@ -123,6 +104,40 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 		this.handleOrientationChange();
 	},
 	
+	
+	onTouchStart: function(){
+		this.setScrolling(true);
+	},
+	
+	onTouchEnd: function(){
+		this.setScrolling(false);
+	},
+	
+	onTap: function(){
+		var bottomBar = this.getBottomBar(); 
+		bottomBar.fireEvent("showbar");
+	},
+	
+	onScrollableChange: function(scroller, scrollX, scrollY){
+		var scrolling = this.getScrolling();
+		
+		if (scrolling){
+			var bottomBar = this.getBottomBar(); 
+			
+			this.deltaY = (this.lastScrollY) ? scrollY - this.lastScrollY : 0;
+			
+			// scroll down
+			if (this.deltaY > 0){
+				bottomBar.fireEvent("hidebar");
+			}
+			// scroll up
+			else if (this.deltaY < 0){
+				bottomBar.fireEvent("showbar");
+			}
+			
+			this.lastScrollY = scrollY;
+		}
+	},
 	
 	onUpdateData: function(data){
 		/*var articleVoteBtn = panel.down("#articleVoteBtn");
