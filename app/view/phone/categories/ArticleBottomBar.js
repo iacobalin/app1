@@ -1,5 +1,9 @@
 Ext.define("LDPA.view.phone.categories.ArticleBottomBar", {
     extend: 'Ext.Panel',
+	  
+	requires: [
+		"LDPA.view.phone.rate.RatePanel"
+	],  
 	   
 	config: {
 		
@@ -32,6 +36,7 @@ Ext.define("LDPA.view.phone.categories.ArticleBottomBar", {
 			},
 			{
 				xtype: "button",
+				itemId: "rateBtn",
 				action: 'rate-article',
 				iconCls: 'rate',
 				html: '',
@@ -45,8 +50,36 @@ Ext.define("LDPA.view.phone.categories.ArticleBottomBar", {
 	initialize: function(){
         this.callParent(arguments);
 		
+		var rateBtn = this.down("#rateBtn");
+		rateBtn.on("tap", this.onRateBtnTap, this);
+		
 		this.on("showbar", this.onShowBar, this);
 		this.on("hidebar", this.onHideBar, this);
+	},
+	
+	
+	onRateBtnTap: function(){
+		
+		// create mask
+		var mask = Ext.create("LDPA.view.MainMask", {
+			closeFn: function(){
+				ratePanel.fireEvent("closepanel");
+			}
+		});
+		
+		Ext.Viewport.add(mask);
+		
+		// create category view
+		var profile = webcrumbz.profile.toLowerCase();
+		var ratePanel = Ext.create("LDPA.view."+profile+".rate.RatePanel", {
+			mask: mask,
+			zIndex: mask.getZIndex()+1
+		});
+		
+		Ext.Viewport.add(ratePanel);
+		
+		mask.show();
+		ratePanel.show();
 	},
 	
 	
