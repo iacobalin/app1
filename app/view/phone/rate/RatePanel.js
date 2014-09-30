@@ -15,7 +15,7 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 		// css properties
 		cls: 'rate-panel',
 		width: "85%",
-		height: 220,
+		height: 200,
 		maxWidth: 320,
 		centered: true,
 		layout: {
@@ -61,6 +61,7 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 			{
 				xtype: "panel",
 				flex: 1,
+				cls: 'content',
 				layout: {
 					type: "hbox",
 					pack: "center",
@@ -72,45 +73,50 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 						itemId: "star1",
 						cls: "empty-star",
 						pressedCls: 'filled-star',
+						iconCls: 'star',
 						height: 45,
-						width: 45,
-						html: '&nbsp;'
+						width: 38,
+						html: ''
 					},
 					{
 						xtype: "button",
 						itemId: "star2",
 						cls: "empty-star",
 						pressedCls: 'filled-star',
+						iconCls: 'star',
 						height: 45,
-						width: 45,
-						html: '&nbsp;'
+						width: 38,
+						html: ''
 					},
 					{
 						xtype: "button",
 						itemId: "star3",
 						cls: "empty-star",
 						pressedCls: 'filled-star',
+						iconCls: 'star',
 						height: 45,
-						width: 45,
-						html: '&nbsp;'
+						width: 38,
+						html: ''
 					},
 					{
 						xtype: "button",
 						itemId: "star4",
 						cls: "empty-star",
 						pressedCls: 'filled-star',
+						iconCls: 'star',
 						height: 45,
-						width: 45,
-						html: '&nbsp;'
+						width: 38,
+						html: ''
 					},
 					{
 						xtype: "button",
 						itemId: "star5",
 						cls: "empty-star",
 						pressedCls: 'filled-star',
+						iconCls: 'star',
 						height: 45,
-						width: 45,
-						html: '&nbsp;'
+						width: 38,
+						html: ''
 					}
 				]
 			},
@@ -121,7 +127,7 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 				width: 140,
 				height: 40,
 				cls: "send-button",
-				iconCls: '',
+				iconCls: 'send',
 				html: 'Noteaza',
 			}
 		]

@@ -47,6 +47,7 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 						html: "",
 						cls: 'back-button',
 						pressedCls: 'pressed',
+						iconCls: 'back',
 					},
 					{
 						xtype: "button",
