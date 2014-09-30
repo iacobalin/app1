@@ -103,10 +103,9 @@ Ext.define('LDPA.controller.phone.Actions', {
 					// hide mask
 					mask.fireEvent("close");
 					
-					var newRanking = result.ratings;
-					var newNoComments = result.comment_count;
-					
-					
+					if (callback){
+						callback.call(this, result);	
+					}
 				}
 			});	
 		}

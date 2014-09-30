@@ -61,7 +61,7 @@ Ext.define("LDPA.view.phone.categories.ArticlesList", {
 	
 	onPainted: function(){
 		var ln = this.getStore().getCount();
-		var height = 40 + ln * this.getItemHeight() + 10;
+		var height = 30 + ln * this.getItemHeight();
 		
 		this.setHeight(height);
 	}
