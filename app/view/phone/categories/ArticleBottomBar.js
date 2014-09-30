@@ -54,8 +54,18 @@ Ext.define("LDPA.view.phone.categories.ArticleBottomBar", {
 		var rateBtn = this.down("#rateBtn");
 		rateBtn.on("tap", this.onRateBtnTap, this);
 		
+		this.on("updatedata", this.onUpdateData, this);
 		this.on("showbar", this.onShowBar, this);
 		this.on("hidebar", this.onHideBar, this);
+	},
+	
+	
+	onUpdateData: function(values){
+		var rateBtn = this.down("#rateBtn");
+		rateBtn.setHtml(values.ratings);
+		
+		var commentsBtn = this.down("#commentsBtn");
+		commentsBtn.setHtml(values.comment_count);
 	},
 	
 	
@@ -74,7 +84,8 @@ Ext.define("LDPA.view.phone.categories.ArticleBottomBar", {
 		var profile = webcrumbz.profile.toLowerCase();
 		var ratePanel = Ext.create("LDPA.view."+profile+".rate.RatePanel", {
 			mask: mask,
-			zIndex: mask.getZIndex()+1
+			articlePanel: this.getParent(),
+			zIndex: mask.getZIndex()+1,
 		});
 		
 		Ext.Viewport.add(ratePanel);

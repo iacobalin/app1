@@ -105,13 +105,13 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 		showAnimation: {
 			type: "slide",
 			direction: "down",
-			duration: 400,
+			duration: 300,
 			easing: "out"
 		},
 		hideAnimation: {
 			type: "slideOut",
 			direction: "up",
-			duration: 400,
+			duration: 300,
 			easing: "in"
 		}
     },

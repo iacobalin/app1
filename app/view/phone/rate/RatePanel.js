@@ -11,6 +11,7 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 				
 		// custom properties
 		mask: null,
+		articlePanel: null,									// a reference to articlePanel
 										
 		// css properties
 		cls: 'rate-panel',
@@ -74,7 +75,8 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 						pressedCls: 'filled-star',
 						height: 45,
 						width: 45,
-						html: '&nbsp;'
+						html: '&nbsp;',
+						rate: 1
 					},
 					{
 						xtype: "button",
@@ -83,7 +85,8 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 						pressedCls: 'filled-star',
 						height: 45,
 						width: 45,
-						html: '&nbsp;'
+						html: '&nbsp;',
+						rate: 2
 					},
 					{
 						xtype: "button",
@@ -92,7 +95,8 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 						pressedCls: 'filled-star',
 						height: 45,
 						width: 45,
-						html: '&nbsp;'
+						html: '&nbsp;',
+						rate: 3
 					},
 					{
 						xtype: "button",
@@ -101,7 +105,8 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 						pressedCls: 'filled-star',
 						height: 45,
 						width: 45,
-						html: '&nbsp;'
+						html: '&nbsp;',
+						rate: 4
 					},
 					{
 						xtype: "button",
@@ -110,7 +115,8 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 						pressedCls: 'filled-star',
 						height: 45,
 						width: 45,
-						html: '&nbsp;'
+						html: '&nbsp;',
+						rate: 5
 					}
 				]
 			},
@@ -136,6 +142,39 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 		
 		var closeBtn = this.down("#closeBtn");
 		closeBtn.on("tap", this.onCloseBtnTap, this);
+		
+		var sendBtn = this.down("#sendBtn");
+		sendBtn.on("tap", this.onSendBtnTap, this);
+		
+		for (var i=1; i<=5; i++){
+			var starBtn = this.down("#star"+i);
+			starBtn.on("tap", this.onStarBtnTap, this);	
+		}
+	},
+	
+	
+	onStarBtnTap: function(btn){
+		var rate = btn.getRate();
+		console.log(rate);
+	},
+	
+	
+	onSendBtnTap: function(){
+		
+		var articlePanel = this.getArticlePanel();
+		var article = articlePanel.getData();
+		
+		var callback = function(values){
+			this.onClosePanel();
+			console.log(values);
+			// update article's bottom bar
+			articlePanel.down("#bottomBar").fireEvent("updatedata", values);
+		}
+		
+		actionsController.rateArticle({
+			articleId: article.id,
+			callback: callback
+		})
 	},
 	
 	
@@ -145,6 +184,7 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 	
 	onClosePanel: function(){
 		this.hide();
+		this.onCloseBtnTap();
 		
 		var me = this;
 		Ext.defer(function(){
@@ -153,6 +193,7 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 	},
 	
 	onCloseBtnTap: function(){
-		this.getMask().fireEvent("close");	
+		if (this.getMask()) 
+			this.getMask().fireEvent("close");	
 	},
 });
