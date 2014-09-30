@@ -87,9 +87,19 @@
 		width: 60px;
 		height: 60px;
 		line-height: 60px;
+		top: -5px;
+		right: -5px;
 		
 		&::before{
 			line-height: 60px;
 		}
+	}
+}
+.back-button{
+	background: none;
+	border: 0px;
+	
+	.back{
+		@include wbz-inline-icon(left, 20px);
 	}
 }

@@ -4,6 +4,60 @@
 	}
 	.top-bar{
 		background: $orange;
+		
+		.x-panel-inner{
+			padding: 0 10px;
+		}
+		.back-button{
+			@include wbz-box-flex(1);
+			color: #ffffff;
+			
+			.back{
+				color: #ffffff;
+				height: 55px;
+				
+				&::before{
+					line-height: 55px;
+				}
+			}
+			.x-button-label{
+				color: #ffffff;
+				font-size: 12px;
+				line-height: 55px;
+				height: 55px;
+				font-weight: normal;
+				text-align: left;
+			}
+		}
+		.share-facebook-button{
+			width: 30px;
+			
+			.facebook{
+				@include wbz-inline-icon(facebook, 30px);
+				color: #ffffff;
+				line-height: 30px;
+				height: 55px;
+				
+				&::before{
+					line-height: 55px;
+				}
+			}
+		}
+		.share-twitter-button{
+			width: 30px;
+			margin: 0 0 0 10px;
+						
+			.twitter{
+				@include wbz-inline-icon(twitter, 30px);
+				color: #ffffff;
+				line-height: 30px;
+				height: 55px;
+				
+				&::before{
+					line-height: 55px;
+				}
+			}
+		}
 	}
 	.bottom-bar{
 		@include wbz-border-radius(0px);
@@ -33,7 +87,7 @@
 						color: #ffffff;
 						font-weight: normal;
 						position: relative;
-						top: -3px;
+						top: -2px;
 						left: 5px;
 						width: 0px;
 						min-width: 0;
@@ -79,9 +133,18 @@
 		}
 		h1{
 			font-size: 18px;
+			margin: 12px 0 10px 0;
+		}
+		ul, ol{
+			padding-bottom: 10px;
+			margin: 0 0 0 20px;
+		}
+		li{
+			list-style: inherit;
 		}
 		h2{
 			font-size: 17px;
+			margin: 12px 0 10px 0;
 			
 			span{
 				font-size: 19px;
@@ -90,6 +153,7 @@
 		}
 		h3, h4, h5, h6{
 			font-size: 16px;
+			margin: 10px 0 5px 0;
 		}
 		a{
 			color: $blue;
