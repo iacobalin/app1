@@ -19,6 +19,30 @@
 .x-layout-card-item{
 	background: none;
 }
+.x-toolbar-dark{
+	background: none;
+	border: 0px;
+	margin: 0px;
+	@include wbz-border-radius(0px);
+	padding: 0;
+	
+	.x-button{
+		background: none;
+		border: 0px;
+		padding: 0px;
+		margin: 0px;
+		@include wbz-border-radius(0px);
+		@include wbz-display-box();
+		@include wbz-box-pack(center);
+		@include wbz-box-align(center);
+		
+		.x-button-icon{
+			&.x-hidden{
+				display: block;
+			}
+		}
+	}
+}
 .x-button{
 	background: none;
 	border: 0px;

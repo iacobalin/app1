@@ -28,8 +28,8 @@ Ext.define("LDPA.view.phone.video.VideosList", {
 		emptyText: '',
 		useSimpleItems: true,
 		itemTpl: new Ext.XTemplate(
-			'<div style="height: {[ this.getItemHeight(); ]}px; background-image: url({[this.getImage(values.featured_image)]}); ">',
-				'<div class="">',
+			'<div class="img-container vbox" style="height: {[ this.getItemHeight(); ]}px; background-image: url({[this.getImage(values.featured_image)]}); ">',
+				'<div class="gradient-bg vbox">',
 					'<h1>{title}</h1>',
 					'<div class="stats hbox">',
 						'<div class="comments"><div class="icon"></div>{comment_count}</div>',

@@ -70,6 +70,7 @@
 		.back-btn{
 			background: none;
 			border: 0px;
+			padding: 10px;
 			
 			.back{
 				@include wbz-inline-icon(left, 20px);
