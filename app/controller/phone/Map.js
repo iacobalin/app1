@@ -89,7 +89,17 @@ Ext.define('LDPA.controller.phone.Map', {
 						map: map
 					});
 					
-					clearInterval(interval);		
+					clearInterval(interval);
+					
+					// search hospitals
+					var request = {
+						location: position,
+						radius: '15000',
+						types: ['hospital']
+					};	
+					
+					var service = new google.maps.places.PlacesService(map);
+					service.nearbySearch(request, mapController.onHospitalsSearchCallback);
 				}
 			}, 100);
 			
@@ -135,5 +145,60 @@ Ext.define('LDPA.controller.phone.Map', {
 			}, 8000);*/
 		}
 	},
-
+	
+	onHospitalsSearchCallback: function(results, status, pagination){
+		
+		if (status == google.maps.places.PlacesServiceStatus.OK) {
+			for (var i = 0; i < results.length; i++) {
+				var reference = results[i].reference;
+				mapController.getHospitalDetails(reference);
+			}
+		}
+		// ZERO_RESULTS
+		else{
+			//mapController.getHospitalsList().getStore().load(null);	
+		}
+	},
+	
+	
+	getHospitalDetails: function(placeRef){
+		var request = {
+			reference: placeRef
+		};
+		
+		var service = new google.maps.places.PlacesService(this.getMapPanel().getMap());
+		service.getDetails(request, this.hospitalDetailsCallback);
+	},
+	
+	
+	hospitalDetailsCallback: function(place, status){
+		if (status == google.maps.places.PlacesServiceStatus.OK) {
+		  	var cLat = mapController.getGoogleMap()._geo.getLatitude();
+			var cLng = mapController.getGoogleMap()._geo.getLongitude();
+			
+			var placeLat = place.geometry.location.Ya || place.geometry.location.lb;
+			var placeLng = place.geometry.location.Za || place.geometry.location.mb;
+						
+			var latLngA = new google.maps.LatLng(cLat, cLng);
+			var latLngB = new google.maps.LatLng(placeLat, placeLng);
+			
+			var distance = google.maps.geometry.spherical.computeDistanceBetween(latLngA, latLngB);
+			
+			var hospital = Ext.create("LDPA.model.Hospitals",{
+				id: place.id,
+				name: place.name,
+				address: place.formatted_address || "",
+				phone: place.formatted_phone_number || "",
+				website: place.website || "",
+				distance: distance,
+				lat: placeLat,
+				lng: placeLng
+			});
+			
+			
+			mapController.getHospitalsList().getStore().add(hospital)
+			
+			mapController.getGoogleMap().fireEvent("createmarker", hospital);
+		}	
+	},
 });
