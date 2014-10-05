@@ -8,6 +8,10 @@
 	
 	&.x-panel{
 		&.x-floating{
+			@include border-radius(0px);
+			background: #000000;
+			border: 0px;
+				
 		 	> .x-body{
 				background: #000000;
 			}

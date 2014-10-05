@@ -9466,11 +9466,21 @@ body.x-desktop {
   left: 0;
   background: #000;
 }
-/* line 11, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_media.scss */
+/* line 10, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_media.scss */
+.media-panel.x-panel.x-floating {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  background: #000000;
+  border: 0px;
+}
+/* line 15, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_media.scss */
 .media-panel.x-panel.x-floating > .x-body {
   background: #000000;
 }
-/* line 14, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_media.scss */
+/* line 18, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_media.scss */
 .media-panel.x-panel.x-floating .x-panel-inner {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -9479,7 +9489,7 @@ body.x-desktop {
   border-radius: 0px;
   background: #000000;
 }
-/* line 20, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_media.scss */
+/* line 24, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_media.scss */
 .media-panel.x-floating > .x-panel-inner:first-child {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -9488,11 +9498,11 @@ body.x-desktop {
   border-radius: 0px;
   background: #000000;
 }
-/* line 24, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_media.scss */
+/* line 28, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_media.scss */
 .media-panel iframe {
   border: 0px;
 }
-/* line 28, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_media.scss */
+/* line 32, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_media.scss */
 .media-panel .close-button .close {
   color: #ffffff;
 }
