@@ -6,6 +6,7 @@ Ext.define('LDPA.profile.Phone', {
 		"LDPA.controller.phone.Categories",
 		"LDPA.controller.phone.Actions",
 		"LDPA.controller.phone.Videos",
+		"LDPA.controller.phone.Map",
 		"LDPA.view.phone.Main",
 		"LDPA.view.phone.Background"
 	],
@@ -14,7 +15,7 @@ Ext.define('LDPA.profile.Phone', {
         name: 'Phone',
        
 	  	//controllers: ['Home', 'Video', 'Map', 'More']
-		controllers: ['Main', 'Categories', 'Actions', 'Videos']
+		controllers: ['Main', 'Categories', 'Actions', 'Videos', 'Map']
     },
 
     isActive: function() {

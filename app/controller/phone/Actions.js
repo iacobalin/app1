@@ -82,6 +82,7 @@ Ext.define('LDPA.controller.phone.Actions', {
 				break;
 				
 			case "map":
+				mapController.showMap();
 				break;
 				
 			case "comment":
