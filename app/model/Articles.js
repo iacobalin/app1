@@ -16,8 +16,7 @@ Ext.define("LDPA.model.Articles", {
 			{name: 'comment_link', 	type: 'string'},
 			{name: 'ranking', 		type: 'string'},
 			{name: 'comments', 		type: 'object'},
-			{name: 'link', 			type: 'string'},
-			
+			{name: 'link', 			type: 'string'}
 		],
 		
 		hasMany: {

@@ -8,6 +8,10 @@ Ext.define('LDPA.controller.phone.Actions', {
 		refs: {
             mainView: '#mainView',
 						
+			actionsList: {
+				selector: '*[name=actionsList]',
+				autoCreate: true	
+			},
 			actionsListBtn: {
                 selector: 'button[action=view-actions-panel]',
                 xtype: 'button'
@@ -21,7 +25,10 @@ Ext.define('LDPA.controller.phone.Actions', {
 		control: {
            	actionsListBtn: {
                 tap: 'onActionsBtnTap'
-            }
+            },
+			actionsList: {
+				itemtap: 'onActionsListItemTap'		
+			}
   		},
 		
 		
@@ -63,11 +70,42 @@ Ext.define('LDPA.controller.phone.Actions', {
 	},
 	
 	
+	onActionsListItemTap: function(list, index, item, record){
+		
+		switch (record.get("type")){
+			
+			case "call":
+				break;
+				
+			case "video":
+				videosController.showVideos();
+				break;
+				
+			case "map":
+				break;
+				
+			case "comment":
+				break;
+				
+			case "share":
+				break;
+				
+			case "settings":
+				break;
+				
+			default: break;	
+		}	
+	},
+	
+	
+	
+	
 	rateArticle: function(options){
 		
 		// create mask
 		var mask = Ext.create("LDPA.view.MainMask", {
 			disabled: true,
+			spinner: true,
 			closeFn: function(){
 				//actionsList.fireEvent("closepanel");
 			}

@@ -1,7 +1,7 @@
-Ext.define("LDPA.model.VideoArticles", {
+Ext.define("LDPA.model.Video", {
     extend: 'Ext.data.Model',
 	requires: [
-		'Ext.data.proxy.JsonP'
+		
 	],
 	
 	config: {
@@ -24,18 +24,7 @@ Ext.define("LDPA.model.VideoArticles", {
 			model: 'LDPA.model.Comments',
 			name: 'comments',
 			associationKey: 'comments'
-		},
-		
-		proxy: {
-			type: 'jsonp',
-			url : webcrumbz.exportPath+'?json='+(Ext.os.is.Phone ? 'mobile' : 'tablet')+'.video_lessons',
-			//url : 'data/Video.json',
-			timeout: 7000,
-			reader: {
-				type: 'json',
-				rootProperty: 'posts'
-			}
-		},
+		}
 	},
 	
 	updateData: function(){

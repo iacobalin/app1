@@ -1,32 +1,61 @@
 Ext.define("LDPA.view.phone.video.Video", {
     extend: 'Ext.Panel',
 	
-    requires: [
-        'Ext.TitleBar',
-	   	'LDPA.view.phone.video.VideoList',
-	   	'LDPA.view.phone.video.VideoDetails'
-    ],
+	requires: [
+		'LDPA.view.phone.video.VideosList',
+		'LDPA.view.phone.video.VideoPanel'
+	],
 	
-    config: {
-        
-		id: 'videoPanel',
-		title: 'Lec&#355;ii video',
-		iconCls: 'video-icon',
-		layout: 'card',
-        cls: 'videos-panel'
-    },
+	config: {
+		
+		itemId: "videoView",
+				
+		// custom properties
+		mask: null,
+		
+								
+		// css properties
+		layout: {
+			type: 'card'	
+		},
+		width: "100%",
+		height: "100%",
+						
+		// properties
+		scrollable: null,
+		hidden: true,
+		showAnimation: {
+			type: "popIn",
+			duration: 400,
+			easing: "out"
+		},
+		hideAnimation: {
+			type: "popOut",
+			duration: 400,
+			easing: "in"
+		},
+	},
 	
 	
 	initialize: function(){
-		
-		// videos list
-		var item = Ext.create("LDPA.view.phone.video.VideoList");
-		this.add(item);
-		
-		// video details
-		var item = Ext.create("LDPA.view.phone.video.VideoDetails");
-		this.add(item);
-		
 		this.callParent(arguments);
-	}
+		
+		var videosList = Ext.create("LDPA.view.phone.video.VideosList");
+		this.add(videosList);
+		
+		var videoPanel = Ext.create("LDPA.view.phone.video.VideoPanel");
+		this.add(videoPanel);
+		
+		this.on("openpanel", this.onOpenPanel, this);
+		this.on("closepanel", this.onClosePanel, this);
+	},
+	
+	
+	onOpenPanel: function(){
+		this.show();
+	},
+	
+	onClosePanel: function(){
+		this.hide();
+	},
 });

@@ -10,7 +10,8 @@ Ext.define('LDPA.controller.phone.Main', {
 		'LDPA.store.CategoriesOffline',
 		'LDPA.view.MainMask',
 		'LDPA.view.phone.actions.ActionsList',
-		'LDPA.view.phone.categories.Category'
+		'LDPA.view.phone.categories.Category',
+		'LDPA.view.phone.video.Video'
 	],
 	
     config: {

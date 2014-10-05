@@ -8,6 +8,7 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 	config: {
 		
 		itemId: 'actionsList',
+		name: 'actionsList',
 		
 		// custom properties
 		mask: null,
@@ -119,7 +120,7 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 	initialize: function(){
 		this.callParent(arguments);
 		
-		this.on("itemtap", this.onListItemTap, this);
+		//this.on("itemtap", this.onListItemTap, this);
 		
 		var backBtn = this.down("#backBtn");
 		backBtn.on("tap", this.onBackBtnTap, this);
@@ -154,7 +155,7 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 		this.setHeight(listHeight+10);
 	},
 	
-	onListItemTap: function(list, index, item, record){
+	/*onListItemTap: function(list, index, item, record){
 		
 		switch (record.get("type")){
 			
@@ -178,7 +179,7 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 				
 			default: break;	
 		}
-	},
+	},*/
 	
 	
 	onBackBtnTap: function(){

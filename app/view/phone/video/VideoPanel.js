@@ -1,13 +1,14 @@
-Ext.define("LDPA.view.phone.categories.ArticlePanel", {
+Ext.define("LDPA.view.phone.video.VideoPanel", {
     extend: 'Ext.Panel',
 	
 	requires: [
-		"LDPA.view.phone.categories.ArticleBottomBar"
+		"LDPA.view.phone.video.VideoBottomBar",
+		"LDPA.view.phone.video.MediaPanel"
 	],
 	
 	config: {
 		
-		itemId: "articlePanel",
+		itemId: "videoPanel",
 				
 		// custom properties
 		mask: null,
@@ -15,7 +16,7 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 		bottomBar: null,									// a reference of the bottom bar
 								
 		// css properties
-		cls: 'article-panel',
+		cls: 'video-panel',
 						
 		// properties
 		scrollable:{
@@ -26,7 +27,46 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 			'<h1>{title}</h1>'+           
             '<div class="content">',
 				'{content}',
-			'</div>'
+			'</div>',
+			'<div class="article-media" data-video-image="{featured_image}" data-video-link="{video_link}" style="width: {[ this.getImgWidth(); ]}px; height: {[ this.getImgHeight(); ]}px; position:relative; margin:0 auto; background: url(\'{[this.getImage(values.featured_image)]}\') center center no-repeat;">',
+				'<div class="overlay" style="width:100%; height:100%; position:absolute; top:0;"></div>',
+			'</div>',
+			{
+				imageWidth: 441,
+				imageHeight: 326,
+				padding: 25,
+				getImgWidth: function(){
+					
+					var width = Ext.Viewport.getWindowWidth() - 2*this.padding;
+					return Math.floor(width);
+				},
+				getImgHeight: function(){
+					
+					var height = this.getImgWidth() * this.imageHeight / this.imageWidth;
+					return Math.floor(height);
+				},
+				getImage: function(image){
+					/*var imagesOffline = LDPA.app.imagesOffline;
+					var offlineRecord = imagesOffline.findRecord("url",image, 0, false, true, true);
+					if (offlineRecord && offlineRecord.get("dataUrl")){
+						return offlineRecord.get("dataUrl");
+					}
+					
+					if (LDPA.app.isOnline()){
+						if (image)
+							return 'http://src.sencha.io/300/'+image;		
+					}*/
+					
+					return image;
+				},
+				getOrientation: function(){
+					if (!Ext.os.is.Android){
+						return 	Ext.Viewport.getOrientation();
+					}
+					
+					return Ext.Viewport.getWindowWidth() > Ext.Viewport.getWindowHeight() ? "landscape" : "portrait";
+				}	
+			}
 		),
 		items: [
 			{
@@ -44,7 +84,7 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 					{
 						xtype: 'button',
 						itemId: "backBtn",
-						html: "",
+						html: "Lectii video",
 						cls: 'back-button',
 						pressedCls: 'pressed',
 						iconCls: 'back',
@@ -53,7 +93,7 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 						xtype: "button",
 						action: 'share-facebook',
 						iconCls: 'facebook',
-						html: '&nbsp;',
+						html: '',
 						cls: 'share-facebook-button',
 						pressedCls: 'pressed',
 					},
@@ -61,7 +101,7 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 						xtype: "button",
 						action: 'share-twitter',
 						iconCls: 'twitter',
-						html: '&nbsp;',
+						html: '',
 						cls: 'share-twitter-button',
 						pressedCls: 'pressed',
 					}
@@ -74,7 +114,7 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 	initialize: function(){
 		this.callParent(arguments);
 		
-		var bottomBar = Ext.create("LDPA.view.phone.categories.ArticleBottomBar");
+		var bottomBar = Ext.create("LDPA.view.phone.video.VideoBottomBar");
 		this.add(bottomBar);
 		this.setBottomBar(bottomBar);
 		
@@ -97,9 +137,6 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 	
 	onAddContent: function(article){
 		
-		var backBtn = this.down("#backBtn"); 
-		backBtn.setHtml(article.category);
-		
 		// update bottom bar
 		var bottomBar = this.getBottomBar();
 		bottomBar.fireEvent("updatedata", {
@@ -109,6 +146,14 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 		
 		this.setData(article);
 		this.handleOrientationChange();
+		
+		// attach tap event for each media items on this panel
+		var mediaItems = this.element.query(".article-media");
+		for (var i=0; i<mediaItems.length; i++){
+			var item = Ext.get(mediaItems[i]);
+			
+			item.on("tap", this.onMediaItemTap, this);
+		}
 	},
 	
 	
@@ -145,6 +190,44 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 			this.lastScrollY = scrollY;
 		}
 	},
+	
+	onMediaItemTap: function(event, item){
+		var video = Ext.get(item).up(".article-media").dom;
+		var videoLink = video.getAttribute("data-video-link");
+		var videoImage = video.getAttribute("data-video-image");
+		
+		// create mask
+		var mask = Ext.create("LDPA.view.MainMask", {
+			spinner: false,
+			closeFn: function(){
+				mediaPanel.fireEvent("closepanel");
+			}
+		});
+		
+		Ext.Viewport.add(mask);
+		
+		// create media panel
+		var mediaPanel = Ext.create("LDPA.view.phone.video.MediaPanel", {
+			mask: mask,
+			zIndex: mask.getZIndex()+1
+		});
+		
+		Ext.Viewport.add(mediaPanel);
+		
+		mask.show();
+		
+		// add content
+		mediaPanel.fireEvent("addcontent", {
+			videoLink: videoLink,
+			videoImage: videoImage,
+			width: parseInt(video.style.width),
+			height: parseInt(video.style.height)
+		});
+		
+		// open panel
+		mediaPanel.fireEvent("openpanel");
+	},
+	
 	
 	onClosePanel: function(){
 		this.getParent().animateActiveItem(0, {direction: "right", type: "slide"})	
