@@ -1,0 +1,226 @@
+.hospitals-list{
+	background: #ffffff;
+	
+	.top-bar{
+		background: $orange;
+		border-bottom: 2px solid #ffffff;
+		
+		.x-title{
+			font-size: 18px;
+			color: #ffffff;
+			text-shadow: none;
+			font-weight: normal;
+		}
+		.close-button{
+			.close{
+				color: #ffffff;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+				top: 0px;
+				right: 0px;
+				
+				&::before{
+					line-height: 50px!important;
+				}
+			}
+		}
+	}
+	
+	.x-dataview-container{
+		.item{
+			border-bottom: 2px solid #ffffff;
+			
+			.img-container{
+				@include wbz-box-pack(end);
+				@include wbz-box-align(start);
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+			.gradient-bg{
+				@include wbz-box-pack(center);
+				overflow: hidden;
+				padding: 0px 10px 10px 10px;
+				@include background(linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3) 0.3, rgba(0,0,0,0.6) 0.97, rgba(0,0,0,0.7)));
+				background: -ms-linear-gradient(top, rgba(0,0,0,00) 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.6) 97%,  rgba(0,0,0,0.7) 100%); /* IE10+ */
+				width: 100%;
+				
+				h1{
+					font-size: 15px;
+					color: #ffffff;
+					font-weight: normal;
+					margin: 0 0 5px 0;
+				}
+				.stats{
+					@include wbz-box-pack(start);
+					
+					.comments{
+						font-size: 13px;
+						color: $light-blue;	
+						@include wbz-display-inline-box();
+						margin: 0 15px 0 0;
+						
+						.icon{
+							@include wbz-inline-icon(comment_empty, 18px);
+							color: $light-blue;
+							width: 18px;
+							height: 18px;
+							margin: 0 5px 0 0;
+							
+							&::before{
+								line-height: 18px;
+								position: relative;
+							}
+						}
+					}
+					.ranking{
+						font-size: 13px;
+						color: $light-blue;	
+						@include wbz-display-inline-box();
+						margin: 0 15px 0 0;
+						
+						.icon{
+							@include wbz-inline-icon(star, 18px);
+							color: $light-blue;
+							width: 18px;
+							height: 18px;
+							margin: 0 5px 0 0;
+							
+							&::before{
+								line-height: 18px;
+								position: relative;
+							}
+						}
+					}
+				}
+			}	
+		}
+	}
+}
+.map-panel{
+	&.x-layout-card-item{
+		background: #ffffff;
+	}
+	.top-bar{
+		background: $orange;
+		border-bottom: 0px;
+		
+		.x-title{
+			font-size: 18px;
+			color: #ffffff;
+			text-shadow: none;
+			font-weight: normal;
+		}
+		.x-panel-inner{
+			padding: 0 10px;
+		}
+		.close-button{
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			
+			.close{
+				color: #ffffff;
+				top: 0px;
+				right: 0px;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+				
+				&::before{
+					line-height: 50px;
+				}
+			}
+		}
+	}
+	.bottom-bar{
+		@include wbz-border-radius(0px);
+		@include wbz-box-shadow(none);
+		padding: 0px;
+		background: $light-blue;
+		border-top: 1px solid #a4ccea;
+		
+		.x-button{
+			&.pressed{
+				background: $blue;
+			}
+			.x-button-icon{
+				color: #ffffff;
+			}
+			.x-button-label{
+				@include wbz-box-shadow(none);
+				background: none;
+				border: 0px;
+				text-shadow: none;
+				font-size: 16px;
+				color: #ffffff;
+				font-weight: normal;
+				position: relative;
+				top: -2px;
+				left: 5px;
+				width: 0px;
+				min-width: 0;
+				@include wbz-display-inline-box();
+				overflow: visible;
+			}
+		}
+		.open-button{
+			background: $blue;
+			
+			&.pressed{
+				opacity: 0.8;
+			}
+			.toggle{
+				@include wbz-inline-icon(left, 24px);
+				
+				&.up{
+					@include wbz-transform(rotate(90deg));
+				}
+				&.down{
+					@include wbz-transform(rotate(-90deg));
+				}
+			}
+		}
+	}
+	.hospitals-bar{
+		background: $light-blue;
+		
+		.x-panel-inner{
+			.x-innerhtml{
+				@include wbz-display-box();
+				@include wbz-box-orient(horizontal);
+				@include wbz-box-pack(start);
+				@include wbz-box-align(center);
+				
+				.icon{
+					@include wbz-inline-icon(office, 22px);
+					color: #ffffff;
+					width: 50px;
+					height: 50px;
+					display: -webkit-box;
+					position: relative;
+					line-height: 40px;
+					
+					&::before{
+						width: 50px;
+						height: 50px;
+						line-height: 40px;
+					}
+				}
+				.title{
+					font-size: 15px;
+					color: #ffffff;
+					
+					h1{
+						text-overflow: ellipsis;
+						overflow: hidden;
+						display: block;
+						white-space: nowrap;
+						margin: 0 60px 0 0;
+					}
+				}
+			}
+		}
+	}
+}

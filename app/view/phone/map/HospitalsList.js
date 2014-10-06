@@ -17,7 +17,7 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 		cls: 'hospitals-list',
 		itemCls: 'item',
 		selectedCls: '',
-		pressedCls: 'item-pressed',
+		pressedCls: 'pressed',
 								
 		// properties
 		scrollable:{
@@ -81,10 +81,10 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 				itemId: "topBar",
 				height: 55,
 				docked: "top",	  
-				cls: "top-bar",
+				cls: "hospitals-bar",
 				tpl: [
 					'<div class="icon"></div>',
-					'<div><h1>{hospitals} pe o raza de {radius}km</h1></div>'
+					'<div class="title"><h1>{hospitals} pe o raza de {radius}km</h1></div>'
 				].join(""),
 				layout: {
 					type: "hbox",
@@ -97,8 +97,8 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 					iconCls: 'toggle',
 					cls: 'open-button',
 					pressedCls: 'pressed',
-					width: 50,
-					height: 50,
+					width: 55,
+					height: 55,
 					top: 0,
 					right: 0,
 					html: '',
