@@ -33,21 +33,21 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
             '<div class="name">{[this.parseName(values.name)]} <span class="distance">({[this.parseDistance(values.distance)]} m)</span></div>',
 			
 			'<tpl if="address.length &gt; 0">',
-				'<div class="item address">' +
+				'<div class="address hbox">' +
                     '<div class="icon">&nbsp;</div>' +
                     '<div class="text">{[this.parseAddress(values.address)]}</div>' +
                 '</div>',
 			'</tpl>',
 
             '<tpl if="phone.length &gt; 0">',
-                '<div class="item phone">' +
+                '<div class="phone hbox">' +
                     '<div class="icon">&nbsp;</div>' +
                     '<div class="text">{phone}</div>' +
                 '</div>',
             '</tpl>',
 
             '<tpl if="website.length &gt; 0">',
-                '<div class="item website">' +
+                '<div class="website hbox">' +
                     '<div class="icon">&nbsp;</div>' +
                     '<div class="text"><a href="{website}" target="_blank">{[this.parseWebsite(values.website)]}</a></div>' +
                 '</div>',
