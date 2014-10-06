@@ -2,8 +2,7 @@ Ext.define("LDPA.view.phone.map.MapPanel", {
     extend: 'Ext.Map',
 	
 	requires: [
-		//"LDPA.view.phone.video.VideoBottomBar",
-		//"LDPA.view.phone.video.MediaPanel"
+		"LDPA.view.phone.map.HospitalsList",
 	],
 	
 	config: {
@@ -84,6 +83,9 @@ Ext.define("LDPA.view.phone.map.MapPanel", {
 		
 		var closeBtn = this.down("#closeBtn"); 
 		closeBtn.on("tap", this.onClosePanel, this);
+		
+		var hospitalsList = Ext.create("LDPA.view.phone.map.HospitalsList");
+		this.down("#bottomBar").add(hospitalsList);
 		
 		// add a handler for the orientationchange event of the viewport
 		Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });

@@ -14,6 +14,10 @@ Ext.define('LDPA.controller.phone.Map', {
             mapPanel: {
 				selector: "#mapPanel",
 				autoCreate: true	
+			},
+			hospitalsList: {
+				selector: "#mapPanel #hospitalsList",
+				autoCreate: true	
 			}
         },
 		
@@ -21,9 +25,9 @@ Ext.define('LDPA.controller.phone.Map', {
 			mapPanel: {
 				createmarker: 'onCreateMarker',
 			},
-			/*hospitalsList: {
+			hospitalsList: {
 				itemtap: 'onVideosListItemTap'	
-			}*/
+			}
 		}
     },
 	
@@ -102,61 +106,31 @@ Ext.define('LDPA.controller.phone.Map', {
 					service.nearbySearch(request, mapController.onHospitalsSearchCallback);
 				}
 			}, 100);
-			
-			/*
-			
-			// request 1
-			var request1 = {
-				location: position,
-				radius: '20000',
-				types: ['hospital'],
-				name: 'spital'
-			};
-			
-			// request 2
-			var request2 = {
-				location: position,
-				radius: '20000',
-				types: ['hospital'],
-				name: 'spitalul'
-			};
-			
-			// request 3
-			var request3 = {
-				location: position,
-				radius: '20000',
-				types: ['hospital']
-			};
-			
-			var service = new google.maps.places.PlacesService(map);
-			service.nearbySearch(request1, this.onHospitalsSearchCallback);
-			
-			
-			setTimeout(function(){
-				if (googleMap.getCountry() == "romania"){
-					service.nearbySearch(request2, mapController.onHospitalsSearchCallback);
-				}
-			}, 3500);
-			
-			setTimeout(function(){
-				if (googleMap.getCountry() != "romania"){
-					service.nearbySearch(request3, mapController.onHospitalsSearchCallback);
-				}
-			}, 8000);*/
 		}
 	},
 	
 	onHospitalsSearchCallback: function(results, status, pagination){
-		
 		if (status == google.maps.places.PlacesServiceStatus.OK) {
-			for (var i = 0; i < results.length; i++) {
+			
+			var i=0;
+			var interval = setInterval(function(){
 				var reference = results[i].reference;
 				mapController.getHospitalDetails(reference);
-			}
+				
+				i++;
+				if (i == results.length){
+					clearInterval(interval);	
+				}
+			}, 300);
+			
+			mapController.getHospitalsList().fireEvent("updatebar",{
+				hospitals: results.length,
+				radius: '15'
+			})
 		}
 		// ZERO_RESULTS
 		else{
-			//mapController.getHospitalsList().getStore().load(null);	
+			mapController.getHospitalsList().getStore().load(null);	
 		}
 	},
 	
@@ -172,13 +146,27 @@ Ext.define('LDPA.controller.phone.Map', {
 	
 	
 	hospitalDetailsCallback: function(place, status){
+		
 		if (status == google.maps.places.PlacesServiceStatus.OK) {
-		  	var cLat = mapController.getGoogleMap()._geo.getLatitude();
-			var cLng = mapController.getGoogleMap()._geo.getLongitude();
+		  	var mapPanel = mapController.getMapPanel();
+			var geo = mapPanel.getGeo();
+			var cLat = geo._latitude;
+			var cLng = geo._longitude;
 			
-			var placeLat = place.geometry.location.Ya || place.geometry.location.lb;
-			var placeLng = place.geometry.location.Za || place.geometry.location.mb;
-						
+			var i = 0, placeLat, placeLng;
+			for (var prop in place.geometry.location){
+				i++;
+				
+				// latitude
+				if (i == 1){
+					placeLat = place.geometry.location[prop];
+				}
+				// longitude
+				else if (i == 2){
+					placeLng = place.geometry.location[prop];
+				}
+			}
+			
 			var latLngA = new google.maps.LatLng(cLat, cLng);
 			var latLngB = new google.maps.LatLng(placeLat, placeLng);
 			
@@ -196,9 +184,9 @@ Ext.define('LDPA.controller.phone.Map', {
 			});
 			
 			
-			mapController.getHospitalsList().getStore().add(hospital)
+			mapController.getHospitalsList().getStore().add(hospital);
 			
-			mapController.getGoogleMap().fireEvent("createmarker", hospital);
+			//mapController.getGoogleMap().fireEvent("createmarker", hospital);
 		}	
 	},
 });
