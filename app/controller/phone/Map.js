@@ -99,7 +99,8 @@ Ext.define('LDPA.controller.phone.Map', {
 					var request = {
 						location: position,
 						radius: '15000',
-						types: ['hospital']
+						types: ['hospital'],
+						language: "ro"
 					};	
 					
 					var service = new google.maps.places.PlacesService(map);
@@ -112,6 +113,11 @@ Ext.define('LDPA.controller.phone.Map', {
 	onHospitalsSearchCallback: function(results, status, pagination){
 		if (status == google.maps.places.PlacesServiceStatus.OK) {
 			
+			mapController.getHospitalsList().fireEvent("updatebar",{
+				hospitals: results.length,
+				radius: '15'
+			})
+			
 			var i=0;
 			var interval = setInterval(function(){
 				var reference = results[i].reference;
@@ -122,11 +128,6 @@ Ext.define('LDPA.controller.phone.Map', {
 					clearInterval(interval);	
 				}
 			}, 300);
-			
-			mapController.getHospitalsList().fireEvent("updatebar",{
-				hospitals: results.length,
-				radius: '15'
-			})
 		}
 		// ZERO_RESULTS
 		else{

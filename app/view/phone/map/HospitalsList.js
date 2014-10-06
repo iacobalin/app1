@@ -11,6 +11,7 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 		name: "hospitalsList",
 				
 		// custom properties
+		opened: false,									// a flag indicating if the list is opened or not
 										
 		// css properties
 		cls: 'hospitals-list',
@@ -27,6 +28,7 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 		disableSelection: true,
 		emptyText: '',
 		useSimpleItems: true,
+		variableHeights: true,
 		itemTpl: new Ext.XTemplate(
             '<div class="name">{[this.parseName(values.name)]} <span class="distance">({[this.parseDistance(values.distance)]} m)</span></div>',
 			
@@ -80,7 +82,10 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 				height: 55,
 				docked: "top",	  
 				cls: "top-bar",
-				tpl: '<div><h1>{hospitals} pe o raza de {radius}km</h1></div>',
+				tpl: [
+					'<div class="icon"></div>',
+					'<div><h1>{hospitals} pe o raza de {radius}km</h1></div>'
+				].join(""),
 				layout: {
 					type: "hbox",
 					pack: "justify",
@@ -88,9 +93,9 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 				},
 				items: [{
 					xtype: "button",
-					itemId: "closeBtn",
-					iconCls: 'close',
-					cls: 'close-button',
+					itemId: "toggleBtn",
+					iconCls: 'toggle',
+					cls: 'open-button',
 					pressedCls: 'pressed',
 					width: 50,
 					height: 50,
@@ -108,10 +113,11 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 		
 		this.setStore(Ext.create("LDPA.store.Videos"));
 		
-		var closeBtn = this.down("#closeBtn");
-		closeBtn.on("tap", this.onClosePanel, this);
+		var toggleBtn = this.down("#toggleBtn");
+		toggleBtn.on("tap", this.onToggleBtnTap, this);
 		
 		this.on("updatebar", this.onUpdateBar, this);
+		this.on("updateheight", this.onUpdateHeight, this);
 		this.on("openpanel", this.onOpenPanel, this);
 		this.on("closepanel", this.onClosePanel, this);
 		
@@ -140,16 +146,61 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 			hospitals: text,
 			radius: radius	
 		})
-		
-		console.log(this.down("#topBar").getData())
 	},
 	
+	onUpdateHeight: function(){
+		var height = Ext.Viewport.getWindowHeight() * 0.6;
+		this.setHeight(height);
+	},
 	
-	onClosePanel: function(){
-		this.getParent().fireEvent("closepanel");
+	onToggleBtnTap: function(){
+		var opened = !this.getOpened();
+		this.setOpened(opened);
+		
+		if (opened){
+			this.fireEvent("openpanel");
+		}
+		else{
+			this.fireEvent("closepanel");	
+		}
 	},
 	
 	handleOrientationChange: function(){
 		this.refresh();
+		this.fireEvent("updateheight");
+	},
+	
+	
+	onOpenPanel: function(){
+		var translateValue = -this.getHeight();
+		var time = 0.4;
+		
+        this.setStyle({
+            '-webkit-transition': 'all '+time+'s ease',
+            '-moz-transition': 'all '+time+'s ease',
+            '-o-transition': 'all '+time+'s ease',
+            'transition': 'all '+time+'s ease',
+            '-webkit-transform': 'translate3d(0px, ' + translateValue + 'px, 0px)',
+            '-moz-transform': 'translate3d(0px, ' + translateValue + 'px, 0px)',
+            '-ms-transform': 'translate3d(0px, ' + translateValue + 'px, 0px)',
+            '-o-transform': 'translate3d(0px, ' + translateValue + 'px, 0px)',
+            'transform': 'translate3d(0px, ' + translateValue + 'px, 0px)'
+        });
+	},
+	
+	onClosePanel: function(){
+		var time = 0.4;
+		
+        this.setStyle({
+            '-webkit-transition': 'all '+time+'s ease',
+            '-moz-transition': 'all '+time+'s ease',
+            '-o-transition': 'all '+time+'s ease',
+            'transition': 'all '+time+'s ease',
+            '-webkit-transform': 'translate3d(0px, 0px, 0px)',
+            '-moz-transform': 'translate3d(0px, 0px, 0px)',
+            '-ms-transform': 'translate3d(0px, 0px, 0px)',
+            '-o-transform': 'translate3d(0px, 0px, 0px)',
+            'transform': 'translate3d(0px, 0px, 0px)'
+        });
 	}
 });

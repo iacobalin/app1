@@ -86,6 +86,7 @@ Ext.define("LDPA.view.phone.map.MapPanel", {
 		
 		var hospitalsList = Ext.create("LDPA.view.phone.map.HospitalsList");
 		this.down("#bottomBar").add(hospitalsList);
+		hospitalsList.fireEvent("updateheight");
 		
 		// add a handler for the orientationchange event of the viewport
 		Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });
