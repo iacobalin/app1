@@ -19,8 +19,8 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 		cls: 'hospitals-list',
 		itemCls: 'item',
 		selectedCls: '',
-		pressedCls: 'item-pressed',
-		selectedCls: 'item-selected',
+		pressedCls: 'pressed',
+		selectedCls: 'selected',
 								
 		// properties
 		scrollable:{
@@ -35,21 +35,21 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
             '<div class="name">{[this.parseName(values.name)]} <span class="distance">({[this.parseDistance(values.distance)]})</span></div>',
 			
 			'<tpl if="address.length &gt; 0">',
-				'<div class="item address">' +
+				'<div class="address hbox">' +
                     '<div class="icon">&nbsp;</div>' +
                     '<div class="text">{[this.parseAddress(values.address)]}</div>' +
                 '</div>',
 			'</tpl>',
 
             '<tpl if="phone.length &gt; 0">',
-                '<div class="item phone">' +
+                '<div class="phone hbox">' +
                     '<div class="icon">&nbsp;</div>' +
                     '<div class="text">{phone}</div>' +
                 '</div>',
             '</tpl>',
 
             '<tpl if="website.length &gt; 0">',
-                '<div class="item website">' +
+                '<div class="website hbox">' +
                     '<div class="icon">&nbsp;</div>' +
                     '<div class="text"><a href="{website}" target="_blank">{[this.parseWebsite(values.website)]}</a></div>' +
                 '</div>',
@@ -88,10 +88,10 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 				itemId: "topBar",
 				height: 55,
 				docked: "top",	  
-				cls: "top-bar",
+				cls: "hospitals-bar",
 				tpl: [
 					'<div class="icon"></div>',
-					'<div><h1>{hospitals} pe o raza de {radius}km</h1></div>'
+					'<div class="title"><h1>{hospitals} pe o raza de {radius}km</h1></div>'
 				].join(""),
 				layout: {
 					type: "hbox",
@@ -104,8 +104,8 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 					iconCls: 'toggle',
 					cls: 'open-button',
 					pressedCls: 'pressed',
-					width: 50,
-					height: 50,
+					width: 55,
+					height: 55,
 					top: 0,
 					right: 0,
 					html: '',

@@ -9507,6 +9507,284 @@ body.x-desktop {
   color: #ffffff;
 }
 
+/* line 1, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.hospitals-list {
+  background: #f6f6f8;
+}
+/* line 5, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.hospitals-list .x-dataview-container .item {
+  border-bottom: 1px solid #d9e0f0;
+  padding: 0 0 10px 0;
+}
+/* line 9, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.hospitals-list .x-dataview-container .item .name {
+  font-size: 16px;
+  color: #373737;
+  line-height: 18px;
+  padding: 15px 20px;
+}
+/* line 15, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.hospitals-list .x-dataview-container .item .name span {
+  font-size: 13px;
+  color: #e64415;
+}
+/* line 20, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.hospitals-list .x-dataview-container .item div {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  box-pack: start;
+  justify-content: flex-start;
+}
+/* line 23, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.hospitals-list .x-dataview-container .item div .text {
+  font-size: 11px;
+  color: #979696;
+}
+/* line 27, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.hospitals-list .x-dataview-container .item div .text a {
+  color: #5389c2;
+}
+/* line 31, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.hospitals-list .x-dataview-container .item div .icon {
+  color: #979696;
+  position: relative;
+  width: 20px;
+  margin: 0 10px 0 0;
+}
+/* line 38, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.hospitals-list .x-dataview-container .item .address {
+  padding: 2px 20px;
+}
+/* line 14, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/mixins/_icon.scss */
+.hospitals-list .x-dataview-container .item .address .icon:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  font-family: "LDPA-Pictos" !important;
+  font-size: 20px !important;
+  font-weight: normal!important;
+  content: "\31";
+}
+/* line 45, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.hospitals-list .x-dataview-container .item .phone {
+  padding: 2px 20px;
+}
+/* line 14, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/mixins/_icon.scss */
+.hospitals-list .x-dataview-container .item .phone .icon:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  font-family: "LDPA-Pictos" !important;
+  font-size: 20px !important;
+  font-weight: normal!important;
+  content: "\35";
+}
+/* line 52, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.hospitals-list .x-dataview-container .item .website {
+  padding: 2px 20px;
+}
+/* line 14, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/mixins/_icon.scss */
+.hospitals-list .x-dataview-container .item .website .icon:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  font-family: "LDPA-Pictos" !important;
+  font-size: 20px !important;
+  font-weight: normal!important;
+  content: "\29";
+}
+
+/* line 63, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel.x-layout-card-item {
+  background: #ffffff;
+}
+/* line 66, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .top-bar {
+  background: #ee7f00;
+  border-bottom: 0px;
+}
+/* line 70, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .top-bar .x-title {
+  font-size: 18px;
+  color: #ffffff;
+  text-shadow: none;
+  font-weight: normal;
+}
+/* line 76, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .top-bar .x-panel-inner {
+  padding: 0 10px;
+}
+/* line 79, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .top-bar .close-button {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+}
+/* line 84, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .top-bar .close-button .close {
+  color: #ffffff;
+  top: 0px;
+  right: 0px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+}
+/* line 92, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .top-bar .close-button .close::before {
+  line-height: 50px;
+}
+/* line 98, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .bottom-bar {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  padding: 0px;
+  background: #7caad6;
+  border-top: 1px solid #a4ccea;
+}
+/* line 106, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .bottom-bar .x-button.pressed {
+  background: #5389c2;
+}
+/* line 109, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .bottom-bar .x-button .x-button-icon {
+  color: #ffffff;
+}
+/* line 112, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .bottom-bar .x-button .x-button-label, .map-panel .bottom-bar .x-button .x-badge, .map-panel .bottom-bar .x-button .x-hasbadge .x-badge, .x-hasbadge .map-panel .bottom-bar .x-button .x-badge {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background: none;
+  border: 0px;
+  text-shadow: none;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: normal;
+  position: relative;
+  top: -2px;
+  left: 5px;
+  width: 0px;
+  min-width: 0;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: -moz-inline-box;
+  display: inline-flex;
+  overflow: visible;
+}
+/* line 129, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .bottom-bar .open-button {
+  background: #5389c2;
+}
+/* line 132, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .bottom-bar .open-button.pressed {
+  opacity: 0.8;
+}
+/* line 14, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/mixins/_icon.scss */
+.map-panel .bottom-bar .open-button .toggle:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  font-family: "LDPA-Pictos" !important;
+  font-size: 24px !important;
+  font-weight: normal!important;
+  content: "\28";
+}
+/* line 138, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .bottom-bar .open-button .toggle.up {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+/* line 141, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .bottom-bar .open-button .toggle.down {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+/* line 147, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .hospitals-bar {
+  background: #7caad6;
+}
+/* line 151, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .hospitals-bar .x-panel-inner .x-innerhtml {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: box;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  box-orient: horizontal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  box-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  box-align: center;
+  align-items: center;
+}
+/* line 157, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .hospitals-bar .x-panel-inner .x-innerhtml .icon {
+  color: #ffffff;
+  width: 50px;
+  height: 50px;
+  display: -webkit-box;
+  position: relative;
+  line-height: 40px;
+}
+/* line 14, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/mixins/_icon.scss */
+.map-panel .hospitals-bar .x-panel-inner .x-innerhtml .icon:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  font-family: "LDPA-Pictos" !important;
+  font-size: 22px !important;
+  font-weight: normal!important;
+  content: "\34";
+}
+/* line 166, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .hospitals-bar .x-panel-inner .x-innerhtml .icon::before {
+  width: 50px;
+  height: 50px;
+  line-height: 40px;
+}
+/* line 172, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .hospitals-bar .x-panel-inner .x-innerhtml .title {
+  font-size: 15px;
+  color: #ffffff;
+}
+/* line 176, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_maps.scss */
+.map-panel .hospitals-bar .x-panel-inner .x-innerhtml .title h1 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+  white-space: nowrap;
+  margin: 0 60px 0 0;
+}
+
 /**********************************************************************************************************************/
 /*
 /* IMPORT WIDGETS 
