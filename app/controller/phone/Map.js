@@ -22,11 +22,8 @@ Ext.define('LDPA.controller.phone.Map', {
         },
 		
 		control: {
-			mapPanel: {
-				createmarker: 'onCreateMarker',
-			},
 			hospitalsList: {
-				itemtap: 'onVideosListItemTap'	
+				itemtap: 'onHospitalsListItemTap'	
 			}
 		}
     },
@@ -39,15 +36,6 @@ Ext.define('LDPA.controller.phone.Map', {
 	launch: function() {
 		
     },
-	
-	
-	/*processVideos: function(videos){
-		Ext.each(videos, function(video){
-			video.articleId = video.id;
-		});
-		
-		return videos;
-	},*/
 	
 	
 	showMap: function(){
@@ -179,7 +167,7 @@ Ext.define('LDPA.controller.phone.Map', {
 				address: place.formatted_address || "",
 				phone: place.formatted_phone_number || "",
 				website: place.website || "",
-				distance: distance,
+				distance: Math.round(distance),
 				lat: placeLat,
 				lng: placeLng
 			});
@@ -187,7 +175,121 @@ Ext.define('LDPA.controller.phone.Map', {
 			
 			mapController.getHospitalsList().getStore().add(hospital);
 			
-			//mapController.getGoogleMap().fireEvent("createmarker", hospital);
+			mapController.onCreateMarker(hospital);
 		}	
+	},
+	
+	
+	onCreateMarker: function(hospital){
+		
+		var mapPanel = this.getMapPanel();
+		var hospitalsList = this.getHospitalsList();
+		
+		// add hospital marker
+		var position = new google.maps.LatLng(hospital.get("lat"), hospital.get("lng"));
+		
+		var shadow = new google.maps.MarkerImage("resources/images/phone/shadow-hmarker.png",
+			new google.maps.Size(40.0, 31.0),
+			new google.maps.Point(0, 0),
+			new google.maps.Point(12, 31)
+		);
+		var marker = new google.maps.Marker({
+			position: position,
+			map: mapPanel.getMap(),
+			title: hospital.get("name"),
+			icon: "resources/images/phone/hmarker.png",
+			animation: google.maps.Animation.DROP,
+			shadow: shadow,
+			
+			// custom properties added by me
+			id: hospital.get("id"),
+			selectedIcon: "resources/images/phone/hsmarker.png",
+			defaultIcon: "resources/images/phone/hmarker.png",
+		});
+		
+		google.maps.event.addListener(marker, 'click', function(){
+			mapController.onMarkerTap(marker);														
+		});
+				
+		hospitalsList.config.markers.push(marker);
+		mapPanel.config.positions.push(position);
+	},
+	
+	
+	onHospitalsListItemTap: function(list, index, el, record){
+
+		var id = record.get("id");
+		
+		// find marker
+		var marker;
+		var markers = list.getMarkers();
+		for (var i=0; i<markers.length; i++){
+			if (markers[i].id == id){
+				marker = markers[i];
+				break;
+			}
+		}
+		
+		// change current marker icon
+		marker.setIcon(marker.selectedIcon);
+		
+		var position = new google.maps.LatLng(record.get("lat"), record.get("lng"));
+		this.getMapPanel().getMap().panTo(position);
+		
+		// get previous selected marker to change it's icon
+		if (list.getSelectedItem() && list.getSelectedItem() != record){
+			var prevMarker;
+			for (var i=0; i<markers.length; i++){
+				if (markers[i].id == list.getSelectedItem().get("id")){
+					prevMarker = markers[i];
+					break;
+				}
+			}
+			prevMarker.setIcon(prevMarker.defaultIcon);	
+		}
+		
+		list.setSelectedItem(record);
+	},
+	
+	
+	onMarkerTap: function(marker){
+		
+		var hospitalsList = this.getHospitalsList();
+		
+		// open hospitals list
+		hospitalsList.fireEvent("openpanel");
+		
+		// change current marker icon
+		marker.setIcon(marker.selectedIcon);
+		
+		var record = hospitalsList.getStore().findRecord("id",marker.id,0, false, true, true);
+		var markers = hospitalsList.getMarkers();
+		
+		// get previous selected marker to change it's icon
+		if (hospitalsList.getSelectedItem() && hospitalsList.getSelectedItem() != record){
+			var prevMarker;
+			for (var i=0; i<markers.length; i++){
+				if (markers[i].id == hospitalsList.getSelectedItem().get("id")){
+					prevMarker = markers[i];
+					break;
+				}
+			}
+			prevMarker.setIcon(prevMarker.defaultIcon);	
+		}
+		
+		hospitalsList.setSelectedItem(record);
+		hospitalsList.select(record, false);
+		
+			
+		// scroll the list to the selected item
+		var store = hospitalsList.getStore(),
+			selected = hospitalsList.getSelection()[0],
+			idx = store.indexOf(selected),
+			el = hospitalsList.getItemAt(idx),
+			offsetY = Ext.get(el).dom.offsetTop,
+			offsetX = 0;
+		
+		hospitalsList.getScrollable().getScroller().scrollTo(offsetX, offsetY, true);
+		
 	},
 });

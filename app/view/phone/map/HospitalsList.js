@@ -12,12 +12,15 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 				
 		// custom properties
 		opened: false,									// a flag indicating if the list is opened or not
+		markers: [],
+		selectedItem: null,
 										
 		// css properties
 		cls: 'hospitals-list',
 		itemCls: 'item',
 		selectedCls: '',
 		pressedCls: 'item-pressed',
+		selectedCls: 'item-selected',
 								
 		// properties
 		scrollable:{
@@ -25,12 +28,11 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 			indicators: false
 		},
 		scrollToTopOnRefresh: false,
-		disableSelection: true,
 		emptyText: '',
 		useSimpleItems: true,
 		variableHeights: true,
 		itemTpl: new Ext.XTemplate(
-            '<div class="name">{[this.parseName(values.name)]} <span class="distance">({[this.parseDistance(values.distance)]} m)</span></div>',
+            '<div class="name">{[this.parseName(values.name)]} <span class="distance">({[this.parseDistance(values.distance)]})</span></div>',
 			
 			'<tpl if="address.length &gt; 0">',
 				'<div class="item address">' +
@@ -70,7 +72,12 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 					return website;
 				},
 				parseDistance: function(distance){
-					return Math.round(distance)	
+					
+					if (distance < 1000){
+						return distance + " m";	
+					}
+					
+					return (distance/1000).toFixed(1)+" km";
 				}
 			}
         ),
@@ -111,7 +118,7 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 	
 	initialize: function(){
 		
-		this.setStore(Ext.create("LDPA.store.Videos"));
+		this.setStore(Ext.create("LDPA.store.Hospitals"));
 		
 		var toggleBtn = this.down("#toggleBtn");
 		toggleBtn.on("tap", this.onToggleBtnTap, this);
@@ -133,13 +140,13 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 		var radius = options.radius;
 		
 		if (hospitals > 1){
-			var text = hospitals + " Spitale";	
+			var text = hospitals + " de spitale";	
 		}
 		else if (hospitals == 1){
-			var text = hospitals + " Spital";	
+			var text = hospitals + " spital";	
 		}
 		else{
-			var text = "0 Spitale"	
+			var text = "0 spitale"	
 		}
 		
 		this.down("#topBar").setData({
@@ -172,7 +179,7 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 	
 	
 	onOpenPanel: function(){
-		var translateValue = -this.getHeight();
+		var translateValue = -this.getHeight() + this.down('#topBar').getHeight();
 		var time = 0.4;
 		
         this.setStyle({

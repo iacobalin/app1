@@ -9,7 +9,7 @@ Ext.define("LDPA.model.Hospitals", {
 			{name: 'address',		type: 'string'},
 			{name: 'phone',			type: 'string'},
 			{name: 'website',		type: 'string'},
-			{name: 'distance',		type: 'float'},
+			{name: 'distance',		type: 'int'},
 			{name: 'lat',			type: 'float'},
 			{name: 'lng',			type: 'float'},
 		],

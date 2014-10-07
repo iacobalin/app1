@@ -7,7 +7,7 @@ Ext.define("LDPA.store.Hospitals", {
 	config: {
        	model: 'LDPA.model.Hospitals',
 		sorters: {
-			property : 'distance',
+			property: 'distance',
 			direction: 'ASC'
 		}
 	}
