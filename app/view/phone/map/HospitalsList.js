@@ -18,9 +18,8 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 		// css properties
 		cls: 'hospitals-list',
 		itemCls: 'item',
-		selectedCls: '',
-		pressedCls: 'pressed',
-		selectedCls: 'selected',
+		pressedCls: 'item-pressed',
+		selectedCls: 'item-selected',
 								
 		// properties
 		scrollable:{
