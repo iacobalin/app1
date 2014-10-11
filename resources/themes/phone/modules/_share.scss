@@ -1,0 +1,118 @@
+.share-panel{
+	&.x-panel{
+		&.x-floating{	
+			background: $light-blue;
+			@include wbz-border-radius(0);
+			
+			.x-panel-inner{
+				background: $light-blue;
+				@include wbz-border-radius(0);
+			}
+			> .x-dock.x-sized{
+			margin: 0px;
+			}
+		}
+	}
+	.header{
+		.x-innerhtml{
+			color: #ffffff;
+			font-size: 18px;
+			padding: 20px 20px 10px 20px;
+		}
+	}
+	.content{
+		&.x-panel{
+			.x-panel-inner{
+				background: $light-blue;
+				@include wbz-border-radius(0);
+				margin: 0 20px 20px 20px;
+				padding: 20px 0 0 0;
+				border-top: 1px solid #ffffff;
+			}
+		}
+	}
+	.x-innerhtml{
+		p{
+			color: #ffffff;
+			font-size: 13px;
+			padding: 20px 20px 10px 20px;
+		}
+	}
+	.facebook-button{
+		background: #3b5998;
+		border: 1px solid #ffffff;
+		margin: 20px auto;
+		
+		.facebook{
+			@include wbz-inline-icon(facebook, 28px);
+			color: #ffffff;
+			width: 50px;
+			height: 50px;
+			
+			&::before{
+				line-height: 50px;
+			}
+		}
+		.x-button-label{
+			color: #ffffff;
+			font-size: 16px;
+			font-weight: normal;
+			font-family: "opensans-regular";
+			text-align: center;
+			margin: 0 50px 0 0;
+		}
+	}
+	.email-button{
+		background: #ffa500;
+		border: 1px solid #ffffff;
+		margin: 20px auto;
+		
+		.email{
+			@include wbz-inline-icon(email, 28px);
+			color: #ffffff;
+			width: 50px;
+			height: 50px;
+			
+			&::before{
+				line-height: 50px;
+			}
+		}
+		.x-button-label{
+			color: #ffffff;
+			font-size: 16px;
+			font-weight: normal;
+			font-family: "opensans-regular";
+			text-align: center;
+			margin: 0 50px 0 0;
+		}
+	}
+	.twitter-button{
+		background: #55acee;
+		border: 1px solid #ffffff;
+		margin: 20px auto;
+		
+		.twitter{
+			@include wbz-inline-icon(twitter, 28px);
+			color: #ffffff;
+			width: 50px;
+			height: 50px;
+			
+			&::before{
+				line-height: 50px;
+			}
+		}
+		.x-button-label{
+			color: #ffffff;
+			font-size: 16px;
+			font-weight: normal;
+			font-family: "opensans-regular";
+			text-align: center;
+			margin: 0 50px 0 0;
+		}
+	}
+	.close-button{
+		.close{
+			color: #ffffff;
+		}
+	}
+}

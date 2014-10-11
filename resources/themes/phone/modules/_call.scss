@@ -1,0 +1,64 @@
+.call-panel{
+	&.x-panel{
+		&.x-floating{	
+			background: $light-blue;
+			@include wbz-border-radius(0);
+			
+			.x-panel-inner{
+				background: $light-blue;
+				@include wbz-border-radius(0);
+			}
+			> .x-dock.x-sized{
+			margin: 0px;
+			}
+		}
+	}
+	.header{
+		.x-innerhtml{
+			color: #ffffff;
+			font-size: 18px;
+			padding: 20px 20px 10px 20px;
+		}
+	}
+	.content{
+		&.x-panel{
+			.x-panel-inner{
+				background: $light-blue;
+				@include wbz-border-radius(0);
+				margin: 0 20px 20px 20px;
+				padding: 20px 0 0 0;
+				border-top: 1px solid #ffffff;
+			}
+		}
+	}
+	.call-button{
+		background: $blue;
+		border: 1px solid #ffffff;
+		margin: 20px auto;
+		
+		.call{
+			display: none;
+		}
+		.x-button-label{
+			a{
+				color: #ffffff;
+				font-size: 16px;
+				font-weight: normal;
+				font-family: "opensans-regular";
+				text-align: center;
+			}
+		}
+	}
+	.x-innerhtml{
+		p{
+			color: #ffffff;
+			font-size: 13px;
+			padding: 20px 20px 10px 20px;
+		}
+	}
+	.close-button{
+		.close{
+			color: #ffffff;
+		}
+	}
+}

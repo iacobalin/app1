@@ -7902,24 +7902,87 @@ body.x-desktop {
 }
 
 /* line 62, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
+.x-form .x-scroll-container {
+  background: #ffffff;
+}
+
+/* line 67, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
 .x-list-normal .x-list-item {
   width: auto;
 }
-/* line 65, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
+/* line 70, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
 .x-list-normal .x-list-item .x-list-item-body {
   padding: 0px;
 }
-/* line 68, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
+/* line 73, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
 .x-list-normal .x-list-item.x-list-item-tpl {
   border: 0px;
 }
-/* line 71, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
+/* line 76, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
 .x-list-normal .x-list-item.x-list-item-tpl .x-innerhtml {
   padding: 0px;
 }
-/* line 74, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
+/* line 79, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
 .x-list-normal .x-list-item.x-list-item-tpl.x-list-footer-wrap {
   border: 0px;
+}
+
+/* line 86, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
+.x-picker {
+  background: #7caad6;
+}
+/* line 90, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
+.x-picker .x-toolbar-dark.x-docked-top {
+  background: #7caad6;
+  border: 0px;
+  border-bottom: 1px solid #ffffff;
+  margin: 0 20px;
+}
+/* line 96, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
+.x-picker .x-toolbar-dark.x-docked-top .x-button {
+  background: none;
+  border: 0px;
+  margin: 0 15spx;
+}
+/* line 102, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
+.x-picker .x-toolbar-dark.x-docked-top .x-button .x-button-icon.x-hidden {
+  display: none;
+}
+/* line 106, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
+.x-picker .x-toolbar-dark.x-docked-top .x-button .x-button-label, .x-picker .x-toolbar-dark.x-docked-top .x-button .x-badge, .x-picker .x-toolbar-dark.x-docked-top .x-button .x-hasbadge .x-badge, .x-hasbadge .x-picker .x-toolbar-dark.x-docked-top .x-button .x-badge {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: normal;
+}
+/* line 114, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
+.x-picker .x-picker-inner {
+  background: transparent;
+  margin: 0.7em 20px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  border: 1px solid #ffffff;
+}
+/* line 121, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
+.x-picker .x-picker-inner .x-dataview-item .x-picker-item {
+  color: #ffffff;
+  font-weight: normal;
+}
+/* line 126, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
+.x-picker .x-picker-inner .x-dataview-item.x-item-selected .x-picker-item {
+  font-weight: normal;
+}
+/* line 131, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/core/_reset.scss */
+.x-picker .x-picker-inner .x-picker-bar {
+  border: 0px;
+  background: rgba(83, 137, 194, 0.2);
+  border-top: 1px solid #5389c2;
+  border-bottom: 1px solid #5389c2;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 /**********************************************************************************************************************/
@@ -9783,6 +9846,403 @@ body.x-desktop {
   display: block;
   white-space: nowrap;
   margin: 0 60px 0 0;
+}
+
+/* line 3, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_call.scss */
+.call-panel.x-panel.x-floating {
+  background: #7caad6;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+/* line 7, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_call.scss */
+.call-panel.x-panel.x-floating .x-panel-inner {
+  background: #7caad6;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+/* line 11, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_call.scss */
+.call-panel.x-panel.x-floating > .x-dock.x-sized {
+  margin: 0px;
+}
+/* line 17, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_call.scss */
+.call-panel .header .x-innerhtml {
+  color: #ffffff;
+  font-size: 18px;
+  padding: 20px 20px 10px 20px;
+}
+/* line 25, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_call.scss */
+.call-panel .content.x-panel .x-panel-inner {
+  background: #7caad6;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  margin: 0 20px 20px 20px;
+  padding: 20px 0 0 0;
+  border-top: 1px solid #ffffff;
+}
+/* line 34, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_call.scss */
+.call-panel .call-button {
+  background: #5389c2;
+  border: 1px solid #ffffff;
+  margin: 20px auto;
+}
+/* line 39, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_call.scss */
+.call-panel .call-button .call {
+  display: none;
+}
+/* line 43, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_call.scss */
+.call-panel .call-button .x-button-label a, .call-panel .call-button .x-badge a, .call-panel .call-button .x-hasbadge .x-badge a, .x-hasbadge .call-panel .call-button .x-badge a {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
+  font-family: "opensans-regular";
+  text-align: center;
+}
+/* line 53, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_call.scss */
+.call-panel .x-innerhtml p {
+  color: #ffffff;
+  font-size: 13px;
+  padding: 20px 20px 10px 20px;
+}
+/* line 60, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_call.scss */
+.call-panel .close-button .close {
+  color: #ffffff;
+}
+
+/* line 3, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .x-form-fieldset {
+  margin: 0px;
+}
+/* line 6, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .x-form-fieldset .x-form-fieldset-inner {
+  border: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+}
+/* line 11, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form.x-layout-card-item {
+  background: #ffffff;
+}
+/* line 14, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .top-bar {
+  background: #ee7f00;
+  border-bottom: 0px;
+}
+/* line 18, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .top-bar .x-title {
+  font-size: 18px;
+  color: #ffffff;
+  text-shadow: none;
+  font-weight: normal;
+}
+/* line 24, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .top-bar .x-panel-inner {
+  padding: 0 10px;
+}
+/* line 27, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .top-bar .close-button {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+}
+/* line 32, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .top-bar .close-button .close {
+  color: #ffffff;
+  top: 0px;
+  right: 0px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+}
+/* line 40, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .top-bar .close-button .close::before {
+  line-height: 50px;
+}
+/* line 46, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .x-dock-body {
+  margin: 30px 20px;
+}
+/* line 49, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .x-dock-body .contact-text {
+  font-size: 14px;
+  color: #373737;
+  line-height: 18px;
+}
+/* line 56, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .x-dock-body .errors .x-innerhtml p {
+  color: #ee3800;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0 0 10px 0;
+}
+/* line 65, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .x-dock-body .contact-fieldset .x-field-text {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  border: 0px;
+  background: #f1edeb;
+  border-top: 1px solid #e5ded9;
+  margin: 8px 0;
+}
+/* line 72, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .x-dock-body .contact-fieldset .x-field-text input {
+  background: transparent;
+  font-size: 15px;
+  line-height: 18px;
+  color: #525150;
+  -webkit-text-fill-color: #525150;
+}
+/* line 79, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .x-dock-body .contact-fieldset .x-field-text input::-webkit-input-placeholder {
+  color: #adadad;
+  -webkit-text-fill-color: #adadad;
+}
+/* line 85, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .x-dock-body .contact-fieldset .x-field-select {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  border: 0px;
+  background: #f1edeb;
+  border-top: 1px solid #e5ded9;
+  margin: 8px 0;
+}
+/* line 92, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .x-dock-body .contact-fieldset .x-field-select input {
+  background: transparent;
+  font-size: 15px;
+  line-height: 18px;
+  color: #525150;
+  -webkit-text-fill-color: #525150;
+}
+/* line 99, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .x-dock-body .contact-fieldset .x-field-select input::-webkit-input-placeholder {
+  color: #adadad;
+  -webkit-text-fill-color: #adadad;
+}
+/* line 105, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .x-dock-body .contact-fieldset .x-field-textarea {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  border: 0px;
+  background: #f1edeb;
+  border-top: 1px solid #e5ded9;
+  margin: 8px 0;
+}
+/* line 112, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .x-dock-body .contact-fieldset .x-field-textarea textarea {
+  background: transparent;
+  font-size: 15px;
+  line-height: 18px;
+  color: #525150;
+  -webkit-text-fill-color: #525150;
+}
+/* line 119, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .x-dock-body .contact-fieldset .x-field-textarea textarea::-webkit-input-placeholder {
+  color: #adadad;
+  -webkit-text-fill-color: #adadad;
+}
+/* line 127, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .send-button {
+  background: #5389c2;
+  border: 1px solid #ffffff;
+  margin: 20px auto;
+}
+/* line 132, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .send-button .send {
+  display: none;
+}
+/* line 135, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_contact.scss */
+.contact-form .send-button .x-button-label, .contact-form .send-button .x-badge, .contact-form .send-button .x-hasbadge .x-badge, .x-hasbadge .contact-form .send-button .x-badge {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
+  font-family: "opensans-regular";
+  text-align: center;
+}
+
+/* line 3, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel.x-panel.x-floating {
+  background: #7caad6;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+/* line 7, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel.x-panel.x-floating .x-panel-inner {
+  background: #7caad6;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+/* line 11, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel.x-panel.x-floating > .x-dock.x-sized {
+  margin: 0px;
+}
+/* line 17, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel .header .x-innerhtml {
+  color: #ffffff;
+  font-size: 18px;
+  padding: 20px 20px 10px 20px;
+}
+/* line 25, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel .content.x-panel .x-panel-inner {
+  background: #7caad6;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  margin: 0 20px 20px 20px;
+  padding: 20px 0 0 0;
+  border-top: 1px solid #ffffff;
+}
+/* line 35, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel .x-innerhtml p {
+  color: #ffffff;
+  font-size: 13px;
+  padding: 20px 20px 10px 20px;
+}
+/* line 41, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel .facebook-button {
+  background: #3b5998;
+  border: 1px solid #ffffff;
+  margin: 20px auto;
+}
+/* line 46, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel .facebook-button .facebook {
+  color: #ffffff;
+  width: 50px;
+  height: 50px;
+}
+/* line 14, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/mixins/_icon.scss */
+.share-panel .facebook-button .facebook:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  font-family: "LDPA-Pictos" !important;
+  font-size: 28px !important;
+  font-weight: normal!important;
+  content: "\26";
+}
+/* line 52, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel .facebook-button .facebook::before {
+  line-height: 50px;
+}
+/* line 56, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel .facebook-button .x-button-label, .share-panel .facebook-button .x-badge, .share-panel .facebook-button .x-hasbadge .x-badge, .x-hasbadge .share-panel .facebook-button .x-badge {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
+  font-family: "opensans-regular";
+  text-align: center;
+  margin: 0 50px 0 0;
+}
+/* line 65, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel .email-button {
+  background: #ffa500;
+  border: 1px solid #ffffff;
+  margin: 20px auto;
+}
+/* line 70, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel .email-button .email {
+  color: #ffffff;
+  width: 50px;
+  height: 50px;
+}
+/* line 14, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/mixins/_icon.scss */
+.share-panel .email-button .email:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  font-family: "LDPA-Pictos" !important;
+  font-size: 28px !important;
+  font-weight: normal!important;
+  content: "\45";
+}
+/* line 76, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel .email-button .email::before {
+  line-height: 50px;
+}
+/* line 80, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel .email-button .x-button-label, .share-panel .email-button .x-badge, .share-panel .email-button .x-hasbadge .x-badge, .x-hasbadge .share-panel .email-button .x-badge {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
+  font-family: "opensans-regular";
+  text-align: center;
+  margin: 0 50px 0 0;
+}
+/* line 89, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel .twitter-button {
+  background: #55acee;
+  border: 1px solid #ffffff;
+  margin: 20px auto;
+}
+/* line 94, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel .twitter-button .twitter {
+  color: #ffffff;
+  width: 50px;
+  height: 50px;
+}
+/* line 14, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/mixins/_icon.scss */
+.share-panel .twitter-button .twitter:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  font-family: "LDPA-Pictos" !important;
+  font-size: 28px !important;
+  font-weight: normal!important;
+  content: "\42";
+}
+/* line 100, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel .twitter-button .twitter::before {
+  line-height: 50px;
+}
+/* line 104, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel .twitter-button .x-button-label, .share-panel .twitter-button .x-badge, .share-panel .twitter-button .x-hasbadge .x-badge, .x-hasbadge .share-panel .twitter-button .x-badge {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: normal;
+  font-family: "opensans-regular";
+  text-align: center;
+  margin: 0 50px 0 0;
+}
+/* line 114, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_share.scss */
+.share-panel .close-button .close {
+  color: #ffffff;
 }
 
 /**********************************************************************************************************************/

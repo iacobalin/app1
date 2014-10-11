@@ -57,7 +57,8 @@ Ext.define("LDPA.view.phone.actions.ContactForm", {
 			},
 			{
 				xtype: 'component',
-				html: 'Scrie-ne dac&#259; vrei s&#259; ne semnalezi o situa&#355;ie medical&#259; cu care te-ai confruntat sau o solu&#355;ie de prim ajutor alternativ&#259;, precum &#351;i sugestii pentru &#238;mbun&#259;t&#259;&#355;irea aplica&#355;iei.<br/>C&#226;mpurile marcate cu * sunt obligatorii de completat!',
+				html: 'Scrie-ne dac&#259; vrei s&#259; ne semnalezi o situa&#355;ie medical&#259; cu care te-ai confruntat sau o solu&#355;ie de prim ajutor alternativ&#259;, precum &#351;i sugestii pentru &#238;mbun&#259;t&#259;&#355;irea aplica&#355;iei.<br/><br/>C&#226;mpurile marcate cu * sunt obligatorii de completat!',
+				cls: 'contact-text',
 			},
 			{
 				xtype: 'fieldset',
@@ -93,7 +94,8 @@ Ext.define("LDPA.view.phone.actions.ContactForm", {
 			},
 			{
 				xtype: 'component',
-				html: 'De unde ai aflat prima dat&#259; de programul Lec&#355;ia de Prim Ajutor?'
+				html: 'De unde ai aflat prima dat&#259; de programul Lec&#355;ia de Prim Ajutor?',
+				cls: 'contact-text',
 			},
 			{
 				xtype: 'fieldset',
@@ -117,7 +119,8 @@ Ext.define("LDPA.view.phone.actions.ContactForm", {
 			},
 			{
 				xtype: 'component',
-				html: 'Cum &#355;i se par informa&#355;iile oferite pe aplica&#355;ia lectiadeprimajutor.ro?'
+				html: 'Cum &#355;i se par informa&#355;iile oferite pe aplica&#355;ia lectiadeprimajutor.ro?',
+				cls: 'contact-text',
 			},
 			{
 				xtype: 'fieldset',
@@ -141,6 +144,8 @@ Ext.define("LDPA.view.phone.actions.ContactForm", {
 			{
 				xtype: "button",
 				itemId: "sendBtn",
+				cls: "send-button",
+				iconCls: "send",
 				text: "Trimite",
 				padding: 10,
 				width: 150

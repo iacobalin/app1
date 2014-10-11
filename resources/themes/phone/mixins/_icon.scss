@@ -55,6 +55,7 @@
 	@else if ($name == "twitter") { @return "\42"; }
 	@else if ($name == "delete") { @return "\43"; }
 	@else if ($name == "checkmark") { @return "\44"; }
+	@else if ($name == "email") { @return "\45"; }
 
 	
     @else {

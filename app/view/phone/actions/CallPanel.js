@@ -15,7 +15,7 @@ Ext.define("LDPA.view.phone.actions.CallPanel", {
 		// css properties
 		cls: 'call-panel',
 		width: "85%",
-		height: 200,
+		height: 250,
 		maxWidth: 320,
 		centered: true,
 		layout: {
