@@ -66,26 +66,35 @@ Ext.define('LDPA.controller.phone.Videos', {
 			
 			Ext.Viewport.add(mask);
 			
-			
-			// create credits panel
-			var profile = webcrumbz.profile.toLowerCase();
-			var videoView = Ext.create("LDPA.view."+profile+".video.Video", {
-				mask: mask,
-				zIndex: mask.getZIndex()+1
-			});
-			
-			Ext.Viewport.add(videoView);
-			
 			mask.show();
 			
-			var videosList = videoView.down("#videosList");
-			videosList.getStore().loadPage(1, {
-				callback: function(){
-					
-					mask.fireEvent("close");
-					videoView.show();	
-				}
-			})
+			// offline
+			if (!LDPA.app.isOnline()){
+				mask.fireEvent("close");
+				
+				alert(webcrumbz.offlineMsg);
+			}
+			// online
+			else{
+				
+				// create video panel
+				var profile = webcrumbz.profile.toLowerCase();
+				var videoView = Ext.create("LDPA.view."+profile+".video.Video", {
+					mask: mask,
+					zIndex: mask.getZIndex()+1
+				});
+				
+				Ext.Viewport.add(videoView);
+				
+				var videosList = videoView.down("#videosList");
+				videosList.getStore().loadPage(1, {
+					callback: function(){
+						
+						mask.fireEvent("close");
+						videoView.show();	
+					}
+				})
+			}
 		}
 		else{
 			Ext.Viewport.down("#videoView").show();

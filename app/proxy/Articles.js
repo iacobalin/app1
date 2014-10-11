@@ -5,7 +5,8 @@ Ext.define('LDPA.proxy.Articles', {
     config: {
         // This is the url we always query when searching for posts
         url: webcrumbz.exportPath+'?json='+((Ext.os.is.Phone)? 'mobile' : 'tablet') +'.search',
-        
+        timeout: 7000,
+		
         reader: {
             type: 'json',
             rootProperty: 'posts'
@@ -20,27 +21,23 @@ Ext.define('LDPA.proxy.Articles', {
      */
     buildRequest: function(operation) {
       	
-	   	var request = this.callParent(arguments),
-            filter  = operation.getFilters(),
-            params  = request.getParams();
+	   	var filter  = operation.getFilters(),
+            params  = new Object();
 		
-        Ext.apply(params, {
-            page: operation.getPage()
-        });
 		
-        if (filter) {
-            delete params.filter;
-            Ext.apply(params, {
-                q: filter.q,  // pass in the query string to the search api
-				key: filter.key
-            });
-
-            request.setParams(params);
-            request.setUrl(this._url);
+		if (filter) {
+            
+			if (filter.query){
+				Ext.apply(params, {
+					q: filter.query,
+					key: webcrumbz.key
+				});
+			}
 			
-            // As we're modifiying the request params, we need to regenerate the url now
-            request.setUrl(this.buildUrl(request));
-        }
+			this.setExtraParams(params);
+		}
+		
+		var request = this.callParent(arguments);
 
         return request;
     }

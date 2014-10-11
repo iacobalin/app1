@@ -13,6 +13,7 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 		mask: null,
 		scrolling: false,									// a flag indicating if the content of the card is scrolling
 		bottomBar: null,									// a reference of the bottom bar
+		fromSearch: false,									// a flag indicating if this article is displayed from a search request
 								
 		// css properties
 		cls: 'article-panel',
@@ -56,6 +57,22 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 						html: '&nbsp;',
 						cls: 'share-facebook-button',
 						pressedCls: 'pressed',
+						handler: function(btn){
+							var articlePanel = btn.up("#articlePanel");
+							
+							var webUrl = encodeURIComponent(articlePanel.getData().link);
+							var title = encodeURIComponent(articlePanel.getData().title);
+							
+							// offline
+							if (!LDPA.app.isOnline()){
+								alert(webcrumbz.offlineMsg);
+							}
+							// online
+							else{
+								window.open("http://www.facebook.com/sharer.php?u="+webUrl+"&t="+title, '_system');
+							}
+						},
+						scope: this
 					},
 					{
 						xtype: "button",
@@ -64,6 +81,22 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 						html: '&nbsp;',
 						cls: 'share-twitter-button',
 						pressedCls: 'pressed',
+						handler: function(btn){
+							var articlePanel = btn.up("#articlePanel");
+							
+							var webUrl = encodeURIComponent(articlePanel.getData().link);
+							var title = "Citeste+acest+articol:+";
+							
+							// offline
+							if (!LDPA.app.isOnline()){
+								alert(webcrumbz.offlineMsg);
+							}
+							// online
+							else{
+								window.open("http://www.twitter.com/?status="+title+"+"+webUrl, '_system');
+							}
+						},
+						scope: this
 					}
 				]
 			}
@@ -98,7 +131,7 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 	onAddContent: function(article){
 		
 		var backBtn = this.down("#backBtn"); 
-		backBtn.setHtml(article.category);
+		backBtn.setHtml(!this.getFromSearch() ? article.category : "Inapoi");
 		
 		// update bottom bar
 		var bottomBar = this.getBottomBar();

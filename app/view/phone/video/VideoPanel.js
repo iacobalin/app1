@@ -96,6 +96,22 @@ Ext.define("LDPA.view.phone.video.VideoPanel", {
 						html: '',
 						cls: 'share-facebook-button',
 						pressedCls: 'pressed',
+						handler: function(btn){
+							var videoPanel = btn.up("#videoPanel");
+							
+							var webUrl = encodeURIComponent(videoPanel.getData().link);
+							var title = encodeURIComponent(videoPanel.getData().title);
+							
+							// offline
+							if (!LDPA.app.isOnline()){
+								alert(webcrumbz.offlineMsg);
+							}
+							// online
+							else{
+								window.open("http://www.facebook.com/sharer.php?u="+webUrl+"&t="+title, '_system');
+							}
+						},
+						scope: this
 					},
 					{
 						xtype: "button",
@@ -104,6 +120,22 @@ Ext.define("LDPA.view.phone.video.VideoPanel", {
 						html: '',
 						cls: 'share-twitter-button',
 						pressedCls: 'pressed',
+						handler: function(btn){
+							var videoPanel = btn.up("#videoPanel");
+							
+							var webUrl = encodeURIComponent(videoPanel.getData().link);
+							var title = "Citeste+acest+articol:+";
+							
+							// offline
+							if (!LDPA.app.isOnline()){
+								alert(webcrumbz.offlineMsg);
+							}
+							// online
+							else{
+								window.open("http://www.twitter.com/?status="+title+"+"+webUrl, '_system');
+							}
+						},
+						scope: this
 					}
 				]
 			}

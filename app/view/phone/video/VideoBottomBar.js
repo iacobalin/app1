@@ -34,6 +34,19 @@ Ext.define("LDPA.view.phone.video.VideoBottomBar", {
 				cls: 'comments-button',
 				pressedCls: 'pressed',
 				flex: 1,
+				handler: function(btn){
+					var videoPanel = btn.up("#videoPanel");
+					
+					// offline
+					if (!LDPA.app.isOnline()){
+						alert(webcrumbz.offlineMsg);
+					}
+					// online
+					else{
+						window.open(videoPanel.getData().comment_link, '_system');
+					}
+				},
+				scope: this
 			},
 			{
 				xtype: "button",
