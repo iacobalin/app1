@@ -10245,6 +10245,125 @@ body.x-desktop {
   color: #ffffff;
 }
 
+/* line 1, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_search.scss */
+.search-list {
+  background: #ffffff;
+}
+/* line 4, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_search.scss */
+.search-list .top-bar {
+  background: #ee7f00;
+  border-bottom: 2px solid #ffffff;
+}
+/* line 8, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_search.scss */
+.search-list .top-bar .x-title {
+  font-size: 18px;
+  color: #ffffff;
+  text-shadow: none;
+  font-weight: normal;
+}
+/* line 15, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_search.scss */
+.search-list .top-bar .close-button .close {
+  color: #ffffff;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  top: 0px;
+  right: 0px;
+}
+/* line 23, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_search.scss */
+.search-list .top-bar .close-button .close::before {
+  line-height: 50px!important;
+}
+/* line 30, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_search.scss */
+.search-list .x-dataview-container .item {
+  border-bottom: 1px solid #d9e0f0;
+  padding: 10px;
+}
+/* line 34, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_search.scss */
+.search-list .x-dataview-container .item h1 {
+  font-size: 15px;
+  color: #373737;
+  font-weight: normal;
+  margin: 0 0 5px 0;
+}
+/* line 40, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_search.scss */
+.search-list .x-dataview-container .item .stats {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  box-pack: start;
+  justify-content: flex-start;
+}
+/* line 43, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_search.scss */
+.search-list .x-dataview-container .item .stats .comments {
+  font-size: 13px;
+  color: #7caad6;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: -moz-inline-box;
+  display: inline-flex;
+  margin: 0 15px 0 0;
+}
+/* line 49, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_search.scss */
+.search-list .x-dataview-container .item .stats .comments .icon {
+  color: #7caad6;
+  width: 18px;
+  height: 18px;
+  margin: 0 5px 0 0;
+}
+/* line 14, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/mixins/_icon.scss */
+.search-list .x-dataview-container .item .stats .comments .icon:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  font-family: "LDPA-Pictos" !important;
+  font-size: 18px !important;
+  font-weight: normal!important;
+  content: "\24";
+}
+/* line 56, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_search.scss */
+.search-list .x-dataview-container .item .stats .comments .icon::before {
+  line-height: 18px;
+  position: relative;
+}
+/* line 62, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_search.scss */
+.search-list .x-dataview-container .item .stats .ranking {
+  font-size: 13px;
+  color: #7caad6;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: -moz-inline-box;
+  display: inline-flex;
+  margin: 0 15px 0 0;
+}
+/* line 68, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_search.scss */
+.search-list .x-dataview-container .item .stats .ranking .icon {
+  color: #7caad6;
+  width: 18px;
+  height: 18px;
+  margin: 0 5px 0 0;
+}
+/* line 14, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/mixins/_icon.scss */
+.search-list .x-dataview-container .item .stats .ranking .icon:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  font-family: "LDPA-Pictos" !important;
+  font-size: 18px !important;
+  font-weight: normal!important;
+  content: "\40";
+}
+/* line 75, d:/wamp/www/ldpa/resources/sass/phone/../../themes/phone/modules/_search.scss */
+.search-list .x-dataview-container .item .stats .ranking .icon::before {
+  line-height: 18px;
+  position: relative;
+}
+
 /**********************************************************************************************************************/
 /*
 /* IMPORT WIDGETS 
