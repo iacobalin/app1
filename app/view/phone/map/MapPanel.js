@@ -95,11 +95,6 @@ Ext.define("LDPA.view.phone.map.MapPanel", {
 	
 	onClosePanel: function(){
 		this.hide();
-		
-		var me = this;
-		Ext.defer(function(){
-			me.destroy(true);	
-		}, 400);
 	},
 	
 	

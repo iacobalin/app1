@@ -2,7 +2,10 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
   	extend: 'Ext.List',
 	
 	requires: [
-		"Ext.TitleBar"
+		"Ext.TitleBar",
+		'LDPA.view.phone.actions.CallPanel',
+		'LDPA.view.phone.actions.ContactForm',
+		'LDPA.view.phone.actions.SharePanel'
 	],
 	
 	config: {

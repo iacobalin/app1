@@ -100,7 +100,7 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 				items: [{
 					xtype: "button",
 					itemId: "toggleBtn",
-					iconCls: 'toggle',
+					iconCls: 'toggle up',
 					cls: 'open-button',
 					pressedCls: 'pressed',
 					width: 55,
@@ -139,7 +139,7 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 		var radius = options.radius;
 		
 		if (hospitals > 1){
-			var text = hospitals + " de spitale";	
+			var text = hospitals + " spitale";	
 		}
 		else if (hospitals == 1){
 			var text = hospitals + " spital";	
@@ -160,6 +160,7 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 	},
 	
 	onToggleBtnTap: function(){
+		
 		var opened = !this.getOpened();
 		this.setOpened(opened);
 		
@@ -167,7 +168,7 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 			this.fireEvent("openpanel");
 		}
 		else{
-			this.fireEvent("closepanel");	
+			this.fireEvent("closepanel");
 		}
 	},
 	
@@ -180,6 +181,9 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 	onOpenPanel: function(){
 		var translateValue = -this.getHeight() + this.down('#topBar').getHeight();
 		var time = 0.4;
+		
+		var toggleBtn = this.down("#toggleBtn");
+		toggleBtn.setIconCls("toggle down");
 		
         this.setStyle({
             '-webkit-transition': 'all '+time+'s ease',
@@ -196,6 +200,9 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 	
 	onClosePanel: function(){
 		var time = 0.4;
+		
+		var toggleBtn = this.down("#toggleBtn");
+		toggleBtn.setIconCls("toggle up");
 		
         this.setStyle({
             '-webkit-transition': 'all '+time+'s ease',

@@ -42,60 +42,62 @@ Ext.define('LDPA.controller.phone.Map', {
 		
 		// create map panel
 		var profile = webcrumbz.profile.toLowerCase();
-		var mapPanel = Ext.create("LDPA.view."+profile+".map.MapPanel");
 		
-		Ext.Viewport.add(mapPanel);
+		if (!Ext.Viewport.down("#mapPanel")){
+			
+			// offline
+			if (!LDPA.app.isOnline()){
+				alert(webcrumbz.offlineMsg);
+			}
+			// online
+			else{
+				var mapPanel = Ext.create("LDPA.view."+profile+".map.MapPanel");
+				Ext.Viewport.add(mapPanel);
+				var map = mapPanel.getMap();
+				
+				var interval = setInterval(function(){
+					var geo = mapPanel.getGeo();
+					
+					if (geo._latitude && geo._longitude){
+						var position = new google.maps.LatLng(geo._latitude, geo._longitude);
+						var geocoder = new google.maps.Geocoder();
+						
+						// find country
+						geocoder.geocode({'latLng': position},
+							function(results, status) {
+								if (status == google.maps.GeocoderStatus.OK) {
+									var adr = results[0].formatted_address.split(",");
+									mapPanel.setCountry(adr[adr.length-1].toLowerCase());
+								}
+							}
+						);
+						
+						new google.maps.Marker({
+							position: position,
+							map: map
+						});
+						
+						clearInterval(interval);
+						
+						// search hospitals
+						var request = {
+							location: position,
+							radius: '15000',
+							types: ['hospital'],
+							language: "ro"
+						};	
+						
+						var service = new google.maps.places.PlacesService(map);
+						service.nearbySearch(request, mapController.onHospitalsSearchCallback);
+					}
+				}, 100);
+			}
+		}
+		else{
+			var mapPanel = Ext.Viewport.down("#mapPanel");
+		}
 		
 		mapPanel.show();
-		
-		
-		// offline
-		if (!LDPA.app.isOnline()){
-			alert(webcrumbz.offlineMsg);
-		}
-		// online
-		else{
-		
-			var mapPanel = this.getMapPanel();
-			var map = mapPanel.getMap();
-			
-			var interval = setInterval(function(){
-				var geo = mapPanel.getGeo();
-				
-				if (geo._latitude && geo._longitude){
-					var position = new google.maps.LatLng(geo._latitude, geo._longitude);
-					var geocoder = new google.maps.Geocoder();
-					
-					// find country
-					geocoder.geocode({'latLng': position},
-						function(results, status) {
-							if (status == google.maps.GeocoderStatus.OK) {
-								var adr = results[0].formatted_address.split(",");
-								mapPanel.setCountry(adr[adr.length-1].toLowerCase());
-							}
-						}
-					);
-					
-					new google.maps.Marker({
-						position: position,
-						map: map
-					});
-					
-					clearInterval(interval);
-					
-					// search hospitals
-					var request = {
-						location: position,
-						radius: '15000',
-						types: ['hospital'],
-						language: "ro"
-					};	
-					
-					var service = new google.maps.places.PlacesService(map);
-					service.nearbySearch(request, mapController.onHospitalsSearchCallback);
-				}
-			}, 100);
-		}
 	},
 	
 	onHospitalsSearchCallback: function(results, status, pagination){
@@ -129,14 +131,18 @@ Ext.define('LDPA.controller.phone.Map', {
 			reference: placeRef
 		};
 		
-		var service = new google.maps.places.PlacesService(this.getMapPanel().getMap());
-		service.getDetails(request, this.hospitalDetailsCallback);
+		if (this.getMapPanel() != null){
+			if (this.getMapPanel().getMap() != null){
+				var service = new google.maps.places.PlacesService(this.getMapPanel().getMap());
+				service.getDetails(request, this.hospitalDetailsCallback);
+			}
+		}
 	},
 	
 	
 	hospitalDetailsCallback: function(place, status){
 		
-		if (status == google.maps.places.PlacesServiceStatus.OK) {
+		if (status == google.maps.places.PlacesServiceStatus.OK && mapController.getMapPanel() != null) {
 		  	var mapPanel = mapController.getMapPanel();
 			var geo = mapPanel.getGeo();
 			var cLat = geo._latitude;
@@ -258,6 +264,7 @@ Ext.define('LDPA.controller.phone.Map', {
 		
 		// open hospitals list
 		hospitalsList.fireEvent("openpanel");
+		hospitalsList.setOpened(true);
 		
 		// change current marker icon
 		marker.setIcon(marker.selectedIcon);
