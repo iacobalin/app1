@@ -87,15 +87,6 @@ Ext.define("LDPA.view.phone.actions.SharePanel", {
 							}
 							// online
 							else{
-								// open a new link
-								/*var a = document.createElement("a");
-								a.setAttribute("href", "http://www.facebook.com/sharer.php?u="+webUrl+"&t="+title);
-								a.setAttribute("target", "_system");
-								
-								var clickEvent = document.createEvent("MouseEvent");
-								clickEvent.initMouseEvent("click", true, true, window, 0);
-								a.dispatchEvent(clickEvent);*/
-								
 								window.open("http://www.facebook.com/sharer.php?u="+webUrl+"&t="+title, '_system');
 							}
 						},
@@ -120,14 +111,6 @@ Ext.define("LDPA.view.phone.actions.SharePanel", {
 							}
 							// online
 							else{
-								// open a new link
-								/*var a = document.createElement("a");
-								a.setAttribute("href", "http://www.twitter.com/?status="+title+"+"+webUrl);
-								a.setAttribute("target", "_system");
-								
-								var clickEvent = document.createEvent("MouseEvent");
-								clickEvent.initMouseEvent("click", true, true, window, 0);
-								a.dispatchEvent(clickEvent);*/
 								window.open("http://www.twitter.com/?status="+title+"+"+webUrl, '_system');
 							}
 						},

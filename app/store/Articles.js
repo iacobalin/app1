@@ -6,5 +6,10 @@ Ext.define("LDPA.store.Articles", {
 	
 	config: {
        	model: 'LDPA.model.Articles'
-    }
+    },
+	
+	initialize: function(){
+		var proxy = Ext.create("LDPA.proxy.Articles");
+		this.setProxy(proxy);
+	}
 });

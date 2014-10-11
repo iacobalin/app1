@@ -34,6 +34,19 @@ Ext.define("LDPA.view.phone.categories.ArticleBottomBar", {
 				cls: 'comments-button',
 				pressedCls: 'pressed',
 				flex: 1,
+				handler: function(btn){
+					var articlePanel = btn.up("#articlePanel");
+					
+					// offline
+					if (!LDPA.app.isOnline()){
+						alert(webcrumbz.offlineMsg);
+					}
+					// online
+					else{
+						window.open(articlePanel.getData().comment_link, '_system');
+					}
+				},
+				scope: this
 			},
 			{
 				xtype: "button",

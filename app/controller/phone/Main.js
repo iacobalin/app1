@@ -11,6 +11,7 @@ Ext.define('LDPA.controller.phone.Main', {
 		'LDPA.view.MainMask',
 		'LDPA.view.phone.actions.ActionsList',
 		'LDPA.view.phone.categories.Category',
+		'LDPA.view.phone.categories.Search',
 		'LDPA.view.phone.video.Video',
 		'LDPA.view.phone.map.MapPanel'
 	],
