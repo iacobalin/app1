@@ -1,4 +1,4 @@
-Ext.define("LDPA.model.VideoArticlesOffline", {
+Ext.define("LDPA.model.VideoOffline", {
     extend: 'Ext.data.Model',
 	requires: [
 		'Ext.data.proxy.Sql',
