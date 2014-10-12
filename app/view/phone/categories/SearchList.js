@@ -1,5 +1,5 @@
 Ext.define("LDPA.view.phone.categories.SearchList", {
-    extend: 'Ext.dataview.DataView',
+    extend: 'Ext.List',
 	
 	requires: [
 		"LDPA.store.Articles"
@@ -35,6 +35,7 @@ Ext.define("LDPA.view.phone.categories.SearchList", {
 					'<div class="comments"><div class="icon"></div>{comment_count}</div>',
 					'<div class="ranking"><div class="icon"></div>{ranking}</div>',
 				'</div>',
+				
 			'</div>'
 		),
 		
