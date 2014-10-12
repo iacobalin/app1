@@ -6,41 +6,6 @@ Ext.application({
     ],
 	
 	profiles: 		['Phone'],
-	//controllers:	['Main', 'Categories', 'Actions'],
-	/*models: [
-		'Categories', 
-		'CategoriesOffline', 
-		'ImagesOffline', 
-		'Articles', 
-		'ArticlesOffline', 
-		'VideoArticles', 
-		'VideoArticlesOffline',
-		'News', 
-		'Contact', 
-		'Comments', 
-		'Hospitals', 
-		'Quiz', 
-		'Newsletter', 
-		'Questions'
-	],
-    stores: [
-		'Categories', 
-		'CategoriesOffline', 
-		'ImagesOffline', 
-		'ImagesLoadingList', 
-		'Articles', 
-		'ArticlesOffline', 
-		'VideoArticles', 
-		'VideoArticlesOffline', 
-		'News', 
-		'ArticleComments', 
-		'VideoComments', 
-		'NewsComments', 
-		'Hospitals', 
-		'Quiz', 
-		'Search', 
-		'SearchComments'
-	],*/
 
     icon: {
 		'40': 'resources/icons/40x40.png',
@@ -97,5 +62,6 @@ Ext.application({
 	
 	isOnline: function(){
 		return navigator.onLine;
+		//return false;
 	}
 });

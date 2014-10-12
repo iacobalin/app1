@@ -115,6 +115,9 @@ Ext.define('LDPA.controller.phone.Categories', {
 		
 		// offline loading
 		if (!LDPA.app.isOnline()){
+			// hide mask
+			mask.fireEvent("close");
+			
 			// show category from offline			
 			this.showCategoryFromOffline(categoryId);
 		}
@@ -128,6 +131,9 @@ Ext.define('LDPA.controller.phone.Categories', {
 					format: 'json',
 				},
 				failure: function(){
+					// hide mask
+					mask.fireEvent("close");
+					
 					// show category from offline			
 					self.showCategoryFromOffline(categoryId);
 				},
@@ -138,16 +144,44 @@ Ext.define('LDPA.controller.phone.Categories', {
 					// add content
 					categoryView.down("#categoryPanel").fireEvent("addcontent", result);
 					
-					// save categories for offline
-					//self.saveCategoryForOffline(result, categoryId);
+					// save category for offline
+					mainController.saveCategoryForOffline(result, categoryId);
 					
 					// save articles for offline
-					//self.saveArticlesForOffline(result.posts, categoryId);
+					mainController.saveArticlesForOffline(result.posts, categoryId);
 					
 					// show category
 					categoryView.show();
 				}
 			});	
+		}
+	},
+	
+	
+	showCategoryFromOffline: function(categoryId){
+		var categoryView = this.getCategoryView();
+		
+		var categoriesOfflineStore = mainController.categoriesOfflineStore;
+		var articlesOfflineStore = mainController.articlesOfflineStore;
+		
+		var categoryOfflineRecord = categoriesOfflineStore.findRecord("categoryId", categoryId, 0, false, true, true);
+		
+		if (categoryOfflineRecord){
+			
+			articlesOfflineStore.filter("categoryId", categoryId);
+			
+			articlesOfflineStore.load(function(records){
+				var data = categoryOfflineRecord.getData();
+				data.posts = records;
+				
+				articlesOfflineStore.clearFilter();	
+				
+				// add content
+				categoryView.down("#categoryPanel").fireEvent("addcontent", categoryOfflineRecord.getData());
+				
+				// show category
+				categoryView.show();
+			})
 		}
 	},
 	
@@ -171,7 +205,7 @@ Ext.define('LDPA.controller.phone.Categories', {
 		mask.show();
 		
 		// show article
-		var articleId = record.get("id");
+		var articleId = record.get("articleId") || record.get("id");
 		this.showArticle(articleId);
 	},
 	
@@ -208,8 +242,11 @@ Ext.define('LDPA.controller.phone.Categories', {
 		
 		// offline loading
 		if (!LDPA.app.isOnline()){
-			// show category from offline			
-			this.showCategoryFromOffline(articleId);
+			// hide mask
+			mask.fireEvent("close");
+			
+			// show article from offline			
+			this.showArticleFromOffline(articleId);
 		}
 		// online loading
 		else{
@@ -221,6 +258,9 @@ Ext.define('LDPA.controller.phone.Categories', {
 					format: 'json',
 				},
 				failure: function(){
+					// hide mask
+					mask.fireEvent("close");
+					
 					// show article from offline
 					self.showArticleFromOffline(articleId);
 				},
@@ -231,9 +271,8 @@ Ext.define('LDPA.controller.phone.Categories', {
 					result.post.content = result.post.content.replace(/width=\"\d+\"|height=\"\d+\"/g,'');
 					
 					// save article for offline
-					//self.saveArticleForOffline(result.post, articleId);
+					mainController.saveArticleForOffline(result.post, articleId);
 					
-					//result.post.content = result.post.content.replace(/src=\"/gi,'src="http://src.sencha.io/-10/');
 					result.post.articleId = result.post.id;
 					
 					// add content
@@ -245,6 +284,45 @@ Ext.define('LDPA.controller.phone.Categories', {
 			});	
 		}
 	},
+	
+	
+	showArticleFromOffline: function(articleId){
+		
+		var categoryView = this.getCategoryView();
+		var articlePanel = this.getArticlePanel();
+				
+		var articlesOfflineStore = mainController.articlesOfflineStore;
+		var articleOfflineRecord = articlesOfflineStore.findRecord("articleId", articleId, 0, false, true, true);
+		
+		if (articleOfflineRecord){
+			
+			var imagesOfflineStore = mainController.imagesOfflineStore;
+			var content = articleOfflineRecord.get("content");
+			var srcs = content.match(/src\=\"[a-zA-Z0-9\:\/\.\-\%\_]+\.(jpg|png|gif)\"/g);
+			
+			/*Ext.each(srcs, function(src){
+				src = src.replace('src="',"");
+				src = src.replace('"',"");
+				
+				var record = imagesOfflineStore.findRecord("url", src, 0, false, true, true);
+				if (record){
+					content = content.replace(src, record.get("dataUrl"));
+				}
+			});*/
+			
+			//articleOfflineRecord.set("content", content);
+			
+							
+			var data = articleOfflineRecord.getData();
+			
+			// add content
+			articlePanel.fireEvent("addcontent", data);	
+			
+			// show article panel
+			categoryView.animateActiveItem(articlePanel, {type: "slide", direction: "left"})
+		}
+	},
+	
 	
 	onSearch : function(field, e){
 		var keyCode = e.event.keyCode,
@@ -306,41 +384,6 @@ Ext.define('LDPA.controller.phone.Categories', {
 			// set searh field empty and remove focus from it
 			searchField.setValue('');
 			searchField.blur();
-			
-			
-			
-			
-			/*query = search.replace("%20", " ");
-			
-			// offline
-			if (!LDPA.app.isOnline()){
-				Ext.Viewport.unmask();
-				
-				alert(webcrumbz.offlineMsg);
-			}
-			// online search
-			else{
-				resultsList.getStore().load({
-					filters: { 
-						q : query,
-						key: webcrumbz.key
-					},
-					callback: function(results){
-						var posts = [];
-						Ext.each(results, function(post){
-							posts.push(post.getData());	
-						})
-						
-						//save articles for online
-						self.saveArticlesForOffline(posts);
-						
-						// activate card
-						homePanel.animateActiveItem(resultsList, {type: 'slide', direction: 'left'});
-						
-						Ext.Viewport.unmask();
-					}
-				});
-			}*/
         }
 	},
 	

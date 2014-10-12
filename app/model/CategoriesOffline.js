@@ -13,6 +13,12 @@ Ext.define("LDPA.model.CategoriesOffline", {
 			{name: 'sequence', 		type: 'int'}
 		],
 		
+		hasMany: {
+			model: 'LDPA.model.Articles',
+			name: 'posts',
+			associationKey: 'posts'
+		},
+		
 		proxy: {
 			type: 'sql',
 			database: 'LDPA',
@@ -27,7 +33,7 @@ Ext.define("LDPA.model.CategoriesOffline", {
 			}
 		}
 		
-		this.setOfflineImage();
+		//this.setOfflineImage();
 	},
 	
 	setOfflineImage: function(){
