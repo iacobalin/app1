@@ -137,3 +137,9 @@
 		} 
 	}
 }
+.x-list-emptytext{
+	.x-innerhtml{
+		font-size: 14px;
+		color: $grey;
+	}
+}
