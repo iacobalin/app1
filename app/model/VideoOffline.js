@@ -21,7 +21,7 @@ Ext.define("LDPA.model.VideoOffline", {
 		proxy: {
 			type: 'sql',
 			database: 'LDPA',
-			table: 'VideoArticles'
+			table: 'Videos'
 		}
 	},
 	
@@ -32,30 +32,7 @@ Ext.define("LDPA.model.VideoOffline", {
 			}
 		}
 		
-		this.setOfflineImage();
-	},
-	
-	setOfflineImage: function(){
 		var url = this.get('image') || this.get("featured_image");
-		var imagesOffline = LDPA.app.imagesOffline;
-		var imagesLoadingList = LDPA.app.imagesLoadingList;
-		
-		var record = imagesOffline.findRecord("url", url, 0, false, true, true);
-		if (!record){
-			var scriptId = Math.floor(Math.random()*999999);
-			var script = document.createElement("script");
-			
-			imagesLoadingList.add({
-				scriptId: scriptId,
-				url: url,
-				timestamp: new Date()
-			})
-			
-			script.setAttribute("type","text/javascript");
-			script.setAttribute("id","script-"+scriptId);
-			script.setAttribute("data-image-url", encodeURIComponent(url));
-			script.setAttribute("src", "http://src.sencha.io/data.LDPA.app.setOfflineImage-" + scriptId + "/" + "http://src.sencha.io/300/"+url);
-			document.body.appendChild(script);	
-		}
+		mainController.saveImageForOffline(url);
 	}
 });

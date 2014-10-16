@@ -6,10 +6,9 @@ Ext.define("LDPA.store.ImagesLoadingList", {
 	    
 	config: {
         fields: [
-		   {name: 'scriptId', 	type: 'int'},
 		   {name: 'url', 		type: 'string'},
 		   {name: 'timestamp', 	type: 'date'},
-		   {name: 'status', 	type: 'string',		defaultValue: "pending"}
+		   {name: 'status', 	type: 'string',		defaultValue: "pending"}			// pending, loaded
 		],
 		pageSize: 500
     }

@@ -29,7 +29,7 @@ Ext.application({
         '640x920': 'resources/startup/640x920.png',
 		'640x960': 'resources/startup/640x960.png',
 		'640x1136': 'resources/startup/640x1136.png',
-        '768x1004': 'resources/startup/768x1004.png',
+        '768x1004': 'resour',
 		'768x1024': 'resources/startup/768x1024.png',
         '748x1024': 'resources/startup/748x1024.png',
         '1496x2048': 'resources/startup/1496x2048.png',

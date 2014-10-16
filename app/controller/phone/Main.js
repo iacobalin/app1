@@ -32,7 +32,6 @@ Ext.define('LDPA.controller.phone.Main', {
 		mainController = this;
 		
 		this.imagesOfflineStore = Ext.create("LDPA.store.ImagesOffline");				// offline images store
-		this.imagesLoadingList = Ext.create("LDPA.store.ImagesLoadingList");			// loading images store
 		this.categoriesStore = Ext.create("LDPA.store.Categories");
 		this.categoriesOfflineStore = Ext.create("LDPA.store.CategoriesOffline");
 		this.articlesOfflineStore = Ext.create("LDPA.store.ArticlesOffline");
@@ -41,7 +40,7 @@ Ext.define('LDPA.controller.phone.Main', {
 		//this.categoriesOfflineStore.getModel().getProxy().dropTable();
 		//this.articlesOfflineStore.getModel().getProxy().dropTable();
 		//this.videosOfflineStore.getModel().getProxy().dropTable();
-		//this.imagesOfflineStore.getModel().getProxy().dropTable();
+		this.imagesOfflineStore.getModel().getProxy().dropTable();
 	},
 		
 	
@@ -51,6 +50,7 @@ Ext.define('LDPA.controller.phone.Main', {
 		var categoriesStore = this.categoriesStore;
 		var categoriesOfflineStore = this.categoriesOfflineStore;
 		var articlesOfflineStore = this.articlesOfflineStore;
+		var videosOfflineStore = this.videosOfflineStore;
 		var imagesOfflineStore = this.imagesOfflineStore;
 		
 		// create mask
@@ -67,36 +67,38 @@ Ext.define('LDPA.controller.phone.Main', {
 		
 		categoriesOfflineStore.load(function(){
 			articlesOfflineStore.load(function(){
-				imagesOfflineStore.load(function(){
-					
-					// offline loading
-					if (!LDPA.app.isOnline()){
-						mask.fireEvent("close");
-						categoriesStore.add(categoriesOfflineStore.getRange());
-						self.setActions();
-					}
-					// online loading
-					else{
-						// load categories
-						categoriesStore.loadPage(1, {
-							callback: function(records, operation){
-								
-								mask.fireEvent("close");
-																
-								if (records.length > 0){
-									// save categories for offline
-									self.saveCategoriesForOffline(records);
+				videosOfflineStore.load(function(){
+					imagesOfflineStore.load(function(){
+						
+						// offline loading
+						if (!LDPA.app.isOnline()){
+							mask.fireEvent("close");
+							categoriesStore.add(categoriesOfflineStore.getRange());
+							self.setActions();
+						}
+						// online loading
+						else{
+							// load categories
+							categoriesStore.loadPage(1, {
+								callback: function(records, operation){
+									
+									mask.fireEvent("close");
+																	
+									if (records.length > 0){
+										// save categories for offline
+										self.saveCategoriesForOffline(records);
+									}
+									// if there was an error with the server's response, then load the content from SQL Database
+									else{
+										categoriesStore.add(categoriesOfflineStore.getRange());
+									}
+									
+									self.setActions();
 								}
-								// if there was an error with the server's response, then load the content from SQL Database
-								else{
-									categoriesStore.add(categoriesOfflineStore.getRange());
-								}
-								
-								self.setActions();
-							}
-						});	
-					}
-				});	
+							});	
+						}
+					});	
+				});
 			});	
 		});
 	},
@@ -228,5 +230,93 @@ Ext.define('LDPA.controller.phone.Main', {
 		}
 		
 		articlesOfflineStore.sync();
+	},
+	
+	
+	// update articles in local SQL DATABASE
+	saveVideosForOffline: function(records){
+		
+		var videosOfflineStore = this.videosOfflineStore;
+		var newIds = [];
+								
+		// add records to local SQL DATABASE
+		Ext.each(records, function(record){
+			record.updateData();
+			newIds.push(record.get("id"));
+			
+			var data = record.getData();
+			var offlineRecord = videosOfflineStore.findRecord("articleId", data.articleId, 0, false, true, true);
+			
+			// update
+			if (offlineRecord){
+				offlineRecord.updateData(data);
+			}
+			// add
+			else{
+				var myRecord = Ext.create("LDPA.model.VideoOffline");
+				myRecord.updateData(data);
+			
+				videosOfflineStore.add(myRecord);	
+			}
+		});
+		
+		
+		// delete old records
+		Ext.each(videosOfflineStore.getRange(), function(record){
+			if (newIds.indexOf(record.get("articleId")) == -1){
+				videosOfflineStore.remove(record);
+			}
+		});
+		
+		// syncronize the video articles offline store
+		videosOfflineStore.sync();
+	},
+	
+	
+	saveVideoForOffline: function(post, articleId){
+		// update video articles in local SQL DATABASE
+		var videosOfflineStore = this.videosOfflineStore;
+		var offlineRecord = videosOfflineStore.findRecord("articleId", articleId, 0, false, true, true);
+		
+		// update
+		if (offlineRecord){
+			offlineRecord.updateData(post);
+		}
+		
+		videosOfflineStore.sync();
+	},
+	
+	
+	saveImageForOffline: function(url){
+		
+		var imagesOfflineStore = this.imagesOfflineStore;
+		var record = imagesOfflineStore.findRecord("url", url, 0, false, true, true);
+		
+		if (!record || (record != null && !record.get("dataUrl"))){
+			
+			// Make the JsonP request
+			Ext.data.JsonP.request({
+				url: webcrumbz.exportPath+"app/base64.php",
+				params: {
+					imgFilePath: url
+				},
+				success: function(result, request) {
+					// create record
+					if (!record){
+						record = Ext.create("LDPA.model.ImagesOffline", {
+							url: url,
+							datUrl: result.data
+						});
+						imagesOfflineStore.add(record);
+					}
+					else{
+						record.set("dataUrl", result.data);
+					}
+					
+					imagesOfflineStore.sync();
+				}
+			});
+		}	
 	}
+	
 });

@@ -31,13 +31,11 @@ Ext.define("LDPA.model.ArticlesOffline", {
 			}
 		}
 		
-		//this.setOfflineImage();
+		this.setOfflineImage();
 	},
 	
 	
 	setOfflineImage: function(){
-		var imagesOffline = LDPA.app.imagesOffline;
-		var imagesLoadingList = LDPA.app.imagesLoadingList;
 		var content = this.get("content");
 		
 		if (content){		
@@ -46,23 +44,7 @@ Ext.define("LDPA.model.ArticlesOffline", {
 				src = src.replace('src="',"");
 				src = src.replace('"',"");
 				
-				var record = imagesOffline.findRecord("url", src, 0, false, true, true);
-				if (!record){
-					var scriptId = Math.floor(Math.random()*999999);
-					var script = document.createElement("script");
-					
-					imagesLoadingList.add({
-						scriptId: scriptId,
-						url: src,
-						timestamp: new Date()
-					})
-					
-					script.setAttribute("type","text/javascript");
-					script.setAttribute("id","script-"+scriptId);
-					script.setAttribute("data-image-url",encodeURIComponent(src));
-					script.setAttribute("src", "http://src.sencha.io/data.LDPA.app.setOfflineImage-" + scriptId + "/" + "http://src.sencha.io/290/"+src);
-					document.body.appendChild(script);	
-				}
+				mainController.saveImageForOffline(src);
 			});
 		}
 	}
