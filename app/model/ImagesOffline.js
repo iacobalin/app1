@@ -7,7 +7,7 @@ Ext.define("LDPA.model.ImagesOffline", {
 	config: {
 		fields: [
 			{name: 'url',  			type: 'string'},
-			{name: 'dataUrl', 		type: 'string'}
+			{name: 'dataUrl', 		type: 'auto'}
 		],
 		
 		proxy: {

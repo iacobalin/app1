@@ -36,6 +36,7 @@ Ext.define('LDPA.controller.phone.Main', {
 		this.categoriesOfflineStore = Ext.create("LDPA.store.CategoriesOffline");
 		this.articlesOfflineStore = Ext.create("LDPA.store.ArticlesOffline");
 		this.videosOfflineStore = Ext.create("LDPA.store.VideosOffline");
+		this.imagesLoadingList = Ext.create("LDPA.store.ImagesLoadingList");
 		
 		//this.categoriesOfflineStore.getModel().getProxy().dropTable();
 		//this.articlesOfflineStore.getModel().getProxy().dropTable();
@@ -52,6 +53,7 @@ Ext.define('LDPA.controller.phone.Main', {
 		var articlesOfflineStore = this.articlesOfflineStore;
 		var videosOfflineStore = this.videosOfflineStore;
 		var imagesOfflineStore = this.imagesOfflineStore;
+		var imagesLoadingList = this.imagesLoadingList;
 		
 		// create mask
 		var mask = Ext.create("LDPA.view.MainMask", {
@@ -290,9 +292,18 @@ Ext.define('LDPA.controller.phone.Main', {
 	saveImageForOffline: function(url){
 		
 		var imagesOfflineStore = this.imagesOfflineStore;
+		var imagesLoadingList = this.imagesLoadingList;
 		var record = imagesOfflineStore.findRecord("url", url, 0, false, true, true);
 		
 		if (!record || (record != null && !record.get("dataUrl"))){
+			
+			var id = (new Date()).getTime() + Math.floor(Math.random()*999999);
+			
+			imagesLoadingList.add({
+				id: id,
+				url: url,
+				timestamp: new Date()
+			})
 			
 			// Make the JsonP request
 			Ext.data.JsonP.request({
@@ -301,22 +312,54 @@ Ext.define('LDPA.controller.phone.Main', {
 					imgFilePath: url
 				},
 				success: function(result, request) {
+					
 					// create record
 					if (!record){
-						record = Ext.create("LDPA.model.ImagesOffline", {
+						var item = Ext.create("LDPA.model.ImagesOffline", {
 							url: url,
-							datUrl: result.data
+							dataUrl: result.data
 						});
-						imagesOfflineStore.add(record);
+						imagesOfflineStore.add(item);
 					}
 					else{
 						record.set("dataUrl", result.data);
 					}
-					
-					imagesOfflineStore.sync();
 				}
 			});
+			
+			this.waitImageToLoad();
 		}	
+	},
+	
+	waitImageToLoad: function(){
+		var imagesOfflineStore = this.imagesOfflineStore;
+		var imagesLoadingList = this.imagesLoadingList;
+		
+		if (this.interval){
+			clearInterval(this.interval);
+		}
+		
+		var me = this;
+		this.interval = setInterval(function(){
+			
+			if (imagesLoadingList.getCount() > 0){
+				Ext.each(imagesLoadingList.getRange(), function(record){
+					var timer = (new Date()).getTime();
+					var dif = (timer - record.get("timestamp").getTime()) / 1000;
+					
+					// wait 10 seconds for each image to finish converting
+					if ( dif > 10 || record.get("status") == "completed"){
+						imagesLoadingList.remove(record);	
+					}
+				})
+			}
+			else{
+				clearInterval(me.interval);
+				me.interval = null;
+				
+				imagesOfflineStore.sync();
+			}
+		}, 5000);
 	}
 	
 });
