@@ -137,7 +137,7 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 			backBtn.setHtml(category.name);
 		}
 		else{
-			backBtn.setHtml("Inapoi");	
+			backBtn.setHtml("&#206;napoi");	
 		}
 		
 		// update bottom bar

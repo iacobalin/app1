@@ -38,9 +38,7 @@ Ext.application({
     },
 
     launch: function() {
-        // Destroy the #appLoadingIndicator element
-        Ext.fly('appLoadingIndicator').destroy();
-
+       	
        	// a hack used for Android (4+) browsers, to handle the Viewport's orientation change event
 		Ext.Viewport.bodyElement.on('resize', Ext.emptyFn, this, { buffer: 1});
 		if (Ext.versions.touch.major >= 2 && Ext.versions.touch.minor > 0 && Ext.os.is.Android) {

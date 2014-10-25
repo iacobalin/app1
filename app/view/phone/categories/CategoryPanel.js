@@ -36,7 +36,7 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 					'<div class="category-image" style="width: 100%; height: {[ this.getImageHeight(); ]}px;" >',
 						'<div class="vbox container">',
 							'<div>',
-								'<div class="image-container" style="background-image: url(\'{image}\');"></div>',
+								'<div class="image-container" style="background-image: url({[this.getImage(values.image)]});"></div>',
 							'</div>',
 							'<div class="headline">',
 								'<h1>{name}</h1>',
@@ -49,6 +49,18 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 					{
 						getImageHeight: function(){
 							return Math.round(Ext.Viewport.getWindowWidth() * 3/4);
+						},
+						getImage: function(image){
+							if (LDPA.app.isOnline()){
+								return image;
+							}
+							else{
+								var imagesOffline = mainController.imagesOfflineStore;
+								var offlineRecord = imagesOffline.findRecord("url", image, 0, false, true, true);
+								if (offlineRecord && offlineRecord.get("dataUrl")){
+									return offlineRecord.get("dataUrl");	
+								}
+							}
 						}
 					}
 				),

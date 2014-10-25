@@ -10,7 +10,7 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 		id: "categoriesList",
 				
 		// custom properties
-		
+		scrolling: false,
 								
 		// css properties
 		cls: 'categories-list',
@@ -75,20 +75,16 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 					return "width: "+(itemWidth+extraWidth)+"px; height: "+itemHeight+"px; padding-left: "+paddingLeft+"px; padding-right: "+paddingRight+"px;";
 				},
 				getImage: function(image){
-					/*var imagesOffline = LDPA.app.imagesOffline;
-					var offlineRecord = imagesOffline.findRecord("url",image, 0, false, true, true);
-					if (offlineRecord && offlineRecord.get("dataUrl")){
-						return '<img src="'+offlineRecord.get("dataUrl")+'" style="max-width: 100px; max-height:60px" />';	
-					}
-					
 					if (LDPA.app.isOnline()){
-						if (image)
-							return '<img src="http://src.sencha.io/100/60/'+image+'" style="max-width: 100px; max-height:60px" />';	
-					}*/
-					
-					//return '<img src="'+image+'" style="width: 80%; height: 80%;" />'; 
-					
-					return image;
+						return image;
+					}
+					else{
+						var imagesOffline = mainController.imagesOfflineStore;
+						var offlineRecord = imagesOffline.findRecord("url", image, 0, false, true, true);
+						if (offlineRecord && offlineRecord.get("dataUrl")){
+							return offlineRecord.get("dataUrl");	
+						}
+					}
 				}
 			}
 		),
@@ -129,10 +125,33 @@ Ext.define("LDPA.view.phone.categories.CategoriesList", {
 		
 		this.setStore(Ext.create("LDPA.store.Categories"));
 		
+		var scroller = this.getScrollable().getScroller();
+		scroller.on("scroll", this.onScrollableChange, this);
+		
+		this.element.on("touchstart", this.onTouchStart, this);
+		this.element.on("touchend", this.onTouchEnd, this);
+		
 		// add a handler for the orientationchange event of the viewport
 		Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });
 	},
 	
+	
+	onTouchStart: function(){
+		this.setScrolling(true);
+	},
+	
+	onTouchEnd: function(){
+		this.setScrolling(false);
+		mainController.getMainView().setDragBlocked(false);
+	},
+	
+	onScrollableChange: function(scroller, scrollX, scrollY){
+		var scrolling = this.getScrolling();
+		
+		if (scrolling){
+			mainController.getMainView().setDragBlocked(true);
+		}
+	},
 	
 	handleOrientationChange: function(){
 		this.refresh();	

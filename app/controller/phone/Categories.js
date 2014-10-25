@@ -74,6 +74,9 @@ Ext.define('LDPA.controller.phone.Categories', {
 		
 		// add content
 		categoriesList.getStore().add(categoriesStore.getRange());
+		Ext.defer(function(){
+			categoriesList.show();
+		}, 500);
 	},
 	
 	
@@ -300,7 +303,7 @@ Ext.define('LDPA.controller.phone.Categories', {
 			var content = articleOfflineRecord.get("content");
 			var srcs = content.match(/src\=\"[a-zA-Z0-9\:\/\.\-\%\_]+\.(jpg|png|gif)\"/g);
 			
-			/*Ext.each(srcs, function(src){
+			Ext.each(srcs, function(src){
 				src = src.replace('src="',"");
 				src = src.replace('"',"");
 				
@@ -308,7 +311,7 @@ Ext.define('LDPA.controller.phone.Categories', {
 				if (record){
 					content = content.replace(src, record.get("dataUrl"));
 				}
-			});*/
+			});
 			
 			//articleOfflineRecord.set("content", content);
 			

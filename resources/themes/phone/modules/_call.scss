@@ -29,6 +29,10 @@
 				padding: 20px 0 0 0;
 				border-top: 1px solid #ffffff;
 			}
+			p{
+				margin: 0px;
+				padding: 0px;
+			}
 		}
 	}
 	.call-button{
@@ -47,6 +51,9 @@
 				font-family: "opensans-regular";
 				text-align: center;
 			}
+		}
+		&.pressed{
+			background: lighten($blue, 10%);
 		}
 	}
 	.x-innerhtml{

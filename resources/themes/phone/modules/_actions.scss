@@ -55,6 +55,18 @@
 						}
 					}
 				}
+				&.item-pressed{
+					.x-innerhtml{
+						.item-box{
+							background: $dark-grey;
+							border: 1px solid $light-grey;
+							
+							.icon{
+								color: white;
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -75,6 +87,9 @@
 			.back{
 				@include wbz-inline-icon(left, 20px);
 				@include wbz-transform(rotate(90deg));
+			}
+			&.pressed{
+				opacity: 0.7;
 			}
 		}
 	}

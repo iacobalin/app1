@@ -46,18 +46,16 @@ Ext.define("LDPA.view.phone.video.VideoPanel", {
 					return Math.floor(height);
 				},
 				getImage: function(image){
-					/*var imagesOffline = LDPA.app.imagesOffline;
-					var offlineRecord = imagesOffline.findRecord("url",image, 0, false, true, true);
-					if (offlineRecord && offlineRecord.get("dataUrl")){
-						return offlineRecord.get("dataUrl");
-					}
-					
 					if (LDPA.app.isOnline()){
-						if (image)
-							return 'http://src.sencha.io/300/'+image;		
-					}*/
-					
-					return image;
+						return image;
+					}
+					else{
+						var imagesOffline = mainController.imagesOfflineStore;
+						var offlineRecord = imagesOffline.findRecord("url", image, 0, false, true, true);
+						if (offlineRecord && offlineRecord.get("dataUrl")){
+							return offlineRecord.get("dataUrl");	
+						}
+					}
 				},
 				getOrientation: function(){
 					if (!Ext.os.is.Android){
@@ -84,7 +82,7 @@ Ext.define("LDPA.view.phone.video.VideoPanel", {
 					{
 						xtype: 'button',
 						itemId: "backBtn",
-						html: "Lectii video",
+						html: "Lec&#355;ii video",
 						cls: 'back-button',
 						pressedCls: 'pressed',
 						iconCls: 'back',

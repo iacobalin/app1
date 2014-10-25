@@ -38,10 +38,11 @@ Ext.define('LDPA.controller.phone.Main', {
 		this.videosOfflineStore = Ext.create("LDPA.store.VideosOffline");
 		this.imagesLoadingList = Ext.create("LDPA.store.ImagesLoadingList");
 		
+		
 		//this.categoriesOfflineStore.getModel().getProxy().dropTable();
 		//this.articlesOfflineStore.getModel().getProxy().dropTable();
 		//this.videosOfflineStore.getModel().getProxy().dropTable();
-		this.imagesOfflineStore.getModel().getProxy().dropTable();
+		//this.imagesOfflineStore.getModel().getProxy().dropTable();
 	},
 		
 	
@@ -56,7 +57,7 @@ Ext.define('LDPA.controller.phone.Main', {
 		var imagesLoadingList = this.imagesLoadingList;
 		
 		// create mask
-		var mask = Ext.create("LDPA.view.MainMask", {
+		/*var mask = Ext.create("LDPA.view.MainMask", {
 			disabled: true,
 			spinner: true,
 			closeFn: function(){
@@ -65,7 +66,7 @@ Ext.define('LDPA.controller.phone.Main', {
 		});
 		
 		Ext.Viewport.add(mask);
-		mask.show();
+		mask.show();*/
 		
 		categoriesOfflineStore.load(function(){
 			articlesOfflineStore.load(function(){
@@ -74,7 +75,7 @@ Ext.define('LDPA.controller.phone.Main', {
 						
 						// offline loading
 						if (!LDPA.app.isOnline()){
-							mask.fireEvent("close");
+							//mask.fireEvent("close");
 							categoriesStore.add(categoriesOfflineStore.getRange());
 							self.setActions();
 						}
@@ -84,7 +85,7 @@ Ext.define('LDPA.controller.phone.Main', {
 							categoriesStore.loadPage(1, {
 								callback: function(records, operation){
 									
-									mask.fireEvent("close");
+									//mask.fireEvent("close");
 																	
 									if (records.length > 0){
 										// save categories for offline
@@ -112,6 +113,17 @@ Ext.define('LDPA.controller.phone.Main', {
 		
 		if (categoriesStore.isLoaded() || categoriesStore.getCount() > 0){
 			
+			 // Destroy the #appLoadingIndicator element
+        	Ext.fly('appLoadingIndicator').destroy();
+			
+			var profile = webcrumbz.profile.toLowerCase();
+			
+			// Initialize the actions panel
+      		Ext.Viewport.add(Ext.create('LDPA.view.'+profile+'.Background', {zIndex: 1}));
+		
+			// Initialize the main panel
+      		Ext.Viewport.add(Ext.create('LDPA.view.'+profile+'.Main', {zIndex: 2}));
+				
 			// set actions for each controller
 			categoriesController.setActions(categoriesStore);
 		}

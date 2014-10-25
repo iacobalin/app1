@@ -42,20 +42,16 @@ Ext.define("LDPA.view.phone.video.VideosList", {
 					return (this.getOrientation() == "landscape") ? 320 : 200
 				},
 				getImage: function(image){
-					/*var imagesOffline = LDPA.app.imagesOffline;
-					var offlineRecord = imagesOffline.findRecord("url",image, 0, false, true, true);
-					if (offlineRecord && offlineRecord.get("dataUrl")){
-						return '<img src="'+offlineRecord.get("dataUrl")+'" style="max-width: 100px; max-height:60px" />';	
-					}
-					
 					if (LDPA.app.isOnline()){
-						if (image)
-							return '<img src="http://src.sencha.io/100/60/'+image+'" style="max-width: 100px; max-height:60px" />';	
-					}*/
-					
-					//return '<img src="'+image+'" style="width: 80%; height: 80%;" />'; 
-					
-					return image;
+						return image;
+					}
+					else{
+						var imagesOffline = mainController.imagesOfflineStore;
+						var offlineRecord = imagesOffline.findRecord("url", image, 0, false, true, true);
+						if (offlineRecord && offlineRecord.get("dataUrl")){
+							return offlineRecord.get("dataUrl");	
+						}
+					}
 				},
 				getOrientation: function(){
 					if (!Ext.os.is.Android){
@@ -74,7 +70,7 @@ Ext.define("LDPA.view.phone.video.VideosList", {
 				height: 55,
 				docked: "top",	  
 				cls: "top-bar",
-				title: "Lectii video",
+				title: "Lec&#355;ii video",
 				items: [{
 					xtype: "button",
 					itemId: "closeBtn",

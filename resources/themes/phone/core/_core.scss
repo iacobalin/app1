@@ -79,6 +79,11 @@
 			line-height: 60px;
 		}
 	}
+	&.pressed{
+		.menu{
+			color: $orange;
+		}
+	}
 }
 .close-button{
 	.close{
@@ -94,6 +99,9 @@
 			line-height: 60px;
 		}
 	}
+	&.pressed{
+		opacity: 0.7;
+	}
 }
 .back-button{
 	background: none;
@@ -101,5 +109,8 @@
 	
 	.back{
 		@include wbz-inline-icon(left, 20px);
+	}
+	&.pressed{
+		opacity: 0.7;
 	}
 }

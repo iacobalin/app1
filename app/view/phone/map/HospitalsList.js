@@ -90,7 +90,7 @@ Ext.define("LDPA.view.phone.map.HospitalsList", {
 				cls: "hospitals-bar",
 				tpl: [
 					'<div class="icon"></div>',
-					'<div class="title"><h1>{hospitals} pe o raza de {radius}km</h1></div>'
+					'<div class="title"><h1>{hospitals} pe o raz&#259; de {radius}km</h1></div>'
 				].join(""),
 				layout: {
 					type: "hbox",

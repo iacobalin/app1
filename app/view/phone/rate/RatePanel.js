@@ -43,7 +43,7 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 			{
 				xtype: "container",
 				docked: "top",
-				html: "Noteaza acest articol",
+				html: "Noteaz&#259; acest articol",
 				height: 50,
 				width: '100%',
 				cls: "header",
@@ -135,7 +135,7 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 				height: 40,
 				cls: "send-button",
 				iconCls: 'send',
-				html: 'Noteaza',
+				html: 'Noteaz&#259;',
 			}
 		]
 	},

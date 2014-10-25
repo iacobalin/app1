@@ -60,13 +60,15 @@ Ext.define("LDPA.view.phone.actions.SharePanel", {
 				}]
 			},
 			{
-				xtype: "component",
+				xtype: "panel",
 				cls: 'content',
-				html: "<p><b>Lec&#355;ia de prim ajutor</b> este un program de preven&#355;ie &#351;i educa&#355;ie pentru salvarea de vie&#355;i, care ofer&#259; solu&#355;ii la situa&#355;iile de urgen&#355;&#259; cele mai frecvente, care pot fi puse &#238;n practic&#259; &#238;n siguran&#355;&#259; de c&#259;tre persoane f&#259;r&#259; o preg&#259;tire medical&#259;. <!--<br/><br/>Aici sunt disponibile informa&#355;ii despre cum recunoa&#351;tem o urgen&#355;&#259; medical&#259;, cum putem oferi primul ajutor &#238;n cazul unei hemoragii, arsuri, intoxica&#355;ii, fracturi, cum s&#259; efectu&#259;m corect manevra Heimlich, dar &#351;i informatii despre preven&#355;ie &#351;i procedura de semnalare a unei situa&#355;ii de urgen&#355;&#259; la 112. --></p>"
+				html: "<p><b>Lec&#355;ia de prim ajutor</b> este un program de preven&#355;ie &#351;i educa&#355;ie pentru salvarea de vie&#355;i, care ofer&#259; solu&#355;ii la situa&#355;iile de urgen&#355;&#259; cele mai frecvente, care pot fi puse &#238;n practic&#259; &#238;n siguran&#355;&#259; de c&#259;tre persoane f&#259;r&#259; o preg&#259;tire medical&#259;.</p>",
+				flex: 1,
 			},
 			{
 				xtype: "container",
-				flex: 1,
+				docked: "bottom",
+				padding: 30,
 				items: [
 					{
 						xtype: "button",

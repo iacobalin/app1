@@ -59,7 +59,7 @@ Ext.define("LDPA.view.phone.actions.CallPanel", {
 				}]
 			},
 			{
-				xtype: "component",
+				xtype: "panel",
 				flex: 1,
 				cls: 'content',
 				html: "<p>&#206;nainte de a continua apelul, g&acirc;nde&#351;te-te &#238;nc&#259; o dat&#259; dac&#259; este &#238;ntr-adev&#259;r nevoie de asisten&#355;a IMEDIAT&#258; a Salv&#259;rii, Poli&#355;iei sau Pompierilor &#238;n situa&#355;ia &#238;n care te afli.</p>"
@@ -71,8 +71,12 @@ Ext.define("LDPA.view.phone.actions.CallPanel", {
 				width: 140,
 				height: 40,
 				cls: "call-button",
+				pressedCls: "pressed",
 				iconCls: 'call',
 				html: '<a href="tel:112" style="text-decoration:none; width:100%; height:100%;">Apeleaz&#259; 112</a>',
+				handler: function(btn){
+					window.open('tel:112', '_system');	
+				},
 			}
 		]
 	},

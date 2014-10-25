@@ -12,11 +12,13 @@ Ext.define("LDPA.view.phone.Main", {
 		
 		// custom properties
 		backgroundCard: null,								// a reference to the background card
+		dragBlocked: false,									// a flag indicating if the drag event is suspended or not
 		
 		// css properties
 		cls: 'carousel',
 		
 		// properties
+		activeItem: 0,
 		indicator: false,
 		animation: {
             duration: 600,
@@ -33,8 +35,11 @@ Ext.define("LDPA.view.phone.Main", {
 		var cover = Ext.create("LDPA.view.phone.categories.Cover");
 		this.add(cover);
 		
-		var CategoriesList = Ext.create("LDPA.view.phone.categories.CategoriesList");
-		this.add(CategoriesList);
+		var categoriesList = Ext.create("LDPA.view.phone.categories.CategoriesList", {
+			hidden: true
+		});
+		this.add(categoriesList);
+		
 		
 		var backgroundCard = Ext.Viewport.down("#mainBackground");
 		this.setBackgroundCard(backgroundCard);
@@ -45,20 +50,24 @@ Ext.define("LDPA.view.phone.Main", {
 	
 	onDragStart: function() {
 		
-		var backgroundCard = this.getBackgroundCard();
-		backgroundCard.fireEvent("stopanim");
+		if (!this.getDragBlocked()){
+			var backgroundCard = this.getBackgroundCard();
+			backgroundCard.fireEvent("stopanim");
+		}
 				
 		this.callParent(arguments);	
 	},
 	
 	onDragEnd: function() {
-			
-		//var cover = Ext.get(dom).findParent("div.x-carousel-inner")
-		var cover = this.element.query(".cover-box")[0];
-		var dom = Ext.get(cover).findParent("div.x-carousel-item");
 		
-		var backgroundCard = this.getBackgroundCard();
-		backgroundCard.fireEvent("startanim", dom);
+		if (!this.getDragBlocked()){
+			//var cover = Ext.get(dom).findParent("div.x-carousel-inner")
+			var cover = this.element.query(".cover-box")[0];
+			var dom = Ext.get(cover).findParent("div.x-carousel-item");
+			
+			var backgroundCard = this.getBackgroundCard();
+			backgroundCard.fireEvent("startanim", dom);
+		}
 		
 		this.callParent(arguments);
     },
@@ -66,7 +75,7 @@ Ext.define("LDPA.view.phone.Main", {
 	
 	onDrag: function(e, dom){
 		
-		if (dom){
+		if (dom && !this.getDragBlocked()){
 			
 			var backgroundCard = this.getBackgroundCard();
 			

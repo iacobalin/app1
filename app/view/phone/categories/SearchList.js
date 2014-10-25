@@ -46,7 +46,7 @@ Ext.define("LDPA.view.phone.categories.SearchList", {
 				height: 55,
 				docked: "top",	  
 				cls: "top-bar",
-				title: "Rezultatele cautarii",
+				title: "Rezultatele c&#259;ut&#259;rii",
 				items: [{
 					xtype: "button",
 					itemId: "closeBtn",

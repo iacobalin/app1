@@ -23,6 +23,10 @@ Ext.define('LDPA.controller.phone.Actions', {
 			contactForm: {
 				selector: '#contactFormPanel',
                 autoCreate: true		
+			},
+			settingsPanel: {
+				selector: '#settingsPanel',
+                autoCreate: true		
 			}
         },
 		
@@ -99,6 +103,7 @@ Ext.define('LDPA.controller.phone.Actions', {
 				break;
 				
 			case "settings":
+			this.showSettings();
 				break;
 				
 			default: break;	
@@ -166,7 +171,7 @@ Ext.define('LDPA.controller.phone.Actions', {
 		
 		Ext.Viewport.add(mask);
 		
-		// create credits panel
+		// create emergency panel
 		var profile = webcrumbz.profile.toLowerCase();
 		var callPanel = Ext.create("LDPA.view."+profile+".actions.CallPanel", {
 			mask: mask,
@@ -190,7 +195,7 @@ Ext.define('LDPA.controller.phone.Actions', {
 		
 		Ext.Viewport.add(mask);
 		
-		// create credits panel
+		// create contact panel
 		var profile = webcrumbz.profile.toLowerCase();
 		var contactForm = Ext.create("LDPA.view."+profile+".actions.ContactForm", {
 			mask: mask,
@@ -271,7 +276,7 @@ Ext.define('LDPA.controller.phone.Actions', {
 		
 		Ext.Viewport.add(mask);
 		
-		// create credits panel
+		// create share panel
 		var profile = webcrumbz.profile.toLowerCase();
 		var sharePanel = Ext.create("LDPA.view."+profile+".actions.SharePanel", {
 			mask: mask,
@@ -283,4 +288,197 @@ Ext.define('LDPA.controller.phone.Actions', {
 		mask.show();
 		sharePanel.show();	
 	},
+	
+	
+	showSettings: function(){
+		// create mask
+		var mask = Ext.create("LDPA.view.MainMask", {
+			disabled: true,
+			closeFn: function(){
+				settingsPanel.fireEvent("closepanel");
+			}
+		});
+		
+		Ext.Viewport.add(mask);
+		
+		// create settings panel
+		var profile = webcrumbz.profile.toLowerCase();
+		var settingsPanel = Ext.create("LDPA.view."+profile+".actions.SettingsPanel", {
+			mask: mask,
+			zIndex: mask.getZIndex()+1
+		});
+		
+		Ext.Viewport.add(settingsPanel);
+		
+		mask.show();
+		settingsPanel.show();	
+	},
+	
+	
+	downloadContent: function(){
+		var settingsPanel = this.getSettingsPanel();
+		var mask = settingsPanel.getMask();
+		mask.setDisabled(true);
+				
+		var self = this;
+		var articlesOfflineStore = mainController.articlesOfflineStore;
+		var categories = mainController.categoriesOfflineStore.getRange();
+				
+		
+		// delete all articles from local Database
+		articlesOfflineStore.getModel().getProxy().dropTable();
+		
+		articlesOfflineStore.load(function(){
+			
+			self.categoriesLoaded = 0;
+			
+			Ext.each(categories, function(category){
+				var categoryId = category.get("categoryId");
+				
+				// Make the JsonP request
+				Ext.data.JsonP.request({
+					url: webcrumbz.exportPath+'?json=mobile.category',
+					params: {
+						id: categoryId,
+						format: 'json',
+						key: webcrumbz.key
+					},
+					failure: function(){
+						// there was an error, but we must go on
+						self.categoriesLoaded++;
+					},
+					success: function(result, request) {
+						self.categoriesLoaded++;
+						
+						// save categories for offline
+						self.saveCategoryForOffline(result, categoryId);
+						
+						// save articles for offline
+						self.saveArticlesForOffline(result.posts, categoryId);
+					}
+				});		
+			})
+		});	
+	},
+	
+	
+	// update category in local SQL DATABASE
+	saveCategoryForOffline: function(record, categoryId){
+		var categoriesOfflineStore = mainController.categoriesOfflineStore;
+		var offlineRecord = categoriesOfflineStore.findRecord("categoryId", categoryId, 0, false, true, true);
+		
+		if (offlineRecord){
+			offlineRecord.updateData(record);
+		}
+		
+		if (this.categoriesLoaded == categoriesOfflineStore.getCount()){
+			categoriesOfflineStore.sync();
+		}
+	},
+	
+	
+	saveArticlesForOffline: function(records, categoryId){
+		
+		var categoriesStore = mainController.categoriesStore;
+		var categoriesOfflineStore = mainController.categoriesOfflineStore;
+		var articlesOfflineStore = mainController.articlesOfflineStore;
+		
+		var category = categoriesStore.findRecord("categoryId",categoryId, 0, false, true, true);
+			
+		if (records.length > 0){
+			Ext.each(records, function(post){
+				post.articleId = post.id;
+				post.category = category.get("name");
+				post.categoryId = categoryId;
+				delete post.id;
+									
+				// add 
+				var myRecord = Ext.create("LDPA.model.ArticlesOffline", post);
+				articlesOfflineStore.add(myRecord);
+			})
+		}	
+				
+		// all categories are now downloaded
+		if (this.categoriesLoaded == categoriesOfflineStore.getCount()){
+			articlesOfflineStore.sync();
+			this.articlesLoaded = 0;
+			
+			var self = this;
+			
+			// download content for each article
+			Ext.each(articlesOfflineStore.getRange(), function(record){
+			
+				var articleId = record.get("articleId");
+				var categoryId = record.get("categoryId");
+								
+				// Make the JsonP request
+				Ext.data.JsonP.request({
+					url: webcrumbz.exportPath+'?json=mobile.post',
+					params: {
+						id: articleId,
+						categoryId: categoryId,
+						format: 'json',
+						key: webcrumbz.key
+					},
+					failure: function(){
+						self.articlesLoaded++;
+					},
+					success: function(result, request) {
+						
+						result.post.content = result.post.content.replace(/width=\"\d+\"|height=\"\d+\"/g,'');
+						
+						// save article for offline
+						self.saveArticleForOffline(result.post, articleId, categoryId);
+					}
+				});	
+			})
+		}
+	},
+	
+	
+	saveArticleForOffline: function(post, articleId, categoryId){
+		this.articlesLoaded++;
+		
+		var categoriesStore = mainController.categoriesStore;
+		var articlesOfflineStore = mainController.articlesOfflineStore;
+		var total = articlesOfflineStore.getCount();
+		
+		
+		// update progress bar
+		var percent = Math.floor(this.articlesLoaded*100/total);
+		var settingsPanel = this.getSettingsPanel();
+		var progressBar = settingsPanel.down("#progressBar");
+		progressBar.setData({
+			percent: percent	
+		})
+		
+		
+		// update article in local SQL DATABASE
+		//var offlineRecord = articlesOfflineStore.findRecord("articleId", articleId, 0, false, true, true);
+		var offlineRecordIndex = articlesOfflineStore.findBy(function(record){
+			return (record.get("articleId") == articleId && record.get("categoryId") == categoryId);	
+		});
+				
+		// update
+		if (offlineRecordIndex != -1){
+			var offlineRecord = articlesOfflineStore.getAt(offlineRecordIndex);
+			offlineRecord.updateData(post);
+			
+			var category = categoriesStore.findRecord("categoryId",categoryId, 0, false, true, true);
+			offlineRecord.set("category",category.get("name"));
+		}
+		
+		// all articles are now downloaded
+		if (this.articlesLoaded == articlesOfflineStore.getCount()){
+			articlesOfflineStore.sync();
+			
+			// remember the last downloading date
+			var date = window.localStorage.lastDownloadDate = new Date();
+			
+			var lastDateBox = settingsPanel.down("#lastDateBox");
+			lastDateBox.setData({date: date});
+			
+			settingsPanel.getMask().setDisabled(false);
+		}
+	}
 });
