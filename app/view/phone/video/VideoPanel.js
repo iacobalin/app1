@@ -27,44 +27,7 @@ Ext.define("LDPA.view.phone.video.VideoPanel", {
 			'<h1>{title}</h1>'+           
             '<div class="content">',
 				'{content}',
-			'</div>',
-			'<div class="article-media" data-video-image="{featured_image}" data-video-link="{video_link}" style="width: {[ this.getImgWidth(); ]}px; height: {[ this.getImgHeight(); ]}px; position:relative; margin:0 auto; background: url(\'{[this.getImage(values.featured_image)]}\') center center no-repeat;">',
-				'<div class="overlay" style="width:100%; height:100%; position:absolute; top:0;"></div>',
-			'</div>',
-			{
-				imageWidth: 441,
-				imageHeight: 326,
-				padding: 25,
-				getImgWidth: function(){
-					
-					var width = Ext.Viewport.getWindowWidth() - 2*this.padding;
-					return Math.floor(width);
-				},
-				getImgHeight: function(){
-					
-					var height = this.getImgWidth() * this.imageHeight / this.imageWidth;
-					return Math.floor(height);
-				},
-				getImage: function(image){
-					if (LDPA.app.isOnline()){
-						return image;
-					}
-					else{
-						var imagesOffline = mainController.imagesOfflineStore;
-						var offlineRecord = imagesOffline.findRecord("url", image, 0, false, true, true);
-						if (offlineRecord && offlineRecord.get("dataUrl")){
-							return offlineRecord.get("dataUrl");	
-						}
-					}
-				},
-				getOrientation: function(){
-					if (!Ext.os.is.Android){
-						return 	Ext.Viewport.getOrientation();
-					}
-					
-					return Ext.Viewport.getWindowWidth() > Ext.Viewport.getWindowHeight() ? "landscape" : "portrait";
-				}	
-			}
+			'</div>'
 		),
 		items: [
 			{
@@ -136,6 +99,11 @@ Ext.define("LDPA.view.phone.video.VideoPanel", {
 						scope: this
 					}
 				]
+			},
+			{
+				xtype: "video",
+				itemId: 'videoBox',
+				enableControls : true	
 			}
 		]
 	},
@@ -177,12 +145,25 @@ Ext.define("LDPA.view.phone.video.VideoPanel", {
 		this.setData(article);
 		this.handleOrientationChange();
 		
-		// attach tap event for each media items on this panel
-		var mediaItems = this.element.query(".article-media");
-		for (var i=0; i<mediaItems.length; i++){
-			var item = Ext.get(mediaItems[i]);
-			
-			item.on("tap", this.onMediaItemTap, this);
+		// add video config
+		var imageWidth = 441;
+		var imageHeight = 326;
+		var width = Ext.Viewport.getWindowWidth() - 50;
+		var height = width * imageHeight / imageWidth;
+		var videoBox = this.down("#videoBox");
+		videoBox.setWidth(width);
+		videoBox.setHeight(height);
+		videoBox.setUrl(article.video_link);
+		
+		if (LDPA.app.isOnline()){
+			videoBox.setPosterUrl(article.featured_image);
+		}
+		else{
+			var imagesOffline = mainController.imagesOfflineStore;
+			var offlineRecord = imagesOffline.findRecord("url", article.featured_image, 0, false, true, true);
+			if (offlineRecord && offlineRecord.get("dataUrl")){
+				videoBox.setPosterUrl(offlineRecord.get("dataUrl"));
+			}
 		}
 	},
 	
@@ -220,44 +201,6 @@ Ext.define("LDPA.view.phone.video.VideoPanel", {
 			this.lastScrollY = scrollY;
 		}
 	},
-	
-	onMediaItemTap: function(event, item){
-		var video = Ext.get(item).up(".article-media").dom;
-		var videoLink = video.getAttribute("data-video-link");
-		var videoImage = video.getAttribute("data-video-image");
-		
-		// create mask
-		var mask = Ext.create("LDPA.view.MainMask", {
-			spinner: false,
-			closeFn: function(){
-				mediaPanel.fireEvent("closepanel");
-			}
-		});
-		
-		Ext.Viewport.add(mask);
-		
-		// create media panel
-		var mediaPanel = Ext.create("LDPA.view.phone.video.MediaPanel", {
-			mask: mask,
-			zIndex: mask.getZIndex()+1
-		});
-		
-		Ext.Viewport.add(mediaPanel);
-		
-		mask.show();
-		
-		// add content
-		mediaPanel.fireEvent("addcontent", {
-			videoLink: videoLink,
-			videoImage: videoImage,
-			width: parseInt(video.style.width),
-			height: parseInt(video.style.height)
-		});
-		
-		// open panel
-		mediaPanel.fireEvent("openpanel");
-	},
-	
 	
 	onClosePanel: function(){
 		this.getParent().animateActiveItem(0, {direction: "right", type: "slide"})	

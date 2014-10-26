@@ -25,9 +25,9 @@ Ext.define("LDPA.view.phone.map.MapPanel", {
 		useCurrentLocation: true,
 		mapOptions: {
 			zoom: 13,
-			/*mapTypeControlOptions: {
+			mapTypeControlOptions: {
 				position: (google) ? google.maps.ControlPosition.LEFT_TOP : null
-			}*/
+			}
 		},
 		items: [
 			{

@@ -268,12 +268,11 @@
 			@include wbz-transform(translateX(-50%));
 		}
 	}
-	.article-media{
-		background-size: cover;
-		background-position: center;
-		background-repeat: no-repeat;
+	.x-video{
+		margin: 0 auto;
+		margin-top: 20px;
 		
-		.overlay{
+		.x-video-ghost{
 			@include wbz-inline-icon(play, 50px);
 			color: rgba(255,255,255, 0.6);
 			

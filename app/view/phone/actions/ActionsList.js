@@ -23,6 +23,7 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 		selectedCls: '',
 		pressedCls: 'item-pressed',
 		height: 40,
+		zIndex: 100,
 				
 		// properties
 		scrollable:{

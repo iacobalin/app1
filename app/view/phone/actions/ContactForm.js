@@ -57,7 +57,7 @@ Ext.define("LDPA.view.phone.actions.ContactForm", {
 			},
 			{
 				xtype: 'component',
-				html: 'Scrie-ne dac&#259; vrei s&#259; ne semnalezi o situa&#355;ie medical&#259; cu care te-ai confruntat sau o solu&#355;ie de prim ajutor alternativ&#259;, precum &#351;i sugestii pentru &#238;mbun&#259;t&#259;&#355;irea aplica&#355;iei.<br/><br/><span style="font-size:12px;">C&#226;mpurile marcate cu * sunt obligatorii de completat!</span>',
+				html: '<p style="padding-top:20px;">Scrie-ne dac&#259; vrei s&#259; ne semnalezi o situa&#355;ie medical&#259; cu care te-ai confruntat sau o solu&#355;ie de prim ajutor alternativ&#259;, precum &#351;i sugestii pentru &#238;mbun&#259;t&#259;&#355;irea aplica&#355;iei.<br/><br/><span style="font-size:12px;">C&#226;mpurile marcate cu * sunt obligatorii de completat!</span></p>',
 				cls: 'contact-text',
 			},
 			{
@@ -149,6 +149,11 @@ Ext.define("LDPA.view.phone.actions.ContactForm", {
 				text: "Trimite",
 				padding: 10,
 				width: 150
+			},
+			{
+				xtype: "component",
+				height: 20,
+				html: ''	
 			}
 		],
 		hidden: true,
