@@ -1,95 +1,101 @@
 Ext.define("LDPA.view.tablet.Main", {
-    extend: 'Ext.tab.Panel',
+    extend: 'Ext.Carousel',
     
 	requires: [
-        'Ext.field.Search',
-        'Ext.form.Panel',
-		'LDPA.view.tablet.home.Home',
-		'LDPA.view.tablet.articles.Articles',
-		'LDPA.view.tablet.video.Video',
-		'LDPA.view.tablet.map.Map',
-		'LDPA.view.tablet.news.News',
-		'LDPA.view.tablet.contact.Contact',
-		'LDPA.view.tablet.quiz.Quiz',
-		'LDPA.view.tablet.share.Share',
-		'LDPA.view.tablet.newsletter.Newsletter',
-		'LDPA.view.tablet.questions.Questions',
-		'LDPA.view.tablet.search.Search',
+        "LDPA.view.tablet.categories.Cover",
+		"LDPA.view.tablet.categories.CategoriesList"
     ],
-   
+    
 	config: {
+        
 		id: 'mainView',
 		
-		tabBarPosition: 'bottom',
-        //cls: 'main-tabpanel',
+		// custom properties
+		backgroundCard: null,								// a reference to the background card
+		dragBlocked: false,									// a flag indicating if the drag event is suspended or not
 		
-		items: [{
-			xtype: 'panel',
-			docked: 'top',
-			height: 54,
-            cls: "top-bar",
-            layout: {
-                type: 'hbox',
-                pack: 'end',
-                align: 'center'
-            },
-            items: {
-                xtype: 'searchfield',
-                placeHolder: 'Caut\u0103...',
-                width: 230,
-                cls: 'search-bar'
+		// css properties
+		cls: 'carousel',
+		
+		// properties
+		activeItem: 0,
+		indicator: false,
+		animation: {
+            duration: 600,
+            easing: {
+                type: 'ease-out'
             }
-		}]
+        },
+    },
+	
+	
+	initialize: function(){
+		this.callParent(arguments);
+		
+		var cover = Ext.create("LDPA.view.tablet.categories.Cover");
+		this.add(cover);
+		
+		var categoriesList = Ext.create("LDPA.view.tablet.categories.CategoriesList", {
+			hidden: true
+		});
+		this.add(categoriesList);
+		
+		this.on("move", this.onCardMove, this);
 	},
-
-    initialize: function(){
+	
+	
+	onDragStart: function() {
 		
-		// home
-		var item = Ext.create("LDPA.view.tablet.home.Home");
-		this.add(item);
+		if (!this.getDragBlocked()){
+			var backgroundCard = this.getBackgroundCard();
+			
+			if (!backgroundCard){
+				var appPanel = Ext.Viewport.down("#appPanel");
+				backgroundCard = appPanel.down("#mainBackground");	
+				this.setBackgroundCard(backgroundCard);
+			}
+			
+			backgroundCard.fireEvent("stopanim");
+		}
+				
+		this.callParent(arguments);	
+	},
+	
+	onDragEnd: function() {
 		
-		// articles
-		var item = Ext.create("LDPA.view.tablet.articles.Articles");
-		this.add(item);
-		
-		// video lessons
-		var item = Ext.create("LDPA.view.tablet.video.Video");
-		this.add(item);
-		
-		// hospitals map
-		var item = Ext.create("LDPA.view.tablet.map.Map");
-		this.add(item);
-		
-		// news from press
-		var item = Ext.create("LDPA.view.tablet.news.News");
-		this.add(item);
-		
-		// contact form
-		var item = Ext.create("LDPA.view.tablet.contact.Contact");
-		this.add(item);
-
-		// quiz
-		var item = Ext.create("LDPA.view.tablet.quiz.Quiz");
-		this.add(item);
-
-		// share
-		var item = Ext.create("LDPA.view.tablet.share.Share");
-		this.add(item);
-
-		// newsletter
-		var item = Ext.create("LDPA.view.tablet.newsletter.Newsletter");
-		this.add(item);
-		
-		// send a question to a SMURD doctor
-		var item = Ext.create("LDPA.view.tablet.questions.Questions");
-		this.add(item);
-		this.getTabBar().getItems().getAt(9).hide();
-		
-		// search 
-		var item = Ext.create("LDPA.view.tablet.search.Search");
-		this.add(item);
-		this.getTabBar().getItems().getAt(10).hide();
+		if (!this.getDragBlocked()){
+			//var cover = Ext.get(dom).findParent("div.x-carousel-inner")
+			var cover = this.element.query(".cover-box")[0];
+			var dom = Ext.get(cover).findParent("div.x-carousel-item");
+			
+			var backgroundCard = this.getBackgroundCard();
+			backgroundCard.fireEvent("startanim", dom);
+		}
 		
 		this.callParent(arguments);
+    },
+	
+	
+	onDrag: function(e, dom){
+		
+		if (dom && !this.getDragBlocked()){
+			
+			var backgroundCard = this.getBackgroundCard();
+			
+			// cover
+			if (Ext.get(dom).findParent("div.cover-box")){
+				var delta = e.deltaX;
+				
+				backgroundCard.fireEvent("translate", delta, 0);
+			}
+			// categories list
+			else if (Ext.get(dom).findParent("div.categories-list")){
+				var delta = e.deltaX;
+				
+				backgroundCard.fireEvent("translate", delta, 1);
+			}
+		}
+		
+		this.callParent(arguments);	
 	}
 });

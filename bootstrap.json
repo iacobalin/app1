@@ -21,7 +21,7 @@
     ],
     "css": [
         {
-            "path": "resources/css/phone/phone.css",
+            "path": "resources/css/tablet/tablet.css",
             "update": "full"
         },
         {

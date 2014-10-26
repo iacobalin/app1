@@ -56,17 +56,6 @@ Ext.define('LDPA.controller.phone.Main', {
 		var imagesOfflineStore = this.imagesOfflineStore;
 		var imagesLoadingList = this.imagesLoadingList;
 		
-		// create mask
-		/*var mask = Ext.create("LDPA.view.MainMask", {
-			disabled: true,
-			spinner: true,
-			closeFn: function(){
-				
-			}
-		});
-		
-		Ext.Viewport.add(mask);
-		mask.show();*/
 		
 		categoriesOfflineStore.load(function(){
 			articlesOfflineStore.load(function(){
@@ -75,7 +64,6 @@ Ext.define('LDPA.controller.phone.Main', {
 						
 						// offline loading
 						if (!LDPA.app.isOnline()){
-							//mask.fireEvent("close");
 							categoriesStore.add(categoriesOfflineStore.getRange());
 							self.setActions();
 						}
@@ -85,8 +73,6 @@ Ext.define('LDPA.controller.phone.Main', {
 							categoriesStore.loadPage(1, {
 								callback: function(records, operation){
 									
-									//mask.fireEvent("close");
-																	
 									if (records.length > 0){
 										// save categories for offline
 										self.saveCategoriesForOffline(records);

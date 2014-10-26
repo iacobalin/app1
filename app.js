@@ -5,7 +5,7 @@ Ext.application({
         'Ext.MessageBox'
     ],
 	
-	profiles: 		['Phone'],
+	profiles: ['Tablet'],
 
     icon: {
 		'40': 'resources/icons/40x40.png',

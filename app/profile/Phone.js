@@ -19,8 +19,8 @@ Ext.define('LDPA.profile.Phone', {
     },
 
     isActive: function() {
-       	return Ext.os.is.Phone;// || Ext.os.is.Desktop;
-		//return true;
+       	//return Ext.os.is.Phone;// || Ext.os.is.Desktop;
+		return true;
 	},
 	
 	launch: function(){

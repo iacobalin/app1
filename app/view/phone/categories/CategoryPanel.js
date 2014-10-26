@@ -11,6 +11,7 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 		itemId: "categoryPanel",
 				
 		// custom properties
+		category: null,
 		scrolling: false,								// a flag indicating if the content of the card is scrolling
 		closeBtn: null,									// a reference of the close button
 								
@@ -103,6 +104,8 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 		
 		var articlesList = this.down("#articlesList");
 		articlesList.getStore().add(category.posts);
+		
+		this.setCategory(category);
 	},
 	
 	
@@ -143,7 +146,7 @@ Ext.define("LDPA.view.phone.categories.CategoryPanel", {
 	
 	handleOrientationChange: function(){
 		var categoryBox = this.down("#categoryBox");
-		categoryBox.setData(category);
+		categoryBox.setData(this.getCategory());
 	},
 	
 	onClosePanel: function(){

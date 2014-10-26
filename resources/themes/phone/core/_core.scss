@@ -49,6 +49,14 @@
 #mainBackground{
 	.x-innerhtml{
 		height: 100%;
+		
+		.bg-inner-box div{
+			background-image: wbz_theme_image("phone/image-bg.jpg");
+			background-size: cover; 
+			background-position: center; 
+			background-repeat: no-repeat;
+			
+		}
 	}
 }
 .hbox{

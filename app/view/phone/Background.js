@@ -22,7 +22,7 @@ Ext.define("LDPA.view.phone.Background", {
 		tpl: new Ext.XTemplate(
 			'<div style="width: 100%; height: 100%; overflow: hidden;">',
 				'<div class="bg-inner-box" style="width: 100%; height: 100%;">',
-					'<div style="width: 145%; height: 100%; background-image: url(\''+webcrumbz.backgroundImage+'\'); background-size: cover; background-position: center; background-repeat: no-repeat;">',
+					'<div style="width: 145%; height: 100%;">',
 					
 					'</div>',
 				'</div>',
