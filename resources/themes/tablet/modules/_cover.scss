@@ -1,0 +1,79 @@
+.cover-box{
+	.x-panel-inner{
+		.x-innerhtml{
+			@include wbz-display-box();
+			height: 100%;
+		}
+	}
+	.logo-container{
+		@include wbz-box-pack(start);
+		@include wbz-box-align(center);
+	}
+	.logo-box{
+		@include wbz-display-box();
+		width: 240px;
+		height: 240px;
+		@include wbz-border-radius(164px);
+		background: transparent;
+		border: 1px solid #d1c9ba;
+		margin: 50px auto 0 auto;
+		
+		.logo-icon{
+			display: block;
+			width: 220px;
+			height: 220px;
+			@include wbz-border-radius(150px);
+			background: rgba(255,255,255,0.85);
+			background-image: wbz_theme_image("tablet/logo-icon.png");
+			background-size: 150px 150px;
+			background-position: center center;
+			background-repeat: no-repeat;
+			margin: 10px auto;
+		}
+	}
+	.logo-text{
+		background-image: wbz_theme_image("tablet/logo-text.png");
+		background-size: contain;
+		background-repeat: no-repeat;
+		width: 300px;
+		height: 53px;
+		margin: 15px auto;
+	}
+	.footer{
+		background: rgba(255,255,255,0.8);
+		
+		.logos{
+			width: 680px;
+			margin: 0 auto;
+			padding: 20px 0;
+			@include wbz-display-box();
+			@include wbz-box-pack(center);
+			@include wbz-box-align(center);
+		}
+		.logo-ing{
+			background-image: wbz_theme_image("tablet/logo-ing.png");
+			background-size: contain;
+			background-repeat: no-repeat;
+			width: 375px;	
+			height: 32px;
+			margin-right: 15px;
+		}
+		.logo-mai-mult-verde{
+			background-image: wbz_theme_image("tablet/logo-mai-mult-verde.png");
+			background-size: contain;
+			background-repeat: no-repeat;
+			width: 230px;	
+			height: 56px;
+			margin-left: 15px;
+			margin-right: 15px;
+		}
+		.logo-smurd{
+			background-image: wbz_theme_image("tablet/logo-smurd.png");
+			background-size: contain;
+			background-repeat: no-repeat;
+			width: 80px;	
+			height: 79px;
+			margin-left: 15px;
+		}
+	}
+}

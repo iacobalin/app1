@@ -1,0 +1,144 @@
+.contact-form{
+	background: #ffffff;
+	
+	.x-form-fieldset{
+		margin: 0px;
+	
+		.x-form-fieldset-inner{
+			border: 0px;
+			@include wbz-border-radius(0px);
+		}
+	}
+	&.x-layout-card-item{
+		background: #ffffff;
+	}
+	.top-bar{
+		background: $orange;
+		border-bottom: 0px;
+		
+		.x-title{
+			font-size: 18px;
+			color: #ffffff;
+			text-shadow: none;
+			font-weight: normal;
+		}
+		.x-panel-inner{
+			padding: 0 10px;
+		}
+		.close-button{
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			
+			.close{
+				color: #ffffff;
+				top: 0px;
+				right: 0px;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+				
+				&::before{
+					line-height: 50px;
+				}
+			}
+		}
+	}
+	.x-dock-body{
+		margin: 0px 30px;
+
+		.contact-text{
+			font-size: 15px;
+			color: $dark-grey;
+			line-height: 19px;	
+		}
+		.errors{
+			.x-innerhtml{
+				p{
+					color: #ee3800;
+					font-size: 15px;
+					line-height: 19px;
+					margin: 0 0 10px 0;
+				}
+			}
+		}
+		.contact-fieldset{
+			.x-field-text{
+				@include wbz-border-radius(0px);
+				border: 0px;
+				background: #f1edeb;
+				border-top: 1px solid #e5ded9;
+				margin: 8px 0;
+				
+				input{
+					background: transparent;
+					font-size: 15px;
+					line-height: 18px;	
+					color: #525150;
+					-webkit-text-fill-color: #525150;
+					
+					&::-webkit-input-placeholder{
+						color: #adadad;
+						-webkit-text-fill-color: #adadad;
+					}
+				}
+			}
+			.x-field-select{
+				@include wbz-border-radius(0px);
+				border: 0px;
+				background: #f1edeb;
+				border-top: 1px solid #e5ded9;
+				margin: 8px 0;
+				
+				input{
+					background: transparent;
+					font-size: 15px;
+					line-height: 18px;	
+					color: #525150;
+					-webkit-text-fill-color: #525150;
+					
+					&::-webkit-input-placeholder{
+						color: #adadad;
+						-webkit-text-fill-color: #adadad;
+					}
+				}
+			}
+			.x-field-textarea{
+				@include wbz-border-radius(0px);
+				border: 0px;
+				background: #f1edeb;
+				border-top: 1px solid #e5ded9;
+				margin: 8px 0;
+				
+				textarea{
+					background: transparent;
+					font-size: 15px;
+					line-height: 18px;	
+					color: #525150;
+					-webkit-text-fill-color: #525150;
+					
+					&::-webkit-input-placeholder{
+						color: #adadad;
+						-webkit-text-fill-color: #adadad;
+					}
+				}
+			}
+		}
+	}
+	.send-button{
+		background: $blue;
+		border: 1px solid #ffffff;
+		margin: 20px auto;
+		
+		.send{
+			display: none;
+		}
+		.x-button-label{
+			color: #ffffff;
+			font-size: 16px;
+			font-weight: normal;
+			font-family: "opensans-regular";
+			text-align: center;
+		}
+	}
+}
