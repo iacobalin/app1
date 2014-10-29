@@ -9000,8 +9000,8 @@ body.x-desktop {
 }
 /* line 154, c:/wamp/www/LDPA 3/resources/sass/phone/../../themes/phone/modules/_articles.scss */
 .article-panel .content h3, .article-panel .content h4, .article-panel .content h5, .article-panel .content h6 {
-  font-size: 16px;
-  margin: 10px 0 5px 0;
+  font-size: 18px;
+  margin: 15px 0 5px 0;
 }
 /* line 158, c:/wamp/www/LDPA 3/resources/sass/phone/../../themes/phone/modules/_articles.scss */
 .article-panel .content a {
