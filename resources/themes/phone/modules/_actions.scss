@@ -50,8 +50,20 @@
 							font-family: "opensans-light";
 							font-size: 14px;
 							line-height: 15px;
-							height: 40px;
+							height: 30px;
 							text-align: center;
+						}
+					}
+				}
+				&.item-pressed{
+					.x-innerhtml{
+						.item-box{
+							background: $dark-grey;
+							border: 1px solid $light-grey;
+							
+							.icon{
+								color: white;
+							}
 						}
 					}
 				}
@@ -75,6 +87,9 @@
 			.back{
 				@include wbz-inline-icon(left, 20px);
 				@include wbz-transform(rotate(90deg));
+			}
+			&.pressed{
+				opacity: 0.7;
 			}
 		}
 	}

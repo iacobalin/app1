@@ -68,30 +68,46 @@ Ext.define('LDPA.controller.phone.Videos', {
 			
 			mask.show();
 			
+			
+			// create video panel
+			var profile = webcrumbz.profile.toLowerCase();
+			var videoView = Ext.create("LDPA.view."+profile+".video.Video", {
+				mask: mask,
+				zIndex: mask.getZIndex()+1
+			});
+			
+			Ext.Viewport.add(videoView);
+				
+			
 			// offline
 			if (!LDPA.app.isOnline()){
 				mask.fireEvent("close");
 				
-				alert(webcrumbz.offlineMsg);
+				var videosList = videoView.down("#videosList");
+				var videosOfflineStore = mainController.videosOfflineStore;
+				videosList.getStore().add(videosOfflineStore.getRange());
+				
+				videoView.show();
 			}
 			// online
 			else{
-				
-				// create video panel
-				var profile = webcrumbz.profile.toLowerCase();
-				var videoView = Ext.create("LDPA.view."+profile+".video.Video", {
-					mask: mask,
-					zIndex: mask.getZIndex()+1
-				});
-				
-				Ext.Viewport.add(videoView);
-				
+				var self = this;
 				var videosList = videoView.down("#videosList");
+				
 				videosList.getStore().loadPage(1, {
-					callback: function(){
+					callback: function(records){
 						
 						mask.fireEvent("close");
-						videoView.show();	
+						videoView.show();
+						
+						if (records.length > 0){
+							// save video articles for offline
+							mainController.saveVideosForOffline(records);
+						}
+						// if there was an error with the server's response, then load the content from SQL Database
+						else{
+							videosList.getStore().add(videosOfflineStore.getRange());
+						}	
 					}
 				})
 			}
@@ -121,7 +137,7 @@ Ext.define('LDPA.controller.phone.Videos', {
 		mask.show();
 		
 		// show article
-		var articleId = record.get("id");
+		var articleId = record.get("articleId") || record.get("id");
 		this.showArticle(articleId);
 	},
 	
@@ -135,6 +151,9 @@ Ext.define('LDPA.controller.phone.Videos', {
 		
 		// offline loading
 		if (!LDPA.app.isOnline()){
+			// hide mask
+			mask.fireEvent("close");
+			
 			// show article from offline			
 			this.showArticleFromOffline(articleId);
 		}
@@ -148,6 +167,9 @@ Ext.define('LDPA.controller.phone.Videos', {
 					format: 'json',
 				},
 				failure: function(){
+					// hide mask
+					mask.fireEvent("close");
+					
 					// show video article from offline
 					self.showArticleFromOffline(id);
 				},
@@ -158,9 +180,8 @@ Ext.define('LDPA.controller.phone.Videos', {
 					result.post.content = result.post.content.replace(/width=\"\d+\"|height=\"\d+\"/g,'');
 					
 					// save article for offline
-					//self.saveArticleForOffline(result.post, articleId);
+					mainController.saveVideoForOffline(result.post, articleId);
 					
-					//result.post.content = result.post.content.replace(/src=\"/gi,'src="http://src.sencha.io/-10/');
 					result.post.articleId = result.post.id;
 					
 					// add content
@@ -172,4 +193,28 @@ Ext.define('LDPA.controller.phone.Videos', {
 			});	
 		}
 	},
+	
+	
+	showArticleFromOffline: function(articleId){
+		var self = this;
+		var videoView = this.getVideoView();
+		var videoPanel = this.getVideoPanel();
+		
+		var videosOfflineStore = mainController.videosOfflineStore;
+		var offlineRecord = videosOfflineStore.findRecord("articleId", articleId, 0, false, true, true);
+		
+		if (offlineRecord){
+			var imagesOfflineStore = mainController.imagesOfflineStore;
+			var content = offlineRecord.get("content");
+			
+			// update values
+			var data = offlineRecord.getData();
+			
+			// add content
+			videoPanel.fireEvent("addcontent", data);	
+			
+			// show article panel
+			videoView.animateActiveItem(videoPanel, {type: "slide", direction: "left"});
+		}
+	}
 });

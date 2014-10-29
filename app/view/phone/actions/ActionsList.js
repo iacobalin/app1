@@ -5,7 +5,8 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 		"Ext.TitleBar",
 		'LDPA.view.phone.actions.CallPanel',
 		'LDPA.view.phone.actions.ContactForm',
-		'LDPA.view.phone.actions.SharePanel'
+		'LDPA.view.phone.actions.SharePanel',
+		'LDPA.view.phone.actions.SettingsPanel'
 	],
 	
 	config: {
@@ -22,6 +23,7 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 		selectedCls: '',
 		pressedCls: 'item-pressed',
 		height: 40,
+		zIndex: 100,
 				
 		// properties
 		scrollable:{
@@ -99,11 +101,11 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 		}],
 		data: [
 			{ title: 'Apel 112', type: 'call', icon: 'call', sequence: 1 },
-			{ title: 'Lectii video', type: 'video', icon: 'video', sequence: 2 },
-			{ title: 'Harta spitale', type: 'map', icon: 'map', sequence: 3 },
-			{ title: 'Parerea ta', type: 'comment', icon: 'comment', sequence: 4 },
+			{ title: 'Lec&#355;ii video', type: 'video', icon: 'video', sequence: 2 },
+			{ title: 'Hart&#259; spitale', type: 'map', icon: 'map', sequence: 3 },
+			{ title: 'P&#259;rerea ta', type: 'comment', icon: 'comment', sequence: 4 },
 			{ title: 'Share', type: 'share', icon: 'share', sequence: 5 },
-			{ title: 'Setari offline', type: 'settings', icon: 'settings', sequence: 6 }
+			{ title: 'Set&#259;ri offline', type: 'settings', icon: 'settings', sequence: 6 }
 		],
 		hidden: true,
 		showAnimation: {
@@ -157,32 +159,6 @@ Ext.define("LDPA.view.phone.actions.ActionsList", {
 		
 		this.setHeight(listHeight+10);
 	},
-	
-	/*onListItemTap: function(list, index, item, record){
-		
-		switch (record.get("type")){
-			
-			case "call":
-				break;
-				
-			case "video":
-				break;
-				
-			case "map":
-				break;
-				
-			case "comment":
-				break;
-				
-			case "share":
-				break;
-				
-			case "settings":
-				break;
-				
-			default: break;	
-		}
-	},*/
 	
 	
 	onBackBtnTap: function(){

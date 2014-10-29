@@ -131,7 +131,14 @@ Ext.define("LDPA.view.phone.categories.ArticlePanel", {
 	onAddContent: function(article){
 		
 		var backBtn = this.down("#backBtn"); 
-		backBtn.setHtml(!this.getFromSearch() ? article.category : "Inapoi");
+		
+		if (!this.getFromSearch()){
+			var category = this.getParent().down("#categoryBox").getData();
+			backBtn.setHtml(category.name);
+		}
+		else{
+			backBtn.setHtml("&#206;napoi");	
+		}
 		
 		// update bottom bar
 		var bottomBar = this.getBottomBar();

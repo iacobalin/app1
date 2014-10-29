@@ -29,6 +29,10 @@
 				padding: 20px 0 0 0;
 				border-top: 1px solid #ffffff;
 			}
+			p{
+				margin: 0px;
+				padding: 0px;
+			}
 		}
 	}
 	.x-innerhtml{
@@ -41,7 +45,7 @@
 	.facebook-button{
 		background: #3b5998;
 		border: 1px solid #ffffff;
-		margin: 20px auto;
+		margin: 10px auto;
 		
 		.facebook{
 			@include wbz-inline-icon(facebook, 28px);
@@ -61,11 +65,14 @@
 			text-align: center;
 			margin: 0 50px 0 0;
 		}
+		&.pressed{
+			background: lighten(#3b5998, 10%);
+		}
 	}
 	.email-button{
 		background: $light-grey;
 		border: 1px solid #ffffff;
-		margin: 20px auto;
+		margin: 10px auto;
 		
 		.email{
 			@include wbz-inline-icon(email, 28px);
@@ -85,11 +92,14 @@
 			text-align: center;
 			margin: 0 50px 0 0;
 		}
+		&.pressed{
+			background: lighten($light-grey, 10%);
+		}
 	}
 	.twitter-button{
 		background: #55acee;
 		border: 1px solid #ffffff;
-		margin: 20px auto;
+		margin: 10px auto;
 		
 		.twitter{
 			@include wbz-inline-icon(twitter, 28px);
@@ -108,6 +118,9 @@
 			font-family: "opensans-regular";
 			text-align: center;
 			margin: 0 50px 0 0;
+		}
+		&.pressed{
+			background: lighten(#55acee, 10%);
 		}
 	}
 	.close-button{

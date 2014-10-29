@@ -20,6 +20,7 @@ Ext.define("LDPA.view.phone.video.Video", {
 		},
 		width: "100%",
 		height: "100%",
+		zIndex: 101,
 						
 		// properties
 		scrollable: null,

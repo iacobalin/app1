@@ -13,6 +13,12 @@ Ext.define("LDPA.model.CategoriesOffline", {
 			{name: 'sequence', 		type: 'int'}
 		],
 		
+		hasMany: {
+			model: 'LDPA.model.Articles',
+			name: 'posts',
+			associationKey: 'posts'
+		},
+		
 		proxy: {
 			type: 'sql',
 			database: 'LDPA',
@@ -27,30 +33,7 @@ Ext.define("LDPA.model.CategoriesOffline", {
 			}
 		}
 		
-		this.setOfflineImage();
-	},
-	
-	setOfflineImage: function(){
 		var url = this.get('image');
-		var imagesOffline = mainController.imagesOffline;
-		var imagesLoadingList = mainController.imagesLoadingList;
-		
-		var record = imagesOffline.findRecord("url", url, 0, false, true, true);
-		if (!record){
-			var scriptId = Math.floor(Math.random()*999999);
-			var script = document.createElement("script");
-			
-			imagesLoadingList.add({
-				scriptId: scriptId,
-				url: url,
-				timestamp: new Date()
-			})
-			
-			script.setAttribute("type","text/javascript");
-			script.setAttribute("id","script-"+scriptId);
-			script.setAttribute("data-image-url", encodeURIComponent(url));
-			script.setAttribute("src", "http://src.sencha.io/data.LDPA.app.setOfflineImage-" + scriptId + "/" + "http://src.sencha.io/290/"+url);
-			document.body.appendChild(script);	
-		}
+		mainController.saveImageForOffline(url);
 	}
 });

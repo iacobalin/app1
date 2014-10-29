@@ -49,6 +49,14 @@
 #mainBackground{
 	.x-innerhtml{
 		height: 100%;
+		
+		.bg-inner-box div{
+			background-image: wbz_theme_image("phone/image-bg.jpg");
+			background-size: cover; 
+			background-position: center; 
+			background-repeat: no-repeat;
+			
+		}
 	}
 }
 .hbox{
@@ -79,6 +87,11 @@
 			line-height: 60px;
 		}
 	}
+	&.pressed{
+		.menu{
+			color: $orange;
+		}
+	}
 }
 .close-button{
 	.close{
@@ -94,6 +107,9 @@
 			line-height: 60px;
 		}
 	}
+	&.pressed{
+		opacity: 0.7;
+	}
 }
 .back-button{
 	background: none;
@@ -101,5 +117,8 @@
 	
 	.back{
 		@include wbz-inline-icon(left, 20px);
+	}
+	&.pressed{
+		opacity: 0.7;
 	}
 }

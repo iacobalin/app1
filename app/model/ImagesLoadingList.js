@@ -5,11 +5,13 @@ Ext.define("LDPA.store.ImagesLoadingList", {
 	],
 	    
 	config: {
-        fields: [
+        pageSize: 500,
+		fields: [
+		   {name: 'id', 		type: 'auto'},
 		   {name: 'url', 		type: 'string'},
 		   {name: 'timestamp', 	type: 'date'},
-		   {name: 'status', 	type: 'string',		defaultValue: "pending"}			// pending, loaded
+		   {name: 'status', 	type: 'string',		defaultValue: "pending"}			// pending, completed
 		],
-		pageSize: 500
+		autoLoad: true
     }
 });

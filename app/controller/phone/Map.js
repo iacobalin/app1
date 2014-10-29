@@ -97,7 +97,10 @@ Ext.define('LDPA.controller.phone.Map', {
 			var mapPanel = Ext.Viewport.down("#mapPanel");
 		}
 		
-		mapPanel.show();
+		// show the map only if there is connection
+		if (LDPA.app.isOnline()){
+			mapPanel.show();
+		}
 	},
 	
 	onHospitalsSearchCallback: function(results, status, pagination){

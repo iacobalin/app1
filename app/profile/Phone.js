@@ -19,16 +19,16 @@ Ext.define('LDPA.profile.Phone', {
     },
 
     isActive: function() {
-       	return Ext.os.is.Phone;// || Ext.os.is.Desktop;
-		//return true;
+       	//return Ext.os.is.Phone;// || Ext.os.is.Desktop;
+		return true;
 	},
 	
 	launch: function(){
 
 		// Initialize the actions panel
-      	Ext.Viewport.add(Ext.create('LDPA.view.phone.Background', {zIndex: 1}));
+      	//Ext.Viewport.add(Ext.create('LDPA.view.phone.Background', {zIndex: 1}));
 		
 		// Initialize the main panel
-      	Ext.Viewport.add(Ext.create('LDPA.view.phone.Main', {zIndex: 2}));
+      	//Ext.Viewport.add(Ext.create('LDPA.view.phone.Main', {zIndex: 2}));
 	}
 });

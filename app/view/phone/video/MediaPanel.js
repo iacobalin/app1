@@ -15,7 +15,7 @@ Ext.define("LDPA.view.phone.video.MediaPanel", {
 		cls: 'media-panel',
 		width: '100%',
         height: '100%',
-		zIndex: 110,
+		zIndex: 120,
 		layout: {
 			type: 'vbox',
 			pack: 'center',
@@ -82,10 +82,11 @@ Ext.define("LDPA.view.phone.video.MediaPanel", {
 		
 		if (!this.down("#videoBox")){
 		
+			var me = this;
 			var video = Ext.create("Ext.Video", {
 				itemId: 'videoBox',
 				url: options.videoLink,
-				posterUrl: options.videoImage,
+				//posterUrl: options.videoImage,
 				width: options.width,
 				height: options.height,
 				enableControls : true,
@@ -93,11 +94,15 @@ Ext.define("LDPA.view.phone.video.MediaPanel", {
 				centered: true,
 				listeners: {
 					play: function(){
-						var poster = this.element.query('div[class=x-video-ghost]')[0];
-						Ext.get(poster).setStyle('display', 'none !important');
-						var v = this.element.query('video')[0];
-						Ext.get(v).setStyle('display', 'block !important');	
+						//var poster = this.element.query('div[class=x-video-ghost]')[0];
+						//Ext.get(poster).setStyle('display', 'none !important');
 						video.play();	
+						
+						Ext.defer(function(){
+							var v = me.element.query('video')[0];
+							v.style.display = "block";
+							alert(v.style.display);
+						}, 5000);
 					}
 				}
 			})
@@ -108,6 +113,17 @@ Ext.define("LDPA.view.phone.video.MediaPanel", {
 			var video = this.down("#videoBox");
 		}
 		
+		var v = this.element.query('video')[0];
+		Ext.get(v).setStyle('display', 'block !important');
+		
+		// create a mouse event
+		var clickEvent = document.createEvent('MouseEvents');
+		clickEvent.initMouseEvent(
+			'click', true, true, window, 0,
+			0, 0, Ext.Viewport.getWindowWidth()/2, Ext.Viewport.getWindowHeight()/2, false, false,
+			false, false, 0, null
+		);
+		v.dispatchEvent(clickEvent);
 		video.play();
 	},
 	

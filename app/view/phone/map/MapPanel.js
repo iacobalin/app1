@@ -25,9 +25,9 @@ Ext.define("LDPA.view.phone.map.MapPanel", {
 		useCurrentLocation: true,
 		mapOptions: {
 			zoom: 13,
-			/*mapTypeControlOptions: {
+			mapTypeControlOptions: {
 				position: (google) ? google.maps.ControlPosition.LEFT_TOP : null
-			}*/
+			}
 		},
 		items: [
 			{
@@ -36,7 +36,7 @@ Ext.define("LDPA.view.phone.map.MapPanel", {
 				height: 55,
 				docked: "top",	  
 				cls: "top-bar",
-				title: "Harta spitalelor din zona",
+				title: "Harta spitalelor din zon&#259;",
 				items: [{
 					xtype: "button",
 					itemId: "closeBtn",

@@ -23,8 +23,8 @@ Ext.define("LDPA.model.Categories", {
 		}
 	},
 	
-	/*updateData: function(){
+	updateData: function(){
 		this.set("categoryId", this.get("id"));
 		this.set("sequence", this.get("order"));
-	}*/
+	}
 });

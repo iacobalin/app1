@@ -64,6 +64,13 @@
 				}
 			}
 		}
+		&.item-pressed{
+			.x-innerhtml{
+				.categories-box{
+					background: rgba(255,255,255,0.3);
+				}
+			}
+		}
 	}
 }
 .category-panel{
@@ -162,6 +169,9 @@
 					display: block;
 				}
 			}
+		}
+		&.item-pressed{
+			opacity: 0.7;
 		}
 	}
 	&.x-list{

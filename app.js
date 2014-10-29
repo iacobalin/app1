@@ -5,42 +5,7 @@ Ext.application({
         'Ext.MessageBox'
     ],
 	
-	profiles: 		['Phone'],
-	//controllers:	['Main', 'Categories', 'Actions'],
-	/*models: [
-		'Categories', 
-		'CategoriesOffline', 
-		'ImagesOffline', 
-		'Articles', 
-		'ArticlesOffline', 
-		'VideoArticles', 
-		'VideoArticlesOffline',
-		'News', 
-		'Contact', 
-		'Comments', 
-		'Hospitals', 
-		'Quiz', 
-		'Newsletter', 
-		'Questions'
-	],
-    stores: [
-		'Categories', 
-		'CategoriesOffline', 
-		'ImagesOffline', 
-		'ImagesLoadingList', 
-		'Articles', 
-		'ArticlesOffline', 
-		'VideoArticles', 
-		'VideoArticlesOffline', 
-		'News', 
-		'ArticleComments', 
-		'VideoComments', 
-		'NewsComments', 
-		'Hospitals', 
-		'Quiz', 
-		'Search', 
-		'SearchComments'
-	],*/
+	profiles: ['Tablet'],
 
     icon: {
 		'40': 'resources/icons/40x40.png',
@@ -64,7 +29,7 @@ Ext.application({
         '640x920': 'resources/startup/640x920.png',
 		'640x960': 'resources/startup/640x960.png',
 		'640x1136': 'resources/startup/640x1136.png',
-        '768x1004': 'resources/startup/768x1004.png',
+        '768x1004': 'resour',
 		'768x1024': 'resources/startup/768x1024.png',
         '748x1024': 'resources/startup/748x1024.png',
         '1496x2048': 'resources/startup/1496x2048.png',
@@ -73,9 +38,7 @@ Ext.application({
     },
 
     launch: function() {
-        // Destroy the #appLoadingIndicator element
-        Ext.fly('appLoadingIndicator').destroy();
-
+       	
        	// a hack used for Android (4+) browsers, to handle the Viewport's orientation change event
 		Ext.Viewport.bodyElement.on('resize', Ext.emptyFn, this, { buffer: 1});
 		if (Ext.versions.touch.major >= 2 && Ext.versions.touch.minor > 0 && Ext.os.is.Android) {
@@ -97,5 +60,6 @@ Ext.application({
 	
 	isOnline: function(){
 		return navigator.onLine;
+		//return false;
 	}
 });
