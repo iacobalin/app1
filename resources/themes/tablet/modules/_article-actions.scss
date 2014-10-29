@@ -1,0 +1,142 @@
+.article-bottom-bar{
+	@include wbz-border-radius(0px);
+	@include wbz-box-shadow(none);
+	padding: 0px;
+	background: transparent;
+	
+	.buttons-panel{
+		
+		.comments-button{
+			@include border-radius(0px);
+			@include wbz-display-box();
+			border: 0px;
+			background: none;
+			padding: 0px;
+			width: 46px;
+			height: 46px;
+			margin: 0 0 10px 0;
+			
+			.comments{
+				@include wbz-inline-icon(comment_empty, 26px);
+				@include wbz-display-box();
+				@include border-radius(50px);
+				background-color: $light-blue;
+				width: 46px;
+				height: 46px;
+				line-height: 46px;
+				color: white;
+									
+				&::before{
+					line-height: 46px;
+				}
+			}
+			&.pressed{
+				.comments{
+					@include border-radius(46px);
+					width: 46px;
+					height: 46px;
+					background-color: $blue;
+					color: white;
+					
+					&::before{
+						line-height: 46px;	
+					}	
+				}
+			}
+			&.x-hasbadge{
+				.x-badge{
+					@include wbz-display-box();
+					background-image: none;
+					@include border-radius(3px);
+					@include wbz-box-shadow(none);
+					border: none;
+					min-width: 1px;
+					top: -9px;
+					right: -5px;
+					padding: 3px 4px 3px 4px;
+					background-color: $dark-orange;
+					color: #ffffff;
+					font-size: 13px;
+					line-height: 13px;
+					font-weight: normal;
+				}
+			}
+			.x-button-label{
+				display: none;
+			}
+		}
+		
+		.rating-button {
+			@include border-radius(0px);
+			@include wbz-display-box();
+			border: 0px;
+			background: none;
+			padding: 0px;
+			width: 46px;
+			height: 46px;
+			margin: 0 20px 10px 10px;
+			
+			.rate{
+				@include wbz-inline-icon(star, 26px);
+				@include wbz-display-box();
+				@include border-radius(46px);
+				background-color: $light-blue;
+				width: 46px;
+				height: 46px;
+				line-height: 46px;
+				color: white;
+									
+				&::before{
+					line-height: 46px;
+				}
+			}
+			&.pressed{
+				.rate{
+					@include border-radius(46px);
+					width: 46px;
+					height: 46px;
+					background-color: $blue;
+					color: white;
+					
+					&::before{
+						line-height: 46px;	
+					}	
+				}
+			}
+			&.x-hasbadge{
+				.x-badge{
+					@include wbz-display-box();
+					background-image: none;
+					@include border-radius(3px);
+					@include wbz-box-shadow(none);
+					border: none;
+					min-width: 1px;
+					top: -9px;
+					right: -5px;
+					padding: 3px 4px 3px 4px;
+					background-color: $dark-orange;
+					color: #ffffff;
+					font-size: 13px;
+					line-height: 13px;
+					font-weight: normal;
+				}
+			}
+			.x-button-label{
+				display: none;
+			}
+		}
+	}
+	
+	&.x-panel.x-floating{
+		@include wbz-border-radius(0px);
+		@include wbz-box-shadow(none);
+		background: transparent;
+		padding: 0;
+		
+		.x-panel-inner{
+			@include wbz-border-radius(0px);
+			@include wbz-box-shadow(none);
+			background: transparent;
+		}
+	}
+}

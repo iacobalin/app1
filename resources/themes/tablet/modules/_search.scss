@@ -1,0 +1,124 @@
+.search-list{
+	background: #d9e0f0;
+	
+	.top-bar{
+		background: $orange;
+		border-bottom: 2px solid #ffffff;
+		
+		.x-title{
+			font-size: 18px;
+			color: #ffffff;
+			text-shadow: none;
+			font-weight: normal;
+		}
+		.close-button{
+			.close{
+				color: #ffffff;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+				top: 0px;
+				right: 0px;
+				
+				&::before{
+					line-height: 50px!important;
+				}
+			}
+		}
+	}
+	&.x-list-normal .x-list-item.x-list-item-tpl{
+		border: 0px!important;
+		border-bottom: 1px solid #d9e0f0!important;
+	}
+	&.x-list-normal .x-list-item.x-list-item-tpl.x-list-footer-wrap{
+		border: 0px!important;
+		border-bottom: 1px solid #d9e0f0!important;
+	}
+	.x-list-item{
+		background: white;
+		
+		&.x-list-item-tpl{
+			height: 60px; 
+			
+			.x-innerhtml{
+				padding: 0 50px 0 20px;
+				height: 100%;
+				@include wbz-display-box();
+				@include wbz-box-align(center);
+				
+				> div{
+					@include wbz-box-pack(center);
+					width: 100%;
+				}
+				h1{
+					color: $blue;
+					font-size: 16px;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+					overflow: hidden;
+					display: block;
+				}
+			}
+		}
+		&.item-pressed{
+			opacity: 0.7;
+		}
+	}
+	&.x-list{
+		.x-list-disclosure{
+			@include wbz-inline-icon(left, 20px);
+			@include wbz-transform(rotate(180deg));
+			background: none;
+			padding: 0;
+			margin: 0;
+			height: 60px;
+			width: 50px;
+			
+			&::before{
+				color: $light-grey;	
+				line-height: 60px;
+			}
+		}
+	}
+	.stats{
+		@include wbz-box-pack(start);
+	}
+	.comments{
+		font-size: 13px;
+		color: $light-grey;	
+		@include wbz-display-inline-box();
+		margin: 0 15px 0 0;
+		
+		.icon{
+			@include wbz-inline-icon(comment_empty, 18px);
+			color: $light-grey;
+			width: 18px;
+			height: 18px;
+			margin: 0 5px 0 0;
+			
+			&::before{
+				line-height: 18px;
+				position: relative;
+			}
+		}
+	}
+	.ranking{
+		font-size: 13px;
+		color: $light-grey;	
+		@include wbz-display-inline-box();
+		margin: 0 15px 0 0;
+		
+		.icon{
+			@include wbz-inline-icon(star, 18px);
+			color: $light-grey;
+			width: 18px;
+			height: 18px;
+			margin: 0 5px 0 0;
+			
+			&::before{
+				line-height: 18px;
+				position: relative;
+			}
+		}
+	}
+}

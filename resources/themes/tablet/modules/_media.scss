@@ -1,0 +1,36 @@
+.media-panel{
+	@include border-radius(0px);
+	border: 0px;
+	padding: 0px;
+	top: 0;
+	left: 0;
+	background: #000;
+	
+	&.x-panel{
+		&.x-floating{
+			@include border-radius(0px);
+			background: #000000;
+			border: 0px;
+				
+		 	> .x-body{
+				background: #000000;
+			}
+			.x-panel-inner{
+				@include border-radius(0px);
+				background: #000000;
+			}
+		}
+	}
+	&.x-floating > .x-panel-inner:first-child{
+		@include border-radius(0px);
+		background: #000000;
+	}
+	iframe{
+		border: 0px;
+	}
+	.close-button{
+		.close{
+			color: #ffffff;
+		}
+	}
+}
