@@ -7825,6 +7825,155 @@ body.x-desktop {
   opacity: 0.7;
 }
 
+/* line 137, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/core/_core.scss */
+#bar-loader {
+  width: 18px;
+}
+
+/* line 140, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/core/_core.scss */
+.bar_block {
+  float: left;
+  height: 15px;
+  margin-left: 1px;
+  width: 5px;
+  background-color: #7caad6;
+  border: 1px solid #7caad6;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=10);
+  opacity: 0.1;
+  -moz-animation-name: bounceG;
+  -moz-animation-duration: 1.1s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-direction: linear;
+  -moz-transform: scale(0.7);
+  -webkit-animation-name: bounceG;
+  -webkit-animation-duration: 1.1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: linear;
+  -webkit-transform: scale(0.7);
+  -ms-animation-name: bounceG;
+  -ms-animation-duration: 1.1s;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-direction: linear;
+  -ms-transform: scale(0.7);
+  -o-animation-name: bounceG;
+  -o-animation-duration: 1.1s;
+  -o-animation-iteration-count: infinite;
+  -o-animation-direction: linear;
+  -o-transform: scale(0.7);
+  animation-name: bounceG;
+  animation-duration: 1.1s;
+  animation-iteration-count: infinite;
+  animation-direction: linear;
+  transform: scale(0.7);
+}
+
+/* line 174, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/core/_core.scss */
+#block_1 {
+  -moz-animation-delay: 0.3s;
+  -webkit-animation-delay: 0.3s;
+  -ms-animation-delay: 0.3s;
+  -o-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+
+/* line 181, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/core/_core.scss */
+#block_2 {
+  -moz-animation-delay: 0.4s;
+  -webkit-animation-delay: 0.4s;
+  -ms-animation-delay: 0.4s;
+  -o-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+/* line 188, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/core/_core.scss */
+#block_3 {
+  -moz-animation-delay: 0.5s;
+  -webkit-animation-delay: 0.5s;
+  -ms-animation-delay: 0.5s;
+  -o-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+
+@-moz-keyframes bounceG {
+  /* line 196, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/core/_core.scss */
+  0% {
+    -moz-transform: scale(1.2);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+  }
+
+  /* line 200, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/core/_core.scss */
+  100% {
+    -moz-transform: scale(0.7);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=10);
+    opacity: 0.1;
+  }
+}
+
+@-webkit-keyframes bounceG {
+  /* line 206, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/core/_core.scss */
+  0% {
+    -webkit-transform: scale(1.2);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+  }
+
+  /* line 210, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/core/_core.scss */
+  100% {
+    -webkit-transform: scale(0.7);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=10);
+    opacity: 0.1;
+  }
+}
+
+@-ms-keyframes bounceG {
+  /* line 216, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/core/_core.scss */
+  0% {
+    -ms-transform: scale(1.2);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+  }
+
+  /* line 220, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/core/_core.scss */
+  100% {
+    -ms-transform: scale(0.7);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=10);
+    opacity: 0.1;
+  }
+}
+
+@-o-keyframes bounceG {
+  /* line 226, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/core/_core.scss */
+  0% {
+    -o-transform: scale(1.2);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+  }
+
+  /* line 230, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/core/_core.scss */
+  100% {
+    -o-transform: scale(0.7);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=10);
+    opacity: 0.1;
+  }
+}
+
+@keyframes bounceG {
+  /* line 236, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/core/_core.scss */
+  0% {
+    transform: scale(1.2);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+  }
+
+  /* line 240, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/core/_core.scss */
+  100% {
+    transform: scale(0.7);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=10);
+    opacity: 0.1;
+  }
+}
+
 /* line 2, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/core/_reset.scss */
 * {
   font-family: "opensans-regular";
@@ -9224,7 +9373,14 @@ body.x-desktop {
   background-position: center;
   width: 50px;
   height: 50px;
-  color: #414141;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+  border-radius: 50px;
+  color: #ffffff;
+  text-align: center;
+  background: #7caad6;
 }
 /* line 14, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/mixins/_icon.scss */
 .comments-panel .comments-list .item .comment-box .comment-left .img:before {
@@ -9235,17 +9391,18 @@ body.x-desktop {
   left: 0;
   text-align: center;
   font-family: "LDPA-Pictos" !important;
-  font-size: 26px !important;
+  font-size: 50px !important;
   font-weight: normal!important;
   content: "\46";
 }
-/* line 65, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 68, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-list .item .comment-box .comment-left .img::before {
   width: 50px;
   height: 50px;
   line-height: 50px;
+  position: relative;
 }
-/* line 72, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 76, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-list .item .comment-box .comment-right {
   margin: 3px 0 0 0;
   width: 0;
@@ -9266,12 +9423,12 @@ body.x-desktop {
   flex-direction: column;
   text-align: left;
 }
-/* line 81, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 85, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-list .item .comment-box .comment-right .comment {
   font-size: 15px;
   line-height: 18px;
 }
-/* line 85, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 89, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-list .item .comment-box .comment-right .comment span {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -9281,39 +9438,39 @@ body.x-desktop {
   font-size: 17px;
   line-height: 20px;
 }
-/* line 91, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 95, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-list .item .comment-box .comment-right .comment span:nth-child(2) {
   font-size: 13px;
   font-weight: normal;
 }
-/* line 97, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 101, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-list .item .comment-box .comment-right .comment a {
   color: #5389c2;
 }
-/* line 101, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 105, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-list .item .comment-box .comment-right div:nth-child(2) {
   font-size: 11px;
   line-height: 15px;
   color: #9e9d9d;
 }
-/* line 106, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 110, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-list .item .comment-box .comment-right div:nth-child(2) a {
   font-weight: normal;
 }
-/* line 115, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 119, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-list .x-list-item-first.item .x-list-item-body {
   padding-top: 15px;
 }
-/* line 121, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 125, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form {
   border-top: 1px solid #d9e0f0;
   margin: 10px 30px;
 }
-/* line 125, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 129, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form .x-form-fieldset {
   margin: 0px;
 }
-/* line 128, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 132, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form .x-form-fieldset .x-form-fieldset-inner {
   border: 0px;
   -webkit-border-radius: 0px;
@@ -9322,11 +9479,11 @@ body.x-desktop {
   -o-border-radius: 0px;
   border-radius: 0px;
 }
-/* line 133, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 137, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form.x-layout-card-item {
   background: #ffffff;
 }
-/* line 136, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 140, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form .header h1 {
   font-size: 22px;
   color: #ee7f00;
@@ -9334,23 +9491,23 @@ body.x-desktop {
   padding: 10px 0px 20px 0px;
   margin: 0;
 }
-/* line 145, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 149, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form .errors .x-innerhtml p {
   color: #ee3800;
   font-size: 14px;
   line-height: 16px;
   margin: 0 0 10px 0;
 }
-/* line 154, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 158, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form .comment-text .x-innerhtml {
   padding-right: 30px;
 }
-/* line 157, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 161, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form .comment-text .x-innerhtml p {
   font-size: 12px;
   line-height: 16px;
 }
-/* line 164, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 168, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form .comment-fieldset .x-field-text {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -9362,7 +9519,7 @@ body.x-desktop {
   border-top: 1px solid #e5ded9;
   margin: 8px 0;
 }
-/* line 171, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 175, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form .comment-fieldset .x-field-text input {
   background: transparent;
   font-size: 15px;
@@ -9370,12 +9527,12 @@ body.x-desktop {
   color: #525150;
   -webkit-text-fill-color: #525150;
 }
-/* line 178, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 182, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form .comment-fieldset .x-field-text input::-webkit-input-placeholder {
   color: #adadad;
   -webkit-text-fill-color: #adadad;
 }
-/* line 184, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 188, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form .comment-fieldset .x-field-select {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -9387,7 +9544,7 @@ body.x-desktop {
   border-top: 1px solid #e5ded9;
   margin: 8px 0;
 }
-/* line 191, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 195, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form .comment-fieldset .x-field-select input {
   background: transparent;
   font-size: 15px;
@@ -9395,12 +9552,12 @@ body.x-desktop {
   color: #525150;
   -webkit-text-fill-color: #525150;
 }
-/* line 198, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 202, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form .comment-fieldset .x-field-select input::-webkit-input-placeholder {
   color: #adadad;
   -webkit-text-fill-color: #adadad;
 }
-/* line 204, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 208, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form .comment-fieldset .x-field-textarea {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -9412,7 +9569,7 @@ body.x-desktop {
   border-top: 1px solid #e5ded9;
   margin: 8px 0;
 }
-/* line 211, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 215, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form .comment-fieldset .x-field-textarea textarea {
   background: transparent;
   font-size: 15px;
@@ -9421,21 +9578,34 @@ body.x-desktop {
   -webkit-text-fill-color: #525150;
   min-height: 75px;
 }
-/* line 219, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 223, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form .comment-fieldset .x-field-textarea textarea::-webkit-input-placeholder {
   color: #adadad;
   -webkit-text-fill-color: #adadad;
 }
-/* line 227, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 231, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form .send-button {
   background: #5389c2;
   border: 1px solid #ffffff;
 }
-/* line 231, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 235, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form .send-button .send {
-  display: none;
+  color: #ffffff;
 }
-/* line 234, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
+/* line 14, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/mixins/_icon.scss */
+.comments-panel .comments-form .send-button .send:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  font-family: "LDPA-Pictos" !important;
+  font-size: 20px !important;
+  font-weight: normal!important;
+  content: "\24";
+}
+/* line 240, d:/wamp/www/ldpa/resources/sass/tablet/../../themes/tablet/modules/_comments.scss */
 .comments-panel .comments-form .send-button .x-button-label, .comments-panel .comments-form .send-button .x-badge, .comments-panel .comments-form .send-button .x-hasbadge .x-badge, .x-hasbadge .comments-panel .comments-form .send-button .x-badge {
   color: #ffffff;
   font-size: 16px;
