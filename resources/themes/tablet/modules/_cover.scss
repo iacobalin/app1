@@ -43,7 +43,7 @@
 		background: rgba(255,255,255,0.8);
 		
 		.logos{
-			width: 680px;
+			min-width: 680px;
 			margin: 0 auto;
 			padding: 20px 0;
 			@include wbz-display-box();

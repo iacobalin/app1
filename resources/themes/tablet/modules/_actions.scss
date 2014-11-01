@@ -18,12 +18,16 @@
 							@include wbz-box-align(center);
 							@include wbz-box-pack(center);
 							color: $light-blue;
+							padding: 0 15px;
+							width: 60px;  
+							text-align: center;
 							
 							&::before{
 								width: 60px;
 								height: 60px;
 								line-height: 60px;
 								position: relative!important;
+								text-align: center;
 							}
 							&.call{
 								@include wbz-inline-icon(phone, 30px);
@@ -38,10 +42,22 @@
 								@include wbz-inline-icon(comment, 30px);
 							}
 							&.share{
-								@include wbz-inline-icon(share, 30px);
+								@include wbz-inline-icon(share, 28px);
 							}
 							&.settings{
 								@include wbz-inline-icon(cog, 30px);
+							}
+							&.news{
+								@include wbz-inline-icon(news, 28px);
+							}	
+							&.quiz{
+								@include wbz-inline-icon(checkmark-circle, 30px);
+							}
+							&.newsletter{
+								@include wbz-inline-icon(mail, 30px);
+							}
+							&.ask{
+								@include wbz-inline-icon(question, 30px);
 							}						
 						}
 						.title{
