@@ -17,6 +17,8 @@ Ext.define("LDPA.view.tablet.video.VideosList", {
 		itemCls: 'item',
 		selectedCls: '',
 		pressedCls: 'item-pressed',
+		height: '100%',
+		docked: "left",
 								
 		// properties
 		scrollable:{
@@ -27,8 +29,9 @@ Ext.define("LDPA.view.tablet.video.VideosList", {
 		disableSelection: true,
 		emptyText: '',
 		useSimpleItems: true,
+		variableHeights: true,
 		itemTpl: new Ext.XTemplate(
-			'<div class="img-container vbox" style="height: {[ this.getItemHeight(); ]}px; background-image: url({[this.getImage(values.featured_image)]}); ">',
+			'<div class="img-container vbox" style="height: {[ this.getItemHeight(); ]}px; background-image: url({[this.getImage(values)]}); ">',
 				'<div class="gradient-bg vbox">',
 					'<h1>{title}</h1>',
 					'<div class="stats hbox">',
@@ -39,9 +42,11 @@ Ext.define("LDPA.view.tablet.video.VideosList", {
 			'</div>',
 			{
 				getItemHeight: function(){
-					return (this.getOrientation() == "landscape") ? 320 : 200
+					return (this.getOrientation() == "landscape") ? 190 : 135
 				},
-				getImage: function(image){
+				getImage: function(data){
+					var image = data.featured_image || data.image;
+					
 					if (LDPA.app.isOnline()){
 						return image;
 					}
@@ -61,29 +66,7 @@ Ext.define("LDPA.view.tablet.video.VideosList", {
 					return Ext.Viewport.getWindowWidth() > Ext.Viewport.getWindowHeight() ? "landscape" : "portrait";
 				}
 			}
-		),
-		
-		items: [
-			{
-				xtype: "titlebar",
-				itemId: "topBar",
-				height: 55,
-				docked: "top",	  
-				cls: "top-bar",
-				title: "Lec&#355;ii video",
-				items: [{
-					xtype: "button",
-					itemId: "closeBtn",
-					iconCls: 'close',
-					cls: 'close-button',
-					pressedCls: 'pressed',
-					width: 50,
-					height: 50,
-					html: '',
-					align: 'right'
-				}]
-			}
-		]
+		)
 	},
 	
 	
@@ -91,11 +74,7 @@ Ext.define("LDPA.view.tablet.video.VideosList", {
 		
 		this.setStore(Ext.create("LDPA.store.Videos"));
 		
-		var closeBtn = this.down("#closeBtn");
-		closeBtn.on("tap", this.onClosePanel, this);
-		
-		this.on("openpanel", this.onOpenPanel, this);
-		this.on("closepanel", this.onClosePanel, this);
+		this.on("painted", this.onPainted, this);
 		
 		// add a handler for the orientationchange event of the viewport
 		Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });
@@ -103,8 +82,8 @@ Ext.define("LDPA.view.tablet.video.VideosList", {
 		this.callParent(arguments);
 	},
 	
-	onClosePanel: function(){
-		this.getParent().fireEvent("closepanel");
+	onPainted: function(){
+		//this.element.query(".x-container")[0].style.height = (Ext.Viewport.getWindowHeight() - 50) + "px";
 	},
 	
 	handleOrientationChange: function(){

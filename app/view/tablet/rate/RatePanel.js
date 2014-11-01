@@ -184,7 +184,7 @@ Ext.define("LDPA.view.tablet.rate.RatePanel", {
 		if (this.getRate() == 0) return;
 		
 		var articlePanel = this.getArticlePanel();
-		var article = articlePanel.getData();
+		var article = articlePanel.down("#articleInner").getData();
 		
 		var self = this;
 		var callback = function(values){

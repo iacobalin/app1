@@ -135,7 +135,7 @@ Ext.define("LDPA.view.tablet.categories.ArticleBottomBar", {
 		var profile = webcrumbz.profile.toLowerCase();
 		var ratePanel = Ext.create("LDPA.view."+profile+".rate.RatePanel", {
 			mask: mask,
-			articlePanel: this.getParent(),
+			articlePanel: this.up("#articlePanel"),
 			zIndex: mask.getZIndex()+1,
 		});
 		

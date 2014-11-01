@@ -3,7 +3,7 @@ Ext.define("LDPA.view.tablet.video.VideoPanel", {
 	
 	requires: [
 		"LDPA.view.tablet.video.VideoBottomBar",
-		"LDPA.view.tablet.video.MediaPanel"
+		"Ext.Video"
 	],
 	
 	config: {
@@ -14,96 +14,105 @@ Ext.define("LDPA.view.tablet.video.VideoPanel", {
 		mask: null,
 		scrolling: false,									// a flag indicating if the content of the card is scrolling
 		bottomBar: null,									// a reference of the bottom bar
+		bottomButtons: null,								// a reference of the bottom buttons (comments and rate)
 								
 		// css properties
 		cls: 'video-panel',
+		width: '100%',
+		height: '100%',
 						
 		// properties
-		scrollable:{
-			direction: 'vertical',
-			indicators: false,
+		layout: {
+			type: "vbox",
+			pack: "justify",
+			align: "stretch"
 		},
-		tpl: new Ext.XTemplate(
-			'<h1>{title}</h1>'+           
-            '<div class="content">',
-				'{content}',
-			'</div>'
-		),
+		scrollable: null,
 		items: [
 			{
 				xtype: "panel",
-				itemId: "topBar",
-				height: 55,
-				docked: "top",	  
-				cls: "top-bar",
-				layout: {
-					type: "hbox",
-					pack: "justify",
-					align: "stretch"
+				itemId: "articleInner",
+				flex: 1,
+				tpl: new Ext.XTemplate(
+					'<h1>{title}</h1>'+           
+					'<div class="content">',
+						'{content}',
+					'</div>'
+				),
+				scrollable:{
+					direction: 'vertical',
+					indicators: false,
 				},
 				items: [
 					{
-						xtype: 'button',
-						itemId: "backBtn",
-						html: "Lec&#355;ii video",
-						cls: 'back-button',
-						pressedCls: 'pressed',
-						iconCls: 'back',
+						xtype: "panel",
+						itemId: "topBar",
+						height: 65,
+						docked: "top",	  
+						cls: "top-bar",
+						zIndex: 100,
+						layout: {
+							type: "hbox",
+							pack: "end",
+							align: "stretch"
+						},
+						items: [
+							{
+								xtype: "button",
+								action: 'share-facebook',
+								iconCls: 'facebook',
+								html: '&nbsp;',
+								cls: 'share-facebook-button',
+								pressedCls: 'pressed',
+								handler: function(btn){
+									var articleInner = btn.up("#articleInner");
+									var webUrl = encodeURIComponent(articleInner.getData().link);
+									var title = encodeURIComponent(articleInner.getData().title);
+									
+									// offline
+									if (!LDPA.app.isOnline()){
+										alert(webcrumbz.offlineMsg);
+									}
+									// online
+									else{
+										window.open("http://www.facebook.com/sharer.php?u="+webUrl+"&t="+title, '_system');
+									}
+								},
+								scope: this
+							},
+							{
+								xtype: "button",
+								action: 'share-twitter',
+								iconCls: 'twitter',
+								html: '&nbsp;',
+								cls: 'share-twitter-button',
+								pressedCls: 'pressed',
+								handler: function(btn){
+									var articleInner = btn.up("#articleInner");
+									
+									var webUrl = encodeURIComponent(articleInner.getData().link);
+									var title = "Citeste+acest+articol:+";
+									
+									// offline
+									if (!LDPA.app.isOnline()){
+										alert(webcrumbz.offlineMsg);
+									}
+									// online
+									else{
+										window.open("http://www.twitter.com/?status="+title+"+"+webUrl, '_system');
+									}
+								},
+								scope: this
+							}
+						]
 					},
 					{
-						xtype: "button",
-						action: 'share-facebook',
-						iconCls: 'facebook',
-						html: '',
-						cls: 'share-facebook-button',
-						pressedCls: 'pressed',
-						handler: function(btn){
-							var videoPanel = btn.up("#videoPanel");
-							
-							var webUrl = encodeURIComponent(videoPanel.getData().link);
-							var title = encodeURIComponent(videoPanel.getData().title);
-							
-							// offline
-							if (!LDPA.app.isOnline()){
-								alert(webcrumbz.offlineMsg);
-							}
-							// online
-							else{
-								window.open("http://www.facebook.com/sharer.php?u="+webUrl+"&t="+title, '_system');
-							}
-						},
-						scope: this
-					},
-					{
-						xtype: "button",
-						action: 'share-twitter',
-						iconCls: 'twitter',
-						html: '',
-						cls: 'share-twitter-button',
-						pressedCls: 'pressed',
-						handler: function(btn){
-							var videoPanel = btn.up("#videoPanel");
-							
-							var webUrl = encodeURIComponent(videoPanel.getData().link);
-							var title = "Citeste+acest+articol:+";
-							
-							// offline
-							if (!LDPA.app.isOnline()){
-								alert(webcrumbz.offlineMsg);
-							}
-							// online
-							else{
-								window.open("http://www.twitter.com/?status="+title+"+"+webUrl, '_system');
-							}
-						},
-						scope: this
+						xtype: "video",
+						itemId: 'videoBox',
+						enableControls : true,
+						hidden: true
 					}
-				]
-			},
-			{
-				xtype: "video",
-				itemId: 'videoBox',
-				enableControls : true	
+				]	
 			}
 		]
 	},
@@ -116,20 +125,48 @@ Ext.define("LDPA.view.tablet.video.VideoPanel", {
 		this.add(bottomBar);
 		this.setBottomBar(bottomBar);
 		
-		var scroller = this.getScrollable().getScroller();
+		var bottomButtons = bottomBar.down("#buttons");
+		this.setBottomButtons(bottomButtons);
+		
+		var articleInnerPanel = this.down("#articleInner");
+		var scroller = articleInnerPanel.getScrollable().getScroller();
 		scroller.on("scroll", this.onScrollableChange, this);
 		
-		this.element.on("touchstart", this.onTouchStart, this);
-		this.element.on("touchend", this.onTouchEnd, this);
-		this.element.on("tap", this.onTap, this);
+		articleInnerPanel.element.on("touchstart", this.onTouchStart, this);
+		articleInnerPanel.element.on("touchend", this.onTouchEnd, this);
+		articleInnerPanel.element.on("tap", this.onTap, this);
 		
+		this.on("painted", this.onPainted, this);
 		this.on("addcontent", this.onAddContent, this);
-		
-		var backBtn = this.down("#backBtn"); 
-		backBtn.on("tap", this.onClosePanel, this);
 		
 		// add a handler for the orientationchange event of the viewport
 		Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });
+	},
+	
+	
+	onPainted: function(){
+		var articleInner = this.down("#articleInner");
+		if (articleInner.getData() == null){
+			
+			var article = this.up("#videoView").down("#videosList").getStore().getAt(0).getData();
+			
+			// create mask
+			var mask = Ext.create("LDPA.view.MainMask", {
+				spinner: true,
+				disabled: true,
+				zIndex: 120,
+				closeFn: function(){
+					
+				}
+			});
+			
+			Ext.Viewport.add(mask);
+			mask.show();
+			this.setMask(mask);
+			
+			// show the first video lesson
+			videosController.showArticle(article.articleId);
+		}
 	},
 	
 	
@@ -139,21 +176,22 @@ Ext.define("LDPA.view.tablet.video.VideoPanel", {
 		var bottomBar = this.getBottomBar();
 		bottomBar.fireEvent("updatedata", {
 			ratings: article.ranking,
-			comment_count: article.comment_count	
+			comment_count: article.comment_count,
+			articleId: article.id
 		});
+		bottomBar.fireEvent("closemenu");
 		
-		this.setData(article);
-		this.handleOrientationChange();
+		var articleInnerPanel = this.down("#articleInner");
+		var scroller = articleInnerPanel.getScrollable().getScroller();
+		scroller.scrollTo(0,0,true);
+		
+		articleInnerPanel.setData(article);
 		
 		// add video config
-		var imageWidth = 441;
-		var imageHeight = 326;
-		var width = Ext.Viewport.getWindowWidth() - 50;
-		var height = width * imageHeight / imageWidth;
 		var videoBox = this.down("#videoBox");
-		videoBox.setWidth(width);
-		videoBox.setHeight(height);
+		videoBox.pause();
 		videoBox.setUrl(article.video_link);
+		
 		
 		if (LDPA.app.isOnline()){
 			videoBox.setPosterUrl(article.featured_image);
@@ -165,6 +203,11 @@ Ext.define("LDPA.view.tablet.video.VideoPanel", {
 				videoBox.setPosterUrl(offlineRecord.get("dataUrl"));
 			}
 		}
+		
+		// show video
+		this.down("#videoBox").show();
+		
+		this.handleOrientationChange();
 	},
 	
 	
@@ -177,33 +220,29 @@ Ext.define("LDPA.view.tablet.video.VideoPanel", {
 	},
 	
 	onTap: function(){
-		var bottomBar = this.getBottomBar(); 
-		bottomBar.fireEvent("showbar");
+		var bottomButtons = this.getBottomButtons(); 
+		bottomButtons.fireEvent("showbuttons");
 	},
 	
 	onScrollableChange: function(scroller, scrollX, scrollY){
 		var scrolling = this.getScrolling();
 		
 		if (scrolling){
-			var bottomBar = this.getBottomBar(); 
+			var bottomButtons = this.getBottomButtons(); 
 			
 			this.deltaY = (this.lastScrollY) ? scrollY - this.lastScrollY : 0;
 			
 			// scroll down
 			if (this.deltaY > 0){
-				bottomBar.fireEvent("hidebar");
+				bottomButtons.fireEvent("hidebuttons");
 			}
 			// scroll up
 			else if (this.deltaY < 0){
-				bottomBar.fireEvent("showbar");
+				bottomButtons.fireEvent("showbuttons");
 			}
 			
 			this.lastScrollY = scrollY;
 		}
-	},
-	
-	onClosePanel: function(){
-		this.getParent().animateActiveItem(0, {direction: "right", type: "slide"})	
 	},
 	
 	
@@ -213,7 +252,16 @@ Ext.define("LDPA.view.tablet.video.VideoPanel", {
 		
 		// change images max width according with the Viewport width
 		for (var i=0; i<images.length; i++){
-			images[i].style.maxWidth = (Ext.Viewport.getWindowWidth() - padding) + "px";
+			images[i].style.maxWidth = (Ext.Viewport.getWindowWidth() - 300 - padding) + "px";
 		}
+		
+		// add video config
+		var imageWidth = 441;
+		var imageHeight = 326;
+		var width = Math.min(Ext.Viewport.getWindowWidth() - 300 - 50, 600);
+		var height = width * imageHeight / imageWidth;
+		var videoBox = this.down("#videoBox");
+		videoBox.setWidth(width);
+		videoBox.setHeight(height);
 	}
 });

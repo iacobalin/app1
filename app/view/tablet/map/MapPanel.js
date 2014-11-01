@@ -59,12 +59,12 @@ Ext.define("LDPA.view.tablet.map.MapPanel", {
 		],
 		hidden: true,
 		showAnimation: {
-			type: "popIn",
+			type: "slideIn",
 			duration: 400,
 			easing: "out"
 		},
 		hideAnimation: {
-			type: "popOut",
+			type: "slideOut",
 			duration: 400,
 			easing: "in"
 		}

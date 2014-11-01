@@ -71,10 +71,9 @@ Ext.define("LDPA.view.tablet.categories.ArticlePanel", {
 								cls: 'share-facebook-button',
 								pressedCls: 'pressed',
 								handler: function(btn){
-									var articlePanel = btn.up("#articlePanel");
-									
-									var webUrl = encodeURIComponent(articlePanel.getData().link);
-									var title = encodeURIComponent(articlePanel.getData().title);
+									var articleInner = btn.up("#articleInner");
+									var webUrl = encodeURIComponent(articleInner.getData().link);
+									var title = encodeURIComponent(articleInner.getData().title);
 									
 									// offline
 									if (!LDPA.app.isOnline()){
@@ -95,9 +94,9 @@ Ext.define("LDPA.view.tablet.categories.ArticlePanel", {
 								cls: 'share-twitter-button',
 								pressedCls: 'pressed',
 								handler: function(btn){
-									var articlePanel = btn.up("#articlePanel");
+									var articleInner = btn.up("#articleInner");
 									
-									var webUrl = encodeURIComponent(articlePanel.getData().link);
+									var webUrl = encodeURIComponent(articleInner.getData().link);
 									var title = "Citeste+acest+articol:+";
 									
 									// offline
@@ -221,7 +220,6 @@ Ext.define("LDPA.view.tablet.categories.ArticlePanel", {
 		var images = this.element.query("img");
 		var padding = 50;
 		
-				
 		// change images max width according with the Viewport width
 		for (var i=0; i<images.length; i++){
 			images[i].style.maxWidth = (Ext.Viewport.getWindowWidth() - 300 - padding) + "px";

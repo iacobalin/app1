@@ -72,7 +72,7 @@ Ext.define("LDPA.view.tablet.comments.CommentForm", {
 					},
 					{
 						xtype: 'textareafield',
-						placeHolder: 'Mesaj*',
+						placeHolder: 'Comentariu*',
 						maxRows: 2,
 						name: 'message',
 						required: true,
@@ -105,11 +105,19 @@ Ext.define("LDPA.view.tablet.comments.CommentForm", {
 						itemId: "sendBtn",
 						cls: "send-button",
 						iconCls: "send",
-						text: "Trimite",
+						html: "Trimite",
 						padding: 12,
 						width: 150,
 						height: 45,
-						docked: "right"
+						docked: "right",
+						pendingCls: "pending",
+						spinner: [															// loading spinner inside the button
+							'<div id="bar-loader">',
+								'<div id="block_1" class="bar_block"> </div>',
+								'<div id="block_2" class="bar_block"> </div>',
+								'<div id="block_3" class="bar_block"> </div>',
+							'</div>'
+						].join(""),
 					}
 				]	
 			},
@@ -134,26 +142,50 @@ Ext.define("LDPA.view.tablet.comments.CommentForm", {
 	
 	
 	onSendBtnTap: function(){
+		var form = this;
 		var errorsPanel = this.down("#errorsPanel");
-				
-		var model = Ext.create("LDPA.model.Contact",{
-			name: this.getValues().name,
+		
+		var model = Ext.create("LDPA.model.Comments",{
+			user: this.getValues().name,
 			email: this.getValues().email,
-			source: this.getValues().source,
-			quality: this.getValues().quality,
-			message: this.getValues().message
+			comment: this.getValues().message
 		});
 		
-		var errors = model.validate(),
-			message = "";
+		var errors = model.validate();
 		
 		if (errors.isValid()){
 			
 			// clear errors panel content
 			errorsPanel.setData({message: ""})
 			
-			// submit form
-			actionsController.submitContactForm();
+			var commentsPanel = this.up("#commentsPanel");
+			var articleId = commentsPanel.getArticleId();
+			var user = this.getValues().name;
+			var email = this.getValues().email;
+			var comment = encodeURIComponent(this.getValues().message);
+			
+			// show loading spinner
+			var btn = this.down("#sendBtn");
+			btn.addCls(btn.config.pendingCls);
+			btn.setHtml(btn.config.spinner);
+			
+			
+			var successCallBack = Ext.create("Ext.util.DelayedTask", function(){
+				// remove the pending cls
+				btn.removeCls(btn.config.pendingCls);
+				btn.setHtml("Trimite");
+				
+				form.reset();
+			});
+
+
+			var errorCallBack = Ext.create("Ext.util.DelayedTask", function(){
+				// remove the pending cls
+				btn.removeCls(btn.config.pendingCls);
+				btn.setHtml("Trimite");
+			});
+
+			commentsController.submitComment({articleId: articleId, user: user, email: email, comment: comment, successCallBack: successCallBack, errorCallBack: errorCallBack});
 		}
 		else{
 			errorsPanel.setData({message: errors.items[0].config.message});

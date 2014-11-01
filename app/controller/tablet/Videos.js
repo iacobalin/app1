@@ -168,14 +168,14 @@ Ext.define('LDPA.controller.tablet.Videos', {
 				},
 				failure: function(){
 					// hide mask
-					mask.fireEvent("close");
+					if (mask) mask.fireEvent("close");
 					
 					// show video article from offline
 					self.showArticleFromOffline(id);
 				},
 				success: function(result, request) {
 					// hide mask
-					mask.fireEvent("close");
+					if (mask) mask.fireEvent("close");
 					
 					result.post.content = result.post.content.replace(/width=\"\d+\"|height=\"\d+\"/g,'');
 					
@@ -185,10 +185,7 @@ Ext.define('LDPA.controller.tablet.Videos', {
 					result.post.articleId = result.post.id;
 					
 					// add content
-					videoPanel.fireEvent("addcontent", result.post);	
-					
-					// show video panel
-					videoView.animateActiveItem(videoPanel, {type: "slide", direction: "left"})
+					videoPanel.fireEvent("addcontent", result.post);
 				}
 			});	
 		}

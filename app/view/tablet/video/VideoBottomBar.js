@@ -2,7 +2,8 @@ Ext.define("LDPA.view.tablet.video.VideoBottomBar", {
     extend: 'Ext.Panel',
 	  
 	requires: [
-		"LDPA.view.tablet.rate.RatePanel"
+		"LDPA.view.tablet.rate.RatePanel",
+		"LDPA.view.tablet.comments.CommentsPanel"
 	],  
 	   
 	config: {
@@ -10,54 +11,77 @@ Ext.define("LDPA.view.tablet.video.VideoBottomBar", {
 		itemId: "bottomBar",
 		
 		// custom properties
+		mask: null,
+		openedHeight: 550,				// the height of this panel when it is opened
+		closedHeight: 0,				// the visible height of this panel when it is closed
+		status: 'closed',				// opened or closed
 				
 		// css properties
-		height: 50,
+		height: 60,
 		width: "100%",
 		bottom: 0,  
 		left: 0,
-		cls: "bottom-bar",
+		cls: "article-bottom-bar",
+		zIndex: 102,
 		layout: {
-			type: "hbox",
-			pack: "justify",
-			align: "stretch"
+			type: 'vbox',
+			pack: 'start',
+			align: 'stretch'
 		},
 		
 		// properties
         items: [
 			{
-				xtype: "button",
-				itemId: "commentsBtn",
-				action: 'view-comments',
-				iconCls: 'comments',
-				html: '',
-				cls: 'comments-button',
-				pressedCls: 'pressed',
-				flex: 1,
-				handler: function(btn){
-					var videoPanel = btn.up("#videoPanel");
-					
-					// offline
-					if (!LDPA.app.isOnline()){
-						alert(webcrumbz.offlineMsg);
-					}
-					// online
-					else{
-						window.open(videoPanel.getData().comment_link, '_system');
-					}
+				xtype: 'panel',
+				itemId: "buttons",
+				layout: {
+					type: 'hbox',
+					pack: 'end',
+					align: 'center'	
 				},
-				scope: this
+				cls: 'buttons-panel',
+				items: [
+					{
+						xtype: "button",
+						itemId: "commentsBtn",
+						action: 'view-comments',
+						iconCls: 'comments',
+						html: '',
+						cls: 'comments-button',
+						pressedCls: 'pressed',
+						handler: function(btn){
+							var articlePanel = btn.up("#videoPanel");
+							var bottomBar = articlePanel.down("#bottomBar");
+							
+							// offline
+							if (!LDPA.app.isOnline()){
+								alert(webcrumbz.offlineMsg);
+							}
+							// online
+							else{
+								var status = bottomBar.getStatus();
+								if (status == "opened"){
+									bottomBar.fireEvent("closemenu");
+								}
+								else{
+									bottomBar.fireEvent("openmenu");
+								}
+								
+							}
+						},
+						scope: this
+					},
+					{
+						xtype: "button",
+						itemId: "rateBtn",
+						action: 'rate-article',
+						iconCls: 'rate',
+						html: '',
+						cls: 'rating-button',
+						pressedCls: 'pressed',
+					}
+				]
 			},
-			{
-				xtype: "button",
-				itemId: "rateBtn",
-				action: 'rate-article',
-				iconCls: 'rate',
-				html: '',
-				cls: 'rating-button',
-				pressedCls: 'pressed',
-				flex: 1
-			}
 		]	
 	},
 
@@ -68,17 +92,31 @@ Ext.define("LDPA.view.tablet.video.VideoBottomBar", {
 		rateBtn.on("tap", this.onRateBtnTap, this);
 		
 		this.on("updatedata", this.onUpdateData, this);
-		this.on("showbar", this.onShowBar, this);
-		this.on("hidebar", this.onHideBar, this);
+		this.on("openmenu", this.onOpenMenu, this);
+		this.on("closemenu", this.onCloseMenu, this);
+		this.on("updatemenu", this.onUpdateMenu, this);
+		this.on("setmask", this.onSetMask, this);
+		
+		// add comments panel
+		var commentsPanel = Ext.create("LDPA.view.tablet.comments.CommentsPanel");
+		this.add(commentsPanel);
+		
+		var buttons = this.down("#buttons");
+		buttons.on("showbuttons", this.onShowButtons, this);
+		buttons.on("hidebuttons", this.onHideButtons, this);
 	},
 	
 	
 	onUpdateData: function(values){
 		var rateBtn = this.down("#rateBtn");
-		rateBtn.setHtml(values.ratings);
+		rateBtn.setBadgeText(values.ratings);
 		
 		var commentsBtn = this.down("#commentsBtn");
-		commentsBtn.setHtml(values.comment_count);
+		commentsBtn.setBadgeText(values.comment_count);
+		
+		var commentsPanel = this.down("#commentsPanel");
+		commentsPanel.setArticleId(values.articleId);
+		commentsPanel.setLoaded(false);
 	},
 	
 	
@@ -97,7 +135,7 @@ Ext.define("LDPA.view.tablet.video.VideoBottomBar", {
 		var profile = webcrumbz.profile.toLowerCase();
 		var ratePanel = Ext.create("LDPA.view."+profile+".rate.RatePanel", {
 			mask: mask,
-			articlePanel: this.getParent(),
+			articlePanel: this.up("#videoPanel"),
 			zIndex: mask.getZIndex()+1,
 		});
 		
@@ -108,7 +146,76 @@ Ext.define("LDPA.view.tablet.video.VideoBottomBar", {
 	},
 	
 	
-	onShowBar: function(){
+	onOpenMenu: function(){
+		var self = this;
+		this.setStatus("opened");
+		var to = -this.getOpenedHeight() + this.getClosedHeight();
+		
+		Ext.defer(function(){
+			var duration = 0.4;
+			self.setStyle({
+				'-webkit-transition': 'all ' + duration + 's ease',
+				'-moz-transition': 'all ' + duration + 's ease',
+				'-o-transition': 'all ' + duration + 's ease',
+				'transition': 'all ' + duration + 's ease',
+				'-webkit-transform': 'translate3d(0px, ' + to + 'px, 0px)',
+				'-moz-transform': 'translate3d(0px, ' + to + 'px, 0px)',
+				'-ms-transform': 'translate3d(0px, ' + to + 'px, 0px)',
+				'-o-transform': 'translate3d(0px, ' + to + 'px, 0px)',
+				'transform': 'translate3d(0px, ' + to + 'px, 0px)'
+			});	
+		}, 400);
+				
+		this.fireEvent("setmask");
+		
+		this.down("#commentsPanel").fireEvent("setactions");
+	},
+	
+	
+	onCloseMenu: function(){
+		this.setStatus("closed");
+		
+		var duration = 0.4;
+		this.setStyle({
+            '-webkit-transition': 'all ' + duration + 's ease',
+            '-moz-transition': 'all ' + duration + 's ease',
+            '-o-transition': 'all ' + duration + 's ease',
+            'transition': 'all ' + duration + 's ease',
+            '-webkit-transform': 'translate3d(0px, 0px, 0px)',
+            '-moz-transform': 'translate3d(0px, 0px, 0px)',
+            '-ms-transform': 'translate3d(0px, 0px, 0px)',
+            '-o-transform': 'translate3d(0px, 0px, 0px)',
+            'transform': 'translate3d(0px, 0px, 0px)'
+        });
+		
+		var mask = this.getMask();
+		if (mask){
+			mask.fireEvent("close");
+		}
+	},
+	
+	onUpdateMenu: function(){
+				
+		if (this.getStatus() == 'opened'){
+			var to = -this.getOpenedHeight();
+		
+			var duration = 0;
+			this.setStyle({
+                '-webkit-transition': 'all ' + duration + 's ease',
+                '-moz-transition': 'all ' + duration + 's ease',
+                '-o-transition': 'all ' + duration + 's ease',
+                'transition': 'all ' + duration + 's ease',
+                '-webkit-transform': 'translate3d(0px, ' + to + 'px, 0px)',
+                '-moz-transform': 'translate3d(0px, ' + to + 'px, 0px)',
+                '-ms-transform': 'translate3d(0px, ' + to + 'px, 0px)',
+                '-o-transform': 'translate3d(0px, ' + to + 'px, 0px)',
+                'transform': 'translate3d(0px, ' + to + 'px, 0px)'
+			});
+		}
+	},
+	
+	
+	onShowButtons: function(){
 		var duration = 0.4;
 		
 		// slide in
@@ -127,7 +234,7 @@ Ext.define("LDPA.view.tablet.video.VideoBottomBar", {
 	},
 	
 	
-	onHideBar: function(){
+	onHideButtons: function(){
 		var duration = 0.4;
 		
 		// slide in
@@ -143,5 +250,28 @@ Ext.define("LDPA.view.tablet.video.VideoBottomBar", {
 			'-o-transform': 'translate3d(0px, ' + to + 'px, 0px)',
 			'transform': 'translate3d(0px, ' + to + 'px, 0px)'
 		});
+	},
+	
+	
+	onSetMask: function(){
+		
+		var panel = this.up("#videoPanel");
+		var bar = this;
+		
+		// create mask
+		var mask = Ext.create("LDPA.view.MainMask", {
+			spinner: false,
+			zIndex: 101,
+			closeFn: function(){
+				Ext.defer(function(){
+					bar.fireEvent("closemenu");
+				}, 200);
+			}
+		});
+		
+		panel.add(mask);
+		mask.show();
+		
+		this.setMask(mask);
 	}
 });

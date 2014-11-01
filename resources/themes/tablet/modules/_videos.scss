@@ -1,9 +1,9 @@
-.videos-list{
+.video-container{
 	background: #ffffff;
 	
 	.top-bar{
 		background: $orange;
-		border-bottom: 2px solid #ffffff;
+		border-bottom: 1px solid #ffffff;
 		
 		.x-title{
 			font-size: 18px;
@@ -26,6 +26,20 @@
 			}
 		}
 	}
+}
+
+.videos-list{
+	margin: 0;
+	background: #f6f6f8;
+	
+	@media all and (orientation: landscape){
+		width: 300px;
+	}
+	
+	@media all and (orientation: portrait){
+		width: 220px;
+	}
+	
 	.x-dataview-container{
 		.item{
 			border-bottom: 2px solid #ffffff;
@@ -41,8 +55,8 @@
 				@include wbz-box-pack(center);
 				overflow: hidden;
 				padding: 0px 10px 10px 10px;
-				@include background(linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3) 0.3, rgba(0,0,0,0.6) 0.97, rgba(0,0,0,0.7)));
-				background: -ms-linear-gradient(top, rgba(0,0,0,00) 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.6) 97%,  rgba(0,0,0,0.7) 100%); /* IE10+ */
+				@include background(linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.4) 0.3, rgba(0,0,0,0.7) 0.97, rgba(0,0,0,0.9)));
+				background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.7) 97%,  rgba(0,0,0,0.9) 100%); /* IE10+ */
 				width: 100%;
 				
 				h1{
@@ -100,155 +114,115 @@
 		}
 	}
 }
+
 .video-panel{
 	&.x-layout-card-item{
 		background: #ffffff;
 	}
 	.top-bar{
-		background: $orange;
+		background: transparent;
 		
 		.x-panel-inner{
-			padding: 0 10px;
+			padding: 5px 20px;
 		}
 		.back-button{
 			@include wbz-box-flex(1);
-			color: #ffffff;
+			color: $grey;
 			
 			.back{
-				color: #ffffff;
-				height: 55px;
+				color: $grey;
+				height: 65px;
 				
 				&::before{
-					line-height: 55px;
+					line-height: 65px;
 				}
 			}
 			.x-button-label{
-				color: #ffffff;
+				color: white;
 				font-size: 12px;
-				line-height: 55px;
-				height: 55px;
+				line-height: 65px;
+				height: 65px;
 				font-weight: normal;
 				text-align: left;
+				
+				span{
+					padding: 3px;
+					background-color: $light-orange;
+				}
 			}
 		}
 		.share-facebook-button{
-			display: block!important;
-			width: 30px;
+			width: 40px;
+			height: 55px;
 			
 			.facebook{
-				@include wbz-inline-icon(facebook, 30px);
-				color: #ffffff;
-				line-height: 30px;
-				height: 55px;
+				@include wbz-inline-icon(facebook, 40px);
+				color: $grey;
+				line-height: 40px;
+				height: 65px;
 				
 				&::before{
-					line-height: 55px;
+					line-height: 65px;
 				}
 			}
 		}
 		.share-twitter-button{
-			display: block!important;
-			width: 30px;
+			width: 40px;
+			height: 55px;
 			margin: 0 0 0 10px;
 						
 			.twitter{
-				@include wbz-inline-icon(twitter, 30px);
-				color: #ffffff;
-				line-height: 30px;
-				height: 55px;
+				@include wbz-inline-icon(twitter, 40px);
+				color: $grey;
+				line-height: 40px;
+				height: 65px;
 				
 				&::before{
-					line-height: 55px;
+					line-height: 65px;
 				}
 			}
 		}
 	}
-	.bottom-bar{
-		@include wbz-border-radius(0px);
-		@include wbz-box-shadow(none);
-		padding: 0px;
-		background: $light-blue;
-		border-top: 1px solid #a4ccea;
-		
-		&.x-panel.x-floating{
-			.x-panel-inner{
-				@include wbz-border-radius(0px);
-				background: $light-blue;
-				
-				.x-button{
-					&.pressed{
-						background: $blue;
-					}
-					.x-button-icon{
-						color: #ffffff;
-					}
-					.x-button-label{
-						@include wbz-box-shadow(none);
-						background: none;
-						border: 0px;
-						text-shadow: none;
-						font-size: 16px;
-						color: #ffffff;
-						font-weight: normal;
-						position: relative;
-						top: -2px;
-						left: 5px;
-						width: 0px;
-						min-width: 0;
-						@include wbz-display-inline-box();
-						overflow: visible;
-					}
-				}
-				.comments-button{
-					border-right: 1px solid #a4ccea;
-					
-					&.pressed{
-						border-right: 1px solid $blue;
-					}
-					.comments{
-						@include wbz-inline-icon(comment_empty, 24px);
-					}
-				}
-				.rating-button {
-					.rate{
-						@include wbz-inline-icon(star, 24px);
-					}
-				}
-			}
-		}
-	}
+	
 	h1{
 		font-size: 22px;
 		line-height: 24px;
 		color: #000000;
-		margin: 20px 20px 5px 20px;
+		margin: 20px 30px 10px 30px;
 	}
 	.content{
-		margin: 0 20px 20px 20px;
+		margin: 0 30px 20px 30px;
 		padding: 20px 0 0 0;
 		border-top: 1px solid #d9e0f0;
-		font-size: 14px;
+		font-size: 15px;
 		
 		p, li, a, span{
-			font-size: 14px;
+			font-size: 15px;
+			line-height: 20px;
+			color: $dark-grey;
 		}
 		p, span{
 			margin-bottom: 10px;
 		}
 		h1{
-			font-size: 18px;
+			font-size: 19px;
 			margin: 12px 0 10px 0;
+			color: $dark-grey;
 		}
 		ul, ol{
-			padding-bottom: 10px;
+			padding-top: 15px;
+			padding-bottom: 15px;
 			margin: 0 0 0 20px;
+			color: $dark-grey;
 		}
 		li{
 			list-style: inherit;
+			color: $dark-grey;
 		}
 		h2{
 			font-size: 17px;
-			margin: 12px 0 10px 0;
+			margin: 25px 0 10px 0;
+			color: $dark-grey;
 			
 			span{
 				font-size: 19px;
@@ -264,15 +238,15 @@
 		}
 		img{
 			position: relative;
-			left: 50%;
-			@include wbz-transform(translateX(-50%));
+			margin: 0 auto;
 		}
 	}
 	.x-video{
 		margin: 0 auto;
-		margin-top: 20px;
-		
+				
 		.x-video-ghost{
+			background-size: cover;
+			background-repeat: no-repeat;
 			@include wbz-inline-icon(play, 50px);
 			color: rgba(255,255,255, 0.6);
 			

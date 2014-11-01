@@ -12,44 +12,6 @@
 			color: $purple;
 			padding: 25px 0px 9px 0px;
 		}
-		
-		/*.search-field{
-			background: transparent;
-			
-			.x-field-input{
-				@include wbz-inline-icon(search, 20px);
-				padding: 10px 0px 0px 25px!important;
-				margin: 0px;
-				
-				&::before{
-					left: 25px;
-					top: 15px;
-					right: auto;
-					color: $purple;
-				}
-				.x-input-search{
-					background: transparent;
-					font-size: 15px;
-					margin-left: 0px;
-					height: 30px;
-					border-bottom: 1px solid $purple;
-					padding: 0 20px 0px 25px;
-					line-height: 35px;
-					min-height: 35px;
-					-webkit-text-fill-color: $purple;
-				}
-				.x-clear-icon{
-					@include wbz-inline-icon(delete, 20px);
-					color: $purple;
-					background: none;
-					width: 20px;
-					height: 20px;
-					margin: 0px;
-					margin-top: -5px;
-					right: 0px;
-				}
-			}
-		}*/
 	}
 	.x-list-item{
 		&.x-list-item-tpl{
