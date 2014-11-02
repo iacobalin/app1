@@ -307,9 +307,8 @@ Ext.define('LDPA.controller.tablet.Categories', {
 				}
 			});
 			
-			//articleOfflineRecord.set("content", content);
+			articleOfflineRecord.set("content", content);
 			
-							
 			var data = articleOfflineRecord.getData();
 			
 			// add content

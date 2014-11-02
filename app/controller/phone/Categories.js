@@ -313,8 +313,7 @@ Ext.define('LDPA.controller.phone.Categories', {
 				}
 			});
 			
-			//articleOfflineRecord.set("content", content);
-			
+			articleOfflineRecord.set("content", content);
 							
 			var data = articleOfflineRecord.getData();
 			

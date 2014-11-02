@@ -7778,7 +7778,7 @@ body.x-desktop {
   height: 60px;
   line-height: 60px;
   top: -5px;
-  right: -5px;
+  right: 0px;
 }
 /* line 14, c:/wamp/www/LDPA 3/resources/sass/tablet/../../themes/tablet/mixins/_icon.scss */
 .close-button .close:before {
@@ -12066,8 +12066,8 @@ body.x-desktop {
 }
 /* line 40, c:/wamp/www/LDPA 3/resources/sass/tablet/../../themes/tablet/modules/_quiz.scss */
 .quiz-panel .quiz-top p {
-  margin: 0 30px 40px 30px;
-  padding: 20px 0 0 0;
+  margin: 0 30px 0px 30px;
+  padding: 20px 0 20px 0;
   font-size: 15px;
 }
 /* line 46, c:/wamp/www/LDPA 3/resources/sass/tablet/../../themes/tablet/modules/_quiz.scss */
@@ -12208,7 +12208,7 @@ body.x-desktop {
   font-size: 22px;
   line-height: 24px;
   color: white;
-  margin: 20px 30px 30px 30px;
+  padding: 20px 30px 30px 30px;
 }
 /* line 184, c:/wamp/www/LDPA 3/resources/sass/tablet/../../themes/tablet/modules/_quiz.scss */
 .quiz-panel .quiz-carousel .x-carousel-item .x-form-fieldset .x-form-fieldset-inner {
@@ -12239,7 +12239,7 @@ body.x-desktop {
 }
 /* line 210, c:/wamp/www/LDPA 3/resources/sass/tablet/../../themes/tablet/modules/_quiz.scss */
 .quiz-panel .quiz-radio .x-field .x-component-outer .x-field-input .x-field-mask {
-  top: -20px;
+  top: -17px;
   right: 16px;
 }
 /* line 215, c:/wamp/www/LDPA 3/resources/sass/tablet/../../themes/tablet/modules/_quiz.scss */

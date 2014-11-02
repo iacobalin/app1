@@ -83,7 +83,7 @@ Ext.define("LDPA.view.tablet.comments.CommentForm", {
 				xtype: "component",
 				itemId: "errorsPanel",
 				cls: "errors",
-				tpl: new Ext.XTemplate('<p>{message}<br/><br/></p>'),
+				tpl: new Ext.XTemplate('<p>{message}</p>'),
 			},
 			{
 				xtype: "container",
