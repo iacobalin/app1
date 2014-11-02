@@ -121,6 +121,10 @@
 					line-height: 35px;
 					min-height: 35px;
 					-webkit-text-fill-color: white;
+					
+					&::-webkit-input-placeholder{
+						color: $light-grey;
+					}
 				}
 								
 				.x-clear-icon{

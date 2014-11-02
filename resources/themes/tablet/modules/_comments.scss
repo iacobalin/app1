@@ -243,7 +243,15 @@
 				font-weight: normal;
 				font-family: "opensans-regular";
 				text-align: center;
-				margin-left: 0px;
+				margin: 0 auto;
+			}
+			&.pending{
+				.send{
+					display: none;
+				}
+				#bar-loader{
+					margin: 0 auto;				
+				}
 			}
 		}
 	}
