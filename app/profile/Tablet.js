@@ -8,6 +8,9 @@ Ext.define('LDPA.profile.Tablet', {
 		"LDPA.controller.tablet.Videos",
 		"LDPA.controller.tablet.Map",
 		"LDPA.controller.tablet.Comments",
+		"LDPA.controller.tablet.News",
+		"LDPA.controller.tablet.Quiz",
+		"LDPA.controller.tablet.Search",
 		"LDPA.view.tablet.Main",
 		"LDPA.view.tablet.Background"
 	],
@@ -16,7 +19,7 @@ Ext.define('LDPA.profile.Tablet', {
         name: 'Tablet',
        
 		//controllers: ['Home', 'Articles', 'Video', 'Map', 'News', 'Contact', 'Quiz', 'Share', 'Newsletter', 'Questions', 'Search']
-		controllers: ['Main', 'Categories', 'Actions', 'Videos', 'Map', 'Comments']
+		controllers: ['Main', 'Categories', 'Actions', 'Videos', 'Map', 'Comments', 'News', 'Quiz', 'Search']
 	},
 	
 	isActive: function() {

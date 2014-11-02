@@ -16,7 +16,10 @@ Ext.define('LDPA.controller.tablet.Main', {
 		'LDPA.view.tablet.categories.Category',
 		'LDPA.view.tablet.categories.Search',
 		'LDPA.view.tablet.video.Video',
-		'LDPA.view.tablet.map.MapPanel'
+		'LDPA.view.tablet.map.MapPanel',
+		'LDPA.view.tablet.news.News',
+		'LDPA.view.tablet.quiz.QuizPanel',
+		'LDPA.view.tablet.search.Search',
 	],
 	
     config: {

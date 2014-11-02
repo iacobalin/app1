@@ -16,8 +16,8 @@ Ext.define("LDPA.view.tablet.actions.SharePanel", {
 		cls: 'share-panel',
 		width: "85%",
 		height: "85%",
-		maxWidth: 320,
-		maxHeight: 450,
+		maxWidth: 480,
+		maxHeight: 420,
 		centered: true,
 		layout: {
 			type: "vbox",

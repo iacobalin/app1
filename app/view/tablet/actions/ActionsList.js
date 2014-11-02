@@ -6,7 +6,9 @@ Ext.define("LDPA.view.tablet.actions.ActionsList", {
 		'LDPA.view.tablet.actions.CallPanel',
 		'LDPA.view.tablet.actions.ContactForm',
 		'LDPA.view.tablet.actions.SharePanel',
-		'LDPA.view.tablet.actions.SettingsPanel'
+		'LDPA.view.tablet.actions.SettingsPanel',
+		'LDPA.view.tablet.actions.NewsletterForm',
+		'LDPA.view.tablet.actions.QuestionForm'
 	],
 	
 	config: {
@@ -45,21 +47,22 @@ Ext.define("LDPA.view.tablet.actions.ActionsList", {
 			'</div>'
 		),
 		items: [{
-			xtype: "titlebar",
-			itemId: "topBar",
-			title: "Meniu",
-			height: 40,
+			xtype: "panel",
+			itemId: "searchBar",
+			height: 45,
 			docked: "top",	  
 			cls: "menu-bar",
+			layout: {
+				type: "hbox",
+				pack: "justify",
+				align: "stretch"
+			},
 			items: [
 				{
-					xtype: "button",
-					itemId: 'backBtn',
-					iconCls: 'back',
-					html: "&nbsp;",
-					cls: "back-btn",
-					pressedCls: "pressed",
-					align: 'left'
+					xtype: 'searchfield',
+					placeHolder: 'Caut\u0103...',
+					cls: 'search-field',
+					flex: 1
 				}
 			]
 		}],
@@ -80,20 +83,11 @@ Ext.define("LDPA.view.tablet.actions.ActionsList", {
 	initialize: function(){
 		this.callParent(arguments);
 		
-		//this.on("itemtap", this.onListItemTap, this);
-		
-		var backBtn = this.down("#backBtn");
-		backBtn.on("tap", this.onBackBtnTap, this);
-		
 		// add a handler for the orientationchange event of the viewport
 		Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });
 	},
 	
 	
-	onBackBtnTap: function(){
-		this.getMask().fireEvent("close");	
-	},
-		
 	onOpenPanel: function(){
 		this.show();
 	},

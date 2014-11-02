@@ -98,23 +98,43 @@
 		border-bottom: 1px solid #504f4f;
 		background: $dark-grey;
 		
-		.x-body{
-			.x-title{
-				font-size: 17px;
-			}
-		}
-		.back-btn{
-			background: none;
-			border: 0px;
-			padding: 10px;
+		.search-field{
+			background: transparent;
 			
-			.back{
-				@include wbz-inline-icon(left, 20px);
-				@include wbz-transform(rotate(90deg));
-			}
-			&.pressed{
-				opacity: 0.7;
+			.x-field-input{
+				@include wbz-inline-icon(search, 25px);
+				padding: 5px 0px 0px 25px!important;
+				margin: 0px;
+				
+				&::before{
+					left: 16px;
+					top: 10px;
+					right: auto;
+					color: white;
+				}
+				.x-input-search{
+					background: transparent;
+					font-size: 15px;
+					margin-left: 0px;
+					height: 30px;
+					padding: 0 20px 0px 25px;
+					line-height: 35px;
+					min-height: 35px;
+					-webkit-text-fill-color: white;
+				}
+								
+				.x-clear-icon{
+					@include wbz-inline-icon(delete, 20px);
+					color: white;
+					background: none;
+					width: 20px;
+					height: 20px;
+					margin: 0px;
+					margin-top: -10px;
+					right: 10px;
+				}
 			}
 		}
+		
 	}
 }

@@ -1,4 +1,4 @@
-Ext.define("LDPA.model.Questions", {
+Ext.define("LDPA.model.Question", {
     extend: 'Ext.data.Model',
 	requires: [
 		'Ext.data.proxy.JsonP'

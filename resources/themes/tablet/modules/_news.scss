@@ -1,4 +1,4 @@
-.search-container{
+.news-container{
 	background: #ffffff;
 	
 	.top-bar{
@@ -28,7 +28,8 @@
 	}
 }
 
-.search-list{
+
+.news-list{
 	margin: 0;
 	background: #f6f6f8;
 	
@@ -40,111 +41,83 @@
 		width: 220px;
 	}
 	
-	.articles-bar{
-		.x-innerhtml{
-			color: #ffffff;
-			font-size: 17px;
-			height: 40px;
-			line-height: 40px;
-			padding: 0 20px;
-			background: $dark-orange;
-		}
-	}
-	.x-list-item{
-		padding: 10px 0px 10px 0px;
-		@include wbz-display-box();
-		@include wbz-box-align(center);
-		@include wbz-box-pack(justify);
-		
-		&.x-list-item-tpl{
-			border-bottom: 1px solid #d9e0f0;
+	.x-dataview-container{
+		.item{
+			border-bottom: 2px solid #ffffff;
 			
-			&.x-list-footer-wrap{
-				border-bottom: 1px solid #d9e0f0;
+			.img-container{
+				@include wbz-box-pack(end);
+				@include wbz-box-align(start);
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
 			}
-			
-			.x-innerhtml{
-				padding: 0 50px 0 20px;
-				height: 100%;
-				@include wbz-display-box();
-				@include wbz-box-align(center);
+			.gradient-bg{
+				@include wbz-box-pack(center);
+				overflow: hidden;
+				padding: 0px 10px 10px 10px;
+				@include background(linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.4) 0.3, rgba(0,0,0,0.7) 0.97, rgba(0,0,0,0.9)));
+				background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.7) 97%,  rgba(0,0,0,0.9) 100%); /* IE10+ */
+				width: 100%;
 				
-				> div{
-					@include wbz-box-pack(center);
-					width: 100%;
-				}
 				h1{
-					color: $blue;
-					font-size: 16px;
+					font-size: 15px;
+					color: #ffffff;
+					font-weight: normal;
+					margin: 0 0 5px 0;
+					padding-top: 10px;
+				}
+				.stats{
+					@include wbz-box-pack(start);
 					
-					display: block;
+					.comments{
+						font-size: 13px;
+						color: $light-blue;	
+						@include wbz-display-inline-box();
+						margin: 0 15px 0 0;
+						
+						.icon{
+							@include wbz-inline-icon(comment_empty, 18px);
+							color: $light-blue;
+							width: 18px;
+							height: 18px;
+							margin: 0 5px 0 0;
+							
+							&::before{
+								line-height: 18px;
+								position: relative;
+							}
+						}
+					}
+					.ranking{
+						font-size: 13px;
+						color: $light-blue;	
+						@include wbz-display-inline-box();
+						margin: 0 15px 0 0;
+						
+						.icon{
+							@include wbz-inline-icon(star, 18px);
+							color: $light-blue;
+							width: 18px;
+							height: 18px;
+							margin: 0 5px 0 0;
+							
+							&::before{
+								line-height: 18px;
+								position: relative;
+							}
+						}
+					}
 				}
 			}
-		}
-		&.item-pressed{
-			opacity: 0.7;
-		}
-	}
-	&.x-list{
-		.x-list-disclosure{
-			@include wbz-inline-icon(left, 20px);
-			@include wbz-transform(rotate(180deg));
-			background: none;
-			padding: 0;
-			margin: 0;
-			right: 10px;
-			top: 50%;			
-			
-			&::before{
-				color: $light-grey;	
-				line-height: 60px;
-			}
-		}
-	}
-	.stats{
-		@include wbz-box-pack(start);
-	}
-	.comments{
-		font-size: 13px;
-		color: $light-grey;	
-		@include wbz-display-inline-box();
-		margin: 0 15px 0 0;
-		
-		.icon{
-			@include wbz-inline-icon(comment_empty, 18px);
-			color: $light-grey;
-			width: 18px;
-			height: 18px;
-			margin: 0 5px 0 0;
-			
-			&::before{
-				line-height: 18px;
-				position: relative;
-			}
-		}
-	}
-	.ranking{
-		font-size: 13px;
-		color: $light-grey;	
-		@include wbz-display-inline-box();
-		margin: 0 15px 0 0;
-		
-		.icon{
-			@include wbz-inline-icon(star, 18px);
-			color: $light-grey;
-			width: 18px;
-			height: 18px;
-			margin: 0 5px 0 0;
-			
-			&::before{
-				line-height: 18px;
-				position: relative;
-			}
+			&.item-pressed{
+				opacity: 0.7;
+			}	
 		}
 	}
 }
 
-.search-panel{
+.news-panel{
 	&.x-layout-card-item{
 		background: #ffffff;
 	}

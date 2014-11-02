@@ -149,6 +149,11 @@ Ext.define('LDPA.controller.tablet.Videos', {
 		var videoPanel = this.getVideoPanel();
 		var mask = videoPanel.getMask();
 		
+		// scroll to top
+		var articleInnerPanel = videoPanel.down("#articleInner");
+		var scroller = articleInnerPanel.getScrollable().getScroller();
+		scroller.scrollTo(0,0,true);
+		
 		// offline loading
 		if (!LDPA.app.isOnline()){
 			// hide mask
@@ -161,7 +166,7 @@ Ext.define('LDPA.controller.tablet.Videos', {
 		else{
 			// Make the JsonP request
 			Ext.data.JsonP.request({
-				url: webcrumbz.exportPath+'?json=mobile.video_lesson',
+				url: webcrumbz.exportPath+'?json=tablet.video_lesson',
 				params: {
 					id: articleId,
 					format: 'json',

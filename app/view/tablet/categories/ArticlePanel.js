@@ -168,9 +168,6 @@ Ext.define("LDPA.view.tablet.categories.ArticlePanel", {
 		bottomBar.fireEvent("closemenu");
 		
 		var articleInnerPanel = this.down("#articleInner");
-		var scroller = articleInnerPanel.getScrollable().getScroller();
-		scroller.scrollTo(0,0,true);
-		
 		articleInnerPanel.setData(article);
 		
 		this.handleOrientationChange();
@@ -222,7 +219,7 @@ Ext.define("LDPA.view.tablet.categories.ArticlePanel", {
 		
 		// change images max width according with the Viewport width
 		for (var i=0; i<images.length; i++){
-			images[i].style.maxWidth = (Ext.Viewport.getWindowWidth() - 300 - padding) + "px";
+			images[i].style.maxWidth = (Ext.Viewport.getWindowWidth() - 310 - padding) + "px";
 		}
 	}
 });

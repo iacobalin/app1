@@ -92,7 +92,7 @@ Ext.define("LDPA.view.tablet.actions.ContactForm", {
 				xtype: "component",
 				itemId: "errorsPanel",
 				cls: "errors",
-				tpl: new Ext.XTemplate('<p>{message}<br/><br/></p>'),
+				tpl: new Ext.XTemplate('<p>{message}</p>'),
 			},
 			{
 				xtype: 'component',

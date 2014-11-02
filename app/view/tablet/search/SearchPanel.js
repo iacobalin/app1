@@ -1,14 +1,13 @@
-Ext.define("LDPA.view.tablet.video.VideoPanel", {
+Ext.define("LDPA.view.tablet.search.SearchPanel", {
     extend: 'Ext.Panel',
 	
 	requires: [
-		"LDPA.view.tablet.video.VideoBottomBar",
-		"Ext.Video"
+		"LDPA.view.tablet.search.SearchBottomBar"
 	],
 	
 	config: {
 		
-		itemId: "videoPanel",
+		itemId: "searchPanel",
 				
 		// custom properties
 		mask: null,
@@ -17,7 +16,7 @@ Ext.define("LDPA.view.tablet.video.VideoPanel", {
 		bottomButtons: null,								// a reference of the bottom buttons (comments and rate)
 								
 		// css properties
-		cls: 'video-panel',
+		cls: 'search-panel',
 		width: '100%',
 		height: '100%',
 						
@@ -105,12 +104,6 @@ Ext.define("LDPA.view.tablet.video.VideoPanel", {
 								scope: this
 							}
 						]
-					},
-					{
-						xtype: "video",
-						itemId: 'videoBox',
-						enableControls : true,
-						hidden: true
 					}
 				]	
 			}
@@ -121,7 +114,7 @@ Ext.define("LDPA.view.tablet.video.VideoPanel", {
 	initialize: function(){
 		this.callParent(arguments);
 		
-		var bottomBar = Ext.create("LDPA.view.tablet.video.VideoBottomBar");
+		var bottomBar = Ext.create("LDPA.view.tablet.search.SearchBottomBar");
 		this.add(bottomBar);
 		this.setBottomBar(bottomBar);
 		
@@ -148,7 +141,7 @@ Ext.define("LDPA.view.tablet.video.VideoPanel", {
 		var articleInner = this.down("#articleInner");
 		if (articleInner.getData() == null){
 			
-			var article = this.up("#videoView").down("#videosList").getStore().getAt(0).getData();
+			var article = this.up("#searchView").down("#searchList").getStore().getAt(0).getData();
 			
 			// create mask
 			var mask = Ext.create("LDPA.view.MainMask", {
@@ -164,8 +157,7 @@ Ext.define("LDPA.view.tablet.video.VideoPanel", {
 			mask.show();
 			this.setMask(mask);
 			
-			// show the first video lesson
-			videosController.showArticle(article.articleId);
+			searchController.showArticle(article.id);
 		}
 	},
 	
@@ -183,26 +175,6 @@ Ext.define("LDPA.view.tablet.video.VideoPanel", {
 		
 		var articleInnerPanel = this.down("#articleInner");
 		articleInnerPanel.setData(article);
-		
-		// add video config
-		var videoBox = this.down("#videoBox");
-		videoBox.pause();
-		videoBox.setUrl(article.video_link);
-		
-		
-		if (LDPA.app.isOnline()){
-			videoBox.setPosterUrl(article.featured_image);
-		}
-		else{
-			var imagesOffline = mainController.imagesOfflineStore;
-			var offlineRecord = imagesOffline.findRecord("url", article.featured_image, 0, false, true, true);
-			if (offlineRecord && offlineRecord.get("dataUrl")){
-				videoBox.setPosterUrl(offlineRecord.get("dataUrl"));
-			}
-		}
-		
-		// show video
-		this.down("#videoBox").show();
 		
 		this.handleOrientationChange();
 	},
@@ -251,14 +223,5 @@ Ext.define("LDPA.view.tablet.video.VideoPanel", {
 		for (var i=0; i<images.length; i++){
 			images[i].style.maxWidth = (Ext.Viewport.getWindowWidth() - 310 - padding) + "px";
 		}
-		
-		// add video config
-		var imageWidth = 441;
-		var imageHeight = 326;
-		var width = Math.min(Ext.Viewport.getWindowWidth() - 300 - 50, 600);
-		var height = width * imageHeight / imageWidth;
-		var videoBox = this.down("#videoBox");
-		videoBox.setWidth(width);
-		videoBox.setHeight(height);
 	}
 });

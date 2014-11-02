@@ -28,7 +28,15 @@ Ext.define('LDPA.controller.tablet.Actions', {
 			settingsPanel: {
 				selector: '#settingsPanel',
                 autoCreate: true		
-			}
+			},
+			newsletterForm: {
+				selector: '#newsletterFormPanel',
+                autoCreate: true		
+			},
+			questionForm: {
+				selector: '#questionFormPanel',
+                autoCreate: true		
+			},
         },
 		
 		control: {
@@ -109,9 +117,19 @@ Ext.define('LDPA.controller.tablet.Actions', {
 				break;
 				
 			case "news":
-			case "quiz":
+				newsController.showNews();
+				break;
+			
 			case "newsletter":
+				this.showNewsletter();
+				break;
+			
 			case "ask":
+				this.showQuestion();
+				break;
+				
+			case "quiz":
+				quizController.showQuiz();
 				break;
 				
 			default: break;	
@@ -221,7 +239,7 @@ Ext.define('LDPA.controller.tablet.Actions', {
 			
 			// Make the JsonP request
 			Ext.data.JsonP.request({
-				url: webcrumbz.exportPath+'?json=mobile.add_feedback',
+				url: webcrumbz.exportPath+'?json=tablet.add_feedback',
 				params: {
 					nume			: contactForm.getValues().name,
 					adresa_email	: contactForm.getValues().email,
@@ -344,6 +362,165 @@ Ext.define('LDPA.controller.tablet.Actions', {
 			})
 		});	
 	},
+	
+	
+	showNewsletter: function(){
+		// create mask
+		var mask = Ext.create("LDPA.view.MainMask", {
+			closeFn: function(){
+				newsletterForm.fireEvent("closepanel");
+			}
+		});
+		
+		Ext.Viewport.add(mask);
+		
+		// create settings panel
+		var profile = webcrumbz.profile.toLowerCase();
+		var newsletterForm = Ext.create("LDPA.view."+profile+".actions.NewsletterForm", {
+			mask: mask,
+			zIndex: mask.getZIndex()+1
+		});
+		
+		Ext.Viewport.add(newsletterForm);
+		
+		mask.show();
+		newsletterForm.show();	
+	},
+	
+	
+	submitNewsletterForm: function() {
+        
+		var newsletterForm = this.getNewsletterForm();
+		
+		// create mask
+		var mask = Ext.create("LDPA.view.MainMask", {
+			disabled: true,
+			spinner: true,
+			closeFn: function(){
+				//actionsList.fireEvent("closepanel");
+			}
+		});
+		
+		Ext.Viewport.add(mask);
+		mask.show();
+		
+		
+		// offline
+		if (!LDPA.app.isOnline()){
+			mask.fireEvent("close");
+			
+			alert(webcrumbz.offlineMsg);
+		}
+		// online loading
+		else{
+			
+			// Make the JsonP request
+			Ext.data.JsonP.request({
+				url: webcrumbz.exportPath+'?json=tablet.add_newsletter',
+				params: {
+					name			: newsletterForm.getValues().name,
+					email			: newsletterForm.getValues().email,
+					key				: webcrumbz.key
+				},
+				success: function(result, request) {
+					
+					// hide mask
+					mask.fireEvent("close");
+					
+					if (result.status == "ok"){
+						
+						newsletterForm.reset();
+						alert('Te-ai \u00EEnscris cu succes la newsletter-ul Lec\u021Bia de prim ajutor. \u00CEn c\u00E2teva minute, vei primi un email de confirmare. Acceseaz\u0103 link-ul din email pentru a confirma \u00EEnscrierea. Dac\u0103 nu prime\u0219ti emailul de confirmare \u00EEn 15 minute, verific\u0103 \u0219i \u00EEn Spam');
+						//Ext.Msg.alert('Felicit&#259;ri', 'Mesajul t&#259;u a fost trimis cu succes!<br/>&#206;&#355;i mul&#355;umim!', Ext.emptyFn);
+					}
+					else{
+						alert('\u00EEncearc\u0103 din nou sau trimite un email la newsletter@lectiadeprimajutor.ro!')
+						//Ext.Msg.alert('Eroare', 'Mesajul t&#259;u nu a fost trimis!<br/> &#206;ncearc&#259; din nou sau trimite un email la contact@lectiadeprimajutor.ro!', Ext.emptyFn);
+					}
+				}
+			});
+		}
+    },
+	
+	
+	showQuestion: function(){
+		// create mask
+		var mask = Ext.create("LDPA.view.MainMask", {
+			closeFn: function(){
+				questionForm.fireEvent("closepanel");
+			}
+		});
+		
+		Ext.Viewport.add(mask);
+		
+		// create settings panel
+		var profile = webcrumbz.profile.toLowerCase();
+		var questionForm = Ext.create("LDPA.view."+profile+".actions.QuestionForm", {
+			mask: mask,
+			zIndex: mask.getZIndex()+1
+		});
+		
+		Ext.Viewport.add(questionForm);
+		
+		mask.show();
+		questionForm.show();	
+	},
+	
+	
+	submitQuestionForm: function() {
+        
+		var questionForm = this.getQuestionForm();
+		
+		// create mask
+		var mask = Ext.create("LDPA.view.MainMask", {
+			disabled: true,
+			spinner: true,
+			closeFn: function(){
+				//actionsList.fireEvent("closepanel");
+			}
+		});
+		
+		Ext.Viewport.add(mask);
+		mask.show();
+		
+		
+		// offline
+		if (!LDPA.app.isOnline()){
+			mask.fireEvent("close");
+			
+			alert(webcrumbz.offlineMsg);
+		}
+		// online loading
+		else{
+			
+			// Make the JsonP request
+			Ext.data.JsonP.request({
+				url: webcrumbz.exportPath+'?json=tablet.add_question',
+				params: {
+					name			: questionForm.getValues().name,
+					email			: questionForm.getValues().email,
+					question		: questionForm.getValues().question,
+					key				: webcrumbz.key
+				},
+				success: function(result, request) {
+					
+					// hide mask
+					mask.fireEvent("close");
+					
+					if (result.status == "ok"){
+						
+						questionForm.reset();
+						alert('\u00CEntrebarea ta a fost trimis\u0103. \u00CEn cel mai scurt timp vei primi un r\u0103spuns din partea unui medic SMURD. \u00CE\u021Bi mul\u021Bumim!');
+						//Ext.Msg.alert('Felicit&#259;ri', 'Mesajul t&#259;u a fost trimis cu succes!<br/>&#206;&#355;i mul&#355;umim!', Ext.emptyFn);
+					}
+					else{
+						alert('Mesajul t\u0103u nu a fost trimis! \u00CEncearc\u0103 din nou sau trimite un email la questions@lectiadeprimajutor.ro!');
+						//Ext.Msg.alert('Eroare', 'Mesajul t&#259;u nu a fost trimis!<br/> &#206;ncearc&#259; din nou sau trimite un email la contact@lectiadeprimajutor.ro!', Ext.emptyFn);
+					}
+				}
+			});
+		}
+    },
 	
 	
 	// update category in local SQL DATABASE

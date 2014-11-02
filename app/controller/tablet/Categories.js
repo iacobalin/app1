@@ -25,12 +25,7 @@ Ext.define('LDPA.controller.tablet.Categories', {
 			articlePanel: {
 				selector: "#categoryView #articlePanel",
 				autoCreate: true	
-			},
-			searchList: {
-				selector: "#searchView #searchList",
-				autoCreate: true	
-			},
-			searchField: '#mainView #categoriesList searchfield'
+			}
         },
 		
 		control: {
@@ -39,12 +34,6 @@ Ext.define('LDPA.controller.tablet.Categories', {
 			},
 			articlesList: {
 				itemtap: 'onArticlesListItemTap'	
-			},
-			searchList: {
-				itemtap: 'onSearchListItemTap'	
-			},
-			searchField: {
-				keyup: 'onSearch'	
 			}
 		}
     },
@@ -243,6 +232,11 @@ Ext.define('LDPA.controller.tablet.Categories', {
 		var articlePanel = this.getArticlePanel();
 		var mask = articlePanel.getMask();
 		
+		// scroll to top
+		var articleInnerPanel = articlePanel.down("#articleInner");
+		var scroller = articleInnerPanel.getScrollable().getScroller();
+		scroller.scrollTo(0,0,true);
+		
 		// offline loading
 		if (!LDPA.app.isOnline()){
 			// hide mask
@@ -324,109 +318,6 @@ Ext.define('LDPA.controller.tablet.Categories', {
 			// show article panel
 			categoryView.animateActiveItem(articlePanel, {type: "slide", direction: "left"})
 		}
-	},
-	
-	
-	onSearch : function(field, e){
-		var keyCode = e.event.keyCode,
-            searchField = this.getSearchField(),
-			searchQuery = searchField.getValue();
-			
-        //the return keyCode is 13.
-        if (keyCode == 13) {
-           
-			// ensure there is a search...
-			if (!searchQuery) {
-				return;
-			}
-			
-			// create mask
-			var mask = Ext.create("LDPA.view.MainMask", {
-				disabled: true,
-				spinner: true,
-				closeFn: function(){
-					
-				}
-			});
-			
-			Ext.Viewport.add(mask);
-			mask.show();
-			
-			
-			// offline
-			if (!LDPA.app.isOnline()){
-				mask.fireEvent("close");
-				
-				alert(webcrumbz.offlineMsg);
-			}
-			// online
-			else{
-				// create search panel
-				var profile = webcrumbz.profile.toLowerCase();
-				var searchView = Ext.create("LDPA.view."+profile+".categories.Search", {
-					mask: mask,
-					zIndex: mask.getZIndex()+1
-				});
-				
-				Ext.Viewport.add(searchView);
-				
-				var searchList = searchView.down("#searchList");
-				searchList.getStore().loadPage(1, {
-					filters: { 
-						query: searchQuery.replace("%20", " ")
-					},
-					callback: function(){
-						
-						mask.fireEvent("close");
-						searchView.show();	
-					}
-				})	
-			}
-			
-			
-			// set searh field empty and remove focus from it
-			searchField.setValue('');
-			searchField.blur();
-        }
-	},
-	
-	showArticleBySearch: function(articleId){
-		var self = this;
-		var searchList = this.getSearchList();
-		var searchView = searchList.getParent();
-		var articlePanel = searchView.down("#articlePanel");
-		var mask = articlePanel.getMask();
-		
-		// Make the JsonP request
-		Ext.data.JsonP.request({
-			url: webcrumbz.exportPath+'?json=mobile.post',
-			params: {
-				id: articleId,
-				format: 'json',
-			},
-			failure: function(){
-				// show article from offline
-				self.showArticleFromOffline(articleId);
-			},
-			success: function(result, request) {
-				// hide mask
-				mask.fireEvent("close");
-				
-				result.post.content = result.post.content.replace(/width=\"\d+\"|height=\"\d+\"/g,'');
-				
-				// save article for offline
-				//self.saveArticleForOffline(result.post, articleId);
-				
-				//result.post.content = result.post.content.replace(/src=\"/gi,'src="http://src.sencha.io/-10/');
-				result.post.articleId = result.post.id;
-				
-				// add content
-				articlePanel.fireEvent("addcontent", result.post);	
-				
-				// show article panel
-				searchView.animateActiveItem(articlePanel, {type: "slide", direction: "left"})
-			}
-		});	
 	}
 	
 });
