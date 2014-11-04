@@ -1,6 +1,7 @@
 Ext.define("LDPA.view.MainMask", {
     extend: 'Ext.Container',
-
+	xtype: "mainmask",
+	
 	config: {
 		
 		// custom properties
@@ -9,7 +10,9 @@ Ext.define("LDPA.view.MainMask", {
 		spinner: false,
 		
 		// css properties
-		cls: 'main-mask',
+		cls: 'main-mask',										
+		width: '100%',
+		height: '100%',
 		top: 0,
         left: 0,
 		

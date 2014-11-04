@@ -1,2 +1,2 @@
 // @tag full-page
-// @require C:\wamp\www\LDPA 3\app.js
+// @require c:\wamp\www\LDPA 3\app.js

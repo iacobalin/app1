@@ -317,53 +317,6 @@ Ext.define('LDPA.controller.tablet.Actions', {
 	},
 	
 	
-	downloadContent: function(){
-		var settingsPanel = this.getSettingsPanel();
-		var mask = settingsPanel.getMask();
-		mask.setDisabled(true);
-				
-		var self = this;
-		var articlesOfflineStore = mainController.articlesOfflineStore;
-		var categories = mainController.categoriesOfflineStore.getRange();
-				
-		
-		// delete all articles from local Database
-		articlesOfflineStore.getModel().getProxy().dropTable();
-		
-		articlesOfflineStore.load(function(){
-			
-			self.categoriesLoaded = 0;
-			
-			Ext.each(categories, function(category){
-				var categoryId = category.get("categoryId");
-				
-				// Make the JsonP request
-				Ext.data.JsonP.request({
-					url: webcrumbz.exportPath+'?json=mobile.category',
-					params: {
-						id: categoryId,
-						format: 'json',
-						key: webcrumbz.key
-					},
-					failure: function(){
-						// there was an error, but we must go on
-						self.categoriesLoaded++;
-					},
-					success: function(result, request) {
-						self.categoriesLoaded++;
-						
-						// save categories for offline
-						self.saveCategoryForOffline(result, categoryId);
-						
-						// save articles for offline
-						self.saveArticlesForOffline(result.posts, categoryId);
-					}
-				});		
-			})
-		});	
-	},
-	
-	
 	showNewsletter: function(){
 		// create mask
 		var mask = Ext.create("LDPA.view.MainMask", {
@@ -523,6 +476,53 @@ Ext.define('LDPA.controller.tablet.Actions', {
     },
 	
 	
+	downloadContent: function(){
+		var settingsPanel = this.getSettingsPanel();
+		var mask = settingsPanel.getMask();
+		mask.setDisabled(true);
+				
+		var self = this;
+		var articlesOfflineStore = mainController.articlesOfflineStore;
+		var categories = mainController.categoriesOfflineStore.getRange();
+				
+		
+		// delete all articles from local Database
+		articlesOfflineStore.getModel().getProxy().dropTable();
+		
+		articlesOfflineStore.load(function(){
+			
+			self.categoriesLoaded = 0;
+			
+			Ext.each(categories, function(category){
+				var categoryId = category.get("categoryId");
+				
+				// Make the JsonP request
+				Ext.data.JsonP.request({
+					url: webcrumbz.exportPath+'?json=tablet.category',
+					params: {
+						id: categoryId,
+						format: 'json',
+						key: webcrumbz.key
+					},
+					failure: function(){
+						// there was an error, but we must go on
+						self.categoriesLoaded++;
+					},
+					success: function(result, request) {
+						self.categoriesLoaded++;
+						
+						// save categories for offline
+						self.saveCategoryForOffline(result, categoryId);
+						
+						// save articles for offline
+						self.saveArticlesForOffline(result.posts, categoryId);
+					}
+				});		
+			})
+		});	
+	},
+	
+	
 	// update category in local SQL DATABASE
 	saveCategoryForOffline: function(record, categoryId){
 		var categoriesOfflineStore = mainController.categoriesOfflineStore;
@@ -574,7 +574,7 @@ Ext.define('LDPA.controller.tablet.Actions', {
 								
 				// Make the JsonP request
 				Ext.data.JsonP.request({
-					url: webcrumbz.exportPath+'?json=mobile.post',
+					url: webcrumbz.exportPath+'?json=tablet.post',
 					params: {
 						id: articleId,
 						categoryId: categoryId,

@@ -11,6 +11,7 @@ Ext.define("LDPA.view.tablet.AppPanel", {
 		id: 'appPanel',
 		
 		// custom properties
+		cls: "app-panel",
 		
 		// css properties
 		layout: {

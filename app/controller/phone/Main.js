@@ -39,10 +39,10 @@ Ext.define('LDPA.controller.phone.Main', {
 		this.imagesLoadingList = Ext.create("LDPA.store.ImagesLoadingList");
 		
 		
-		//this.categoriesOfflineStore.getModel().getProxy().dropTable();
-		//this.articlesOfflineStore.getModel().getProxy().dropTable();
-		//this.videosOfflineStore.getModel().getProxy().dropTable();
-		//this.imagesOfflineStore.getModel().getProxy().dropTable();
+		this.categoriesOfflineStore.getModel().getProxy().dropTable();
+		this.articlesOfflineStore.getModel().getProxy().dropTable();
+		this.videosOfflineStore.getModel().getProxy().dropTable();
+		this.imagesOfflineStore.getModel().getProxy().dropTable();
 	},
 		
 	

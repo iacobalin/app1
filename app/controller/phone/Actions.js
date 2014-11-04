@@ -336,27 +336,29 @@ Ext.define('LDPA.controller.phone.Actions', {
 				var categoryId = category.get("categoryId");
 				
 				// Make the JsonP request
-				Ext.data.JsonP.request({
-					url: webcrumbz.exportPath+'?json=mobile.category',
-					params: {
-						id: categoryId,
-						format: 'json',
-						key: webcrumbz.key
-					},
-					failure: function(){
-						// there was an error, but we must go on
-						self.categoriesLoaded++;
-					},
-					success: function(result, request) {
-						self.categoriesLoaded++;
-						
-						// save categories for offline
-						self.saveCategoryForOffline(result, categoryId);
-						
-						// save articles for offline
-						self.saveArticlesForOffline(result.posts, categoryId);
-					}
-				});		
+				Ext.defer(function(){
+					Ext.data.JsonP.request({
+						url: webcrumbz.exportPath+'?json=mobile.category',
+						params: {
+							id: categoryId,
+							format: 'json',
+							key: webcrumbz.key
+						},
+						failure: function(){
+							// there was an error, but we must go on
+							self.categoriesLoaded++;
+						},
+						success: function(result, request) {
+							self.categoriesLoaded++;
+							
+							// save categories for offline
+							self.saveCategoryForOffline(result, categoryId);
+							
+							// save articles for offline
+							self.saveArticlesForOffline(result.posts, categoryId);
+						}
+					});
+				}, 200);
 			})
 		});	
 	},
@@ -408,29 +410,31 @@ Ext.define('LDPA.controller.phone.Actions', {
 			// download content for each article
 			Ext.each(articlesOfflineStore.getRange(), function(record){
 			
-				var articleId = record.get("articleId");
-				var categoryId = record.get("categoryId");
-								
-				// Make the JsonP request
-				Ext.data.JsonP.request({
-					url: webcrumbz.exportPath+'?json=mobile.post',
-					params: {
-						id: articleId,
-						categoryId: categoryId,
-						format: 'json',
-						key: webcrumbz.key
-					},
-					failure: function(){
-						self.articlesLoaded++;
-					},
-					success: function(result, request) {
-						
-						result.post.content = result.post.content.replace(/width=\"\d+\"|height=\"\d+\"/g,'');
-						
-						// save article for offline
-						self.saveArticleForOffline(result.post, articleId, categoryId);
-					}
-				});	
+				Ext.defer(function(){
+					var articleId = record.get("articleId");
+					var categoryId = record.get("categoryId");
+									
+					// Make the JsonP request
+					Ext.data.JsonP.request({
+						url: webcrumbz.exportPath+'?json=mobile.post',
+						params: {
+							id: articleId,
+							categoryId: categoryId,
+							format: 'json',
+							key: webcrumbz.key
+						},
+						failure: function(){
+							self.articlesLoaded++;
+						},
+						success: function(result, request) {
+							
+							result.post.content = result.post.content.replace(/width=\"\d+\"|height=\"\d+\"/g,'');
+							
+							// save article for offline
+							self.saveArticleForOffline(result.post, articleId, categoryId);
+						}
+					});
+				}, 150);
 			})
 		}
 	},
@@ -454,7 +458,6 @@ Ext.define('LDPA.controller.phone.Actions', {
 		
 		
 		// update article in local SQL DATABASE
-		//var offlineRecord = articlesOfflineStore.findRecord("articleId", articleId, 0, false, true, true);
 		var offlineRecordIndex = articlesOfflineStore.findBy(function(record){
 			return (record.get("articleId") == articleId && record.get("categoryId") == categoryId);	
 		});

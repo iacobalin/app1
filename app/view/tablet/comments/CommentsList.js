@@ -23,7 +23,7 @@ Ext.define("LDPA.view.tablet.comments.CommentsList", {
 			direction: 'vertical',
 			indicators: false
 		},
-		masked: false,
+		loadingText: null,
 		disableSelection: true,
 		emptyText: 'Nu exista comentarii!',
 		useSimpleItems: true,
@@ -58,6 +58,20 @@ Ext.define("LDPA.view.tablet.comments.CommentsList", {
 		
 		var store = this.getStore();
 		
+		// create mask
+		var mask = Ext.create("LDPA.view.MainMask", {
+			cls: '',
+			spinner: true,
+			disabled: true,
+			closeFn: function(){
+				//categoryDetails.fireEvent("closepanel");
+			}
+		});
+		
+		this.add(mask);
+		mask.show();
+		
+		
 		// load items
 		store.loadPage(1, {
 			filters: { 
@@ -67,6 +81,8 @@ Ext.define("LDPA.view.tablet.comments.CommentsList", {
 				if (callback){
 					callback.call(this, operation);	
 				}
+				
+				mask.fireEvent("close");
 			}
 		});
 		

@@ -5,7 +5,7 @@ Ext.define('LDPA.proxy.Comments', {
     config: {
         // This is the url we always query when searching for posts
         url: webcrumbz.exportPath+'?json=tablet.comments',
-        timeout: 7000,
+        timeout: 70000,
 		
         reader: {
             type: 'json',

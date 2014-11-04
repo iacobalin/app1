@@ -110,7 +110,7 @@ Ext.define('LDPA.controller.tablet.Search', {
 						query: searchQuery.replace("%20", " ")
 					},
 					callback: function(records){
-						
+						console.log(records)
 						if (records.length > 0){
 							searchView.show();
 						}

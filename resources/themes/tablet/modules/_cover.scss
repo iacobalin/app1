@@ -1,3 +1,7 @@
+.app-panel{
+	box-shadow: 1px 0px 7px black;
+}
+
 .cover-box{
 	.x-panel-inner{
 		.x-innerhtml{
@@ -43,7 +47,8 @@
 		background: rgba(255,255,255,0.8);
 		
 		.logos{
-			min-width: 680px;
+			max-width: 700px;
+			height: 100%;
 			margin: 0 auto;
 			padding: 20px 0;
 			@include wbz-display-box();
@@ -51,29 +56,55 @@
 			@include wbz-box-align(center);
 		}
 		.logo-ing{
-			background-image: wbz_theme_image("tablet/logo-ing.png");
-			background-size: contain;
-			background-repeat: no-repeat;
-			width: 375px;	
-			height: 32px;
-			margin-right: 15px;
+			width: 54%;
+			height: 100%;
+			padding: 15px;
+			@include wbz-display-box();
+			@include wbz-box-pack(justify);
+			@include wbz-box-align(center);
+			
+			> div{
+				background-image: wbz_theme_image("tablet/logo-ing.png");
+				background-size: contain;
+				background-position: center;
+				background-repeat: no-repeat;
+				width: 100%;
+				height: 100%;
+			}
 		}
 		.logo-mai-mult-verde{
-			background-image: wbz_theme_image("tablet/logo-mai-mult-verde.png");
-			background-size: contain;
-			background-repeat: no-repeat;
-			width: 230px;	
-			height: 56px;
-			margin-left: 15px;
-			margin-right: 15px;
+			width: 31%;
+			height: 100%;
+			padding: 15px;
+			@include wbz-display-box();
+			@include wbz-box-pack(justify);
+			@include wbz-box-align(center);
+			
+			> div{
+				background-image: wbz_theme_image("tablet/logo-mai-mult-verde.png");
+				background-size: contain;
+				background-position: center;
+				background-repeat: no-repeat;
+				width: 100%;
+				height: 100%;
+			}
 		}
 		.logo-smurd{
-			background-image: wbz_theme_image("tablet/logo-smurd.png");
-			background-size: contain;
-			background-repeat: no-repeat;
-			width: 80px;	
-			height: 79px;
-			margin-left: 15px;
+			width: 19%;
+			height: 100%;
+			padding: 15px;
+			@include wbz-display-box();
+			@include wbz-box-pack(justify);
+			@include wbz-box-align(center);
+			
+			> div{
+				background-image: wbz_theme_image("tablet/logo-smurd.png");
+				background-size: contain;
+				background-position: center;
+				background-repeat: no-repeat;
+				width: 100%;
+				height: 100%;
+			}
 		}
 	}
 }

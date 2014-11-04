@@ -14,7 +14,6 @@ Ext.define('LDPA.controller.tablet.Main', {
 		'LDPA.view.tablet.AppPanel',
 		'LDPA.view.tablet.actions.ActionsList',
 		'LDPA.view.tablet.categories.Category',
-		'LDPA.view.tablet.categories.Search',
 		'LDPA.view.tablet.video.Video',
 		'LDPA.view.tablet.map.MapPanel',
 		'LDPA.view.tablet.news.News',

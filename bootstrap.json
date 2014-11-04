@@ -15,22 +15,21 @@
             "path": "bootstrap.js"
         },
         {
+            "path": "quiz.js",
+        },
+		{
             "path": "app.js",
             "update": "delta"
         }
     ],
     "css": [
         {
-            "path": "resources/css/tablet/tablet.css",
+            "path": "resources/css/phone/phone.css",
             "update": "full"
         },
         {
             "path": "resources/css/fonts.css",
             "update": "full"
         }
-        /*{
-            "path": "resources/css/phone/font-1.css",
-            "update": "full"
-        },*/
     ]
 }
