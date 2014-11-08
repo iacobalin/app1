@@ -1,0 +1,110 @@
+.app-panel{
+	box-shadow: 1px 0px 7px black;
+}
+
+.cover-box{
+	.x-panel-inner{
+		.x-innerhtml{
+			@include wbz-display-box();
+			height: 100%;
+		}
+	}
+	.logo-container{
+		@include wbz-box-pack(start);
+		@include wbz-box-align(center);
+	}
+	.logo-box{
+		@include wbz-display-box();
+		width: 240px;
+		height: 240px;
+		@include wbz-border-radius(164px);
+		background: transparent;
+		border: 1px solid #d1c9ba;
+		margin: 50px auto 0 auto;
+		
+		.logo-icon{
+			display: block;
+			width: 220px;
+			height: 220px;
+			@include wbz-border-radius(150px);
+			background: rgba(255,255,255,0.85);
+			background-image: wbz_theme_image("tablet/logo-icon.png");
+			background-size: 150px 150px;
+			background-position: center center;
+			background-repeat: no-repeat;
+			margin: 10px auto;
+		}
+	}
+	.logo-text{
+		background-image: wbz_theme_image("tablet/logo-text.png");
+		background-size: contain;
+		background-repeat: no-repeat;
+		width: 300px;
+		height: 53px;
+		margin: 15px auto;
+	}
+	.footer{
+		background: rgba(255,255,255,0.8);
+		
+		.logos{
+			max-width: 700px;
+			height: 100%;
+			margin: 0 auto;
+			padding: 20px 0;
+			@include wbz-display-box();
+			@include wbz-box-pack(center);
+			@include wbz-box-align(center);
+		}
+		.logo-ing{
+			width: 54%;
+			height: 100%;
+			padding: 15px;
+			@include wbz-display-box();
+			@include wbz-box-pack(justify);
+			@include wbz-box-align(center);
+			
+			> div{
+				background-image: wbz_theme_image("tablet/logo-ing.png");
+				background-size: contain;
+				background-position: center;
+				background-repeat: no-repeat;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.logo-mai-mult-verde{
+			width: 31%;
+			height: 100%;
+			padding: 15px;
+			@include wbz-display-box();
+			@include wbz-box-pack(justify);
+			@include wbz-box-align(center);
+			
+			> div{
+				background-image: wbz_theme_image("tablet/logo-mai-mult-verde.png");
+				background-size: contain;
+				background-position: center;
+				background-repeat: no-repeat;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.logo-smurd{
+			width: 19%;
+			height: 100%;
+			padding: 15px;
+			@include wbz-display-box();
+			@include wbz-box-pack(justify);
+			@include wbz-box-align(center);
+			
+			> div{
+				background-image: wbz_theme_image("tablet/logo-smurd.png");
+				background-size: contain;
+				background-position: center;
+				background-repeat: no-repeat;
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+}

@@ -134,6 +134,7 @@ Ext.define("LDPA.view.phone.rate.RatePanel", {
 				width: 140,
 				height: 40,
 				cls: "send-button",
+				pressedCls: "pressed",
 				iconCls: 'send',
 				html: 'Noteaz&#259;',
 			}

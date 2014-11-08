@@ -44,6 +44,7 @@
 				.categories-box{
 					background: rgba(255,255,255,0.7);
 					@include wbz-box-pack(end);
+					box-shadow: 0px 0px 3px rgba(0,0,0,0.10);
 					
 					.img{
 						text-align: center;
@@ -56,11 +57,11 @@
 					@include wbz-display-box();
 					@include wbz-box-align(center);
 					@include wbz-box-pack(center);
-					font-size: 12px;
+					font-size: 13px;
 					text-align: center;
 					padding: 0px 10px 5px 10px; 
-					line-height: 13px;
-					height: 36px;
+					line-height: 14px;
+					height: 35px;
 				}
 			}
 		}
@@ -104,6 +105,7 @@
 			width: 100%;
 			position: absolute;
 			bottom: 0px;
+			box-shadow: 0px -5px 10px rgba(0,0,0,0.05);
 			
 			h1{
 				font-size: 20px;

@@ -1,0 +1,193 @@
+.hospitals-list{
+	background: #f6f6f8;
+	
+	.x-dataview-container{
+		.item{
+			border-bottom: 1px solid #d9e0f0;
+			padding: 0 0 10px 0;
+			
+			.name{
+				font-size: 16px;
+				color: $dark-grey;
+				line-height: 18px;
+				padding: 15px 20px;
+				
+				span{
+					font-size: 13px;
+					color: $dark-orange;
+				}
+			}
+			div{
+				@include wbz-box-pack(start);
+				
+				.text{
+					font-size: 11px;
+					color: $light-grey;
+					
+					a{
+						color: $blue;
+					}
+				}
+				.icon{
+					color: $light-grey;
+					position: relative;
+					width: 20px;
+					margin: 0 10px 0 0 ;
+				}
+			}
+			.address{
+				padding: 2px 20px;
+				
+				.icon{
+					@include wbz-inline-icon(map, 20px);
+				}
+			}
+			.phone{
+				padding: 2px 20px;
+				
+				.icon{
+					@include wbz-inline-icon(phone, 20px);
+				}			
+			}
+			.website{
+				padding: 2px 20px;
+				
+				.icon{
+					@include wbz-inline-icon(link, 20px);
+				}
+			}
+			&.item-pressed{
+				background: #ebebeb;
+			}
+			&.item-selected{
+				background: #ebebeb;
+			}
+		}
+	}
+}
+.map-panel{
+	&.x-layout-card-item{
+		background: #ffffff;
+	}
+	.top-bar{
+		background: $orange;
+		border-bottom: 0px;
+		
+		.x-title{
+			font-size: 18px;
+			color: #ffffff;
+			text-shadow: none;
+			font-weight: normal;
+		}
+		.x-panel-inner{
+			padding: 0 10px;
+		}
+		.close-button{
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			
+			.close{
+				color: #ffffff;
+				top: 0px;
+				right: 0px;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+				
+				&::before{
+					line-height: 50px;
+				}
+			}
+		}
+	}
+	.bottom-bar{
+		@include wbz-border-radius(0px);
+		@include wbz-box-shadow(none);
+		padding: 0px;
+		background: $light-blue;
+		border-top: 1px solid #a4ccea;
+		
+		.x-button{
+			&.pressed{
+				background: $blue;
+			}
+			.x-button-icon{
+				color: #ffffff;
+			}
+			.x-button-label{
+				@include wbz-box-shadow(none);
+				background: none;
+				border: 0px;
+				text-shadow: none;
+				font-size: 16px;
+				color: #ffffff;
+				font-weight: normal;
+				position: relative;
+				top: -2px;
+				left: 5px;
+				width: 0px;
+				min-width: 0;
+				@include wbz-display-inline-box();
+				overflow: visible;
+			}
+		}
+		.open-button{
+			background: $blue;
+			
+			&.pressed{
+				opacity: 0.8;
+			}
+			.toggle{
+				@include wbz-inline-icon(left, 24px);
+				
+				&.up{
+					@include wbz-transform(rotate(90deg));
+				}
+				&.down{
+					@include wbz-transform(rotate(-90deg));
+				}
+			}
+		}
+	}
+	.hospitals-bar{
+		background: $light-blue;
+		
+		.x-panel-inner{
+			.x-innerhtml{
+				@include wbz-display-box();
+				@include wbz-box-orient(horizontal);
+				@include wbz-box-pack(start);
+				@include wbz-box-align(center);
+				
+				.icon{
+					@include wbz-inline-icon(office, 22px);
+					color: #ffffff;
+					width: 50px;
+					height: 50px;
+					display: -webkit-box;
+					position: relative;
+					line-height: 40px;
+					
+					&::before{
+						width: 50px;
+						height: 50px;
+						line-height: 40px;
+					}
+				}
+				.title{
+					font-size: 15px;
+					color: #ffffff;
+					
+					h1{
+						text-overflow: ellipsis;
+						overflow: hidden;
+						display: block;
+						white-space: nowrap;
+						margin: 0 60px 0 0;
+					}
+				}
+			}
+		}
+	}
+}

@@ -37,7 +37,7 @@
 	}
 	.call-button{
 		background: $blue;
-		border: 1px solid #ffffff;
+		border: 1px solid #a6c1db;
 		margin: 20px auto;
 		
 		.call{
@@ -53,6 +53,7 @@
 			}
 		}
 		&.pressed{
+			border: 1px solid $blue;
 			background: lighten($blue, 10%);
 		}
 	}

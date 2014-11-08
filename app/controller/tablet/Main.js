@@ -4,7 +4,8 @@ Ext.define('LDPA.controller.tablet.Main', {
     extend: 'Ext.app.Controller',
 	
 	requires: [
-        'LDPA.store.ImagesOffline',
+        'Ext.data.JsonP',
+		'LDPA.store.ImagesOffline',
 		'LDPA.store.ImagesLoadingList',
 		'LDPA.store.Categories',
 		'LDPA.store.CategoriesOffline',
@@ -66,7 +67,7 @@ Ext.define('LDPA.controller.tablet.Main', {
 					imagesOfflineStore.load(function(){
 						
 						// offline loading
-						if (!LDPA.app.isOnline()){
+						if (!mainController.isOnline()){
 							categoriesStore.add(categoriesOfflineStore.getRange());
 							self.setActions();
 						}
@@ -363,6 +364,16 @@ Ext.define('LDPA.controller.tablet.Main', {
 				imagesOfflineStore.sync();
 			}
 		}, 5000);
-	}
+	},
 	
+	isOnline: function(){
+		var networkState = navigator.connection.type;
+		if (networkState == Connection.NONE){
+			return false
+		}
+		else{
+			return true;
+		}
+		//return false;
+	}
 });

@@ -1,5 +1,8 @@
 .hospitals-list{
 	background: #f6f6f8;
+	border-bottom: 0px;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+	z-index: 2;
 	
 	.x-dataview-container{
 		.item{
@@ -72,6 +75,8 @@
 	.top-bar{
 		background: $orange;
 		border-bottom: 0px;
+		box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+		z-index: 2;
 		
 		.x-title{
 			font-size: 18px;

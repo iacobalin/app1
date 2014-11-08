@@ -16,7 +16,7 @@ Ext.define("LDPA.view.tablet.actions.SettingsPanel", {
 		cls: 'settings-panel',
 		width: "85%",
 		height: 250,
-		maxWidth: 320,
+		maxWidth: 420,
 		centered: true,
 		layout: {
 			type: "vbox",
@@ -95,9 +95,15 @@ Ext.define("LDPA.view.tablet.actions.SettingsPanel", {
 				cls: "progress-box",
 				tpl: new Ext.XTemplate(
 					'<div class="progress-bar">',
+						'<div style="text-align:center; width: 200px;"><p>{[this.parsePercent(values.progress)]}%</p></div>',
 						'<div class="progress" style="width: {progress}%"></div>',
 						'<div class="bg"></div>',
-					'</div>'
+					'</div>',
+					{
+						parsePercent: function(progress){
+							return Math.round(progress);
+						}
+					}
 				),
 				data:{
 					progress: 0	
@@ -122,7 +128,7 @@ Ext.define("LDPA.view.tablet.actions.SettingsPanel", {
 				handler: function(btn){
 					
 					// offline
-					if (!LDPA.app.isOnline()){
+					if (!mainController.isOnline()){
 						alert(webcrumbz.offlineMsg);
 					}
 					// online

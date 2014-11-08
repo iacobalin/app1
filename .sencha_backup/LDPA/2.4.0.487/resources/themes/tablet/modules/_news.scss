@@ -1,0 +1,248 @@
+.news-container{
+	background: #ffffff;
+	
+	.top-bar{
+		background: $orange;
+		border-bottom: 1px solid #ffffff;
+		
+		.x-title{
+			font-size: 18px;
+			color: #ffffff;
+			text-shadow: none;
+			font-weight: normal;
+		}
+		.close-button{
+			.close{
+				color: #ffffff;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+				top: 0px;
+				right: 0px;
+				
+				&::before{
+					line-height: 50px!important;
+				}
+			}
+		}
+	}
+}
+
+
+.news-list{
+	margin: 0;
+	background: #f6f6f8;
+	z-index: 2;
+	box-shadow: 0px 0px 7px #888;
+	
+	@media all and (orientation: landscape){
+		width: 300px;
+	}
+	
+	@media all and (orientation: portrait){
+		width: 220px;
+	}
+	
+	.x-dataview-container{
+		.item{
+			border-bottom: 2px solid #ffffff;
+			
+			.img-container{
+				@include wbz-box-pack(end);
+				@include wbz-box-align(start);
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+			.gradient-bg{
+				@include wbz-box-pack(center);
+				overflow: hidden;
+				padding: 0px 10px 10px 10px;
+				@include background(linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.4) 0.3, rgba(0,0,0,0.7) 0.97, rgba(0,0,0,0.9)));
+				background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.7) 97%,  rgba(0,0,0,0.9) 100%); /* IE10+ */
+				width: 100%;
+				
+				h1{
+					font-size: 15px;
+					color: #ffffff;
+					font-weight: normal;
+					margin: 0 0 5px 0;
+					padding-top: 10px;
+				}
+				.stats{
+					@include wbz-box-pack(start);
+					
+					.comments{
+						font-size: 13px;
+						color: $light-blue;	
+						@include wbz-display-inline-box();
+						margin: 0 15px 0 0;
+						
+						.icon{
+							@include wbz-inline-icon(comment_empty, 18px);
+							color: $light-blue;
+							width: 18px;
+							height: 18px;
+							margin: 0 5px 0 0;
+							
+							&::before{
+								line-height: 18px;
+								position: relative;
+							}
+						}
+					}
+					.ranking{
+						font-size: 13px;
+						color: $light-blue;	
+						@include wbz-display-inline-box();
+						margin: 0 15px 0 0;
+						
+						.icon{
+							@include wbz-inline-icon(star, 18px);
+							color: $light-blue;
+							width: 18px;
+							height: 18px;
+							margin: 0 5px 0 0;
+							
+							&::before{
+								line-height: 18px;
+								position: relative;
+							}
+						}
+					}
+				}
+			}
+			&.item-pressed{
+				opacity: 0.7;
+			}	
+		}
+	}
+}
+
+.news-panel{
+	&.x-layout-card-item{
+		background: #ffffff;
+	}
+	.top-bar{
+		background: transparent;
+		
+		.x-panel-inner{
+			padding: 5px 20px;
+		}
+		.back-button{
+			@include wbz-box-flex(1);
+			color: $grey;
+			
+			.back{
+				color: $grey;
+				height: 65px;
+				
+				&::before{
+					line-height: 65px;
+				}
+			}
+			.x-button-label{
+				color: white;
+				font-size: 12px;
+				line-height: 65px;
+				height: 65px;
+				font-weight: normal;
+				text-align: left;
+				
+				span{
+					padding: 3px;
+					background-color: $light-orange;
+				}
+			}
+		}
+		.share-facebook-button{
+			width: 40px;
+			height: 55px;
+			
+			.facebook{
+				@include wbz-inline-icon(facebook, 40px);
+				color: $grey;
+				line-height: 40px;
+				height: 65px;
+				
+				&::before{
+					line-height: 65px;
+				}
+			}
+		}
+		.share-twitter-button{
+			width: 40px;
+			height: 55px;
+			margin: 0 0 0 10px;
+						
+			.twitter{
+				@include wbz-inline-icon(twitter, 40px);
+				color: $grey;
+				line-height: 40px;
+				height: 65px;
+				
+				&::before{
+					line-height: 65px;
+				}
+			}
+		}
+	}
+	
+	h1{
+		font-size: 22px;
+		line-height: 24px;
+		color: #000000;
+		margin: 20px 30px 10px 30px;
+	}
+	.content{
+		margin: 0 30px 20px 30px;
+		padding: 20px 0 0 0;
+		border-top: 1px solid #d9e0f0;
+		font-size: 15px;
+		
+		p, li, a, span{
+			font-size: 15px;
+			line-height: 20px;
+			color: $dark-grey;
+		}
+		p, span{
+			margin-bottom: 10px;
+		}
+		h1{
+			font-size: 19px;
+			margin: 12px 0 10px 0;
+			color: $dark-grey;
+		}
+		ul, ol{
+			padding-top: 15px;
+			padding-bottom: 15px;
+			margin: 0 0 0 20px;
+			color: $dark-grey;
+		}
+		li{
+			list-style: inherit;
+			color: $dark-grey;
+		}
+		h2{
+			font-size: 17px;
+			margin: 25px 0 10px 0;
+			color: $dark-grey;
+			
+			span{
+				font-size: 19px;
+				color: $dark-orange!important;
+			}
+		}
+		h3, h4, h5, h6{
+			font-size: 16px;
+			margin: 10px 0 5px 0;
+		}
+		a{
+			color: $blue;
+		}
+		img{
+			position: relative;
+			margin: 0 auto;
+		}
+	}
+}

@@ -95,9 +95,15 @@ Ext.define("LDPA.view.phone.actions.SettingsPanel", {
 				cls: "progress-box",
 				tpl: new Ext.XTemplate(
 					'<div class="progress-bar">',
+						'<div style="text-align:center; width: 200px;"><p>{[this.parsePercent(values.progress)]}%</p></div>',
 						'<div class="progress" style="width: {progress}%"></div>',
 						'<div class="bg"></div>',
-					'</div>'
+					'</div>',
+					{
+						parsePercent: function(progress){
+							return Math.round(progress);
+						}
+					}
 				),
 				data:{
 					progress: 0	
@@ -122,7 +128,7 @@ Ext.define("LDPA.view.phone.actions.SettingsPanel", {
 				handler: function(btn){
 					
 					// offline
-					if (!LDPA.app.isOnline()){
+					if (!mainController.isOnline()){
 						alert(webcrumbz.offlineMsg);
 					}
 					// online

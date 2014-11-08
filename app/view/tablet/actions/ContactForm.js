@@ -148,6 +148,7 @@ Ext.define("LDPA.view.tablet.actions.ContactForm", {
 				itemId: "sendBtn",
 				cls: "send-button",
 				iconCls: "send",
+				pressedCls: "pressed",
 				text: "Trimite",
 				padding: 10,
 				width: 150

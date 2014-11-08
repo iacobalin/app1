@@ -20,7 +20,7 @@ Ext.define("LDPA.view.tablet.categories.Cover", {
 					'<div class="logo-box"><div class="logo-icon"></div></div>',
 					'<div class="logo-text"></div>',
 				'</div>',
-				'<div class="footer" style="height: 130px; width: 100%";>',
+				'<div class="footer" style="height: 150px; width: 100%";>',
 					'<div class="logos">',
 						'<div class="logo-ing"><div></div></div>',
 						'<div class="logo-mai-mult-verde"><div></div></div>',

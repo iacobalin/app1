@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns= "http://www.w3.org/ns/widgets" xmlns:gap	= "http://phonegap.com/ns/1.0" id="com.mmv.LDPA" version="3.0.0" versionCode="13">
+	<name>LDPA</name>
+	<description>First Aid Lesson is a prevention and education programme created by a Romanian NGO, Greener Association (specialized in environmental projects), the Mobile Emergency Service for Resuscitation and Extrication (SMURD), and ING Life Insurance, as financial supporter. </description>
+	<author href="http://www.lectiadeprimajutor.ro" email="contact@lectiadeprimajutor.ro">Anamaria Bogdan</author>
+	
+	<icon src="resources/icons/iconAndroid.png" gap:platform="android" gap:role="default" />
+	<gap:platform name="android" />
+	
+	<feature name="http://api.phonegap.com/1.0/geolocation"/>
+	<feature name="http://api.phonegap.com/1.0/network"/>
+	
+	<icon src="resources/icons/40x40.png" gap:platform="ios" width="40" height="40" />
+	<icon src="resources/icons/50x50.png" gap:platform="ios" width="50" height="50" />
+	<icon src="resources/icons/57x57.png" gap:platform="ios" width="57" height="57" />
+	<icon src="resources/icons/60x60.png" gap:platform="ios" width="60" height="60" />
+	<icon src="resources/icons/72x72.png" gap:platform="ios" width="72" height="72" />
+	<icon src="resources/icons/76x76.png" gap:platform="ios" width="76" height="76" />
+	<icon src="resources/icons/80x80.png" gap:platform="ios" width="80" height="80" />
+	<icon src="resources/icons/114x114.png" gap:platform="ios" width="114" height="114" />
+	<icon src="resources/icons/120x120.png" gap:platform="ios" width="120" height="120" />
+	<icon src="resources/icons/144x144.png" gap:platform="ios" width="144" height="144" />
+	<icon src="resources/icons/152x152.png" gap:platform="ios" width="152" height="152" />
+	<icon src="resources/icons/180x180.png" gap:platform="ios" width="180" height="180" />
+	
+	<preference name="phonegap-version" value="3.6.3" />
+	<preference name="splash-screen-duration" value="3000" />
+	<preference name="orientation" value="portrait" />
+	
+	<preference name="ios-statusbarstyle" value="black-opaque" />
+	<preference name="target-device" value="handset" />
+	<preference name="deployment-target" value="7.0" />
+	<gap:splash src="resources/startup/320x460.jpg" gap:platform="ios" width="320" height="460" />
+	<gap:splash src="resources/startup/320x480.png" gap:platform="ios" width="320" height="480" />
+	<gap:splash src="resources/startup/640x920.png" gap:platform="ios" width="640" height="920" />
+	<gap:splash src="resources/startup/640x960.png" gap:platform="ios" width="640" height="960" />
+	<gap:splash src="resources/startup/640x1136.png" gap:platform="ios" width="640" height="1136" />
+	<gap:splash src="resources/startup/748x1024.png" gap:platform="ios" width="748" height="1024" />
+	<gap:splash src="resources/startup/750x1334.png" gap:platform="ios" width="750" height="1334" />
+	<gap:splash src="resources/startup/768x1004.png" gap:platform="ios" width="768" height="1004" />
+	<gap:splash src="resources/startup/768x1024.png" gap:platform="ios" width="768" height="1024" />
+	<gap:splash src="resources/startup/1242x2208.png" gap:platform="ios" width="1242" height="2208" />
+	<gap:splash src="resources/startup/1496x2048.png" gap:platform="ios" width="1496" height="2048" />
+	<gap:splash src="resources/startup/1536x2008.png" gap:platform="ios" width="1536" height="2008" />
+	<gap:splash src="resources/startup/1536x2048.png" gap:platform="ios" width="1536" height="2048" />
+		
+	<preference name="android-minSdkVersion" value="12" />
+	<preference name="android-installLocation" value="auto" />
+	
+	<gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
+	<gap:plugin name="org.apache.cordova.network-information" version="0.2.7" />
+	<preference name="StatusBarOverlaysWebView" value="false" />
+	
+	<feature name="InAppBrowser">
+		<param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+		<param name="ios-package" value="CDVInAppBrowser" />
+	</feature>
+	
+	<feature name="NetworkStatus">
+		<param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+		<param name="ios-package" value="CDVConnection" />
+	</feature>
+	
+</widget>

@@ -4,7 +4,8 @@ Ext.define('LDPA.controller.phone.Main', {
     extend: 'Ext.app.Controller',
 	
 	requires: [
-        'LDPA.store.ImagesOffline',
+        'Ext.data.JsonP',
+		'LDPA.store.ImagesOffline',
 		'LDPA.store.ImagesLoadingList',
 		'LDPA.store.Categories',
 		'LDPA.store.CategoriesOffline',
@@ -39,10 +40,10 @@ Ext.define('LDPA.controller.phone.Main', {
 		this.imagesLoadingList = Ext.create("LDPA.store.ImagesLoadingList");
 		
 		
-		this.categoriesOfflineStore.getModel().getProxy().dropTable();
-		this.articlesOfflineStore.getModel().getProxy().dropTable();
-		this.videosOfflineStore.getModel().getProxy().dropTable();
-		this.imagesOfflineStore.getModel().getProxy().dropTable();
+		//this.categoriesOfflineStore.getModel().getProxy().dropTable();
+		//this.articlesOfflineStore.getModel().getProxy().dropTable();
+		//this.videosOfflineStore.getModel().getProxy().dropTable();
+		//this.imagesOfflineStore.getModel().getProxy().dropTable();
 	},
 		
 	
@@ -63,7 +64,7 @@ Ext.define('LDPA.controller.phone.Main', {
 					imagesOfflineStore.load(function(){
 						
 						// offline loading
-						if (!LDPA.app.isOnline()){
+						if (!mainController.isOnline()){
 							categoriesStore.add(categoriesOfflineStore.getRange());
 							self.setActions();
 						}
@@ -358,6 +359,16 @@ Ext.define('LDPA.controller.phone.Main', {
 				imagesOfflineStore.sync();
 			}
 		}, 5000);
-	}
+	},
 	
+	isOnline: function(){
+		var networkState = navigator.connection.type;
+		if (networkState == Connection.NONE){
+			return false
+		}
+		else{
+			return true;
+		}
+		//return false;
+	}
 });

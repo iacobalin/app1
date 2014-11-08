@@ -51,7 +51,7 @@
 	}
 	.send-button{
 		background: $blue;
-		border: 1px solid #ffffff;
+		border: 1px solid #a6c1db;
 		margin: 20px auto;
 		
 		.send{
@@ -70,6 +70,10 @@
 			font-weight: normal;
 			font-family: "opensans-regular";
 			text-align: left;
+		}
+		&.pressed{
+			border: 1px solid $blue;
+			background: lighten($blue, 10%);
 		}
 	}
 	.close-button{

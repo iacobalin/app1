@@ -145,6 +145,7 @@ Ext.define("LDPA.view.phone.actions.ContactForm", {
 				xtype: "button",
 				itemId: "sendBtn",
 				cls: "send-button",
+				pressedCls: "pressed",
 				iconCls: "send",
 				text: "Trimite",
 				padding: 10,

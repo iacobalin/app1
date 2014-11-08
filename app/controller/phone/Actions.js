@@ -127,7 +127,7 @@ Ext.define('LDPA.controller.phone.Actions', {
 		
 		
 		// offline
-		if (!LDPA.app.isOnline()){
+		if (!mainController.isOnline()){
 			mask.fireEvent("close");
 			
 			alert(webcrumbz.offlineMsg);
@@ -227,7 +227,7 @@ Ext.define('LDPA.controller.phone.Actions', {
 		
 		
 		// offline
-		if (!LDPA.app.isOnline()){
+		if (!mainController.isOnline()){
 			mask.fireEvent("close");
 			
 			alert(webcrumbz.offlineMsg);
@@ -358,7 +358,7 @@ Ext.define('LDPA.controller.phone.Actions', {
 							self.saveArticlesForOffline(result.posts, categoryId);
 						}
 					});
-				}, 200);
+				}, 350);
 			})
 		});	
 	},
@@ -375,6 +375,21 @@ Ext.define('LDPA.controller.phone.Actions', {
 		
 		if (this.categoriesLoaded == categoriesOfflineStore.getCount()){
 			categoriesOfflineStore.sync();
+			
+			// update progress bar
+			var settingsPanel = this.getSettingsPanel();
+			var progressBar = settingsPanel.down("#progressBar");
+			progressBar.setData({
+				progress: 50	
+			})
+		}
+		else{
+			var percent = this.categoriesLoaded * 50 / categoriesOfflineStore.getCount();
+			var settingsPanel = this.getSettingsPanel();
+			var progressBar = settingsPanel.down("#progressBar");
+			progressBar.setData({
+				progress: percent	
+			})	
 		}
 	},
 	
@@ -386,7 +401,7 @@ Ext.define('LDPA.controller.phone.Actions', {
 		var articlesOfflineStore = mainController.articlesOfflineStore;
 		
 		var category = categoriesStore.findRecord("categoryId",categoryId, 0, false, true, true);
-			
+		
 		if (records.length > 0){
 			Ext.each(records, function(post){
 				post.articleId = post.id;
@@ -399,63 +414,72 @@ Ext.define('LDPA.controller.phone.Actions', {
 				articlesOfflineStore.add(myRecord);
 			})
 		}	
-				
+		
 		// all categories are now downloaded
 		if (this.categoriesLoaded == categoriesOfflineStore.getCount()){
 			articlesOfflineStore.sync();
-			this.articlesLoaded = 0;
+			
+			this.articlesSetsLoaded = 0;
+			this.totalArticlesSets = Math.ceil(articlesOfflineStore.getCount()/10);
 			
 			var self = this;
 			
 			// download content for each article
-			Ext.each(articlesOfflineStore.getRange(), function(record){
-			
+			for (var i=0; i<this.totalArticlesSets; i++){
+				
+				var count = 0;
+				
+				// Make the JsonP request
 				Ext.defer(function(){
-					var articleId = record.get("articleId");
-					var categoryId = record.get("categoryId");
-									
-					// Make the JsonP request
+					var records = articlesOfflineStore.getRange(10*count, 10*count+9);
+					count++;
+				
+					// get articles ids
+					var articlesIds = [];
+					Ext.each(records, function(record){
+						articlesIds.push(record.get("articleId"));	
+					});
+					
+					articlesIds = articlesIds.toString();
+					
 					Ext.data.JsonP.request({
-						url: webcrumbz.exportPath+'?json=mobile.post',
+						url: webcrumbz.exportPath+'?json=mobile.posts',
 						params: {
-							id: articleId,
-							categoryId: categoryId,
+							ids: articlesIds,
 							format: 'json',
 							key: webcrumbz.key
 						},
 						failure: function(){
-							self.articlesLoaded++;
+							self.articlesSetsLoaded++;
 						},
 						success: function(result, request) {
 							
-							result.post.content = result.post.content.replace(/width=\"\d+\"|height=\"\d+\"/g,'');
-							
-							// save article for offline
-							self.saveArticleForOffline(result.post, articleId, categoryId);
+							self.articlesSetsLoaded++;
+								
+							if (result.posts.length > 0){
+								var posts = result.posts;
+								
+								Ext.each(posts, function(post){
+									post.content = post.content.replace(/width=\"\d+\"|height=\"\d+\"/g,'');
+									
+									var articleId = post.id;
+									Ext.each(post.category_id, function(categoryId, index){
+										// save article for offline
+										self.saveArticleForOffline(post, articleId, categoryId);
+									})
+								});
+							}
 						}
 					});
-				}, 150);
-			})
+				}, 350);
+			}
 		}
 	},
 	
 	
 	saveArticleForOffline: function(post, articleId, categoryId){
-		this.articlesLoaded++;
 		
-		var categoriesStore = mainController.categoriesStore;
 		var articlesOfflineStore = mainController.articlesOfflineStore;
-		var total = articlesOfflineStore.getCount();
-		
-		
-		// update progress bar
-		var percent = Math.floor(this.articlesLoaded*100/total);
-		var settingsPanel = this.getSettingsPanel();
-		var progressBar = settingsPanel.down("#progressBar");
-		progressBar.setData({
-			percent: percent	
-		})
-		
 		
 		// update article in local SQL DATABASE
 		var offlineRecordIndex = articlesOfflineStore.findBy(function(record){
@@ -465,23 +489,65 @@ Ext.define('LDPA.controller.phone.Actions', {
 		// update
 		if (offlineRecordIndex != -1){
 			var offlineRecord = articlesOfflineStore.getAt(offlineRecordIndex);
-			offlineRecord.updateData(post);
-			
-			var category = categoriesStore.findRecord("categoryId",categoryId, 0, false, true, true);
-			offlineRecord.set("category",category.get("name"));
+			offlineRecord.set("content", post.content);
 		}
 		
-		// all articles are now downloaded
-		if (this.articlesLoaded == articlesOfflineStore.getCount()){
-			articlesOfflineStore.sync();
+		// all articles sets are now downloaded
+		if (this.articlesSetsLoaded == this.totalArticlesSets){
 			
-			// remember the last downloading date
-			var date = window.localStorage.lastDownloadDate = new Date();
+			var self = this;
+			var settingsPanel = this.getSettingsPanel();
+			setTimeout(function(){
+				articlesOfflineStore.sync();
 			
-			var lastDateBox = settingsPanel.down("#lastDateBox");
-			lastDateBox.setData({date: date});
-			
-			settingsPanel.getMask().setDisabled(false);
+				// remember the last downloading date
+				var date = window.localStorage.lastDownloadDate = new Date();
+				
+				var lastDateBox = settingsPanel.down("#lastDateBox");
+				lastDateBox.setData({date: date});
+				
+				settingsPanel.getMask().setDisabled(false);
+				
+				var progressBar = settingsPanel.down("#progressBar");
+				progressBar.setData({
+					progress: 100	
+				});
+				
+				// save images for offline
+				self.saveArticlesImagesForOffline();
+			}, 5000);	
+		}
+		else{
+			var percent = this.articlesSetsLoaded * 50 / this.totalArticlesSets;
+			var settingsPanel = this.getSettingsPanel();
+			var progressBar = settingsPanel.down("#progressBar");
+			progressBar.setData({
+				progress: percent+50	
+			})		
+		}
+	},
+	
+	saveArticlesImagesForOffline: function(){
+		var articlesOfflineStore = mainController.articlesOfflineStore;
+		
+		var count = 0;
+		for (var i=0; i<articlesOfflineStore.getCount(); i++){
+			Ext.defer(function(){
+				var article = articlesOfflineStore.getAt(count);
+				count++;
+				
+				var content = article.get("content");
+		
+				if (content){		
+					var srcs = content.match(/src\=\"[a-zA-Z0-9\:\/\.\-\%\_]+\.(jpg|png|gif)\"/g);
+					Ext.each(srcs, function(src){
+						src = src.replace('src="',"");
+						src = src.replace('"',"");
+						
+						mainController.saveImageForOffline(src);
+					});
+				}
+			}, 300);
 		}
 	}
 });

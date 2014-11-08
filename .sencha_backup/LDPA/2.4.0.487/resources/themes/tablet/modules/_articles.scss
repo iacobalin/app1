@@ -1,0 +1,127 @@
+.article-panel{
+	&.x-layout-card-item{
+		background: #ffffff;
+	}
+	.top-bar{
+		background: transparent;
+		
+		.x-panel-inner{
+			padding: 5px 20px;
+		}
+		.back-button{
+			@include wbz-box-flex(1);
+			color: $grey;
+			
+			.back{
+				color: $grey;
+				height: 65px;
+				
+				&::before{
+					line-height: 65px;
+				}
+			}
+			.x-button-label{
+				color: white;
+				font-size: 12px;
+				line-height: 65px;
+				height: 65px;
+				font-weight: normal;
+				text-align: left;
+				
+				span{
+					padding: 3px;
+					background-color: $light-orange;
+				}
+			}
+		}
+		.share-facebook-button{
+			width: 40px;
+			height: 55px;
+			
+			.facebook{
+				@include wbz-inline-icon(facebook, 40px);
+				color: $grey;
+				line-height: 40px;
+				height: 65px;
+				
+				&::before{
+					line-height: 65px;
+				}
+			}
+		}
+		.share-twitter-button{
+			width: 40px;
+			height: 55px;
+			margin: 0 0 0 10px;
+						
+			.twitter{
+				@include wbz-inline-icon(twitter, 40px);
+				color: $grey;
+				line-height: 40px;
+				height: 65px;
+				
+				&::before{
+					line-height: 65px;
+				}
+			}
+		}
+	}
+	
+	h1{
+		font-size: 22px;
+		line-height: 24px;
+		color: #000000;
+		margin: 20px 30px 10px 30px;
+	}
+	.content{
+		margin: 0 30px 20px 30px;
+		padding: 20px 0 0 0;
+		border-top: 1px solid #d9e0f0;
+		font-size: 15px;
+		
+		p, li, a, span{
+			font-size: 15px;
+			line-height: 20px;
+			color: $dark-grey;
+		}
+		p, span{
+			margin-bottom: 10px;
+		}
+		h1{
+			font-size: 19px;
+			margin: 12px 0 10px 0;
+			color: $dark-grey;
+		}
+		ul, ol{
+			padding-top: 15px;
+			padding-bottom: 15px;
+			margin: 0 0 0 20px;
+			color: $dark-grey;
+		}
+		li{
+			list-style: inherit;
+			color: $dark-grey;
+		}
+		h2{
+			font-size: 17px;
+			margin: 25px 0 10px 0;
+			color: $dark-grey;
+			
+			span{
+				font-size: 19px;
+				color: $dark-orange!important;
+			}
+		}
+		h3, h4, h5, h6{
+			font-size: 16px;
+			margin: 10px 0 5px 0;
+		}
+		a{
+			color: $blue;
+		}
+		img{
+			position: relative;
+			margin: 0 auto;
+		}
+	}
+}

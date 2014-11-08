@@ -4,6 +4,9 @@
 	}
 	.top-bar{
 		background: $orange;
+		border-bottom: 0px;
+		box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+		z-index: 2;
 		
 		.x-panel-inner{
 			padding: 0 10px;

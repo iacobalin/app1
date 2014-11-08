@@ -13,7 +13,9 @@
 	}
 	.top-bar{
 		background: $orange;
+		box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
 		border-bottom: 0px;
+		z-index: 2;
 		
 		.x-title{
 			font-size: 18px;
@@ -138,6 +140,10 @@
 			font-weight: normal;
 			font-family: "opensans-regular";
 			text-align: center;
+		}
+		&.pressed{
+			border: 1px solid $blue;
+			background: lighten($blue, 10%);
 		}
 	}
 }

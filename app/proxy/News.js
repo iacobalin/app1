@@ -4,7 +4,7 @@ Ext.define('LDPA.proxy.News', {
 	    
     config: {
         // This is the url we always query when searching for posts
-        url: webcrumbz.exportPath+'?json='+(Ext.os.is.Phone ? 'tablet' : 'tablet')+'.news',
+        url: webcrumbz.exportPath+'?json='+(Ext.os.is.Phone ? 'mobile' : 'tablet')+'.news',
 		timeout: 7000,
 		
         reader: {

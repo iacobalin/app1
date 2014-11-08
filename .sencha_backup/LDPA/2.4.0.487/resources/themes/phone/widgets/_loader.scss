@@ -1,0 +1,54 @@
+/* change font size to change size */
+$dot-color: $dark-orange;
+
+.loader {
+  font-size: 16px;
+  position: relative;
+  width: 4em;
+  height: 1em;
+  margin: 0 auto;
+}
+
+.dot {
+  width: 1em;
+  height: 1em;
+  border-radius: 0.5em;
+  background: $dot-color;
+  position: absolute;
+  @include wbz-animation-duration(0.5s);
+  @include wbz-animation-timing-function(ease);
+  @include wbz-animation-iteration-count(infinite);
+}
+
+.dot1, .dot2 {
+  left: 0;
+}
+
+.dot3 { left: 1.5em; }
+
+.dot4 { left: 3em; }
+
+.dot1 {
+  @include wbz-animation-name(reveal);
+}
+.dot2, .dot3 {
+  @include wbz-animation-name(slide);
+}
+.dot4 {
+  @include wbz-animation-name(reveal);
+  @include wbz-animation-direction(reverse);
+}
+@-webkit-keyframes reveal{
+	from { -webkit-transform: scale(0.001); }
+  	to { -webkit-transform: scale(1); }
+}
+@-webkit-keyframes slide {
+  to { -webkit-transform: translateX(1.5em) }
+}
+@keyframes reveal {
+  	from { transform: scale(0.001); }
+  	to { transform: scale(1); }
+}
+@keyframes slide {
+  to { transform: translateX(1.5em) }
+}

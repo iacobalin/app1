@@ -1,0 +1,151 @@
+.question-panel{
+	
+	
+	&.x-form{
+		&.x-floating{	
+			background: $light-blue;
+			@include wbz-border-radius(0);
+			
+			.x-panel-inner{
+				background: $light-blue;
+				@include wbz-border-radius(0);
+			}
+			> .x-dock.x-sized{
+			margin: 0px;
+			}
+		}
+	}
+	.header{
+		.x-innerhtml{
+			color: #ffffff;
+			font-size: 20px;
+			padding: 20px 20px 10px 20px;
+		}
+	}
+	.content{
+		&.x-panel{
+			.x-panel-inner{
+				background: $light-blue;
+				@include wbz-border-radius(0);
+				padding: 20px 0 0 0;
+				border-top: 1px solid #ffffff;
+			}
+			p{
+				margin: 0px;
+				padding: 0px;
+			}
+		}
+	}
+	.x-dock-body{
+		margin: 0px 20px;
+				
+		.instructions-text{
+			font-size: 12px;
+			color: white;
+			line-height: 19px;	
+		}
+		.errors{
+			.x-innerhtml{
+				p{
+					color: #ee3800;
+					font-size: 15px;
+					line-height: 19px;
+					margin: 0 0 10px 0;
+					padding-top: 10px;
+				}
+			}
+		}
+		.question-fieldset{
+			margin-bottom: 10px;
+			
+			.x-field-text{
+				@include wbz-border-radius(0px);
+				border: 0px;
+				background: #f1edeb;
+				border-top: 1px solid #e5ded9;
+				margin: 8px 0;
+				
+				input{
+					background: transparent;
+					font-size: 15px;
+					line-height: 18px;	
+					color: #525150;
+					-webkit-text-fill-color: #525150;
+					
+					&::-webkit-input-placeholder{
+						color: #adadad;
+						-webkit-text-fill-color: #adadad;
+					}
+				}
+			}
+			.x-field-textarea{
+				@include wbz-border-radius(0px);
+				border: 0px;
+				background: #f1edeb;
+				border-top: 1px solid #e5ded9;
+				margin: 8px 0;
+				
+				textarea{
+					background: transparent;
+					font-size: 15px;
+					line-height: 18px;	
+					color: #525150;
+					-webkit-text-fill-color: #525150;
+					min-height: 100px;
+					
+					&::-webkit-input-placeholder{
+						color: #adadad;
+						-webkit-text-fill-color: #adadad;
+					}
+				}
+			}
+			&.x-form-fieldset .x-form-fieldset-inner{
+				@include wbz-border-radius(0px);
+				border: 0px;
+				background: transparent;
+			}
+			.x-form-fieldset-instructions{
+				margin: 5px 0px;
+				
+				.x-innerhtml{
+					font-size: 12px;
+					color: white;
+					line-height: 19px;
+					text-shadow: none;
+				}
+			}
+			
+		}
+	}
+	.send-button{
+		background: $blue;
+		border: 1px solid #ffffff;
+		margin: 20px auto;
+		
+		.x-button-label{
+			color: #ffffff;
+			font-size: 16px;
+			font-weight: normal;
+			font-family: "opensans-regular";
+			text-align: center;
+		}
+		.x-button-icon{
+			display: none;
+		}
+		&.pressed{
+			background: lighten($blue, 10%);
+		}
+	}
+	.x-innerhtml{
+		p{
+			color: #ffffff;
+			font-size: 15px;
+			padding: 20px 20px 10px 20px;
+		}
+	}
+	.close-button{
+		.close{
+			color: #ffffff;
+		}
+	}
+}

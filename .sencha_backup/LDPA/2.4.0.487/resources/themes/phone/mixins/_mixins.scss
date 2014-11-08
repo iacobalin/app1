@@ -1,0 +1,178 @@
+@import 'icon';
+@import 'display';
+
+@mixin wbz-transform-origin($value, $important: no) {
+	@if $important == important{
+    	-webkit-transform-origin: $value !important;
+		-moz-transform-origin: $value !important;
+		transform-origin: $value !important;
+  	}
+  	@else {
+    	-webkit-transform-origin: $value;
+		-moz-transform-origin: $value;
+		transform-origin: $value;
+  	}
+}
+@mixin wbz-transform($value, $important: no){
+	@if $important == important{
+		-webkit-transform: $value !important;
+		-moz-transform: $value !important; 
+		transform: $value !important;
+	}
+	@else {
+    	-webkit-transform: $value;
+		-moz-transform: $value; 
+		transform: $value;
+  	}
+}
+@mixin wbz-transition-timing($value, $important: no){
+	@if $important == important{
+		-webkit-transition-timing-function: $value !important;
+		-moz-transition-timing-function: $value !important;
+		transition-timing-function: $value !important;
+	}
+	@else {
+		-webkit-transition-timing-function: $value;
+		-moz-transition-timing-function: $value;
+		transition-timing-function: $value;
+  	}
+}
+@mixin wbz-transition($value, $important: no){
+	@if $important == important{
+		-webkit-transition: $value !important;
+		-moz-transition: $value !important;
+		transition: $value !important;
+	}
+	@else {
+		-webkit-transition: $value;
+		-moz-transition: $value;
+		transition: $value;
+  	}
+}
+
+@mixin wbz-box-shadow($value, $important: no){
+	@if $important == important{
+		-webkit-box-shadow: $value !important;
+	   	-moz-box-shadow: $value !important;
+	    box-shadow: $value !important;
+	}
+	@else {
+		-webkit-box-shadow: $value;
+	   	-moz-box-shadow: $value;
+	    box-shadow: $value;
+  	}
+}
+@mixin wbz-border-radius($value, $important: no){
+	@if $important == important{
+		-webkit-border-radius: $value !important;
+		-moz-border-radius: $value !important;
+		-ms-border-radius: $value !important;
+		-o-border-radius: $value !important;
+		border-radius: $value !important;
+	}
+	@else {
+		-webkit-border-radius: $value;
+		-moz-border-radius: $value;
+		-ms-border-radius: $value;
+		-o-border-radius: $value;
+		border-radius: $value;
+  	}
+}
+@mixin wbz-animation($value, $important: no){
+	@if $important == important{
+		-webkit-animation: $value !important;
+		-moz-animation: $value !important;
+		-o-animation: $value !important;
+		animation: $value !important;
+	}
+	@else {
+    	-webkit-animation: $value;
+		-moz-animation: $value; 
+		-o-animation: $value; 
+		animation: $value;
+  	}
+}
+@mixin wbz-animation-name($value, $important: no){
+	@if $important == important{
+		-webkit-animation-name: $value !important;
+		-moz-animation-name: $value !important;
+		-o-animation-name: $value !important;
+		animation-name: $value !important;
+	}
+	@else {
+    	-webkit-animation-name: $value;
+		-moz-animation-name: $value; 
+		-o-animation-name: $value; 
+		animation-name: $value;
+  	}
+}
+@mixin wbz-animation-duration($value, $important: no){
+	@if $important == important{
+		-webkit-animation-duration: $value !important;
+		-moz-animation-duration: $value !important;
+		-o-animation-duration: $value !important;
+		animation-duration: $value !important;
+	}
+	@else {
+    	-webkit-animation-duration: $value;
+		-moz-animation-duration: $value; 
+		-o-animation-duration: $value; 
+		animation-duration: $value;
+  	}
+}
+@mixin wbz-animation-direction($value, $important: no){
+	@if $important == important{
+		-webkit-animation-direction: $value !important;
+		-moz-animation-direction: $value !important;
+		-o-animation-direction: $value !important;
+		animation-direction: $value !important;
+	}
+	@else {
+    	-webkit-animation-direction: $value;
+		-moz-animation-direction: $value; 
+		-o-animation-direction: $value; 
+		animation-direction: $value;
+  	}
+}
+@mixin wbz-animation-delay($value, $important: no){
+	@if $important == important{
+		-webkit-animation-delay: $value !important;
+		-moz-animation-delay: $value !important;
+		-o-animation-delay: $value !important;
+		animation-delay: $value !important;
+	}
+	@else {
+    	-webkit-animation-delay: $value;
+		-moz-animation-delay: $value; 
+		-o-animation-delay: $value; 
+		animation-delay: $value;
+  	}
+}
+@mixin wbz-animation-timing-function($value, $important: no){
+	@if $important == important{
+		-webkit-animation-timing-function: $value !important;
+		-moz-animation-timing-function: $value !important;
+		-o-animation-timing-function: $value !important;
+		animation-timing-function: $value !important;
+	}
+	@else {
+    	-webkit-animation-timing-function: $value;
+		-moz-animation-timing-function: $value; 
+		-o-animation-timing-function: $value; 
+		animation-timing-function: $value;
+  	}
+}
+@mixin wbz-animation-iteration-count($value, $important: no){
+	@if $important == important{
+		-webkit-animation-iteration-count: $value !important;
+		-moz-animation-iteration-count: $value !important;
+		-o-animation-iteration-count: $value !important;
+		animation-iteration-count: $value !important;
+	}
+	@else {
+    	-webkit-animation-iteration-count: $value;
+		-moz-animation-iteration-count: $value; 
+		-o-animation-iteration-count: $value; 
+		animation-iteration-count: $value;
+  	}
+}

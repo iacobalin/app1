@@ -11,100 +11,155 @@
 	}
 	.logo-box{
 		@include wbz-display-box();
-		width: 164px;
-		height: 164px;
-		@include wbz-border-radius(164px);
+		@media all and (orientation: portrait) and (min-device-width: 320px){
+			width: 164px;
+			height: 164px;
+			@include wbz-border-radius(164px);
+			margin: 35px auto 0 auto;
+		}
+		@media all and (orientation: portrait) and (min-device-width: 360px){
+			width: 224px;
+			height: 224px;
+			@include wbz-border-radius(224px);
+			margin: 50px auto 0 auto;
+		}
+				
 		background: transparent;
 		border: 1px solid #d1c9ba;
-		margin: 50px auto 0 auto;
-		
+				
 		.logo-icon{
 			display: block;
-			width: 150px;
-			height: 150px;
-			@include wbz-border-radius(150px);
+			@media all and (orientation: portrait) and (min-device-width: 320px){
+				width: 150px;
+				height: 150px;
+				@include wbz-border-radius(150px);
+				background-size: 100px 100px;
+			}
+			@media all and (orientation: portrait) and (min-device-width: 360px){
+				width: 210px;
+				height: 210px;
+				@include wbz-border-radius(210px);
+				background-size: 140px 140px;
+			}
+						
 			background: rgba(255,255,255,0.8);
 			background-image: wbz_theme_image("phone/logo-icon.png");
-			background-size: 100px 100px;
 			background-position: center center;
 			background-repeat: no-repeat;
 			margin: 7px auto;
 		}
 	}
 	.logo-text{
-		background-image: wbz_theme_image("phone/logo-text.png");
-		background-size: contain;
-		background-repeat: no-repeat;
-		width: 221px;
-		height: 39px;
-		margin: 15px auto;
+		width: 70%;
+		height: 80px;
+		@include wbz-display-box();
+		@include wbz-box-pack(justify);
+		@include wbz-box-align(center);
+		
+		> div{
+			background-image: wbz_theme_image("phone/logo-text.png");
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
+			width: 100%;
+			height: 100%;
+		}
+		
+		
 	}
 	.footer{
-		background: rgba(255,255,255,0.8);
-		
-		.logos{
-			width: 295px;
-			margin: 0 auto;
-			padding: 20px 0;
-		}
-		.logo-ing{
-			background-image: wbz_theme_image("phone/logo-ing.png");
-			background-size: contain;
-			background-repeat: no-repeat;
-			width: 266px;	
-			height: 23px;
-			margin: 0 auto;
-		}
-		.logo-mai-mult-verde{
-			background-image: wbz_theme_image("phone/logo-mai-mult-verde.png");
-			background-size: contain;
-			background-repeat: no-repeat;
-			width: 192px;	
-			height: 47px;
-			float: left;
-			margin: 15px 0 0 10px;
-		}
-		.logo-smurd{
-			background-image: wbz_theme_image("phone/logo-smurd.png");
-			background-size: contain;
-			background-repeat: no-repeat;
-			width: 55px;	
-			height: 54px;
-			float: right;
-			margin: 15px 10px 0 0;
+		background: rgba(255,255,255,0.85);
+		box-shadow: 0px -3px 10px rgba(0,0,0,0.3); 
+	}
+	@media all and (orientation: portrait) and (min-device-height: 480px){
+		.footer{
+			height: 120px;
 		}
 	}
+	@media all and (orientation: portrait) and (min-device-height: 600px){
+		.footer{
+			height: 140px;
+		}
+	}
+	@media all and (orientation: portrait) and (min-device-height: 650px){
+		.footer{
+			height: 150px;
+		}	
+	}
 	@media all and (orientation: portrait) and (min-device-width: 320px){
-		.logos{
-			width: 295px;
-			margin: 0 auto;
-			padding: 20px 0;
-		}
-		.logo-ing{
-			background-image: wbz_theme_image("phone/logo-ing.png");
-			background-size: contain;
-			background-repeat: no-repeat;
-			width: 266px;	
-			height: 23px;
-			margin: 0 auto;
-		}
-		.logo-mai-mult-verde{
-			background-image: wbz_theme_image("phone/logo-mai-mult-verde.png");
-			background-size: contain;
-			background-repeat: no-repeat;
-			width: 192px;	
-			height: 47px;
-			float: left;
-			margin: 15px 0 0 10px;
-		}
-		.logo-smurd{
-			background-image: wbz_theme_image("phone/logo-smurd.png");
-			background-size: contain;
-			background-repeat: no-repeat;
-			width: 55px;	
-			height: 54px;
-			float: right;
-			margin: 15px 10px 0 0;
+		.footer{
+			@include wbz-display-box();
+						
+			.logos{
+				margin: 0 auto;
+				width: 80%;
+				min-width: 280px;
+				position: relative;
+				@include wbz-display-box();
+				@include wbz-box-align(stretch);
+				@include wbz-box-pack(justify);
+			}
+			.logo-ing{
+				width: 67%;
+				height: 50%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				padding: 15px 15px 5px 15px;
+				@include wbz-display-box();
+				@include wbz-box-pack(justify);
+				@include wbz-box-align(center);
+				
+				> div{
+					background-image: wbz_theme_image("phone/logo-ing.png");
+					background-size: contain;
+					background-position: center;
+					background-repeat: no-repeat;
+					width: 100%;
+					height: 100%;
+				}
+			}
+			.logo-smurd{
+				width: 33%;
+				height: 50%;
+				position: absolute;
+				top: 0%;
+				left: 67%;
+				padding: 15px 15px 5px 15px;
+				@include wbz-display-box();
+				@include wbz-box-pack(justify);
+				@include wbz-box-align(center);
+				
+				> div{
+					background-image: wbz_theme_image("phone/logo-smurd.png");
+					background-size: contain;
+					background-position: center;
+					background-repeat: no-repeat;
+					width: 100%;
+					height: 100%;
+				}
+			}
+			.logo-mai-mult-verde{
+				width: 100%;
+				height: 50%;
+				position: absolute;
+				top: 50%;
+				left: 0;
+				padding: 5px 15px 15px 15px;
+				@include wbz-display-box();
+				@include wbz-box-pack(justify);
+				@include wbz-box-align(center);
+				
+				> div{
+					background-image: wbz_theme_image("phone/logo-mai-mult-verde.png");
+					background-size: contain;
+					background-position: center;
+					background-repeat: no-repeat;
+					width: 100%;
+					height: 100%;
+				}
+			}
+			
 		}
 	}
 	@media all and (orientation: landscape) and (min-device-height: 320px) and  (min-device-width: 400px){
@@ -128,40 +183,79 @@
 			margin: 10px auto;
 		}
 		.footer{
-			height: 70px!important;
+			height: 90px;
 			@include wbz-display-box();
-			@include wbz-box-align(center);
-			@include wbz-box-pack(center);
-			
+						
 			.logos{
-				width: 470px;
 				margin: 0 auto;
+				width: 80%;
+				min-width: 400px;
+				position: relative;
 				@include wbz-display-box();
-				@include wbz-box-align(center);
-				@include wbz-box-pack(center);
-				padding: 0px ;
+				@include wbz-box-align(stretch);
+				@include wbz-box-pack(justify);
 			}
 			.logo-ing{
+				width: 40%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				padding: 15px;
 				@include wbz-display-box();
-				width: 206px;	
-				height: 18px;
-				margin: 0 10px;
-				float: none;
+				@include wbz-box-pack(justify);
+				@include wbz-box-align(center);
+				
+				> div{
+					background-image: wbz_theme_image("phone/logo-ing.png");
+					background-size: contain;
+					background-position: center;
+					background-repeat: no-repeat;
+					width: 100%;
+					height: 100%;
+				}
 			}
 			.logo-mai-mult-verde{
+				width: 40%;
+				height: 100%;
+				position: absolute;
+				top: 0%;
+				left: 40%;
+				padding: 15px;
 				@include wbz-display-box();
-				width: 134px;	
-				height: 33px;
-				float: none;
-				margin: 0 10px;
+				@include wbz-box-pack(justify);
+				@include wbz-box-align(center);
+				
+				> div{
+					background-image: wbz_theme_image("phone/logo-mai-mult-verde.png");
+					background-size: contain;
+					background-position: center;
+					background-repeat: no-repeat;
+					width: 100%;
+					height: 100%;
+				}
 			}
 			.logo-smurd{
+				width: 20%;
+				height: 100%;
+				position: absolute;
+				top: 0%;
+				left: 80%;
+				padding: 15px;
 				@include wbz-display-box();
-				width: 38px;	
-				height: 38px;
-				float: none;
-				margin: 0 10px;
+				@include wbz-box-pack(justify);
+				@include wbz-box-align(center);
+				
+				> div{
+					background-image: wbz_theme_image("phone/logo-smurd.png");
+					background-size: contain;
+					background-position: center;
+					background-repeat: no-repeat;
+					width: 100%;
+					height: 100%;
+				}
 			}
-		}	
+		}
+		
 	}
 }
