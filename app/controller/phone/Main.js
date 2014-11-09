@@ -362,12 +362,15 @@ Ext.define('LDPA.controller.phone.Main', {
 	},
 	
 	isOnline: function(){
-		var networkState = navigator.connection.type;
-		if (networkState == Connection.NONE){
-			return false
+		if (navigator.connection){
+			var networkState = navigator.connection.type;
+			if (networkState == 7){
+				return false
+			}
+			return true;
 		}
 		else{
-			return true;
+			return navigator.onLine;	
 		}
 		//return false;
 	}

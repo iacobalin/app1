@@ -101,7 +101,7 @@ Ext.define("LDPA.view.tablet.categories.CategoriesList", {
 					'</div>'
 				),
 				data: {
-					width: Ext.Viewport.getWindowWidth()-160	
+					//width: Ext.Viewport.getWindowWidth()-160	
 				},
 				items: [
 					{
@@ -133,6 +133,8 @@ Ext.define("LDPA.view.tablet.categories.CategoriesList", {
 		this.element.on("touchstart", this.onTouchStart, this);
 		this.element.on("touchend", this.onTouchEnd, this);
 		
+		this.on("painted", this.onPainted, this);
+		
 		// add a handler for the orientationchange event of the viewport
 		Ext.Viewport.on('orientationchange', 'handleOrientationChange', this, {buffer: 50 });
 	},
@@ -153,6 +155,13 @@ Ext.define("LDPA.view.tablet.categories.CategoriesList", {
 		if (scrolling){
 			mainController.getMainView().setDragBlocked(true);
 		}
+	},
+	
+	onPainted: function(){
+		var topBar = this.down("#topBar");
+		topBar.setData({
+			width: Ext.Viewport.getWindowWidth()-160
+		});	
 	},
 	
 	handleOrientationChange: function(){

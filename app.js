@@ -6,7 +6,7 @@ Ext.application({
 		'Ext.data.JsonP'
     ],
 	
-	profiles: ['Tablet'],
+	profiles: ['Phone'],
 
     icon: {
 		'40': 'resources/icons/40x40.png',
@@ -56,7 +56,7 @@ Ext.application({
 		
 		// save current profile
 		webcrumbz.profile = this.getCurrentProfile().getName().toLowerCase();
-    },
+	},
 
     onUpdated: function() {
          window.location.reload();

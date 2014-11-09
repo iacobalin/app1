@@ -52,6 +52,10 @@
             "bundle": true,  /* Indicates that all class dependencies are concatenated into this file when build */
             "update": "full"
         }
+		/*{
+            "path": "quiz.js",
+            "update": "full"
+        }*/
     ],
 
     /**

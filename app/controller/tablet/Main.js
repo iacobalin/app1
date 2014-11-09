@@ -42,7 +42,6 @@ Ext.define('LDPA.controller.tablet.Main', {
 		this.videosOfflineStore = Ext.create("LDPA.store.VideosOffline");
 		this.imagesLoadingList = Ext.create("LDPA.store.ImagesLoadingList");
 		
-		
 		//this.categoriesOfflineStore.getModel().getProxy().dropTable();
 		//this.articlesOfflineStore.getModel().getProxy().dropTable();
 		//this.videosOfflineStore.getModel().getProxy().dropTable();
@@ -68,6 +67,7 @@ Ext.define('LDPA.controller.tablet.Main', {
 						
 						// offline loading
 						if (!mainController.isOnline()){
+							
 							categoriesStore.add(categoriesOfflineStore.getRange());
 							self.setActions();
 						}
@@ -90,6 +90,7 @@ Ext.define('LDPA.controller.tablet.Main', {
 								}
 							});	
 						}
+						
 					});	
 				});
 			});	
@@ -367,12 +368,15 @@ Ext.define('LDPA.controller.tablet.Main', {
 	},
 	
 	isOnline: function(){
-		var networkState = navigator.connection.type;
-		if (networkState == Connection.NONE){
-			return false
+		if (navigator.connection){
+			var networkState = navigator.connection.type;
+			if (networkState == 7){
+				return false
+			}
+			return true;
 		}
 		else{
-			return true;
+			return navigator.onLine;	
 		}
 		//return false;
 	}

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns= "http://www.w3.org/ns/widgets" xmlns:gap	= "http://phonegap.com/ns/1.0" id="com.mmv.LDPAT" version="3.0.0" versionCode="13">
+	<name>LDPA</name>
+	<description>First Aid Lesson is a prevention and education programme created by a Romanian NGO, Greener Association (specialized in environmental projects), the Mobile Emergency Service for Resuscitation and Extrication (SMURD), and ING Life Insurance, as financial supporter. </description>
+	<author href="http://www.lectiadeprimajutor.ro" email="contact@lectiadeprimajutor.ro">Anamaria Bogdan</author>
+	
+	<icon src="resources/icons/iconAndroid.png" gap:platform="android" gap:role="default" />
+	<gap:platform name="android" />
+	
+	<feature name="http://api.phonegap.com/1.0/geolocation"/>
+	<feature name="http://api.phonegap.com/1.0/network"/>
+	
+	<icon src="resources/icons/40x40.png" gap:platform="ios" width="40" height="40" />
+	<icon src="resources/icons/50x50.png" gap:platform="ios" width="50" height="50" />
+	<icon src="resources/icons/57x57.png" gap:platform="ios" width="57" height="57" />
+	<icon src="resources/icons/60x60.png" gap:platform="ios" width="60" height="60" />
+	<icon src="resources/icons/72x72.png" gap:platform="ios" width="72" height="72" />
+	<icon src="resources/icons/76x76.png" gap:platform="ios" width="76" height="76" />
+	<icon src="resources/icons/80x80.png" gap:platform="ios" width="80" height="80" />
+	<icon src="resources/icons/114x114.png" gap:platform="ios" width="114" height="114" />
+	<icon src="resources/icons/120x120.png" gap:platform="ios" width="120" height="120" />
+	<icon src="resources/icons/144x144.png" gap:platform="ios" width="144" height="144" />
+	<icon src="resources/icons/152x152.png" gap:platform="ios" width="152" height="152" />
+	<icon src="resources/icons/180x180.png" gap:platform="ios" width="180" height="180" />
+	
+	<icon gap:platform="android" gap:qualifier="ldpi" src="resources/icons/36x36-ldpi.png" />
+    <icon gap:platform="android" gap:qualifier="mdpi" src="resources/icons/48x48-mdpi.png" />
+    <icon gap:platform="android" gap:qualifier="hdpi" src="resources/icons/72x72-hdpi.png" />
+    <icon gap:platform="android" gap:qualifier="xhdpi" src="resources/icons/96x96-xhdpi.png" />
+	
+	<preference name="phonegap-version" value="3.6.3" />
+	<preference name="splash-screen-duration" value="3000" />
+	<preference name="orientation" value="default" />
+	<preference name="SplashScreen" value="splash" />
+	<preference name="ios-statusbarstyle" value="black-opaque" />
+	<preference name="target-device" value="tablet" />
+	<preference name="deployment-target" value="7.0" />
+	
+	<gap:splash src="resources/startup/320x460.jpg" gap:platform="ios" width="320" height="460" />
+	<gap:splash src="resources/startup/320x480.png" gap:platform="ios" width="320" height="480" />
+	<gap:splash src="resources/startup/640x920.png" gap:platform="ios" width="640" height="920" />
+	<gap:splash src="resources/startup/640x960.png" gap:platform="ios" width="640" height="960" />
+	<gap:splash src="resources/startup/640x1136.png" gap:platform="ios" width="640" height="1136" />
+	<gap:splash src="resources/startup/748x1024.png" gap:platform="ios" width="748" height="1024" />
+	<gap:splash src="resources/startup/750x1334.png" gap:platform="ios" width="750" height="1334" />
+	<gap:splash src="resources/startup/768x1004.png" gap:platform="ios" width="768" height="1004" />
+	<gap:splash src="resources/startup/768x1024.png" gap:platform="ios" width="768" height="1024" />
+	<gap:splash src="resources/startup/1242x2208.png" gap:platform="ios" width="1242" height="2208" />
+	<gap:splash src="resources/startup/1496x2048.png" gap:platform="ios" width="1496" height="2048" />
+	<gap:splash src="resources/startup/1536x2008.png" gap:platform="ios" width="1536" height="2008" />
+	<gap:splash src="resources/startup/1536x2048.png" gap:platform="ios" width="1536" height="2048" />
+		
+	<preference name="android-minSdkVersion" value="12" />
+	<preference name="android-installLocation" value="auto" />
+	<gap:splash gap:platform="android" src="resources/startup/screen-xhdpi-landscape.png" />
+	<gap:splash gap:platform="android" gap:qualifier="port-ldpi" gap:density="ldpi" src="resources/startup/screen-ldpi-portrait.png" />
+	<gap:splash gap:platform="android" gap:qualifier="land-ldpi" gap:density="ldpi" src="resources/startup/screen-ldpi-landscape.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-mdpi" gap:density="mdpi" src="resources/startup/screen-mdpi-portrait.png" />
+	<gap:splash gap:platform="android" gap:qualifier="land-mdpi" gap:density="mdpi" src="resources/startup/screen-mdpi-landscape.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-hdpi" gap:density="hdpi" src="resources/startup/screen-hdpi-portrait.png" />
+	<gap:splash gap:platform="android" gap:qualifier="land-hdpi" gap:density="hdpi" src="resources/startup/screen-hdpi-landscape.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" gap:density="xhdpi" src="resources/startup/screen-xhdpi-portrait.png" />
+	<gap:splash gap:platform="android" gap:qualifier="land-xhdpi" gap:density="xhdpi" src="resources/startup/screen-xhdpi-landscape.png" />
+	
+	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.10" />
+	<gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
+	<gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
+	<gap:plugin name="org.apache.cordova.splashscreen" />
+	<preference name="StatusBarOverlaysWebView" value="false" />
+	
+	<feature name="InAppBrowser">
+		<param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+		<param name="ios-package" value="CDVInAppBrowser" />
+	</feature>
+	
+	<feature name="NetworkStatus">
+		<param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+		<param name="ios-package" value="CDVConnection" />
+	</feature>
+	
+	<feature name="SplashScreen">
+		<param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+		<param name="ios-package" value="CDVSplashScreen" />
+	</feature>
+	
+</widget>

@@ -18,11 +18,12 @@
 			margin: 35px auto 0 auto;
 		}
 		@media all and (orientation: portrait) and (min-device-width: 360px){
-			width: 224px;
-			height: 224px;
-			@include wbz-border-radius(224px);
-			margin: 50px auto 0 auto;
+			width: 194px;
+			height: 194px;
+			@include wbz-border-radius(194px);
+			margin: 45px auto 0 auto;
 		}
+		
 				
 		background: transparent;
 		border: 1px solid #d1c9ba;
@@ -36,11 +37,12 @@
 				background-size: 100px 100px;
 			}
 			@media all and (orientation: portrait) and (min-device-width: 360px){
-				width: 210px;
-				height: 210px;
-				@include wbz-border-radius(210px);
-				background-size: 140px 140px;
+				width: 180px;
+				height: 180px;
+				@include wbz-border-radius(180px);
+				background-size: 120px 120px;
 			}
+			
 						
 			background: rgba(255,255,255,0.8);
 			background-image: wbz_theme_image("phone/logo-icon.png");

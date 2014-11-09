@@ -23,9 +23,15 @@
 	<icon src="resources/icons/152x152.png" gap:platform="ios" width="152" height="152" />
 	<icon src="resources/icons/180x180.png" gap:platform="ios" width="180" height="180" />
 	
+	<icon gap:platform="android" gap:qualifier="ldpi" src="resources/icons/36x36-ldpi.png" />
+    <icon gap:platform="android" gap:qualifier="mdpi" src="resources/icons/48x48-mdpi.png" />
+    <icon gap:platform="android" gap:qualifier="hdpi" src="resources/icons/72x72-hdpi.png" />
+    <icon gap:platform="android" gap:qualifier="xhdpi" src="resources/icons/96x96-xhdpi.png" />
+	
 	<preference name="phonegap-version" value="3.6.3" />
 	<preference name="splash-screen-duration" value="3000" />
 	<preference name="orientation" value="portrait" />
+	<preference name="SplashScreen" value="splash" />
 	
 	<preference name="ios-statusbarstyle" value="black-opaque" />
 	<preference name="target-device" value="handset" />
@@ -46,9 +52,20 @@
 		
 	<preference name="android-minSdkVersion" value="12" />
 	<preference name="android-installLocation" value="auto" />
+	<gap:splash src="resources/startup/splash-default.png" />
+	<gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="resources/startup/screen-ldpi-portrait.png" />
+	<gap:splash gap:platform="android" gap:qualifier="land-ldpi" src="resources/startup/screen-ldpi-landscape.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="resources/startup/screen-mdpi-portrait.png" />
+	<gap:splash gap:platform="android" gap:qualifier="land-mdpi" src="resources/startup/screen-mdpi-landscape.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="resources/startup/screen-hdpi-portrait.png" />
+	<gap:splash gap:platform="android" gap:qualifier="land-hdpi" src="resources/startup/screen-hdpi-landscape.png" />
+    <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="resources/startup/screen-xhdpi-portrait.png" />
+	<gap:splash gap:platform="android" gap:qualifier="land-xhdpi" src="resources/startup/screen-xhdpi-landscape.png" />
 	
+	<gap:plugin name="org.apache.cordova.geolocation" version="0.3.10" />
 	<gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
-	<gap:plugin name="org.apache.cordova.network-information" version="0.2.7" />
+	<gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
+	<gap:plugin name="org.apache.cordova.splashscreen" />
 	<preference name="StatusBarOverlaysWebView" value="false" />
 	
 	<feature name="InAppBrowser">
@@ -59,6 +76,11 @@
 	<feature name="NetworkStatus">
 		<param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
 		<param name="ios-package" value="CDVConnection" />
+	</feature>
+	
+	<feature name="SplashScreen">
+		<param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+		<param name="ios-package" value="CDVSplashScreen" />
 	</feature>
 	
 </widget>
